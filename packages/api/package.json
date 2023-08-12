@@ -1,12 +1,11 @@
 {
-  "name": "ui",
+  "name": "api",
   "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
+  "main": "./index.ts",
+  "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
+    "lint": "eslint \"**/*.ts*\""
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
@@ -15,8 +14,6 @@
     "eslint-config-custom": "workspace:*",
     "react": "^17.0.2",
     "tsconfig": "workspace:*",
-    "typescript": "^4.5.2",
-    "@heroicons/react": "^2.0.18",
-    "api": "workspace:*"
+    "typescript": "^4.5.2"
   }
 }

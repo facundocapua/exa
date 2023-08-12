@@ -1,0 +1,23 @@
+import BannerTop from '@/components/BannerTop'
+import Header from '@/components/layout/Header'
+import Context from './Context'
+import React from 'react'
+import MainNavigation from '../navigation/MainNavigation'
+import Footer from './Footer'
+
+type Props = {
+  children: React.ReactNode
+}
+
+export default function MainLayout ({ children }: Props) {
+  return (
+    <Context>
+      <BannerTop />
+      <Header />
+      <MainNavigation />
+      <main>{children}</main>
+
+      <Footer />
+    </Context>
+  )
+}

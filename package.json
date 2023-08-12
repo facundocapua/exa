@@ -4,14 +4,15 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prune": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.9.7",
-    "eslint": "^7.32.0",
+    "@turbo/gen": "1.9.7",
+    "eslint": "7.32.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
-    "turbo": "latest"
+    "prettier": "2.8.8",
+    "turbo": "1.10.4"
   },
   "packageManager": "pnpm@8.6.10",
   "name": "exa"

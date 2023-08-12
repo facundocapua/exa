@@ -1,5 +1,5 @@
-import * as React from "react";
-
-// component exports
-export * from "./Button";
-export * from "./Header";
+export { default as HeroSlider } from './hero-slider/HeroSlider'
+export { default as ProductCard } from './product-card/ProductCard'
+export { default as ProductSlider } from './product-slider/ProductSlider'
+export { default as ProductFeaturedList } from './product-featured-list/ProductFeaturedList'
+export * from './icons'
