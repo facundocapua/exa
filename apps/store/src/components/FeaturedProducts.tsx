@@ -9,7 +9,7 @@ export default async function FeaturedProducts () {
 
   return (
     <div className='py-4 bg-neutral-200'>
-      <h1 className='mx-auto text-center'>Promociones</h1>
+      <h1 className='mx-auto text-center text-2xl font-semibold my-4'>Promociones</h1>
       <ProductFeaturedList products={topProducts} />
     </div>
   )

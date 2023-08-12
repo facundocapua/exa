@@ -10,6 +10,7 @@ import DeleteItemButton from './DeleteItemButton'
 import EditItemQuantityButton from './EditItemQuantityButton'
 import OpenCart from './OpenCart'
 import Price from '@/components/Price'
+import { DEFAULT_OPTION } from '@/lib/constants'
 
 export default function CartModal ({ cart }: { cart: any | undefined }) {
   const [isOpen, setIsOpen] = useState(false)

@@ -2,6 +2,7 @@ import MainLayout from '@/components/layout/MainLayout'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Kanit } from 'next/font/google'
+import React from 'react'
 
 const inter = Inter({
   subsets: ['latin'],
