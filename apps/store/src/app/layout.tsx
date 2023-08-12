@@ -29,7 +29,7 @@ type Props = {
 export default function RootLayout ({ children }:Props) {
   return (
     <html lang="es" className={`${inter.variable} ${kanit.variable}`}>
-      <body className='font-sans bg-gray-50'>
+      <body className='font-sans bg-white'>
         <MainLayout>
           {children}
         </MainLayout>
