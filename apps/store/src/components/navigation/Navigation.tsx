@@ -139,7 +139,7 @@ export default function Navigation ({ navigation }: Props) {
                                       open
                                         ? 'border-primary-600 text-primary-600'
                                         : 'border-transparent text-neutral-700 hover:text-neutral-800',
-                                      'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out'
+                                      'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-none focus:outline-none'
                                     )}
                                   >
                                     {category.name}

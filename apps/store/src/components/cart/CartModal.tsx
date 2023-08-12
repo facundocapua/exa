@@ -77,7 +77,7 @@ export default function CartModal ({ cart }: { cart: any | undefined }) {
                 : (
                   <div className="flex h-full flex-col justify-between overflow-hidden p-1">
                     <ul className="flex-grow overflow-auto py-4">
-                      {cart.lines.map((item, i) => {
+                      {cart.lines.map((item: any, i: number) => {
                         return (
                           <li
                           key={i}
