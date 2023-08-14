@@ -1,3 +1,4 @@
+export { default as CategoryFeaturedList } from './category-featured-list/CategoryFeaturedList'
 export { default as HeroSlider } from './hero-slider/HeroSlider'
 export { default as ProductCard } from './product-card/ProductCard'
 export { default as ProductSlider } from './product-slider/ProductSlider'

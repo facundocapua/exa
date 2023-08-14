@@ -24,6 +24,12 @@ const nextConfig = {
         hostname: 'tailwindui.com',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'tuaar.vtexassets.com',
+        port: '',
+        pathname: '/**'
       }
     ]
   }

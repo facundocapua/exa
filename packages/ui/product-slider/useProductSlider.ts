@@ -16,7 +16,7 @@ type Response = {
   handleNext: () => void
 }
 
-export default function useProductSlider ({ slidesPerView = 1, numberOfSlides }: Props): Response {
+export default function useProductSlider ({ numberOfSlides }: Props): Response {
   const [activeSlide, setActiveSlide] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
 

@@ -27,7 +27,7 @@ export default function ProductCard ({ product }: Props) {
                 {product.name}
               </Link>
             </h3>
-            <Link href={`/brand/${product.brand.slug}`} className="mt-1 text-sm text-gray-500">{product.brand.name}</Link>
+            <Link href={`/brand/${product?.brand?.slug}`} className="mt-1 text-sm text-gray-500">{product?.brand?.name}</Link>
           </div>
           <p className="text-sm font-medium text-gray-900">{product.price}</p>
         </div>

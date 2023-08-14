@@ -1,4 +1,5 @@
 import FeaturedBanners from '@/components/FeaturedBanners'
+import FeaturedCategories from '@/components/FeaturedCategories'
 import FeaturedProducts from '@/components/FeaturedProducts'
 import MainSlider from '@/components/MainSlider'
 
@@ -8,6 +9,7 @@ export default function Home () {
       <MainSlider />
       <FeaturedBanners />
       <FeaturedProducts />
+      <FeaturedCategories />
     </main>
   )
 }

@@ -12,9 +12,11 @@ type Props = {
 export default function MainLayout ({ children }: Props) {
   return (
     <Context>
-      <BannerTop />
-      <Header />
-      <MainNavigation />
+      <header className='sticky top-0 w-full z-20 bg-white drop-shadow-md'>
+        <BannerTop />
+        <Header />
+        <MainNavigation />
+      </header>
       <main>{children}</main>
 
       <Footer />

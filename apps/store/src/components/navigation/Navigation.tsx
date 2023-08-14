@@ -1,12 +1,12 @@
 'use client'
 
 import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
+import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
   XMarkIcon
 } from '@heroicons/react/24/outline'
-import type { Category } from 'api'
+import type { Brand, Category } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -14,6 +14,7 @@ import clsx from 'clsx'
 type Props = {
   navigation: {
     categories: Array<Category>
+    brands: Array<Brand>
     pages: Array<{ name: string, href: string }>
   }
 }
@@ -61,47 +62,89 @@ export default function Navigation ({ navigation }: Props) {
                 </div>
 
                 {/* Links */}
-                <Tab.Group as="div" className="mt-2">
-                  <div className="border-b border-gray-200">
-                    <Tab.List className="-mb-px flex space-x-8 px-4">
-                      {navigation.categories.map((category) => (
-                        <Tab
-                          key={category.name}
-                          className={({ selected }) =>
+                <div className='px-4'>
+                  {navigation.categories.map((category) => (
+                    <Disclosure key={category.name}>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className={
                             clsx(
-                              selected ? 'border-primary-600 text-primary-600' : 'border-transparent text-neutral-900',
-                              'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
+                              open ? 'border-primary-600 text-primary-600' : 'border-transparent text-neutral-900',
+                              'flex w-full whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
                             )
-                          }
-                        >
-                          {category.name}
-                        </Tab>
-                      ))}
-                    </Tab.List>
-                  </div>
-                  <Tab.Panels as={Fragment}>
-                    {navigation.categories.map((category) => (
-                      <Tab.Panel key={category.name} className="space-y-12 px-4 py-6">
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-10">
-                          {category.children.map((item) => (
-                            <div key={item.name} className="group relative">
-                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
-                                <Image src={item.image} alt={item.description} className="object-cover object-center" width={280} height={280} />
+                          }>
+                            {category.name}
+                          </Disclosure.Button>
+                          <Transition
+                            show={open}
+                            enter="transition ease-in-out duration-300 transform"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="transition ease-in-out duration-300 transform"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                            className="overflow-hidden transition-all"
+                          >
+                            <Disclosure.Panel className="space-y-12 px-4 py-6" static>
+                              <div className="grid grid-cols-2 gap-x-4 gap-y-10">
+                                {category.children.map((item) => (
+                                  <Link href={item.slug} key={item.name} className="group relative">
+                                    <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
+                                      <Image src={item.image} alt={item.description} className="object-cover object-center" width={280} height={280} />
+                                    </div>
+                                    <h3 className="mt-6 block text-sm font-medium text-neutral-900">
+                                      <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                      {item.name}
+                                    </h3>
+                                  </Link>
+                                ))}
                               </div>
-                              <a href={item.slug} className="mt-6 block text-sm font-medium text-neutral-900">
-                                <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                {item.name}
-                              </a>
-                              <p aria-hidden="true" className="mt-1 text-sm text-neutral-500">
-                                Shop now
-                              </p>
+                            </Disclosure.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Disclosure>
+                  ))}
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className={
+                            clsx(
+                              open ? 'border-primary-600 text-primary-600' : 'border-transparent text-neutral-900',
+                              'flex w-full whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
+                            )
+                          }>
+                          Marcas
+                        </Disclosure.Button>
+                        <Transition
+                          show={open}
+                          enter="transition duration-100 ease-out"
+                          enterFrom="transform scale-95 opacity-0"
+                          enterTo="transform scale-100 opacity-100"
+                          leave="transition duration-75 ease-out"
+                          leaveFrom="transform scale-100 opacity-100"
+                          leaveTo="transform scale-95 opacity-0"
+                        >
+                          <Disclosure.Panel className="space-y-12 px-4 py-6" static>
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-10">
+                              {navigation.brands.map((item) => (
+                                <Link href={`/brand/${item.slug}`} key={item.name} className="group relative">
+                                  <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md  group-hover:opacity-75">
+                                    <Image src={item.image} alt={item.name} className="object-cover object-center" width={280} height={280} />
+                                  </div>
+                                  <h3 className="mt-6 block text-sm font-medium text-neutral-900">
+                                    <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                    {item.name}
+                                  </h3>
+                                </Link>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                      </Tab.Panel>
-                    ))}
-                  </Tab.Panels>
-                </Tab.Group>
+                          </Disclosure.Panel>
+                        </Transition>
+                      </>
+                    )}
+                  </Disclosure>
+                </div>
 
                 <div className="space-y-6 border-t border-neutral-200 px-4 py-6">
                   {navigation.pages.map((page) => (
@@ -123,7 +166,7 @@ export default function Navigation ({ navigation }: Props) {
           {/* Secondary navigation */}
           <div className="bg-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="border-b border-gray-200">
+              <div>
                 <div className="flex h-16 items-center justify-between">
                   <div className="hidden h-full lg:flex w-full">
                     {/* Flyout menus */}
@@ -131,7 +174,7 @@ export default function Navigation ({ navigation }: Props) {
                       <div className="flex h-full justify-center space-x-8">
                         {navigation.categories.map((category) => (
                           <Popover key={category.name} className="flex">
-                            {({ open }) => (
+                            {({ open, close }) => (
                               <>
                                 <div className="relative flex">
                                   <Popover.Button
@@ -163,8 +206,8 @@ export default function Navigation ({ navigation }: Props) {
                                       <div className="mx-auto max-w-7xl px-8">
                                         <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                                           {category.children.map((item) => (
-                                            <div key={item.name} className="group relative">
-                                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
+                                            <Link key={item.name} href={item.slug} className="group relative" onClick={close}>
+                                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75 transition-all duration-150 ease-in-out">
                                                 <Image
                                                   src={item.image}
                                                   alt={item.description}
@@ -173,11 +216,11 @@ export default function Navigation ({ navigation }: Props) {
                                                   height="280"
                                                 />
                                               </div>
-                                              <Link href={item.slug} className="mt-4 block font-medium text-gray-900">
+                                              <div className="mt-4 block font-medium text-gray-900">
                                                 <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                 {item.name}
-                                              </Link>
-                                            </div>
+                                              </div>
+                                            </Link>
                                           ))}
                                         </div>
                                       </div>
@@ -188,6 +231,64 @@ export default function Navigation ({ navigation }: Props) {
                             )}
                           </Popover>
                         ))}
+
+                        <Popover className="flex">
+                          {({ open }) => (
+                            <>
+                              <div className="relative flex">
+                                <Popover.Button
+                                    className={clsx(
+                                      open
+                                        ? 'border-primary-600 text-primary-600'
+                                        : 'border-transparent text-neutral-700 hover:text-neutral-800',
+                                      'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-none focus:outline-none'
+                                    )}
+                                  >
+                                  Marcas
+                                </Popover.Button>
+                              </div>
+
+                              <Transition
+                                  as={Fragment}
+                                  enter="transition ease-out duration-200"
+                                  enterFrom="opacity-0"
+                                  enterTo="opacity-100"
+                                  leave="transition ease-in duration-150"
+                                  leaveFrom="opacity-100"
+                                  leaveTo="opacity-0"
+                                >
+                                <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
+                                  {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
+                                  <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+
+                                  <div className="relative bg-white">
+                                    <div className="mx-auto max-w-7xl px-8">
+                                      <div className="grid grid-cols-5 gap-y-12 py-16">
+                                        {navigation.brands.map((item) => (
+                                          <Link key={item.name} href={item.slug} className="group relative">
+                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
+                                              <Image
+                                                  src={item.image}
+                                                  alt={item.name}
+                                                  className="object-cover object-center m-auto"
+                                                  width="80"
+                                                  height="80"
+                                                />
+                                            </div>
+                                            <h4 className="mt-4 block font-medium text-gray-900 text-center">
+                                              <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                              {item.name}
+                                            </h4>
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Popover.Panel>
+                              </Transition>
+                            </>
+                          )}
+                        </Popover>
 
                         {navigation.pages.map((page) => (
                           <a
