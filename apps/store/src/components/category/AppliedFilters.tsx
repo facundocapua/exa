@@ -3,8 +3,10 @@ import BrandFilter from './AppliedFilters/BrandFilter'
 import PriceFilter from './AppliedFilters/PriceFilter'
 import GenericFilter from './AppliedFilters/GenericFilter'
 import { generateUrl, removeSearchParamValue } from 'ui'
+import CategoryFilter from './AppliedFilters/CategoryFilter'
 
 const ATTRIBUTES = {
+  category: CategoryFilter,
   brand: BrandFilter,
   price: PriceFilter,
   generic: GenericFilter

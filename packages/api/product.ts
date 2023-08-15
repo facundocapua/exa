@@ -2,11 +2,12 @@ import { getBrand } from './brand'
 import { getCategory } from './category'
 import type { Brand, Category, Filter, Product } from './types'
 import type { FiltersType } from './utils/filters'
-import { applyFilters, extractBrandFilter, extractPriceFilter } from './utils/filters'
+import { applyFilters, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 
 export const getProducts = async (): Promise<Array<Product>> => {
   const brandGamma = await getBrand('gama') as Brand
   const brandWella = await getBrand('wella-professional') as Brand
+  const parentCategory = await getCategory('coloracion') as Category
   const category = await getCategory('oxidantes-y-decoloracion') as Category
 
   const data = [
@@ -14,7 +15,7 @@ export const getProducts = async (): Promise<Array<Product>> => {
       id: '1',
       name: 'Afeitadora SH 1527 W&D',
       brand: brandGamma,
-      categories: [category],
+      categories: [parentCategory, category],
       slug: 'afeitadora-sh-1527-wet-dry',
       images: [
         '/product/product-1-a.jpg',
@@ -144,16 +145,37 @@ export const getFeaturedProducts = async (): Promise<Array<Product>> => {
   })
 }
 
-export const getFiltersFromProducts = (products: Array<Product>): Array<Filter> => {
-  const brandsFilter = extractBrandFilter(products)
-  const priceFilter = extractPriceFilter(products)
+export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<string> = []): Array<Filter> => {
+  const filters = []
 
-  return [brandsFilter, priceFilter]
+  if (!exclude.includes('category')) {
+    const categoryFilter = extractCategoryFilter(products)
+    if (categoryFilter.options.length > 1) {
+      filters.push(categoryFilter)
+    }
+  }
+
+  if (!exclude.includes('brand')) {
+    const brandFilter = extractBrandFilter(products)
+    if (brandFilter.options.length > 1) {
+      filters.push(brandFilter)
+    }
+  }
+
+  if (!exclude.includes('price')) {
+    const priceFilter = extractPriceFilter(products)
+    if (priceFilter.options[0].value !== priceFilter.options[1].value) {
+      filters.push(priceFilter)
+    }
+  }
+
+  return filters
 }
 
 type GetFilteredProductsType = {
   filters: FiltersType
   restrinctions: FiltersType
+  exclude?: Array<string>
 }
 
 type GetCategoryProductsResponse = {
@@ -162,7 +184,7 @@ type GetCategoryProductsResponse = {
   total: number
 }
 
-export const getFilteredProducts = async ({ filters, restrinctions }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
+export const getFilteredProducts = async ({ filters, restrinctions, exclude = [] }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
   const products = await getProducts()
 
   const restrictedData = applyFilters(products, restrinctions)
@@ -171,7 +193,7 @@ export const getFilteredProducts = async ({ filters, restrinctions }: GetFiltere
   return new Promise((resolve) => {
     resolve({
       products: filteredData,
-      filters: getFiltersFromProducts(restrictedData),
+      filters: getFiltersFromProducts(restrictedData, exclude),
       total: restrictedData.length
     })
   })

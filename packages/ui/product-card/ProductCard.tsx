@@ -21,15 +21,12 @@ export default function ProductCard ({ product }: Props) {
             height={175}
             className="h-full w-full object-cover object-center"
           />
-          D</div>
+        </div>
         <div className="flex flex-col grow justify-between">
           <div>
-            <Link href={`/b/${product?.brand?.slug}`} className="my-2 block uppercase text-sm text-primary-700">{product?.brand?.name}</Link>
+            <Link href={`/brand/${product?.brand?.slug}`} className="my-2 block uppercase text-sm text-primary-700">{product?.brand?.name}</Link>
             <h3 className="text-sm text-gray-900">
-              <Link href={product.slug}>
-                <span aria-hidden="true" className="absolute inset-0" />
-                {product.name}
-              </Link>
+              <Link href={`/product/${product.slug}`}>{product.name}</Link>
             </h3>
           </div>
           <ProductPrice price={product.price} salePrice={product.salePrice} />

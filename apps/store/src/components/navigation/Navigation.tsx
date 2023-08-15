@@ -88,7 +88,7 @@ export default function Navigation ({ navigation }: Props) {
                             <Disclosure.Panel className="space-y-12 px-4 py-6" static>
                               <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                                 {category.children.map((item) => (
-                                  <Link href={item.slug} key={item.name} className="group relative" onClick={() => setOpen(false)}>
+                                  <Link href={`/${item.slug}`} key={item.name} className="group relative" onClick={() => setOpen(false)}>
                                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
                                       <Image src={item.image} alt={item.description} className="object-cover object-center" width={280} height={280} />
                                     </div>
@@ -206,7 +206,7 @@ export default function Navigation ({ navigation }: Props) {
                                       <div className="mx-auto max-w-7xl px-8">
                                         <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                                           {category.children.map((item) => (
-                                            <Link key={item.name} href={item.slug} className="group relative" onClick={close}>
+                                            <Link key={item.name} href={`/${item.slug}`} className="group relative" onClick={close}>
                                               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75 transition-all duration-150 ease-in-out">
                                                 <Image
                                                   src={item.image}
@@ -265,7 +265,7 @@ export default function Navigation ({ navigation }: Props) {
                                     <div className="mx-auto max-w-7xl px-8">
                                       <div className="grid grid-cols-5 gap-y-12 py-16">
                                         {navigation.brands.map((item) => (
-                                          <Link key={item.name} href={item.slug} className="group relative" onClick={close}>
+                                          <Link key={item.name} href={`/brand/${item.slug}`} className="group relative" onClick={close}>
                                             <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
                                               <Image
                                                   src={item.image}

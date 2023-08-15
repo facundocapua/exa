@@ -1,6 +1,6 @@
 import AppliedFilters from '@/components/category/AppliedFilters'
 import Filters from '@/components/category/Filters'
-import { getCategory, getFilteredProducts } from 'api'
+import { getBrand, getFilteredProducts } from 'api'
 import { notFound } from 'next/navigation'
 import { ProductCard } from 'ui'
 
@@ -11,24 +11,24 @@ type Props = {
   searchParams: Record<string, string>
 }
 
-export default async function Category ({ params, searchParams }: Props) {
+export default async function Brand ({ params, searchParams }: Props) {
   const { slug } = params
-  const category = await getCategory(slug)
+  const brand = await getBrand(slug)
 
-  if (!category) {
+  if (!brand) {
     notFound()
   }
 
   const { filters, products, total } = await getFilteredProducts({
-    restrinctions: { category: slug },
+    restrinctions: { brand: slug },
     filters: searchParams,
-    exclude: ['category']
+    exclude: ['brand']
   })
 
   return (
     <main className="mx-auto max-w-2xl px-4 lg:max-w-7xl">
       <div className="border-b border-neutral-200 py-10">
-        <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{category.name}</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{brand.name}</h1>
       </div>
 
       <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
@@ -36,7 +36,7 @@ export default async function Category ({ params, searchParams }: Props) {
           <aside>
             <h2 className='text-xl mb-4'>Filtros</h2>
             <div className="hidden lg:block">
-              <AppliedFilters url={`/${slug}`} searchParams={searchParams} />
+              <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
               <Filters filters={filters} />
             </div>
           </aside>

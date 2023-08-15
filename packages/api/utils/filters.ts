@@ -1,5 +1,28 @@
 import { FILTER_TYPE, type Filter, type FilterOption, type Product } from '../types'
 
+export const extractCategoryFilter = (products: Array<Product>) => {
+  const options: Record<string, FilterOption> = {}
+  products.forEach(product => {
+    product.categories.forEach(category => {
+      options[category.slug] ??= {
+        name: category.name,
+        value: category.slug,
+        count: 0
+      }
+      options[category.slug].count++
+    })
+  })
+
+  const filter = {
+    attribute: 'category',
+    type: FILTER_TYPE.RADIO,
+    name: 'Categoria',
+    options: Object.values(options)
+  }
+
+  return filter
+}
+
 export const extractBrandFilter = (products: Array<Product>) => {
   const filter = {
     attribute: 'brand',
@@ -60,14 +83,15 @@ export type FiltersType = {
 }
 
 export const applyFilters = (products: Array<Product>, filters: FiltersType) => {
-  const { category: categorySlug, brand, price } = filters
+  const { category, brand, price } = filters
 
+  const categories = category?.split(',') || []
   const brands = brand?.split(',') || []
   const [minPrice, maxPrice] = price?.split(',') || []
 
   const data = products.filter((product) => {
-    if (categorySlug) {
-      const categoryFiltered = product.categories.some((category) => category.slug === categorySlug || categorySlug === undefined)
+    if (categories.length) {
+      const categoryFiltered = product.categories.some((category) => categories.includes(category.slug))
       if (!categoryFiltered) return false
     }
 
