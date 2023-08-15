@@ -4,18 +4,27 @@ import { FILTER_TYPE } from 'api'
 import type { FilterOption, Filter } from 'api'
 import FilterRadio from './FilterRadio'
 import FilterRange from './FilterRange'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 type Props = {
   filters: Array<Filter>
 }
 
 export default function Filters ({ filters }: Props) {
-  const handleSingleValueChange = (attribute: Filter['attribute'], value: FilterOption['value']) => {
-    console.log({ attribute, value })
-  }
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-  const handleMultiValueChange = (attribute: Filter['attribute'], value: Array<number>) => {
-    console.log({ attribute, value })
+  const handleMultiValueChange = (attribute: Filter['attribute'], value: Array<FilterOption['value']>) => {
+    const query = new URLSearchParams(Array.from(searchParams.entries()))
+    if (!value.length) {
+      query.delete(attribute)
+      router.push(`${pathname}?${query.toString()}`)
+      return
+    }
+
+    query.set(attribute, value.toString())
+    router.push(`${pathname}?${query.toString()}`)
   }
 
   return (
@@ -25,8 +34,8 @@ export default function Filters ({ filters }: Props) {
           <fieldset>
             <legend className="block text-sm font-medium text-gray-900">{filter.name}</legend>
             <div className="space-y-3 pt-6">
-              {filter.type === FILTER_TYPE.RADIO && (<FilterRadio filter={filter} onChange={handleSingleValueChange} />)}
-              {filter.type === FILTER_TYPE.RANGE && (<FilterRange filter={filter} onChange={handleMultiValueChange} />)}
+              {filter.type === FILTER_TYPE.RADIO && (<FilterRadio filter={filter} defaultValue={searchParams.get(filter.attribute)?.split(',')} onChange={handleMultiValueChange} />)}
+              {filter.type === FILTER_TYPE.RANGE && (<FilterRange filter={filter} defaultValue={searchParams.get(filter.attribute)?.split(',').map(parseFloat)} onChange={handleMultiValueChange} />)}
             </div>
           </fieldset>
         </div>

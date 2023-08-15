@@ -5,6 +5,7 @@ export type Category = {
   image: string
   description: string
   children: Array<Category>
+  parent?: Category
 }
 
 export type Banner = {

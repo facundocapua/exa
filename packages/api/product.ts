@@ -1,7 +1,8 @@
 import { getBrand } from './brand'
 import { getCategory } from './category'
 import type { Brand, Category, Filter, Product } from './types'
-import { extractBrandFilter, extractPriceFilter } from './utils/filters'
+import type { FiltersType } from './utils/filters'
+import { applyFilters, extractBrandFilter, extractPriceFilter } from './utils/filters'
 
 export const getProducts = async (): Promise<Array<Product>> => {
   const brandGamma = await getBrand('gama') as Brand
@@ -151,27 +152,27 @@ export const getFiltersFromProducts = (products: Array<Product>): Array<Filter> 
 }
 
 type GetFilteredProductsType = {
-  category?: string
+  filters: FiltersType
+  restrinctions: FiltersType
 }
 
 type GetCategoryProductsResponse = {
   filters: Array<Filter>
   products: Array<Product>
+  total: number
 }
 
-export const getFilteredProducts = async (appliedFilters: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
+export const getFilteredProducts = async ({ filters, restrinctions }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
   const products = await getProducts()
 
-  const { category: categorySlug } = appliedFilters
-
-  const data = products.filter((product) => {
-    return product.categories.some((category) => category.slug === categorySlug || categorySlug === undefined)
-  })
+  const restrictedData = applyFilters(products, restrinctions)
+  const filteredData = applyFilters(restrictedData, filters)
 
   return new Promise((resolve) => {
     resolve({
-      products: data,
-      filters: getFiltersFromProducts(data)
+      products: filteredData,
+      filters: getFiltersFromProducts(restrictedData),
+      total: restrictedData.length
     })
   })
 }

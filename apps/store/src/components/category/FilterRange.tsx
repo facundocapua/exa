@@ -2,23 +2,29 @@ import type { Filter } from 'api'
 import clsx from 'clsx'
 import { useState } from 'react'
 import { Range, getTrackBackground } from 'react-range'
+import { Price } from 'ui'
 
 type Props = {
   filter: Filter
   onChange: (attribute: Filter['attribute'], value: Array<number>) => void
-  options?: {
-    defaultValue: [number]
-  }
+  defaultValue?: Array<number> | undefined
 }
 
-export default function FilterRange ({ filter, onChange }: Props) {
+export default function FilterRange ({ filter, defaultValue, onChange }: Props) {
   const minValue = filter.options[0].value as number
   const maxValue = filter.options[1].value as number
 
-  const [values, setValues] = useState([minValue, maxValue])
+  const [defaultMinValue, defaultMaxValue] = defaultValue ?? [minValue, maxValue]
+  const [values, setValues] = useState([defaultMinValue, defaultMaxValue])
+
+  if (minValue === Infinity || maxValue === -Infinity) return null
 
   const handleChange = (values: Array<number>) => {
-    setValues(values)
+    if (values[0] === minValue && values[1] === maxValue) {
+      onChange(filter.attribute, [])
+      return
+    }
+
     onChange(filter.attribute, values)
   }
 
@@ -28,7 +34,8 @@ export default function FilterRange ({ filter, onChange }: Props) {
       min={minValue}
       max={maxValue}
       values={values}
-      onChange={handleChange}
+      onChange={(values) => setValues(values)}
+      onFinalChange={handleChange}
       renderTrack={({ props, children }) => {
         return (
           <div
@@ -58,10 +65,10 @@ export default function FilterRange ({ filter, onChange }: Props) {
             {...restOfProps}
             className='rounded-full w-5 h-5 bg-primary-800'
           >
-            <span className={clsx(
+            <Price amount={values[index]} className={clsx(
               'absolute top-6 text-primary-800 text-xs',
               index === 0 ? 'left-0' : 'right-0'
-            )}>{values[index]}</span>
+            )} />
           </div>
         )
       }}

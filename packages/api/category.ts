@@ -10,10 +10,10 @@ const data:Array<Category> = [
     children: [
       {
         id: '11',
-        name: 'Oxidantes Y Decoloración',
+        name: 'Oxidantes y Decoloración',
         slug: 'oxidantes-y-decoloracion',
         image: '/category/category-1.jpg',
-        description: 'Oxidantes Y Decoloración'
+        description: 'Oxidantes y Decoloración'
       } as Category,
       {
         id: '12',
@@ -227,7 +227,22 @@ export const getFeaturedCategories = async (): Promise<Array<Category>> => {
 
 export const getCategory = (slug: string): Promise<Category | undefined> => {
   return new Promise((resolve) => {
-    const category = data.flatMap(item => [item, ...item.children]).find((category) => category.slug === slug)
-    resolve(category)
+    const category = data.find((category) => category.slug === slug)
+    if (category) {
+      resolve(category)
+      return
+    }
+
+    const childCategory = data.reduce<Category | undefined>((acc, category) => {
+      if (acc) {
+        return acc
+      }
+      const res = category.children.find((item) => item.slug === slug) as Category
+      if (!res) return acc
+
+      return { ...res, parent: category }
+    }, undefined)
+
+    resolve(childCategory)
   })
 }

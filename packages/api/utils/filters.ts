@@ -52,3 +52,37 @@ export const extractPriceFilter = (products: Array<Product>): Filter => {
 
   return filter
 }
+
+export type FiltersType = {
+  category?: string
+  brand?: string
+  price?: string
+}
+
+export const applyFilters = (products: Array<Product>, filters: FiltersType) => {
+  const { category: categorySlug, brand, price } = filters
+
+  const brands = brand?.split(',') || []
+  const [minPrice, maxPrice] = price?.split(',') || []
+
+  const data = products.filter((product) => {
+    if (categorySlug) {
+      const categoryFiltered = product.categories.some((category) => category.slug === categorySlug || categorySlug === undefined)
+      if (!categoryFiltered) return false
+    }
+
+    if (brands.length) {
+      const brandFiltered = brands.some((brandSlug: string) => product.brand.slug === brandSlug)
+      if (!brandFiltered) return false
+    }
+
+    if (minPrice && maxPrice) {
+      const priceFiltered = product.salePrice >= Number(minPrice) && product.salePrice <= Number(maxPrice)
+      if (!priceFiltered) return false
+    }
+
+    return true
+  })
+
+  return data
+}

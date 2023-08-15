@@ -233,7 +233,7 @@ export default function Navigation ({ navigation }: Props) {
                         ))}
 
                         <Popover className="flex">
-                          {({ open }) => (
+                          {({ open, close }) => (
                             <>
                               <div className="relative flex">
                                 <Popover.Button
