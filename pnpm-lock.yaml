@@ -146,6 +146,9 @@ importers:
 
   packages/ui:
     dependencies:
+      clsx:
+        specifier: ^2.0.0
+        version: 2.0.0
       next:
         specifier: 13.4.13
         version: 13.4.13(react-dom@18.2.0)(react@17.0.2)

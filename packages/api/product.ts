@@ -4,7 +4,7 @@ import type { Brand, Category, Filter, Product } from './types'
 import { extractBrandFilter, extractPriceFilter } from './utils/filters'
 
 export const getProducts = async (): Promise<Array<Product>> => {
-  const brandGamma = await getBrand('gama-italy') as Brand
+  const brandGamma = await getBrand('gama') as Brand
   const brandWella = await getBrand('wella-professional') as Brand
   const category = await getCategory('oxidantes-y-decoloracion') as Category
 
@@ -22,8 +22,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-1-d.jpg',
         '/product/product-1-e.jpg'
       ],
-      price: 27890,
-      salePrice: 25101
+      salePrice: 25101,
+      price: 27890
     },
     {
       id: '2',
@@ -35,8 +35,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-2-a.jpg',
         '/product/product-2-b.jpg'
       ],
-      price: 29961,
-      salePrice: 33290
+      salePrice: 29961,
+      price: 33290
     },
     {
       id: '3',
@@ -48,8 +48,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-3-a.jpg',
         '/product/product-3-b.jpg'
       ],
-      price: 35763,
-      salePrice: 51090
+      salePrice: 35763,
+      price: 51090
     },
     {
       id: '4',
@@ -62,8 +62,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-4-b.jpg',
         '/product/product-4-c.jpg'
       ],
-      price: 21512,
-      salePrice: 26890
+      salePrice: 21512,
+      price: 26890
     },
     {
       id: '5',
@@ -76,8 +76,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-5-b.jpg',
         '/product/product-5-c.jpg'
       ],
-      price: 13941,
-      salePrice: 15490
+      salePrice: 13941,
+      price: 15490
     },
     {
       id: '6',
@@ -90,8 +90,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-6-b.jpg',
         '/product/product-6-c.jpg'
       ],
-      price: 9261,
-      salePrice: 10290
+      salePrice: 9261,
+      price: 10290
     },
     {
       id: '7',
@@ -102,8 +102,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
       images: [
         '/product/product-7-a.jpg'
       ],
-      price: 9171,
-      salePrice: 10790
+      salePrice: 9171,
+      price: 10790
     },
     {
       id: '8',
@@ -114,8 +114,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
       images: [
         '/product/product-8-a.jpg'
       ],
-      price: 10531.50,
-      salePrice: 12390
+      salePrice: 10531.50,
+      price: 12390
     },
     {
       id: '9',
@@ -126,8 +126,8 @@ export const getProducts = async (): Promise<Array<Product>> => {
       images: [
         '/product/product-9-a.jpg'
       ],
-      price: 12990,
-      salePrice: 12990
+      salePrice: 12990,
+      price: 12990
     }
   ]
   return new Promise((resolve) => {

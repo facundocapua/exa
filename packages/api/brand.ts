@@ -3,8 +3,8 @@ import type { Brand } from './types'
 const data: Array<Brand> = [
   {
     id: '1',
-    name: 'Gama Italy',
-    slug: 'gama-italy',
+    name: 'Gama',
+    slug: 'gama',
     image: '/brand/brand-1.png'
   },
   {
