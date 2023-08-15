@@ -88,7 +88,7 @@ export default function Navigation ({ navigation }: Props) {
                             <Disclosure.Panel className="space-y-12 px-4 py-6" static>
                               <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                                 {category.children.map((item) => (
-                                  <Link href={item.slug} key={item.name} className="group relative">
+                                  <Link href={item.slug} key={item.name} className="group relative" onClick={() => setOpen(false)}>
                                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
                                       <Image src={item.image} alt={item.description} className="object-cover object-center" width={280} height={280} />
                                     </div>
@@ -128,7 +128,7 @@ export default function Navigation ({ navigation }: Props) {
                           <Disclosure.Panel className="space-y-12 px-4 py-6" static>
                             <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                               {navigation.brands.map((item) => (
-                                <Link href={`/brand/${item.slug}`} key={item.name} className="group relative">
+                                <Link href={`/brand/${item.slug}`} key={item.name} className="group relative" onClick={() => setOpen(false)}>
                                   <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md  group-hover:opacity-75">
                                     <Image src={item.image} alt={item.name} className="object-cover object-center" width={280} height={280} />
                                   </div>
@@ -149,9 +149,9 @@ export default function Navigation ({ navigation }: Props) {
                 <div className="space-y-6 border-t border-neutral-200 px-4 py-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a href={page.href} className="-m-2 block p-2 font-medium text-neutral-900">
+                      <Link href={page.href} className="-m-2 block p-2 font-medium text-neutral-900" onClick={() => setOpen(false)}>
                         {page.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -265,7 +265,7 @@ export default function Navigation ({ navigation }: Props) {
                                     <div className="mx-auto max-w-7xl px-8">
                                       <div className="grid grid-cols-5 gap-y-12 py-16">
                                         {navigation.brands.map((item) => (
-                                          <Link key={item.name} href={item.slug} className="group relative">
+                                          <Link key={item.name} href={item.slug} className="group relative" onClick={close}>
                                             <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
                                               <Image
                                                   src={item.image}
@@ -291,13 +291,13 @@ export default function Navigation ({ navigation }: Props) {
                         </Popover>
 
                         {navigation.pages.map((page) => (
-                          <a
+                          <Link
                             key={page.name}
                             href={page.href}
                             className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                           >
                             {page.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </Popover.Group>
