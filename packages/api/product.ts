@@ -198,3 +198,12 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
     })
   })
 }
+
+export const getProduct = async (slug: string): Promise<Product | undefined> => {
+  const products = await getProducts()
+  const product = products.find((item) => item.slug === slug)
+
+  return new Promise((resolve) => {
+    resolve(product)
+  })
+}

@@ -3,7 +3,7 @@ import { ProductFeaturedList } from 'ui'
 
 export default async function FeaturedProducts () {
   const products = await getFeaturedProducts()
-  const topProducts = products.slice(0, 4)
+  const topProducts = products.slice(0, 5)
 
   if (!products) return null
 

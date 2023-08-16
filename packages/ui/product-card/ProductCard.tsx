@@ -13,7 +13,7 @@ export default function ProductCard ({ product }: Props) {
     <div className='bg-white p-2 rounded-md border border-neutral-200 flex flex-col justify-between'>
       <div className="group relative basis-full flex flex-col">
         <DiscountBadge price={product.price} salePrice={product.salePrice} />
-        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <Link href={`/product/${product.slug}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -21,7 +21,7 @@ export default function ProductCard ({ product }: Props) {
             height={175}
             className="h-full w-full object-cover object-center"
           />
-        </div>
+        </Link>
         <div className="flex flex-col grow justify-between">
           <div>
             <Link href={`/brand/${product?.brand?.slug}`} className="my-2 block uppercase text-sm text-primary-700">{product?.brand?.name}</Link>
