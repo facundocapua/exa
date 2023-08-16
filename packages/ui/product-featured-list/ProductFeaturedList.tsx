@@ -1,18 +1,25 @@
+'use client'
+
 import type { Product } from 'api'
 import ProductCard from '../product-card/ProductCard'
+import useEmblaCarousel from 'embla-carousel-react'
 
 type Props = {
   products: Array<Product>
 }
 
 export default function ProductFeaturedList ({ products }: Props) {
+  const [emblaRef] = useEmblaCarousel()
+
   if (!products) return null
 
   return (
-    <section className="grid grid-cols-4 grid-rows-1 2xl:grid-cols-5 gap-x-12 px-12 overflow-hidden">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <section ref={emblaRef} className='embla overflow-hidden'>
+      <div className='embla__container flex md:gap-4 gap-2 md:mx-4 mx-0'>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5' />
+        ))}
+      </div>
     </section>
   )
 }

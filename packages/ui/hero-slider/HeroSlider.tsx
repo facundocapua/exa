@@ -6,7 +6,7 @@ import BackButton from './BackButton'
 import ForwardButton from './ForwardButton'
 
 type Props = {
-  slides: Array<{image: string}>
+  slides: Array<{image: string, imageMobile: string}>
 }
 
 export default function HeroSlider ({ slides }: Props) {
@@ -65,7 +65,7 @@ export default function HeroSlider ({ slides }: Props) {
   }
 
   return (
-    <section className="relative">
+    <section className="relative overflow-hidden">
       <div
         style={{ transform: `translate3d(${-activeSlide * 100}%, 0, 0)` }}
         className="duration-700 ease-in-out whitespace-nowrap"
@@ -73,21 +73,38 @@ export default function HeroSlider ({ slides }: Props) {
         onTouchEnd={handleTouchEnd}
       >
         {slides.map((slide, index) => (
-          <Image
-            key={index}
-            src={slide.image}
-            width={2560}
-            height={300}
-            sizes="100vw"
-            style={{
-              width: '100%',
-              height: 'auto'
-            }}
-            className="hidden w-full h-auto md:inline-block"
-            alt="imagen promocional"
-            draggable={false}
-            priority={index === 0}
-          />
+          <>
+            <Image
+              key={index}
+              src={slide.imageMobile}
+              width={780}
+              height={546}
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto'
+              }}
+              className="inline-block w-full h-auto md:hidden"
+              alt="imagen promocional"
+              draggable={false}
+              priority={index === 0}
+            />
+            <Image
+              key={index}
+              src={slide.image}
+              width={2560}
+              height={300}
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: 'auto'
+              }}
+              className="hidden w-full h-auto md:inline-block"
+              alt="imagen promocional"
+              draggable={false}
+              priority={index === 0}
+            />
+          </>
         ))}
       </div>
 

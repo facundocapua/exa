@@ -3,14 +3,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ProductPrice from './ProductPrice'
 import DiscountBadge from './DiscountBadge'
+import clsx from 'clsx'
 
 type Props = {
   product: Product
+  containerClassName?: string
 }
 
-export default function ProductCard ({ product }: Props) {
+export default function ProductCard ({ product, containerClassName }: Props) {
   return (
-    <div className='bg-white p-2 rounded-md border border-neutral-200 flex flex-col justify-between'>
+    <article className={clsx(
+      'bg-white p-2 rounded-md border border-neutral-200 flex flex-col justify-between',
+      containerClassName
+    )}>
       <div className="group relative basis-full flex flex-col">
         <DiscountBadge price={product.price} salePrice={product.salePrice} />
         <Link href={`/product/${product.slug}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -40,6 +45,6 @@ export default function ProductCard ({ product }: Props) {
           Comprar
         </Link>
       </div>
-    </div>
+    </article>
   )
 }
