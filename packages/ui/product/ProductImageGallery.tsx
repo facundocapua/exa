@@ -1,10 +1,38 @@
 'use client'
+
 import { Tab } from '@headlessui/react'
 import type { Product } from 'api'
 import clsx from 'clsx'
+import Image from 'next/image'
+import ReactImageMagnify from 'react-image-magnify'
 
 type Props = {
   product: Product
+}
+
+const ZoomImage = ({ image, alt }: {image: string, alt: string}) => {
+  return (
+    <>
+      <ReactImageMagnify {...{
+        smallImage: {
+          alt,
+          isFluidWidth: true,
+          src: image
+        },
+        largeImage: {
+          src: image,
+          width: 1000,
+          height: 1000
+        },
+        enlargedImageStyle: {
+          maxWidth: '1000px'
+        },
+        enlargedImagePosition: 'over',
+        shouldUsePositiveSpaceLens: true
+      }} />
+    </>
+
+  )
 }
 
 export default function ProductImageGallery ({ product }: Props) {
@@ -22,11 +50,17 @@ export default function ProductImageGallery ({ product }: Props) {
                 <>
                   <span className="sr-only">{product.name}</span>
                   <span className="absolute inset-0 overflow-hidden rounded-md">
-                    <img src={image} alt="" className="h-full w-full object-cover object-center" />
+                    <Image
+                      src={image}
+                      alt={product.name}
+                      className="h-full w-full object-cover object-center sm:rounded-lg"
+                      width={100}
+                      height={100}
+                    />
                   </span>
                   <span
                     className={clsx(
-                      selected ? 'ring-indigo-500' : 'ring-transparent',
+                      selected ? 'ring-primary-500' : 'ring-transparent',
                       'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
                     )}
                     aria-hidden="true"
@@ -41,11 +75,7 @@ export default function ProductImageGallery ({ product }: Props) {
       <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
         {product.images.map((image) => (
           <Tab.Panel key={image}>
-            <img
-              src={image}
-              alt={product.name}
-              className="h-full w-full object-cover object-center sm:rounded-lg"
-            />
+            <ZoomImage image={image} alt={product.name} />
           </Tab.Panel>
         ))}
       </Tab.Panels>
