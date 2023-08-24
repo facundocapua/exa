@@ -1,39 +1,25 @@
 'use client'
+
 import type { Product } from 'api'
 import ProductCard from '../product-card/ProductCard'
-import BackButton from '../hero-slider/BackButton'
-import ForwardButton from '../hero-slider/ForwardButton'
-import useProductSlider from './useProductSlider'
+import useEmblaCarousel from 'embla-carousel-react'
 
 type Props = {
   products: Array<Product>
 }
 
 export default function ProductSlider ({ products }: Props) {
-  const { activeSlide, handleTouchStart, handleTouchEnd, handleBack, handleNext } = useProductSlider({
-    numberOfSlides: products.length
-  })
+  const [emblaRef] = useEmblaCarousel()
 
   if (!products) return null
 
   return (
-    <section className="relative">
-      <div
-        style={{ transform: `translate3d(${-activeSlide * 100}%, 0, 0)` }}
-        className="duration-700 ease-in-out whitespace-nowrap w-fit flex gap-x-4 flex-nowrap"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
+    <section ref={emblaRef} className='embla overflow-hidden'>
+      <div className='embla__container flex md:gap-4 gap-2 md:mx-4 mx-0'>
         {products.map((product) => (
-          <div key={product.id} className='w-[300px]'>
-            <ProductCard product={product} />
-          </div>
+          <ProductCard key={product.sku} product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5' />
         ))}
       </div>
-
-      <BackButton onClick={handleBack} />
-      <ForwardButton onClick={handleNext} />
-
     </section>
   )
 }

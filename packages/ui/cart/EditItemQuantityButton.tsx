@@ -1,16 +1,18 @@
+'use client'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import { removeItem, updateItemQuantity } from '@/components/cart/actions'
-import LoadingDots from '@/components/LoadingDots'
+import { removeItem, updateItemQuantity } from './actions'
+import LoadingDots from '../LoadingDots'
+import type { CartItem } from 'api'
 
 export default function EditItemQuantityButton ({
   item,
   type
 }: {
-  item: any;
+  item: CartItem;
   type: 'plus' | 'minus';
 }) {
   const router = useRouter()
@@ -22,12 +24,11 @@ export default function EditItemQuantityButton ({
       onClick={() => {
         startTransition(async () => {
           const error =
-            type === 'minus' && item.quantity - 1 === 0
-              ? await removeItem(item.id)
+            type === 'minus' && item.qty - 1 === 0
+              ? await removeItem(item.sku)
               : await updateItemQuantity({
-                lineId: item.id,
-                variantId: item.merchandise.id,
-                quantity: type === 'plus' ? item.quantity + 1 : item.quantity - 1
+                sku: item.sku,
+                qty: type === 'plus' ? item.qty + 1 : item.qty - 1
               })
 
           if (error) {

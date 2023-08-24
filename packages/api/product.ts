@@ -12,8 +12,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
 
   const data = [
     {
-      id: '1',
+      sku: '1',
       name: 'Afeitadora SH 1527 W&D',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       brand: brandGamma,
       categories: [parentCategory, category],
       slug: 'afeitadora-sh-1527-wet-dry',
@@ -28,8 +40,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 27890
     },
     {
-      id: '2',
+      sku: '2',
       name: 'Cepillo Secador Modelador Turbo 6 En 1',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'cepillo-secador-modelador-turbo-6-en-1',
       brand: brandGamma,
       categories: [category],
@@ -41,8 +65,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 33290
     },
     {
-      id: '3',
+      sku: '3',
       name: 'Planchita Starlight IHT Tsubaki 4D Therapy',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'planchita-starlight-iht-tsubaki-4d-therapy',
       brand: brandGamma,
       categories: [category],
@@ -51,11 +87,24 @@ export const getProducts = async (): Promise<Array<Product>> => {
         '/product/product-3-b.jpg'
       ],
       salePrice: 35763,
-      price: 51090
+      price: 51090,
+      relatedProducts: ['4', '5', '6', '7', '8', '9']
     },
     {
-      id: '4',
+      sku: '4',
       name: 'Secador Diamond Bloom OG',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'secador-diamond-bloom-og',
       brand: brandGamma,
       categories: [category],
@@ -68,8 +117,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 26890
     },
     {
-      id: '5',
+      sku: '5',
       name: 'Afeitadora SH 855 Sport',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'afeitadora-sh-855-sport',
       brand: brandGamma,
       categories: [category],
@@ -82,8 +143,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 15490
     },
     {
-      id: '6',
+      sku: '6',
       name: 'Corta Barba Race R727',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'corta-barba-race-r727',
       brand: brandGamma,
       categories: [category],
@@ -96,8 +169,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 10290
     },
     {
-      id: '7',
+      sku: '7',
       name: 'Shampoo Invigo Brilliance 250',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'shampoo-invigo-brilliance-250',
       brand: brandWella,
       categories: [category],
@@ -108,8 +193,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 10790
     },
     {
-      id: '8',
+      sku: '8',
       name: 'Acondicionador Invigo Nutri-Enrich 200 ML',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'acondicionador-invigo-nutri-enrich-250-ml',
       brand: brandWella,
       categories: [category],
@@ -120,8 +217,20 @@ export const getProducts = async (): Promise<Array<Product>> => {
       price: 12390
     },
     {
-      id: '9',
+      sku: '9',
       name: 'Shampoo Fusion 250 ML',
+      description: `¡Úsala tanto en seco como húmedo!
+      <ul>
+        <li>Sistema Dual Track</li>
+        <li>Cabezales flotantes</li>
+        <li>USB</li>
+        <li>Cortapatillas desplegable</li>
+        <li>BI VOLT</li>
+        <li>Nose trimmer</li>
+        <li>Base cargadora</li>
+        <li>90 min de uso</li>
+        <li>Cordless</li>
+      </ul>`,
       slug: 'shampoo-fusion-250-ml',
       brand: brandWella,
       categories: [category],
@@ -205,5 +314,26 @@ export const getProduct = async (slug: string): Promise<Product | undefined> => 
 
   return new Promise((resolve) => {
     resolve(product)
+  })
+}
+
+export const getProductBySku = async (sku: Product['sku']): Promise<Product | undefined> => {
+  const products = await getProducts()
+  const product = products.find((item) => item.sku === sku)
+  return new Promise((resolve) => {
+    resolve(product)
+  })
+}
+
+export const getRelatedProducts = async (sku: Product['sku']): Promise<Array<Product>> => {
+  const product = await getProductBySku(sku)
+  if (!product) {
+    return []
+  }
+
+  const products = await getProducts()
+  const relatedProducts = products.filter((item) => product.relatedProducts?.includes(item.sku) ?? false)
+  return new Promise((resolve) => {
+    resolve(relatedProducts)
   })
 }

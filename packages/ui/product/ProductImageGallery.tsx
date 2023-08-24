@@ -4,35 +4,11 @@ import { Tab } from '@headlessui/react'
 import type { Product } from 'api'
 import clsx from 'clsx'
 import Image from 'next/image'
-import ReactImageMagnify from 'react-image-magnify'
+import ZoomImage from './ZoomImage'
+// import ReactImageMagnify from 'react-image-magnify'
 
 type Props = {
   product: Product
-}
-
-const ZoomImage = ({ image, alt }: {image: string, alt: string}) => {
-  return (
-    <>
-      <ReactImageMagnify {...{
-        smallImage: {
-          alt,
-          isFluidWidth: true,
-          src: image
-        },
-        largeImage: {
-          src: image,
-          width: 1000,
-          height: 1000
-        },
-        enlargedImageStyle: {
-          maxWidth: '1000px'
-        },
-        enlargedImagePosition: 'over',
-        shouldUsePositiveSpaceLens: true
-      }} />
-    </>
-
-  )
 }
 
 export default function ProductImageGallery ({ product }: Props) {

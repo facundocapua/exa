@@ -28,14 +28,16 @@ export const FILTER_TYPE = {
 } as const
 
 export type Product = {
-  id: string
+  sku: string
   brand: Brand
   categories: Array<Category>
   name: string
+  description: string
   slug: string
   images: Array<string>
   price: number
   salePrice: number
+  relatedProducts?: Array<Product['sku']>
 }
 
 export type FilterOption = {
@@ -49,4 +51,24 @@ export type Filter = {
   name: string
   type: typeof FILTER_TYPE[keyof typeof FILTER_TYPE]
   options: Array<FilterOption>
+}
+
+export type CartItem = {
+  sku: string
+  qty: number
+  price: number
+  salePrice: number
+  product: Product
+}
+
+export type Cart = {
+  id: string
+  lines: Array<CartItem>
+  cost: {
+    subtotal: number
+    discount: number
+    shipping: number
+    total: number
+  }
+  totalQuantity: number
 }

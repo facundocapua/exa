@@ -1,12 +1,15 @@
+'use client'
+
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import LoadingDots from '@/components/LoadingDots'
+import LoadingDots from '../LoadingDots'
 import { useRouter } from 'next/navigation'
 
 import clsx from 'clsx'
-import { removeItem } from '@/components/cart/actions'
+import { removeItem } from './actions'
 import { useTransition } from 'react'
+import type { CartItem } from 'api'
 
-export default function DeleteItemButton ({ item }: { item: any }) {
+export default function DeleteItemButton ({ item }: { item: CartItem }) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
 
@@ -15,7 +18,7 @@ export default function DeleteItemButton ({ item }: { item: any }) {
       aria-label="Remove cart item"
       onClick={() => {
         startTransition(async () => {
-          const error = await removeItem(item.id)
+          const error = await removeItem(item.sku)
 
           if (error) {
             // Trigger the error boundary in the root error.js
