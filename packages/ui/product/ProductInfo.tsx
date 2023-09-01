@@ -18,7 +18,7 @@ export default function ProductInfo ({ product }: Props) {
         </div>
       </div>
 
-      <ProductAddToCart sku={product.sku} />
+      <ProductAddToCart sku={product.sku} className='my-8' />
 
       <div className="mt-6">
         <h3 className="sr-only">Descripción</h3>

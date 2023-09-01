@@ -25,7 +25,7 @@ export default function CategoryFeaturedList ({ categories }: Props) {
             width={200}
             height={200}
           />
-          <h2 className='text-2xl absolute top-1/2 w-full backdrop-blur-sm text-neutral-100 py-2 text-center'>{category.name}</h2>
+          <h2 className='text-2xl absolute top-1/2 w-full bg-white bg-opacity-60 text-neutral-600 font-semibold py-2 text-center'>{category.name}</h2>
         </Link>
       ))}
     </div>

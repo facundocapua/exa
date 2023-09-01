@@ -6,12 +6,14 @@ import { useRouter } from 'next/navigation'
 import { addItem } from '../cart/actions'
 
 import type {} from 'react/experimental'
+import clsx from 'clsx'
 
 type Props = {
   sku: Product['sku']
+  className?: string
 }
 
-export default function ProductAddToCart ({ sku }: Props) {
+export default function ProductAddToCart ({ sku, className }: Props) {
   const [isPending, startTransition] = useTransition()
   const router = useRouter()
   const handleAddToCart = () => {
@@ -32,7 +34,10 @@ export default function ProductAddToCart ({ sku }: Props) {
       aria-label="Agregar al carrito"
       disabled={isPending}
       type="button"
-      className="flex items-center justify-center rounded-md bg-primary-600 px-8 py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none sm:w-full my-8"
+      className={clsx(
+        'flex items-center justify-center rounded-md bg-primary-600 px-8 py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none sm:w-full',
+        className
+      )}
       onClick={handleAddToCart}
     >
       Agregar al carrito

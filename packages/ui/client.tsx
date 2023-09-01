@@ -1,0 +1,6 @@
+export { default as HeroSlider } from './hero-slider/HeroSlider'
+export { default as ProductSlider } from './product-slider/ProductSlider'
+export { default as ProductImageGallery } from './product/ProductImageGallery'
+export { default as ProductAddToCart } from './product/ProductAddToCart'
+export { default as MobileOrderSummary } from './checkout/MobileOrderSummary'
+export { default as Price } from './Price'

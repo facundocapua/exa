@@ -1,4 +1,4 @@
-import Cart from 'ui/cart/Cart'
+import { Cart } from 'ui/server'
 import Account from './Account'
 
 export default function UserNav () {

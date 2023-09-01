@@ -4,6 +4,7 @@ import Link from 'next/link'
 import ProductPrice from './ProductPrice'
 import DiscountBadge from './DiscountBadge'
 import clsx from 'clsx'
+import ProductAddToCart from '../product/ProductAddToCart'
 
 type Props = {
   product: Product
@@ -38,12 +39,7 @@ export default function ProductCard ({ product, containerClassName }: Props) {
         </div>
       </div>
       <div className="mt-6">
-        <Link
-          href="#"
-          className="relative flex items-center justify-center rounded-md border border-transparent bg-neutral-100 px-8 py-2 text-sm font-medium text-neutral-900 hover:bg-neutral-200"
-        >
-          Comprar
-        </Link>
+        <ProductAddToCart sku={product.sku} />
       </div>
     </article>
   )

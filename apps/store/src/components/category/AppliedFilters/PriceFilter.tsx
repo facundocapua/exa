@@ -1,6 +1,5 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { Badge } from 'ui'
-import { formatPrice } from 'ui/utils/price'
+import { Badge, formatPrice } from 'ui/server'
 
 type Props = {
   values: string

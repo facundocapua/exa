@@ -2,8 +2,8 @@ import { createElement } from 'react'
 import BrandFilter from './AppliedFilters/BrandFilter'
 import PriceFilter from './AppliedFilters/PriceFilter'
 import GenericFilter from './AppliedFilters/GenericFilter'
-import { generateUrl, removeSearchParamValue } from 'ui'
 import CategoryFilter from './AppliedFilters/CategoryFilter'
+import { generateUrl, removeSearchParamValue } from 'ui/server'
 
 const ATTRIBUTES = {
   category: CategoryFilter,

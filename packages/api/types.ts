@@ -72,3 +72,20 @@ export type Cart = {
   }
   totalQuantity: number
 }
+
+export type Address = {
+  firstName: string
+  lastName: string
+  street: string
+  number: string
+  notes: string
+  postalCode: string
+  city: string
+  state: string
+}
+
+export type Checkout = {
+  email: string
+  shippingAddress: Address
+  billingAddress: Address
+}

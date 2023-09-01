@@ -1,5 +1,5 @@
 import { getFeaturedCategories } from 'api'
-import { CategoryFeaturedList } from 'ui'
+import { CategoryFeaturedList } from 'ui/server'
 
 export default async function FeaturedCategories () {
   const categories = await getFeaturedCategories()

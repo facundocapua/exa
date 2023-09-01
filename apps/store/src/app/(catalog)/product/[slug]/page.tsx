@@ -2,7 +2,8 @@ import RelatedProducts from '@/components/product/RelatedProducts'
 import { getProduct } from 'api'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import { ProductImageGallery, ProductInfo } from 'ui'
+import { ProductImageGallery } from 'ui'
+import { ProductInfo } from 'ui/server'
 
 type Props = {
   params: {

@@ -1,8 +1,9 @@
+import Breadcrumb from '@/components/Breadcrumb'
 import AppliedFilters from '@/components/category/AppliedFilters'
 import Filters from '@/components/category/Filters'
 import { getCategory, getFilteredProducts } from 'api'
 import { notFound } from 'next/navigation'
-import { ProductCard } from 'ui'
+import { ProductCard } from 'ui/server'
 
 type Props = {
   params: {
@@ -19,6 +20,25 @@ export default async function Category ({ params, searchParams }: Props) {
     notFound()
   }
 
+  const brecrumbs = []
+
+  if (category) {
+    const { parent } = category
+    if (parent) {
+      brecrumbs.push({
+        name: parent.name,
+        url: `/${parent.slug}`,
+        current: false
+      })
+    }
+
+    brecrumbs.push({
+      name: category.name,
+      url: `/${category.slug}`,
+      current: true
+    })
+  }
+
   const { filters, products, total } = await getFilteredProducts({
     restrinctions: { category: slug },
     filters: searchParams,
@@ -26,13 +46,15 @@ export default async function Category ({ params, searchParams }: Props) {
   })
 
   return (
-    <main className="mx-auto max-w-2xl px-4 lg:max-w-7xl">
-      <div className="border-b border-neutral-200 py-10">
-        <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{category.name}</h1>
-      </div>
+    <>
+      <Breadcrumb pages={brecrumbs} />
+      <main className="mx-auto max-w-2xl px-4 lg:max-w-7xl">
+        <div className="border-b border-neutral-200 py-10">
+          <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{category.name}</h1>
+        </div>
 
-      <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
-        {total > 0 && (
+        <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
+          {total > 0 && (
           <aside>
             <h2 className='text-xl mb-4'>Filtros</h2>
             <div className="hidden lg:block">
@@ -40,22 +62,23 @@ export default async function Category ({ params, searchParams }: Props) {
               <Filters filters={filters} />
             </div>
           </aside>
-        )}
+          )}
 
-        <section aria-labelledby="product-heading" className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
-          <h2 id="product-heading" className="sr-only">
-            Products
-          </h2>
+          <section aria-labelledby="product-heading" className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
+            <h2 id="product-heading" className="sr-only">
+              Products
+            </h2>
 
-          {products.length === 0 && (<span>No se encontraron productos</span>)}
+            {products.length === 0 && (<span>No se encontraron productos</span>)}
 
-          <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard key={product.sku} product={product} />
-            ))}
-          </div>
-        </section>
-      </div>
-    </main>
+            <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
+              {products.map((product) => (
+                <ProductCard key={product.sku} product={product} />
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+    </>
   )
 }

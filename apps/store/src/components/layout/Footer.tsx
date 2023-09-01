@@ -1,4 +1,4 @@
-import { FacebookIcon, InstagramIcon, TwitterIcon } from 'ui'
+import { FacebookIcon, InstagramIcon, TwitterIcon } from 'ui/server'
 import Logo from './Logo'
 import { createElement } from 'react'
 
