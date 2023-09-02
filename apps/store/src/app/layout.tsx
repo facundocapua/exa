@@ -1,4 +1,3 @@
-import MainLayout from '@/components/layout/MainLayout'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Kanit } from 'next/font/google'
