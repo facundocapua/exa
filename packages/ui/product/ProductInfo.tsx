@@ -1,22 +1,28 @@
 import type { Product } from 'api'
-import Price from '../Price'
+import Price from '../generic/Price'
 import ProductAddToCart from './ProductAddToCart'
+import ProductColorSelector from './ProductColorSelector'
 
 type Props = {
   product: Product
 }
 
 export default function ProductInfo ({ product }: Props) {
+  console.log(product)
   return (
     <>
       <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
       <div className="mt-3">
         <h2 className="sr-only">Información de producto</h2>
         <div className="flex gap-2 mt-6 items-center">
-          <Price amount={product.salePrice} className='text-xl text-neutral-600' />
-          { product.salePrice < product.price && <Price amount={product.price} className='line-through text-neutral-400 text-md' /> }
+          <Price amount={product.sale_price} className='text-xl text-neutral-600' />
+          { product.sale_price   < product.price && <Price amount={product.price} className='line-through text-neutral-400 text-md' /> }
         </div>
       </div>
+
+      { product.variants && product.variants.length > 0 && (
+        <ProductColorSelector variants={product.variants} />
+      )}
 
       <ProductAddToCart sku={product.sku} className='my-8' />
 

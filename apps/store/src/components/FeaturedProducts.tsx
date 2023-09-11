@@ -3,7 +3,7 @@ import { ProductSlider } from 'ui'
 
 export default async function FeaturedProducts () {
   const products = await getFeaturedProducts()
-  const topProducts = products.slice(0, 5)
+  const topProducts = products.slice(0, 8)
 
   if (!products) return null
 

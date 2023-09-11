@@ -1,9 +1,9 @@
 import type { Product } from 'api'
-import Price from '../Price'
+import Price from '../generic/Price'
 
 type Props = {
   price: Product['price'],
-  salePrice: Product['salePrice']
+  salePrice: Product['sale_price']
 }
 
 export default function ProductPrice ({ price, salePrice }: Props) {

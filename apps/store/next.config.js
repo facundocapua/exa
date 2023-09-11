@@ -27,7 +27,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'tuaar.vtexassets.com',
+        hostname: 'mtelzvckwsdkcqbvwewx.supabase.co',
         port: '',
         pathname: '/**'
       }

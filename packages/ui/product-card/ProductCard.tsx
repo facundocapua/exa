@@ -18,10 +18,10 @@ export default function ProductCard ({ product, containerClassName }: Props) {
       containerClassName
     )}>
       <div className="group relative basis-full flex flex-col">
-        <DiscountBadge price={product.price} salePrice={product.salePrice} />
+        <DiscountBadge price={product.price} salePrice={product.sale_price} />
         <Link href={`/product/${product.slug}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
           <Image
-            src={product.images[0]}
+            src={product.images[0].image}
             alt={product.name}
             width={175}
             height={175}
@@ -35,7 +35,7 @@ export default function ProductCard ({ product, containerClassName }: Props) {
               <Link href={`/product/${product.slug}`}>{product.name}</Link>
             </h3>
           </div>
-          <ProductPrice price={product.price} salePrice={product.salePrice} />
+          <ProductPrice price={product.price} salePrice={product.sale_price} />
         </div>
       </div>
       <div className="mt-6">

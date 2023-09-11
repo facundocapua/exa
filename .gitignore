@@ -37,3 +37,8 @@ yarn-error.log*
 
 # vscode
 .vscode/*
+
+# assets
+apps/store/public/brand/*
+apps/store/public/category/*
+apps/store/public/product/*

@@ -1,6 +1,6 @@
 import type { Cart } from 'api'
 import Image from 'next/image'
-import Price from '../Price'
+import Price from '../generic/Price'
 import EditItemQuantityButton from '../cart/EditItemQuantityButton'
 
 type Props = {
@@ -18,7 +18,7 @@ export default function OrderSummary ({ cart }: Props) {
         {cart.lines.map((line) => (
           <li key={line.sku} className="flex space-x-6 py-6 justify-between">
             <Image
-              src={line.product.images[0]}
+              src={line.product.images[0].image}
               alt={line.product.name}
               width={175}
               height={175}

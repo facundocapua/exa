@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatPrice } from './utils/price'
+import { formatPrice } from '../utils/price'
 
 type Props = {
   amount: number;

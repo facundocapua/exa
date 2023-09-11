@@ -18,7 +18,7 @@ export default async function CheckoutPage () {
   }
 
   return (
-    <main className="lg:flex lg:min-h-full lg:flex-row-reverse lg:overflow-hidden lg:max-w-7xl lg:mx-auto">
+    <main className="lg:flex lg:min-h-full lg:flex-row-reverse lg:overflow-hidden lg:max-w-7xl lg:mx-auto pt-12">
       <div className="px-4 py-6 sm:px-6 lg:hidden">
         <div className="mx-auto flex max-w-lg">
           <Logo />
@@ -34,7 +34,7 @@ export default async function CheckoutPage () {
           className="flex-auto overflow-y-auto px-4 pb-16 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-0"
         >
         <div className="mx-auto max-w-lg">
-          <div className="hidden pb-16 pt-10 lg:flex">
+          <div className="hidden pb-12 lg:flex">
             <Logo />
           </div>
 

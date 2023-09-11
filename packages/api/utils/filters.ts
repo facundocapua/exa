@@ -1,3 +1,4 @@
+import { SupabaseClient } from '@supabase/supabase-js'
 import { FILTER_TYPE, type Filter, type FilterOption, type Product } from '../types'
 
 export const extractCategoryFilter = (products: Array<Product>) => {
@@ -82,6 +83,31 @@ export type FiltersType = {
   price?: string
 }
 
+
+export const applyRestrinctions = async (query: any, filters: FiltersType) => {
+  const { category, brand, price } = filters
+  
+  const categories = category?.split(',') || []
+  const brands = brand?.split(',') || []
+  const [minPrice, maxPrice] = price?.split(',') || []
+
+  let newQuery = query
+
+  if (categories.length) {
+    newQuery = newQuery.in('categories.slug', categories)
+  }
+
+  if (brands.length) {
+    newQuery = newQuery.in('brand.slug', brands)
+  }
+
+  if (minPrice && maxPrice) {
+    newQuery = newQuery.range('price', Number(minPrice), Number(maxPrice))
+  }
+
+  return newQuery
+}
+
 export const applyFilters = (products: Array<Product>, filters: FiltersType) => {
   const { category, brand, price } = filters
 
@@ -91,7 +117,7 @@ export const applyFilters = (products: Array<Product>, filters: FiltersType) => 
 
   const data = products.filter((product) => {
     if (categories.length) {
-      const categoryFiltered = product.categories.some((category) => categories.includes(category.slug))
+      const categoryFiltered = product.categories?.some((category) => categories.includes(category.slug))
       if (!categoryFiltered) return false
     }
 
@@ -101,7 +127,7 @@ export const applyFilters = (products: Array<Product>, filters: FiltersType) => 
     }
 
     if (minPrice && maxPrice) {
-      const priceFiltered = product.salePrice >= Number(minPrice) && product.salePrice <= Number(maxPrice)
+      const priceFiltered = product.sale_price >= Number(minPrice) && product.sale_price <= Number(maxPrice)
       if (!priceFiltered) return false
     }
 

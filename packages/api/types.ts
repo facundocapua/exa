@@ -1,11 +1,11 @@
-export type Category = {
-  id: string
-  name: string
-  slug: string
-  image: string
-  description: string
-  children: Array<Category>
+import { Tables } from "./database"
+
+export type Category = Tables<'categories'> & {
   parent?: Category
+  children?: Array<Category>
+  main_menu?: {
+    size?: string
+  }
 }
 
 export type Banner = {
@@ -22,22 +22,25 @@ export type Brand = {
   image: string
 }
 
+export type ProductVariant = Tables<'products_variants'> & {
+  product: Tables<'products'>
+  color?: {
+    lable: string
+    hexa?: string
+    image?: string
+  }
+}
+
 export const FILTER_TYPE = {
   RADIO: 'radio',
   RANGE: 'range'
 } as const
 
-export type Product = {
-  sku: string
-  brand: Brand
-  categories: Array<Category>
-  name: string
-  description: string
-  slug: string
-  images: Array<string>
-  price: number
-  salePrice: number
-  relatedProducts?: Array<Product['sku']>
+export type Product = Tables<'products'> & {
+  brand: Tables<'brands'>
+  categories: Array<Tables<'categories'>>
+  images: Array<Tables<'products_images'>>
+  variants?: Array<ProductVariant>
 }
 
 export type FilterOption = {
@@ -73,19 +76,24 @@ export type Cart = {
   totalQuantity: number
 }
 
+export type State = {
+  id: string
+  name: string
+}
+
 export type Address = {
-  firstName: string
-  lastName: string
-  street: string
-  number: string
-  notes: string
-  postalCode: string
-  city: string
-  state: string
+  firstName?: string
+  lastName?: string
+  street?: string
+  aditional?: string
+  postalCode?: string
+  city?: string
+  state?: State
 }
 
 export type Checkout = {
   email: string
+  subscribe: boolean
   shippingAddress: Address
   billingAddress: Address
 }

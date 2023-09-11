@@ -1,5 +1,5 @@
 export { default as CategoryFeaturedList } from './category-featured-list/CategoryFeaturedList'
-export { default as Price } from './Price'
+export { default as Price } from './generic/Price'
 export * from './generic'
 export * from './icons'
 export * from './product-card'

@@ -19,7 +19,7 @@ export default function ProductImageGallery ({ product }: Props) {
         <Tab.List className="grid grid-cols-4 gap-6">
           {product.images.map((image) => (
             <Tab
-              key={image}
+              key={image.image}
               className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
@@ -27,7 +27,7 @@ export default function ProductImageGallery ({ product }: Props) {
                   <span className="sr-only">{product.name}</span>
                   <span className="absolute inset-0 overflow-hidden rounded-md">
                     <Image
-                      src={image}
+                      src={image.image}
                       alt={product.name}
                       className="h-full w-full object-cover object-center sm:rounded-lg"
                       width={100}
@@ -50,8 +50,8 @@ export default function ProductImageGallery ({ product }: Props) {
 
       <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
         {product.images.map((image) => (
-          <Tab.Panel key={image}>
-            <ZoomImage image={image} alt={product.name} />
+          <Tab.Panel key={image.image}>
+            <ZoomImage image={image.image} alt={product.name} />
           </Tab.Panel>
         ))}
       </Tab.Panels>

@@ -3,7 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import type { Cart } from 'api'
 import Image from 'next/image'
 import EditItemQuantityButton from '../cart/EditItemQuantityButton'
-import Price from '../Price'
+import Price from '../generic/Price'
 
 type Props = {
   cart: Cart
@@ -29,7 +29,7 @@ export default function MobileOrderSummary ({ cart }: Props) {
                 {cart.lines.map((line) => (
                   <li key={line.sku} className="flex space-x-6 py-6">
                     <Image
-                       src={line.product.images[0]}
+                       src={line.product.images[0].image}
                        alt={line.product.name}
                        width={175}
                        height={175}

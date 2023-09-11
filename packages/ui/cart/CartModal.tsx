@@ -9,7 +9,7 @@ import CloseCart from './CloseCart'
 import DeleteItemButton from './DeleteItemButton'
 import EditItemQuantityButton from './EditItemQuantityButton'
 import OpenCart from './OpenCart'
-import Price from '../Price'
+import Price from '../generic/Price'
 import type { Cart } from 'api'
 
 export default function CartModal ({ cart }: { cart: Cart | undefined }) {

@@ -10,6 +10,8 @@ import type { Brand, Category } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+// import BrandNavigation from './BrandNavigation'
+// import BrandNavigationMobile from './BrandNavigationMobile'
 
 type Props = {
   navigation: {
@@ -87,11 +89,13 @@ export default function Navigation ({ navigation }: Props) {
                           >
                             <Disclosure.Panel className="space-y-12 px-4 py-6" static>
                               <div className="grid grid-cols-2 gap-x-4 gap-y-10">
-                                {category.children.map((item) => (
+                                {category.children?.map((item) => (
                                   <Link href={`/${item.slug}`} key={item.name} className="group relative" onClick={() => setOpen(false)}>
-                                    <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
-                                      <Image src={item.image} alt={item.description} className="object-cover object-center" width={280} height={280} />
-                                    </div>
+                                    {item.image && (
+                                      <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-neutral-100 group-hover:opacity-75">
+                                        <Image src={item.image} alt={item.description} className="object-cover object-center" width={280} height={280} />
+                                      </div>
+                                    )}
                                     <h3 className="mt-6 block text-sm font-medium text-neutral-900">
                                       <span className="absolute inset-0 z-10" aria-hidden="true" />
                                       {item.name}
@@ -105,45 +109,9 @@ export default function Navigation ({ navigation }: Props) {
                       )}
                     </Disclosure>
                   ))}
-                  <Disclosure>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className={
-                            clsx(
-                              open ? 'border-primary-600 text-primary-600' : 'border-transparent text-neutral-900',
-                              'flex w-full whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium'
-                            )
-                          }>
-                          Marcas
-                        </Disclosure.Button>
-                        <Transition
-                          show={open}
-                          enter="transition duration-100 ease-out"
-                          enterFrom="transform scale-95 opacity-0"
-                          enterTo="transform scale-100 opacity-100"
-                          leave="transition duration-75 ease-out"
-                          leaveFrom="transform scale-100 opacity-100"
-                          leaveTo="transform scale-95 opacity-0"
-                        >
-                          <Disclosure.Panel className="space-y-12 px-4 py-6" static>
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-10">
-                              {navigation.brands.map((item) => (
-                                <Link href={`/brand/${item.slug}`} key={item.name} className="group relative" onClick={() => setOpen(false)}>
-                                  <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md  group-hover:opacity-75">
-                                    <Image src={item.image} alt={item.name} className="object-cover object-center" width={280} height={280} />
-                                  </div>
-                                  <h3 className="mt-6 block text-sm font-medium text-neutral-900">
-                                    <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                    {item.name}
-                                  </h3>
-                                </Link>
-                              ))}
-                            </div>
-                          </Disclosure.Panel>
-                        </Transition>
-                      </>
-                    )}
-                  </Disclosure>
+
+                  {/* <BrandNavigationMobile brands={navigation.brands} setOpen={setOpen} /> */}
+
                 </div>
 
                 <div className="space-y-6 border-t border-neutral-200 px-4 py-6">
@@ -204,22 +172,24 @@ export default function Navigation ({ navigation }: Props) {
 
                                     <div className="relative bg-white">
                                       <div className="mx-auto max-w-7xl px-8">
-                                        <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
-                                          {category.children.map((item) => (
+                                        <div className="grid grid-cols-5 gap-y-12 py-16">
+                                          {category.children?.map((item) => (
                                             <Link key={item.name} href={`/${item.slug}`} className="group relative" onClick={close}>
-                                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75 transition-all duration-150 ease-in-out">
+                                              {item.image && (
+                                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
                                                 <Image
-                                                  src={item.image}
-                                                  alt={item.description}
-                                                  className="object-cover object-center"
-                                                  width="280"
-                                                  height="280"
-                                                />
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="object-cover object-center m-auto rounded-md"
+                                                    width={item.main_menu?.size === 'small' ? 80 : 120 }
+                                                    height={item.main_menu?.size === 'small' ? 80 : 120 }
+                                                  />
                                               </div>
-                                              <div className="mt-4 block font-medium text-gray-900">
+                                              )}
+                                              <h4 className="mt-4 block font-medium text-gray-900 text-center">
                                                 <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                 {item.name}
-                                              </div>
+                                              </h4>
                                             </Link>
                                           ))}
                                         </div>
@@ -232,63 +202,7 @@ export default function Navigation ({ navigation }: Props) {
                           </Popover>
                         ))}
 
-                        <Popover className="flex">
-                          {({ open, close }) => (
-                            <>
-                              <div className="relative flex">
-                                <Popover.Button
-                                    className={clsx(
-                                      open
-                                        ? 'border-primary-600 text-primary-600'
-                                        : 'border-transparent text-neutral-700 hover:text-neutral-800',
-                                      'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-none focus:outline-none'
-                                    )}
-                                  >
-                                  Marcas
-                                </Popover.Button>
-                              </div>
-
-                              <Transition
-                                  as={Fragment}
-                                  enter="transition ease-out duration-200"
-                                  enterFrom="opacity-0"
-                                  enterTo="opacity-100"
-                                  leave="transition ease-in duration-150"
-                                  leaveFrom="opacity-100"
-                                  leaveTo="opacity-0"
-                                >
-                                <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
-                                  {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                                  <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
-
-                                  <div className="relative bg-white">
-                                    <div className="mx-auto max-w-7xl px-8">
-                                      <div className="grid grid-cols-5 gap-y-12 py-16">
-                                        {navigation.brands.map((item) => (
-                                          <Link key={item.name} href={`/brand/${item.slug}`} className="group relative" onClick={close}>
-                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
-                                              <Image
-                                                  src={item.image}
-                                                  alt={item.name}
-                                                  className="object-cover object-center m-auto"
-                                                  width="80"
-                                                  height="80"
-                                                />
-                                            </div>
-                                            <h4 className="mt-4 block font-medium text-gray-900 text-center">
-                                              <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                              {item.name}
-                                            </h4>
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </Popover.Panel>
-                              </Transition>
-                            </>
-                          )}
-                        </Popover>
+                        {/* <BrandNavigation brands={navigation.brands} /> */}
 
                         {navigation.pages.map((page) => (
                           <Link
