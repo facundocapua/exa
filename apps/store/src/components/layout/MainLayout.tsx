@@ -18,7 +18,6 @@ export default function MainLayout ({ children }: Props) {
         <MainNavigation />
       </header>
       <main>{children}</main>
-
       <Footer />
     </Context>
   )

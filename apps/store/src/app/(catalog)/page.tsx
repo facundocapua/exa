@@ -6,12 +6,12 @@ import MainSlider from '@/components/MainSlider'
 
 export default function Home () {
   return (
-    <main>
+    <div>
       <MainSlider />
       <FeaturedBanners />
       <FeaturedProducts />
       <FeaturedCategories />
       <FeaturedBrands />
-    </main>
+    </div>
   )
 }

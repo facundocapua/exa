@@ -13,7 +13,10 @@ type Props = {
 }
 
 export default function CategoryFeaturedList ({ brands }: Props) {
-  const [emblaRef, emblaApi] = useEmblaCarousel()
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    // loop: true,
+    slidesToScroll: 'auto'
+  })
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()

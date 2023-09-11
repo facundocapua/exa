@@ -8,7 +8,7 @@ type Props = {
 export default async function CatalogLayout ({ children }: Props) {
   return (
     <MainLayout>
-      <div className=' mx-auto my-12'>
+      <div className='mx-auto'>
         {children}
       </div>
     </MainLayout>

@@ -10,6 +10,7 @@ import type { Brand, Category } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import CategoryLink from './CategoryLink'
 // import BrandNavigation from './BrandNavigation'
 // import BrandNavigationMobile from './BrandNavigationMobile'
 
@@ -174,24 +175,9 @@ export default function Navigation ({ navigation }: Props) {
                                       <div className="mx-auto max-w-7xl px-8">
                                         <div className="grid grid-cols-5 gap-y-12 py-16">
                                           {category.children?.map((item) => (
-                                            <Link key={item.name} href={`/${item.slug}`} className="group relative" onClick={close}>
-                                              {item.image && (
-                                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
-                                                <Image
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    className="object-cover object-center m-auto rounded-md"
-                                                    width={item.main_menu?.size === 'small' ? 80 : 120 }
-                                                    height={item.main_menu?.size === 'small' ? 80 : 120 }
-                                                  />
-                                              </div>
-                                              )}
-                                              <h4 className="mt-4 block font-medium text-gray-900 text-center">
-                                                <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                                {item.name}
-                                              </h4>
-                                            </Link>
+                                            <CategoryLink key={item.name} category={item} onClick={close} />
                                           ))}
+                                          <CategoryLink category={category} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={close} />
                                         </div>
                                       </div>
                                     </div>

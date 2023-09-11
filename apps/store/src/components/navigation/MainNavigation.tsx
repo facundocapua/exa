@@ -8,8 +8,8 @@ export default async function MainNavigation () {
     categories,
     brands,
     pages: [
-      { name: 'Company', href: '#' },
-      { name: 'Stores', href: '#' }
+      // { name: 'Company', href: '#' },
+      // { name: 'Stores', href: '#' }
     ]
   }
 

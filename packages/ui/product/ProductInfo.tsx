@@ -2,6 +2,7 @@ import type { Product } from 'api'
 import Price from '../generic/Price'
 import ProductAddToCart from './ProductAddToCart'
 import ProductColorSelector from './ProductColorSelector'
+import Link from 'next/link'
 
 type Props = {
   product: Product
@@ -11,6 +12,7 @@ export default function ProductInfo ({ product }: Props) {
   console.log(product)
   return (
     <>
+      <Link href={`/brand/${product.brand.slug}`} className='block uppercase text-sm text-primary-700 mb-4'>{product.brand.name}</Link>
       <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
       <div className="mt-3">
         <h2 className="sr-only">Información de producto</h2>
