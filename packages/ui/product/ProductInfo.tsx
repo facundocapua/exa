@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function ProductInfo ({ product }: Props) {
-  console.log(product)
   return (
     <>
       <Link href={`/brand/${product.brand.slug}`} className='block uppercase text-sm text-primary-700 mb-4'>{product.brand.name}</Link>

@@ -7,6 +7,7 @@ import { addItem } from '../cart/actions'
 
 import type {} from 'react/experimental'
 import clsx from 'clsx'
+import { useProductStore } from './useProductStore'
 
 type Props = {
   sku: Product['sku']
@@ -15,6 +16,8 @@ type Props = {
 
 export default function ProductAddToCart ({ sku, className }: Props) {
   const [isPending, startTransition] = useTransition()
+  const [currentVariant] = useProductStore(state => [state.currentVariant])
+
   const router = useRouter()
   const handleAddToCart = () => {
     startTransition(async () => {
@@ -27,6 +30,22 @@ export default function ProductAddToCart ({ sku, className }: Props) {
 
       router.refresh()
     })
+  }
+
+  if(currentVariant && currentVariant?.stock <= 0){
+    return (
+      <button
+        aria-label="Agregar al carrito"
+        disabled
+        type="button"
+        className={clsx(
+          'flex items-center justify-center rounded-md bg-neutral-400 px-8 py-4 text-base font-medium text-white  focus:outline-none sm:w-full',
+          className
+        )}
+      >
+        Producto agotado
+      </button>
+    )
   }
 
   return (

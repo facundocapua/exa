@@ -15,7 +15,7 @@ type Props = {
 export default async function Category ({ params, searchParams }: Props) {
   const { slug } = params
   const category = await getCategory(slug)
-
+  
   if (!category) {
     notFound()
   }

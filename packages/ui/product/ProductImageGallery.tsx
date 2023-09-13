@@ -5,13 +5,15 @@ import type { Product } from 'api'
 import clsx from 'clsx'
 import Image from 'next/image'
 import ZoomImage from './ZoomImage'
-// import ReactImageMagnify from 'react-image-magnify'
+import { useProductStore } from './useProductStore'
 
 type Props = {
   product: Product
 }
 
 export default function ProductImageGallery ({ product }: Props) {
+  const [currentVariant] = useProductStore(state => [state.currentVariant])
+
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
       {/* Image selector */}
@@ -45,11 +47,44 @@ export default function ProductImageGallery ({ product }: Props) {
               )}
             </Tab>
           ))}
+          {currentVariant?.images?.map((image) => (
+            <Tab
+              key={image.image}
+              className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+            >
+              {({ selected }) => (
+                <>
+                  <span className="sr-only">{product.name}</span>
+                  <span className="absolute inset-0 overflow-hidden rounded-md">
+                    <Image
+                      src={image.image}
+                      alt={product.name}
+                      className="h-full w-full object-cover object-center sm:rounded-lg"
+                      width={100}
+                      height={100}
+                    />
+                  </span>
+                  <span
+                    className={clsx(
+                      selected ? 'ring-primary-500' : 'ring-transparent',
+                      'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
+                    )}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+            </Tab>
+          ))}
         </Tab.List>
       </div>
 
       <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
         {product.images.map((image) => (
+          <Tab.Panel key={image.image}>
+            <ZoomImage image={image.image} alt={product.name} />
+          </Tab.Panel>
+        ))}
+        {currentVariant?.images?.map((image) => (
           <Tab.Panel key={image.image}>
             <ZoomImage image={image.image} alt={product.name} />
           </Tab.Panel>

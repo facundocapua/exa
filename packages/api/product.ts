@@ -84,7 +84,7 @@ export const getProduct = async (slug: string): Promise<Product | null> => {
   const client = initClient()
   const { data } = await client
     .from('products')
-    .select('*, images: products_images(image), brand(*), categories(*), variants: products_variants(*)')
+    .select('*, images: products_images(image), brand(*), categories(*), variants: products_variants(*, images: products_variants_images(image))')
     .eq('is_active', true)
     .eq('slug', slug)
     .returns<Product>()

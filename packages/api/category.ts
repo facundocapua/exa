@@ -6,6 +6,7 @@ export const getCategories = async (): Promise<Array<Category>> => {
   const { data } = await client
     .from('categories')
     .select('*')
+    .order('sort', { ascending: true })
     .returns<Array<Category>>()
 
   if(!data) return []
@@ -26,6 +27,7 @@ export const getFeaturedCategories = async (): Promise<Array<Category>> => {
     .from('categories')
     .select('*')
     .eq('is_featured', true)
+    .order('sort', { ascending: true })
     .returns<Array<Category>>()
 
   if(!data) return []
