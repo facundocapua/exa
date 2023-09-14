@@ -25,7 +25,7 @@ export default function ProductColorSelector({ variants }: Props) {
         Color
         {currentVariant && (<span className="text-sm text-neutral-500">: {currentVariant.color.label}</span>)}
       </h3>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
       {
         variants.map(variant => (
           <button

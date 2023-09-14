@@ -29,10 +29,10 @@ export default function ProductSlider ({ products }: Props) {
 
   return (
     <section className='embla relative'>
-      <div className="embla__viewport overflow-hidden mx-12" ref={emblaRef}>
+      <div className="embla__viewport overflow-hidden md:mx-12" ref={emblaRef}>
         <div className='embla__container flex'>
           {products.map((product) => (
-            <ProductCard key={product.sku} product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 mr-4' />
+            <ProductCard key={product.sku} product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
           ))}
         </div>
       </div>

@@ -39,7 +39,7 @@ export default function ProductAddToCart ({ sku, className }: Props) {
         disabled
         type="button"
         className={clsx(
-          'flex items-center justify-center rounded-md bg-neutral-400 px-8 py-4 text-base font-medium text-white  focus:outline-none sm:w-full',
+          'flex items-center justify-center md:rounded-md bg-neutral-400 w-full py-4 text-base font-medium text-white focus:outline-none',
           className
         )}
       >
@@ -54,7 +54,7 @@ export default function ProductAddToCart ({ sku, className }: Props) {
       disabled={isPending}
       type="button"
       className={clsx(
-        'flex items-center justify-center rounded-md bg-primary-600 px-8 py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none sm:w-full',
+        'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
         className
       )}
       onClick={handleAddToCart}

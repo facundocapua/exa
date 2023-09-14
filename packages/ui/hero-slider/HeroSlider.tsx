@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import useSwipe from './useSwipe'
 import BackButton from './BackButton'
 import ForwardButton from './ForwardButton'
@@ -73,9 +73,9 @@ export default function HeroSlider ({ slides }: Props) {
         onTouchEnd={handleTouchEnd}
       >
         {slides.map((slide, index) => (
-          <>
+          <Fragment key={index}>
             <Image
-              key={index}
+              // key={index}
               src={slide.imageMobile}
               width={780}
               height={546}
@@ -90,7 +90,7 @@ export default function HeroSlider ({ slides }: Props) {
               priority={index === 0}
             />
             <Image
-              key={index}
+              // key={index}
               src={slide.image}
               width={2560}
               height={300}
@@ -104,7 +104,7 @@ export default function HeroSlider ({ slides }: Props) {
               draggable={false}
               priority={index === 0}
             />
-          </>
+          </Fragment>
         ))}
       </div>
 

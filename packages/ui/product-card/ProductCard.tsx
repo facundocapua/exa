@@ -14,18 +14,18 @@ type Props = {
 export default function ProductCard ({ product, containerClassName }: Props) {
   return (
     <article className={clsx(
-      'bg-white p-2 rounded-md border border-neutral-200 flex flex-col justify-between',
+      'bg-white md:p-2 rounded-md border border-neutral-200 flex flex-col justify-between',
       containerClassName
     )}>
-      <div className="group relative basis-full flex flex-col">
+      <div className="group relative basis-full flex flex-col p-2 md:p-0">
         <DiscountBadge price={product.price} salePrice={product.sale_price} />
-        <Link href={`/product/${product.slug}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <Link href={`/product/${product.slug}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75">
           <Image
             src={product.images[0].image}
             alt={product.name}
-            width={175}
-            height={175}
-            className="h-full w-full object-cover object-center"
+            width={250}
+            height={250}
+            className="w-full h-full object-contain object-center"
           />
         </Link>
         <div className="flex flex-col grow justify-between">

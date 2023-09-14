@@ -30,15 +30,15 @@ export default function CategoryFeaturedList ({ brands }: Props) {
 
   return (
     <section className='embla relative'>
-      <div className="embla__viewport overflow-hidden mx-12" ref={emblaRef}>
-        <div className='embla__container flex md:gap-8 gap-2 md:mx-4 mx-0'>
+      <div className="embla__viewport overflow-hidden md:mx-12 mx-8" ref={emblaRef}>
+        <div className='embla__container flex gap-8 md:mx-4 mx-0'>
           {brands.map((brand) => (
             <Link
               key={brand.id}
               href={`/brand/${brand.slug}`}
               aria-label={brand.name}
               title={brand.name}
-              className='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/6 hover:opacity-75 transition-all duration-150 ease-in-out'
+              className='embla__slide flex-shrink-0 flex-grow-0 basis-1/3 md:basis-1/6 hover:opacity-75 transition-all duration-150 ease-in-out'
             >
               <Image
                 src={brand.image}

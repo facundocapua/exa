@@ -2,10 +2,9 @@
 
 import { Tab } from '@headlessui/react'
 import type { Product } from 'api'
-import clsx from 'clsx'
-import Image from 'next/image'
 import ZoomImage from './ZoomImage'
 import { useProductStore } from './useProductStore'
+import ProductImageGalleryThumb from './ProductImageGalleryThumb'
 
 type Props = {
   product: Product
@@ -17,33 +16,15 @@ export default function ProductImageGallery ({ product }: Props) {
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
       {/* Image selector */}
-      <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-        <Tab.List className="grid grid-cols-4 gap-6">
+      <div className="mx-auto mt-6 w-full max-w-2xl block lg:max-w-none">
+        <Tab.List className="grid grid-cols-4 gap-6 mx-2 md:mx-0">
           {product.images.map((image) => (
             <Tab
               key={image.image}
               className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
-                <>
-                  <span className="sr-only">{product.name}</span>
-                  <span className="absolute inset-0 overflow-hidden rounded-md">
-                    <Image
-                      src={image.image}
-                      alt={product.name}
-                      className="h-full w-full object-cover object-center sm:rounded-lg"
-                      width={100}
-                      height={100}
-                    />
-                  </span>
-                  <span
-                    className={clsx(
-                      selected ? 'ring-primary-500' : 'ring-transparent',
-                      'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
-                    )}
-                    aria-hidden="true"
-                  />
-                </>
+                <ProductImageGalleryThumb label={product.name} image={image.image} selected={selected} />
               )}
             </Tab>
           ))}
@@ -53,25 +34,7 @@ export default function ProductImageGallery ({ product }: Props) {
               className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
-                <>
-                  <span className="sr-only">{product.name}</span>
-                  <span className="absolute inset-0 overflow-hidden rounded-md">
-                    <Image
-                      src={image.image}
-                      alt={product.name}
-                      className="h-full w-full object-cover object-center sm:rounded-lg"
-                      width={100}
-                      height={100}
-                    />
-                  </span>
-                  <span
-                    className={clsx(
-                      selected ? 'ring-primary-500' : 'ring-transparent',
-                      'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
-                    )}
-                    aria-hidden="true"
-                  />
-                </>
+                <ProductImageGalleryThumb label={product.name} image={image.image} selected={selected} />
               )}
             </Tab>
           ))}

@@ -179,6 +179,15 @@ export default function Navigation ({ navigation }: Props) {
                                           ))}
                                           <CategoryLink category={category} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={close} />
                                         </div>
+                                        {/* <div className="flex flex-col max-w-xl mx-auto">
+                                          {category.children?.map((item) => (
+                                            <h4 className="mt-4 block font-medium text-gray-900">
+                                              <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                              {item.name}
+                                            </h4>
+                                          ))}
+                                          <CategoryLink category={category} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={close} />
+                                        </div> */}
                                       </div>
                                     </div>
                                   </Popover.Panel>

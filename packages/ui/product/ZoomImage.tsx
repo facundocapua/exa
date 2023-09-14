@@ -19,19 +19,25 @@ export default function ZoomImage ({ image, alt }: {image: string, alt: string})
   }
 
   return (
-    <div ref={refContainer}
-      className='relative overflow-hidden cursor-zoom-in w-[500px]'
-      onMouseEnter={() => setDisplayZoom(true)}
-      onMouseLeave={() => setDisplayZoom(false)}
-      onMouseMove={handleMouseOver}
-    >
-      <Image src={image} alt={alt} width={500} height={500} />
-      {displayZoom && (<div className='w-[1000px] absolute' style={{
-        top: -mousePosition.y,
-        left: -mousePosition.x
-      }}>
+    <>
+      <div ref={refContainer}
+        className='relative overflow-hidden cursor-zoom-in w-[500px] hidden md:block'
+        onMouseEnter={() => setDisplayZoom(true)}
+        onMouseLeave={() => setDisplayZoom(false)}
+        onMouseMove={handleMouseOver}
+      >
+        <Image src={image} alt={alt} width={500} height={500} />
+        {displayZoom && (<div className='w-[1000px] absolute' style={{
+          top: -mousePosition.y,
+          left: -mousePosition.x
+        }}>
+          <Image src={image} alt={alt} width={1000} height={1000} />
+        </div>)}
+      </div>
+
+      <div className='relative overflow-hidden cursor-zoom-in w-full block md:hidden'>
         <Image src={image} alt={alt} width={1000} height={1000} />
-      </div>)}
-    </div>
+      </div>
+    </>
   )
 }
