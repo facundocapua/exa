@@ -1,5 +1,5 @@
 import RelatedProducts from '@/components/product/RelatedProducts'
-import { getProduct } from 'api'
+import { getProduct, getProducts } from 'api'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import { ProductImageGallery } from 'ui'
@@ -9,6 +9,14 @@ type Props = {
   params: {
     slug: string
   }
+}
+
+export async function generateStaticParams() {
+  const products = await getProducts()
+ 
+  return products.map((product) => ({
+    slug: product.slug,
+  }))
 }
 
 export default async function Product ({ params }: Props) {

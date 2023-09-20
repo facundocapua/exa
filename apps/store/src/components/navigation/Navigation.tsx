@@ -169,7 +169,7 @@ export default function Navigation ({ navigation }: Props) {
                                   leaveTo="opacity-0"
                                 >
                                   <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
-                                    <CategorySubLevel category={category} />
+                                    <CategorySubLevel category={category} onClick={close} />
                                   </Popover.Panel>
                                 </Transition>
                               </>

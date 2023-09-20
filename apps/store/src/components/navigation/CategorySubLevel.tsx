@@ -2,7 +2,8 @@ import { Category } from "api"
 import CategoryLink from "./CategoryLink"
 
 type Props = {
-  category: Category
+  category: Category,
+  onClick: () => void
 }
 
 const subLevelClasess = {
@@ -10,7 +11,7 @@ const subLevelClasess = {
   'image':'grid grid-cols-5 gap-y-12 py-16'
 }
 
-export default function CategorySubLevel({category}: Props){
+export default function CategorySubLevel({category, onClick}: Props){
   const typeImage = category.main_menu?.type === 'image'
   const containerClases = typeImage ? subLevelClasess.image : subLevelClasess.text
 
@@ -19,9 +20,9 @@ export default function CategorySubLevel({category}: Props){
       <div className="mx-auto max-w-7xl px-8">
         <div className={containerClases}>
           {category.children?.map((item) => (
-            <CategoryLink key={item.name} category={item} noImage={!typeImage} onClick={close} />
+            <CategoryLink key={item.name} category={item} noImage={!typeImage} onClick={onClick} />
           ))}
-          <CategoryLink category={category} noImage={!typeImage} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={close} />
+          <CategoryLink category={category} noImage={!typeImage} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={onClick} />
         </div>
       </div>
     </div>

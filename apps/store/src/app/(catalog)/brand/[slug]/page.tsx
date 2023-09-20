@@ -1,7 +1,7 @@
 import Breadcrumb from '@/components/Breadcrumb'
 import AppliedFilters from '@/components/category/AppliedFilters'
 import Filters from '@/components/category/Filters'
-import { getBrand, getFilteredProducts } from 'api'
+import { getBrand, getBrands, getFilteredProducts } from 'api'
 import { notFound } from 'next/navigation'
 import { ProductCard } from 'ui/server'
 
@@ -10,6 +10,14 @@ type Props = {
     slug: string
   }
   searchParams: Record<string, string>
+}
+
+export async function generateStaticParams() {
+  const brands = await getBrands()
+ 
+  return brands.map((brand) => ({
+    slug: brand.slug,
+  }))
 }
 
 export default async function Brand ({ params, searchParams }: Props) {
