@@ -4,6 +4,7 @@ export type Category = Tables<'categories'> & {
   parent?: Category
   children?: Array<Category>
   main_menu?: {
+    type?: 'text' | 'image'
     size?: string
   }
 }

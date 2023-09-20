@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 import CategoryLink from './CategoryLink'
+import CategorySubLevel from './CategorySubLevel'
 // import BrandNavigation from './BrandNavigation'
 // import BrandNavigationMobile from './BrandNavigationMobile'
 
@@ -168,28 +169,7 @@ export default function Navigation ({ navigation }: Props) {
                                   leaveTo="opacity-0"
                                 >
                                   <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
-                                    {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                                    <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
-
-                                    <div className="relative bg-white">
-                                      <div className="mx-auto max-w-7xl px-8">
-                                        <div className="grid grid-cols-5 gap-y-12 py-16">
-                                          {category.children?.map((item) => (
-                                            <CategoryLink key={item.name} category={item} onClick={close} />
-                                          ))}
-                                          <CategoryLink category={category} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={close} />
-                                        </div>
-                                        {/* <div className="flex flex-col max-w-xl mx-auto">
-                                          {category.children?.map((item) => (
-                                            <h4 className="mt-4 block font-medium text-gray-900">
-                                              <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                              {item.name}
-                                            </h4>
-                                          ))}
-                                          <CategoryLink category={category} customLabel={category.name === 'Marcas' ? `Todas las marcas` : `Ver todo`} onClick={close} />
-                                        </div> */}
-                                      </div>
-                                    </div>
+                                    <CategorySubLevel category={category} />
                                   </Popover.Panel>
                                 </Transition>
                               </>
