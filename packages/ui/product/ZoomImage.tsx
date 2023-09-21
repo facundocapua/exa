@@ -31,7 +31,7 @@ export default function ZoomImage ({ image, alt }: {image: string, alt: string})
           top: -mousePosition.y,
           left: -mousePosition.x
         }}>
-          <Image src={image} alt={alt} width={1000} height={1000} />
+          <Image src={image} alt={alt} width={1000} height={1000} className='bg-white' />
         </div>)}
       </div>
 

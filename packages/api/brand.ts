@@ -3,7 +3,10 @@ import { initClient } from './utils/supabase'
 
 export const getBrands = async (): Promise<Array<Brand>> => {
   const client = initClient()
-  const { data } = await client.from('brands').select('*')
+  const { data } = await client
+    .from('brands')
+    .select('*')
+    .eq('is_active', true)
   if(!data) return []
 
   return data
