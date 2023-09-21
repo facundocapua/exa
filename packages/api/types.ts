@@ -99,3 +99,5 @@ export type Checkout = {
   shippingAddress: Address
   billingAddress: Address
 }
+
+export type Store = Tables<'stores'>

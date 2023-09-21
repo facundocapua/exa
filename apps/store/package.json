@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "1.1.35",
+    "@googlemaps/typescript-guards": "2.0.3",
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
     "api": "workspace:*",
     "autoprefixer": "10.4.14",
     "clsx": "^2.0.0",
     "embla-carousel-react": "8.0.0-rc11",
+    "fast-equals": "5.0.1",
     "install": "^0.13.0",
     "next": "13.5.2",
     "postcss": "8.4.27",
@@ -26,6 +29,7 @@
     "ui": "workspace:*"
   },
   "devDependencies": {
+    "@types/google.maps": "3.54.1",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",

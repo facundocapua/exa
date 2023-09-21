@@ -4,5 +4,5 @@ export * from './cart'
 export * from './category'
 export * from './product'
 export * from './region'
-
+export * from './store'
 export * from './types'

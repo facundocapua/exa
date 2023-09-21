@@ -38,6 +38,7 @@ export interface Database {
           created_at: string
           id: string
           image: string
+          is_featured: boolean
           name: string
           provider: string
           slug: string
@@ -46,6 +47,7 @@ export interface Database {
           created_at?: string
           id?: string
           image: string
+          is_featured?: boolean
           name: string
           provider: string
           slug: string
@@ -54,6 +56,7 @@ export interface Database {
           created_at?: string
           id?: string
           image?: string
+          is_featured?: boolean
           name?: string
           provider?: string
           slug?: string
@@ -119,6 +122,7 @@ export interface Database {
           created_at: string
           description: string
           id: string
+          is_active: boolean
           name: string
           price: number
           provider: string
@@ -131,6 +135,7 @@ export interface Database {
           created_at?: string
           description: string
           id?: string
+          is_active?: boolean
           name: string
           price: number
           provider: string
@@ -143,6 +148,7 @@ export interface Database {
           created_at?: string
           description?: string
           id?: string
+          is_active?: boolean
           name?: string
           price?: number
           provider?: string
@@ -325,6 +331,33 @@ export interface Database {
         Update: {
           created_at?: string
           id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      stores: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          lat: number
+          lng: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          lat: number
+          lng: number
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          lat?: number
+          lng?: number
           name?: string
         }
         Relationships: []
