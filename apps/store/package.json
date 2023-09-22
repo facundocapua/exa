@@ -13,7 +13,7 @@
     "@googlemaps/typescript-guards": "2.0.3",
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
-    "api": "workspace:*",
+    "api": "*",
     "autoprefixer": "10.4.14",
     "clsx": "^2.0.0",
     "embla-carousel-react": "8.0.0-rc11",
@@ -26,14 +26,14 @@
     "react-range": "^1.8.14",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "ui": "workspace:*"
+    "ui": "*"
   },
   "devDependencies": {
     "@types/google.maps": "3.54.1",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*"
+    "eslint-config-custom": "*",
+    "tsconfig": "*"
   }
 }
