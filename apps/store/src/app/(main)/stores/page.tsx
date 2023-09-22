@@ -1,5 +1,5 @@
 import StoreLocator from '@/components/stores/StoreLocator'
-import getStores from 'api/store'
+import { getStores } from 'api'
 
 export default async function Stores () {
   const stores = await getStores()
