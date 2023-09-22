@@ -1,4 +1,4 @@
-import { Product, ProductVariant } from 'api'
+import type { ProductVariant } from 'api'
 import { create } from 'zustand'
 
 type ProductStore = {
@@ -6,7 +6,7 @@ type ProductStore = {
   setCurrentVariant: (variant: ProductStore['currentVariant']) => void
 }
 
-export const useProductStore = create<ProductStore>()((set, get) => ({
+export const useProductStore = create<ProductStore>()((set) => ({
   currentVariant: null,
   setCurrentVariant: (currentVariant) => set({ currentVariant })
 }))

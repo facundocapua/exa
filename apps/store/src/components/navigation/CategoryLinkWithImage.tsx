@@ -1,6 +1,6 @@
-import { Category } from "api";
-import Image from "next/image";
-import Link from "next/link";
+import type { Category } from 'api'
+import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
   category: Category
@@ -9,7 +9,7 @@ type Props = {
 }
 
 export default function CategoryLinkWithImage ({ category, customLabel, onClick }: Props) {
-  if(!category.image) return null
+  if (!category.image) return null
 
   return (
     <Link key={category.name} href={`/${category.slug}`} className="group relative" onClick={onClick}>

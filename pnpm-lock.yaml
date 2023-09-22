@@ -84,6 +84,9 @@ importers:
       '@types/google.maps':
         specifier: 3.54.1
         version: 3.54.1
+      '@types/googlemaps':
+        specifier: 3.43.3
+        version: 3.43.3
       '@types/node':
         specifier: 20.4.9
         version: 20.4.9
@@ -698,6 +701,11 @@ packages:
 
   /@types/google.maps@3.54.1:
     resolution: {integrity: sha512-zh6333O/yPfcvRxpBTjnNFJjiHiujvy+tTAWwvNj3LMy90Y+VLTom8n9gvmgjXhOHgHvYpgO2Xyz31wYEYN27A==}
+    dev: true
+
+  /@types/googlemaps@3.43.3:
+    resolution: {integrity: sha512-ZWNoz/O8MPEpiajvj7QiqCY8tTLFNqNZ/a+s+zTV58wFVNAvvqV4bdGfnsjTb5Cs4V6wEsLrX8XRhmnyYJ2Tdg==}
+    deprecated: 'Types for the Google Maps browser API have moved to @types/google.maps. Note: these types are not for the googlemaps npm package, which is a Node API.'
     dev: true
 
   /@types/inquirer@6.5.0:

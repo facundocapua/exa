@@ -1,7 +1,7 @@
-import { Store } from "./types"
-import { initClient } from "./utils/supabase"
+import type { Store } from './types'
+import { initClient } from './utils/supabase'
 
-export default async function getStores(): Promise<Array<Store>> {
+export async function getStores (): Promise<Array<Store>> {
   const client = initClient()
   const { data } = await client
     .from('stores')
@@ -9,7 +9,7 @@ export default async function getStores(): Promise<Array<Store>> {
     .eq('is_active', true)
     .returns<Array<Store>>()
 
-  if(!data?.length) return []
+  if (!data?.length) return []
 
   return data
 }

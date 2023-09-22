@@ -1,4 +1,4 @@
-import { Store } from "api"
+import type { Store } from 'api'
 
 type Props = {
   stores: Array<Store>
@@ -6,7 +6,7 @@ type Props = {
   setCenter: (center: google.maps.LatLngLiteral) => void
 }
 
-export default function StoreList({stores, setZoom, setCenter}: Props){
+export default function StoreList ({ stores, setZoom, setCenter }: Props) {
   const handleStoreClick = ({ lat, lng }: Store) => {
     setZoom(15)
     setCenter({ lat, lng })
@@ -15,9 +15,9 @@ export default function StoreList({stores, setZoom, setCenter}: Props){
   return (
     <div>
       {stores.map((store) => (
-        <article 
-          key={store.id} 
-          onClick={() => handleStoreClick(store)} 
+        <article
+          key={store.id}
+          onClick={() => handleStoreClick(store)}
           className="border-b border-b-neutral-300 my-2 py-2 cursor-pointer"
         >
           <h2>{store.name}</h2>

@@ -1,4 +1,4 @@
-import { Category } from './types'
+import type { Category } from './types'
 import { initClient } from './utils/supabase'
 
 export const getCategories = async (): Promise<Array<Category>> => {
@@ -9,7 +9,7 @@ export const getCategories = async (): Promise<Array<Category>> => {
     .order('sort', { ascending: true })
     .returns<Array<Category>>()
 
-  if(!data) return []
+  if (!data) return []
 
   const categories = data.filter((item) => !item.parent).map((item) => {
     return {
@@ -17,7 +17,7 @@ export const getCategories = async (): Promise<Array<Category>> => {
       children: data.filter(subitem => subitem.parent === item.id)
     }
   })
-  
+
   return categories
 }
 
@@ -30,8 +30,8 @@ export const getFeaturedCategories = async (): Promise<Array<Category>> => {
     .order('sort', { ascending: true })
     .returns<Array<Category>>()
 
-  if(!data) return []
-  
+  if (!data) return []
+
   return data
 }
 
@@ -43,6 +43,6 @@ export const getCategory = async (slug: string): Promise<Category | null> => {
     .eq('slug', slug)
     .returns<Category>()
     .single()
-  
+
   return data
 }

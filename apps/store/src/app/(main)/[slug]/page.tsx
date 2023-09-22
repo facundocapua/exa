@@ -12,19 +12,18 @@ type Props = {
   searchParams: Record<string, string>
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams () {
   const categories = await getCategories()
- 
+
   return categories.map((category) => ({
-    slug: category.slug,
+    slug: category.slug
   }))
 }
-
 
 export default async function Category ({ params, searchParams }: Props) {
   const { slug } = params
   const category = await getCategory(slug)
-  
+
   if (!category) {
     notFound()
   }
@@ -57,11 +56,11 @@ export default async function Category ({ params, searchParams }: Props) {
   return (
     <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-12">
       <Breadcrumb pages={brecrumbs} />
-      
+
       <div className="pt-12 pb-6 mb-6 border-b border-neutral-300">
         <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{category.name}</h1>
       </div>
-    
+
       <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
         {total > 0 && (
         <aside>

@@ -6,6 +6,7 @@ type Props = {
 }
 
 export default function CheckoutForm ({ total }: Props) {
+  console.log(total)
   return (
     <form className="mt-6">
       <div className="grid grid-cols-12 gap-x-4 gap-y-6">

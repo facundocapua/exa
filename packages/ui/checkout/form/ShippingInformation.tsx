@@ -1,19 +1,17 @@
 'use client'
 
-import { Listbox } from '@headlessui/react'
-import type { State } from 'api'
-import { getState, states } from 'api'
-import { useCheckoutStore } from '../useCheckoutStore'
+import { states } from 'api'
+// import { useCheckoutStore } from '../useCheckoutStore'
 
 export default function ShippingInformation () {
-  const [shippingAddress, setShippingAddress] = useCheckoutStore((state) => [state.shippingAddress, state.setShippingAddress])
+  // const [shippingAddress, setShippingAddress] = useCheckoutStore((state) => [state.shippingAddress, state.setShippingAddress])
 
-  const handleChangeState = (stateId: State['id']) => {
-    const newShippingAddress = structuredClone(shippingAddress)
-    newShippingAddress.state = getState(stateId) as State
+  // const handleChangeState = (stateId: State['id']) => {
+  //   const newShippingAddress = structuredClone(shippingAddress)
+  //   newShippingAddress.state = getState(stateId) as State
 
-    setShippingAddress(newShippingAddress)
-  }
+  //   setShippingAddress(newShippingAddress)
+  // }
 
   return (
     <section className="mt-12">

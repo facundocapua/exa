@@ -10,10 +10,7 @@ import type { Brand, Category } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-import CategoryLink from './CategoryLink'
 import CategorySubLevel from './CategorySubLevel'
-// import BrandNavigation from './BrandNavigation'
-// import BrandNavigationMobile from './BrandNavigationMobile'
 
 type Props = {
   navigation: {

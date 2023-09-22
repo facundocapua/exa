@@ -1,16 +1,16 @@
 'use client'
 
-import { Brand } from "api"
-import Image from "next/image"
-import Link from "next/link"
-import BrandsListNav from "./BrandsListNav"
-import { useMemo, useState } from "react"
+import type { Brand } from 'api'
+import Image from 'next/image'
+import Link from 'next/link'
+import BrandsListNav from './BrandsListNav'
+import { useMemo, useState } from 'react'
 
 type Props = {
   brands: Array<Brand>
 }
 
-export default function BrandsList({brands}: Props){
+export default function BrandsList ({ brands }: Props) {
   const [currentLetter, setCurrentLetter] = useState<string>('')
   const filteredBrands = useMemo(() => {
     if (!currentLetter) return brands

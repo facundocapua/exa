@@ -6,11 +6,11 @@ const navigation = {
   solutions: [
     { name: 'Términos y condiciones', href: '#' },
     { name: 'Preguntas frecuentes', href: '#' },
-    { name: '¿Cómo comprar?', href: '#' },
+    { name: '¿Cómo comprar?', href: '#' }
   ],
   support: [
     { name: 'Contáctanos', href: '#' },
-    { name: 'Sobre nosotros', href: '#' },
+    { name: 'Sobre nosotros', href: '#' }
   ],
   company: [
     { name: 'About', href: '#' },

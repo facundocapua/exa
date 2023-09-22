@@ -1,6 +1,6 @@
-import { Category } from "api";
-import CategoryLinkText from "./CategoryLinkText";
-import CategoryLinkWithImage from "./CategoryLinkWithImage";
+import type { Category } from 'api'
+import CategoryLinkText from './CategoryLinkText'
+import CategoryLinkWithImage from './CategoryLinkWithImage'
 
 type Props = {
   category: Category
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function CategoryLink ({ category, customLabel, noImage, onClick }: Props) {
-  if(!category.image || noImage){
+  if (!category.image || noImage) {
     return (<CategoryLinkText category={category} customLabel={customLabel} onClick={onClick}/>)
   }
 

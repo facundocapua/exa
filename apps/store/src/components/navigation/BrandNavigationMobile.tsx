@@ -1,15 +1,15 @@
-import { Disclosure, Transition } from "@headlessui/react";
-import { Brand } from "api";
-import clsx from "clsx";
-import Image from "next/image";
-import Link from "next/link";
+import { Disclosure, Transition } from '@headlessui/react'
+import type { Brand } from 'api'
+import clsx from 'clsx'
+import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
   brands: Array<Brand>
   setOpen: (open: boolean) => void
 }
 
-export default function BrandNavigationMobile({brands, setOpen}: Props){
+export default function BrandNavigationMobile ({ brands, setOpen }: Props) {
   return (
     <Disclosure>
       {({ open }) => (
