@@ -4,16 +4,13 @@ import { createElement } from 'react'
 
 const navigation = {
   solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' }
+    { name: 'Términos y condiciones', href: '#' },
+    { name: 'Preguntas frecuentes', href: '#' },
+    { name: '¿Cómo comprar?', href: '#' },
   ],
   support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' }
+    { name: 'Contáctanos', href: '#' },
+    { name: 'Sobre nosotros', href: '#' },
   ],
   company: [
     { name: 'About', href: '#' },
