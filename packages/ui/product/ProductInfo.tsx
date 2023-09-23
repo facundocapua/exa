@@ -17,7 +17,7 @@ export default function ProductInfo ({ product }: Props) {
         <h2 className="sr-only">Información de producto</h2>
         <div className="flex gap-2 mt-6 items-center">
           <Price amount={product.sale_price} className='text-xl text-neutral-600' />
-          { product.sale_price   < product.price && <Price amount={product.price} className='line-through text-neutral-400 text-md' /> }
+          { product.sale_price < product.price && <Price amount={product.price} className='line-through text-neutral-400 text-md' /> }
         </div>
       </div>
 

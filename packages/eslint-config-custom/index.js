@@ -52,8 +52,11 @@ module.exports = {
     ],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    'turbo/no-undeclared-env-vars': {
-      allowList: ['NEXT_PUBLIC_*']
-    }
+    'turbo/no-undeclared-env-vars': [
+      'error',
+      {
+        allowList: ['NEXT_PUBLIC_*']
+      }
+    ]
   }
 }

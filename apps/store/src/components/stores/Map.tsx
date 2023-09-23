@@ -1,7 +1,8 @@
 'use client'
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from "react";
+import type { EffectCallback, ReactNode } from 'react'
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
 import { createCustomEqual, deepEqual } from 'fast-equals'
-import { isLatLngLiteral } from "@googlemaps/typescript-guards";
+import { isLatLngLiteral } from '@googlemaps/typescript-guards'
 
 const deepCompareEqualsForMaps = createCustomEqual({
   createCustomConfig: () => ({
@@ -12,52 +13,52 @@ const deepCompareEqualsForMaps = createCustomEqual({
         isLatLngLiteral(b) ||
         b instanceof google.maps.LatLng
       ) {
-        return new google.maps.LatLng(a).equals(new google.maps.LatLng(b));
+        return new google.maps.LatLng(a).equals(new google.maps.LatLng(b))
       }
 
-      return deepEqual(a, b);
+      return deepEqual(a, b)
     }
-  }) 
-});
+  })
+})
 
-function useDeepCompareMemoize(value: any) {
-  const ref = useRef();
+function useDeepCompareMemoize (value: any) {
+  const ref = useRef()
 
   if (!deepCompareEqualsForMaps(value, ref.current)) {
-    ref.current = value;
+    ref.current = value
   }
 
-  return ref.current;
+  return ref.current
 }
 
-
-function useDeepCompareEffectForMaps(
-  callback: React.EffectCallback,
+function useDeepCompareEffectForMaps (
+  callback: EffectCallback,
   dependencies: any[]
 ) {
-  useEffect(callback, dependencies.map(useDeepCompareMemoize));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(callback, dependencies.map(useDeepCompareMemoize))
 }
 
 type Props = google.maps.MapOptions & {
   className?: string
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
-export default function Map({ className, children, ...options}: Props){
-  const ref = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<google.maps.Map>();
+export default function Map ({ className, children, ...options }: Props) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [map, setMap] = useState<google.maps.Map>()
 
   useEffect(() => {
     if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
+      setMap(new window.google.maps.Map(ref.current, {}))
     }
-  }, [ref, map]);
+  }, [ref, map])
 
   useDeepCompareEffectForMaps(() => {
     if (map) {
-      map.setOptions(options);
+      map.setOptions(options)
     }
-  }, [map, options]);
+  }, [map, options])
 
   return (
     <>
@@ -66,7 +67,7 @@ export default function Map({ className, children, ...options}: Props){
         if (isValidElement(child)) {
           // set the map prop on the child component
           // @ts-ignore
-          return cloneElement(child, { map });
+          return cloneElement(child, { map })
         }
       })}
     </>

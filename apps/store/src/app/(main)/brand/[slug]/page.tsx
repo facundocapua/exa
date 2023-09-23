@@ -12,11 +12,11 @@ type Props = {
   searchParams: Record<string, string>
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams () {
   const brands = await getBrands()
- 
+
   return brands.map((brand) => ({
-    slug: brand.slug,
+    slug: brand.slug
   }))
 }
 

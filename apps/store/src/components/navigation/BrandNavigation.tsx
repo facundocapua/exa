@@ -1,15 +1,15 @@
-import { Popover, Transition } from "@headlessui/react";
-import { Brand } from "api";
-import clsx from "clsx";
-import Image from "next/image";
-import Link from "next/link";
-import { Fragment } from "react";
+import { Popover, Transition } from '@headlessui/react'
+import type { Brand } from 'api'
+import clsx from 'clsx'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Fragment } from 'react'
 
 type Props = {
   brands: Array<Brand>
 }
 
-export default function BrandNavigation({brands}: Props){
+export default function BrandNavigation ({ brands }: Props) {
   return (
     <Popover className="flex">
       {({ open, close }) => (

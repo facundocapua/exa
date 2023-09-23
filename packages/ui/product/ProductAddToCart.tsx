@@ -32,7 +32,7 @@ export default function ProductAddToCart ({ sku, className }: Props) {
     })
   }
 
-  if(currentVariant && currentVariant?.stock <= 0){
+  if (currentVariant && currentVariant?.stock <= 0) {
     return (
       <button
         aria-label="Agregar al carrito"

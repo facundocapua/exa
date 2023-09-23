@@ -1,6 +1,6 @@
 'use client'
 
-import { Brand } from 'api'
+import type { Brand } from 'api'
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 import Link from 'next/link'

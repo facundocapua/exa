@@ -1,8 +1,8 @@
-import StoreLocator from "@/components/stores/StoreLocator";
-import getStores from "api/store";
+import StoreLocator from '@/components/stores/StoreLocator'
+import { getStores } from 'api/store'
 
-export default async function Stores(){
-  const stores  = await getStores()
+export default async function Stores () {
+  const stores = await getStores()
 
   return (
     <main className="my-12">

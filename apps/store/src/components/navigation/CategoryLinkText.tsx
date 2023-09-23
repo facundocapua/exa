@@ -1,6 +1,5 @@
-import { Category } from "api";
-import Image from "next/image";
-import Link from "next/link";
+import type { Category } from 'api'
+import Link from 'next/link'
 
 type Props = {
   category: Category

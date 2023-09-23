@@ -6,13 +6,13 @@ export default async function Brand () {
   const brands = await getBrands()
 
   const brecrumbs = []
-  
+
   brecrumbs.push({
-      name: 'Marcas',
-      url: '/brands',
-      current: true
+    name: 'Marcas',
+    url: '/brands',
+    current: true
   })
-  
+
   return (
     <main className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-12">
       <Breadcrumb pages={brecrumbs} />

@@ -10,7 +10,7 @@ export const getProducts = async (): Promise<Array<Product>> => {
     .select('*, images: products_images(image), brand(*), categories(*)')
     .returns<Array<Product>>()
 
-  if(!data?.length) return []
+  if (!data?.length) return []
 
   return data
 }
@@ -66,9 +66,8 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
     .from('products')
     .select('*, images: products_images(image), brand!inner(*), categories!inner(*)')
     .eq('is_active', true)
-  
 
-  const {data: restrictedData} = await applyRestrinctions(query, restrinctions)
+  const { data: restrictedData } = await applyRestrinctions(query, restrinctions)
   const filteredData = applyFilters(restrictedData, filters)
 
   return new Promise((resolve) => {
@@ -108,27 +107,27 @@ export const getProductBySku = async (sku: Product['sku']): Promise<Product | nu
 
 export const getRelatedProducts = async (sku: Product['sku']): Promise<Array<Product>> => {
   const client = initClient()
-  const {data: relatedData} = await client
+  const { data: relatedData } = await client
     .from('products_related')
     .select('from!inner(*), to(*)')
     .eq('from.sku', sku)
-  
-  if(!relatedData?.length) return []
-  
+
+  if (!relatedData?.length) return []
+
   const skus = relatedData.map(
     (data) => {
-      const {to} = data as {to: Partial<Product>, from: Partial<Product>}
+      const { to } = data as {to: Partial<Product>, from: Partial<Product>}
       return to.sku
     })
 
-  const {data} = await client
+  const { data } = await client
     .from('products')
     .select('*, images: products_images(image), brand(*), categories(*)')
     .eq('is_active', true)
     .in('sku', skus)
     .returns<Array<Product>>()
 
-  if(!data?.length) return []
+  if (!data?.length) return []
 
   return data
 }

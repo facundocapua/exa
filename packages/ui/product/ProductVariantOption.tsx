@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from 'next/image'
 
 type Props = {
   label: string
@@ -6,7 +6,7 @@ type Props = {
   hexa?: string
 }
 
-export default function ProductVariantOption({label, image, hexa}: Props){
+export default function ProductVariantOption ({ label, image, hexa }: Props) {
   return (
     <div className="w-[40px] h-[40px] overflow-hidden rounded-lg" style={{ backgroundColor: hexa ?? '' }}>
       {image && <Image width={40} height={40} src={image} alt={label} />}

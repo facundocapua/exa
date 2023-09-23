@@ -1,19 +1,18 @@
-import { Brand } from './types'
+import type { Brand } from './types'
 import { initClient } from './utils/supabase'
 
 export const getBrands = async (): Promise<Array<Brand>> => {
   const client = initClient()
   const { data } = await client.from('brands').select('*')
-  if(!data) return []
+  if (!data) return []
 
   return data
 }
 
-
 export const getFeaturedBrands = async (): Promise<Array<Brand>> => {
   const client = initClient()
   const { data } = await client.from('brands').select('*').eq('is_featured', true)
-  if(!data) return []
+  if (!data) return []
 
   return data
 }

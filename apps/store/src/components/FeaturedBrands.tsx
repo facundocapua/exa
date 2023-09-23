@@ -1,5 +1,5 @@
-import { getFeaturedBrands } from "api"
-import { BrandFeaturedList } from "ui"
+import { getFeaturedBrands } from 'api'
+import { BrandFeaturedList } from 'ui'
 
 export default async function FeaturedBrands () {
   const brands = await getFeaturedBrands()
@@ -12,5 +12,4 @@ export default async function FeaturedBrands () {
       <BrandFeaturedList brands={brands} />
     </section>
   )
-
 }

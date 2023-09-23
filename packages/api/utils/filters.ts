@@ -1,4 +1,3 @@
-import { SupabaseClient } from '@supabase/supabase-js'
 import { FILTER_TYPE, type Filter, type FilterOption, type Product } from '../types'
 
 export const extractCategoryFilter = (products: Array<Product>) => {
@@ -83,10 +82,9 @@ export type FiltersType = {
   price?: string
 }
 
-
 export const applyRestrinctions = async (query: any, filters: FiltersType) => {
   const { category, brand, price } = filters
-  
+
   const categories = category?.split(',') || []
   const brands = brand?.split(',') || []
   const [minPrice, maxPrice] = price?.split(',') || []

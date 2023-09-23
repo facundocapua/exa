@@ -11,11 +11,11 @@ type Props = {
   }
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams () {
   const products = await getProducts()
- 
+
   return products.map((product) => ({
-    slug: product.slug,
+    slug: product.slug
   }))
 }
 
