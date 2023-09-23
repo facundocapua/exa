@@ -25,13 +25,13 @@
     "react-dom": "18.2.0",
     "react-range": "^1.8.14",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6",
+    "typescript": "5.2.2",
     "ui": "workspace:*"
   },
   "devDependencies": {
     "@types/google.maps": "3.54.1",
-    "@types/node": "20.4.9",
-    "@types/react": "18.2.20",
+    "@types/node": "20.6.3",
+    "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
