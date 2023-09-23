@@ -38,7 +38,7 @@ export default async function CheckoutPage () {
             <Logo />
           </div>
 
-          <CheckoutForm total={cart.cost.total} />
+          <CheckoutForm />
         </div>
       </section>
     </main>
