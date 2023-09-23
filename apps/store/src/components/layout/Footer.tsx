@@ -30,17 +30,17 @@ const navigation = {
   social: [
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/exabeautyok',
       icon: FacebookIcon
     },
     {
       name: 'Instagram',
-      href: '#',
+      href: 'https://www.instagram.com/exabeauty.ok/',
       icon: InstagramIcon
     },
     {
       name: 'Twitter',
-      href: '#',
+      href: 'https://twitter.com/eXaBeautyOk',
       icon: TwitterIcon
     }
   ]
