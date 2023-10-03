@@ -3,6 +3,7 @@ import FeaturedBrands from '@/components/FeaturedBrands'
 import FeaturedCategories from '@/components/FeaturedCategories'
 import FeaturedProducts from '@/components/FeaturedProducts'
 import MainSlider from '@/components/MainSlider'
+import StoresBanner from '@/components/stores/StoresBanner'
 
 export default function Home () {
   return (
@@ -12,6 +13,7 @@ export default function Home () {
       <FeaturedProducts />
       <FeaturedCategories />
       <FeaturedBrands />
+      <StoresBanner />
     </div>
   )
 }

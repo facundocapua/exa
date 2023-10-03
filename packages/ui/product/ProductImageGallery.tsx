@@ -21,7 +21,7 @@ export default function ProductImageGallery ({ product }: Props) {
           {product.images.map((image) => (
             <Tab
               key={image.image}
-              className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+              className="relative flex cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
                 <ProductImageGalleryThumb label={product.name} image={image.image} selected={selected} />
@@ -31,7 +31,7 @@ export default function ProductImageGallery ({ product }: Props) {
           {currentVariant?.images?.map((image) => (
             <Tab
               key={image.image}
-              className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+              className="relative flex cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
                 <ProductImageGalleryThumb label={product.name} image={image.image} selected={selected} />

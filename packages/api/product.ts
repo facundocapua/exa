@@ -86,6 +86,7 @@ export const getProduct = async (slug: string): Promise<Product | null> => {
     .select('*, images: products_images(image), brand(*), categories(*), variants: products_variants(*, images: products_variants_images(image))')
     .eq('is_active', true)
     .eq('slug', slug)
+    .eq('products_variants.is_active', true)
     .returns<Product>()
     .single()
 

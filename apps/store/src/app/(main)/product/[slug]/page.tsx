@@ -27,6 +27,10 @@ export default async function Product ({ params }: Props) {
     notFound()
   }
 
+  if (product.variants) {
+    product.variants = product.variants.sort((a, b) => a.sort - b.sort)
+  }
+
   return (
     <main>
       <section className="mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8 mb-4">
