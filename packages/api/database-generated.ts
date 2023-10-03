@@ -66,10 +66,10 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "brands_provider_fkey"
-            columns: ["provider"]
-            referencedRelation: "providers"
-            referencedColumns: ["id"]
+            foreignKeyName: 'brands_provider_fkey'
+            columns: ['provider']
+            referencedRelation: 'providers'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -112,10 +112,10 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "categories_parent_fkey"
-            columns: ["parent"]
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
+            foreignKeyName: 'categories_parent_fkey'
+            columns: ['parent']
+            referencedRelation: 'categories'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -161,16 +161,16 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_brand_fkey"
-            columns: ["brand"]
-            referencedRelation: "brands"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_brand_fkey'
+            columns: ['brand']
+            referencedRelation: 'brands'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "products_provider_fkey"
-            columns: ["provider"]
-            referencedRelation: "providers"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_provider_fkey'
+            columns: ['provider']
+            referencedRelation: 'providers'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -189,16 +189,16 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_categories_category_fkey"
-            columns: ["category"]
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_categories_category_fkey'
+            columns: ['category']
+            referencedRelation: 'categories'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "products_categories_product_fkey"
-            columns: ["product"]
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_categories_product_fkey'
+            columns: ['product']
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -223,10 +223,10 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_images_product_fkey"
-            columns: ["product"]
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_images_product_fkey'
+            columns: ['product']
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -245,16 +245,16 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_related_from_fkey"
-            columns: ["from"]
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_related_from_fkey'
+            columns: ['from']
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "products_related_to_fkey"
-            columns: ["to"]
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_related_to_fkey'
+            columns: ['to']
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -294,10 +294,10 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_variants_product_fkey"
-            columns: ["product"]
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_variants_product_fkey'
+            columns: ['product']
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -322,10 +322,10 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_variants_images_variant_fkey"
-            columns: ["variant"]
-            referencedRelation: "products_variants"
-            referencedColumns: ["id"]
+            foreignKeyName: 'products_variants_images_variant_fkey'
+            columns: ['variant']
+            referencedRelation: 'products_variants'
+            referencedColumns: ['id']
           }
         ]
       }
