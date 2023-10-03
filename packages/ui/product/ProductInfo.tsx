@@ -25,7 +25,7 @@ export default function ProductInfo ({ product }: Props) {
         <ProductColorSelector variants={product.variants} />
       )}
 
-      <ProductAddToCart sku={product.sku} className='my-8' />
+      <ProductAddToCart product={product} className='my-8' />
 
       <div className="mt-6">
         <h3 className="sr-only">Descripción</h3>

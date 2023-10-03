@@ -2,26 +2,26 @@
 
 import type { Product } from 'api'
 import { useTransition } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { addItem } from '../cart/actions'
 
 import type {} from 'react/experimental'
 import clsx from 'clsx'
-import { useProductStore } from './useProductStore'
 
 type Props = {
-  sku: Product['sku']
+  product: Product
   className?: string
 }
 
-export default function ProductAddToCart ({ sku, className }: Props) {
+export default function ProductAddToCart ({ product, className }: Props) {
   const [isPending, startTransition] = useTransition()
-  const [currentVariant] = useProductStore(state => [state.currentVariant])
+  const searchParams = useSearchParams()
+  const currentVariant = searchParams.get('v') ? product.variants?.find(variant => variant.sku === searchParams.get('v')) : null
 
   const router = useRouter()
   const handleAddToCart = () => {
     startTransition(async () => {
-      const error = await addItem(sku)
+      const error = await addItem(product.sku)
 
       if (error) {
         // Trigger the error boundary in the root error.js

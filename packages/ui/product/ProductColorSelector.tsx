@@ -2,20 +2,19 @@
 
 import type { Product } from 'api'
 import ProductVariantOption from './ProductVariantOption'
-import { useProductStore } from './useProductStore'
 import clsx from 'clsx'
-import { useEffect } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 type Props = {
   variants: Product['variants']
 }
 
 export default function ProductColorSelector ({ variants }: Props) {
-  const [currentVariant, setCurrentVariant] = useProductStore(state => [state.currentVariant, state.setCurrentVariant])
-
-  useEffect(() => {
-    return () => { setCurrentVariant(null) }
-  }, [setCurrentVariant])
+  // const [currentVariant, setCurrentVariant] = useProductStore(state => [state.currentVariant, state.setCurrentVariant])
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const currentVariant = searchParams.get('variant') ? variants?.find(variant => variant.sku === searchParams.get('variant')) : null
 
   if (!variants || variants.length === 0) return null
 
@@ -35,7 +34,9 @@ export default function ProductColorSelector ({ variants }: Props) {
               'border-primary-600': variant.sku === currentVariant?.sku
             })}
             aria-label={variant.sku}
-            onClick={() => { setCurrentVariant(variant) }}
+            onClick={() => {
+              router.replace(`${pathname}?v=${variant.sku}`, { scroll: false })
+            }}
           >
             {
               variant.stock <= 0
