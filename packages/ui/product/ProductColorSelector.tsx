@@ -14,7 +14,7 @@ export default function ProductColorSelector ({ variants }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const currentVariant = searchParams.get('variant') ? variants?.find(variant => variant.sku === searchParams.get('variant')) : null
+  const currentVariant = searchParams.get('v') ? variants?.find(variant => variant.sku === searchParams.get('v')) : null
 
   if (!variants || variants.length === 0) return null
 
