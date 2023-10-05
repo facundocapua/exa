@@ -1,0 +1,51 @@
+CODIGO EXA;CODIGO;MARCA;SUBMARCA;CATEGORIA;NOMBRE;DESCRIPCION;IMAGEN
+WCT00020;CT20;Wella;Color Touch;Tintura;CT 60ML PURE NAT 2/0;Negro 2/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/17ColorTouch2.0.png
+WCT00028;CT28;Wella;Color Touch;Tintura;CT 60ML RICH NATURALS 2/8;Negro Perla 2/8;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/18ColorTouch2.8.png
+WCT00030;CT30;Wella;Color Touch;Tintura;CT 60ML PURE NAT 3/0;Castaño Oscuro 3/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/18ColorTouch2.8.png
+WCT00366;CT366;Wella;Color Touch;Tintura;CT 60ML VIB REDS 3/66;Castaño Oscuro Violeta Intenso 3/66;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/14ColorTouch3.66.png
+WCT00040;CT40;Wella;Color Touch;Tintura;CT 60ML PURE NAT 4/0;Castaño Mediano 4/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/01ColorTouch4.0.png
+WCT04465;CT4465;Wella;Color Touch;Tintura;CT 60ML VIB REDS P5 44/65;Castaño Mediano Intenso Violeta Caoba 44/65;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/12ColorTouch44.65.png
+WCT00477;CT477;Wella;Color Touch;Tintura;CT 60ML DP BRS 4/77 MED BR INT;Castaño Mediano Marrón Intenso 4/77;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/13ColorTouch4.77.png
+WCT00051;CT51;Wella;Color Touch;Tintura;CT 60ML RICH NAT 5/1;Castaño Claro Ceniza 5/1;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/04ColorTouch5.1.png
+WCT00053;CT53;Wella;Color Touch;Tintura;CT 60ML RICH NAT 5/3;Castaño Claro Dorado 5/3;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/06ColorTouch5.3.png
+WCT00537;CT537;Wella;Color Touch;Tintura;CT 60ML RICH NAT 5/37;Castaño Claro Dorado Marron 5/37;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/07ColorTouch5.37.png
+WCT00054;CT54;Wella;Color Touch;Tintura;CT 60ML  VIB REDS 5/4;Castaño Claro Rojo 5/4;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/10ColorTouch5.4.png
+WCT00055;CT55;Wella;Color Touch;Tintura;CT 60ML VIB REDS 5/5;Castaño Claro Caoba 5/5;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/03ColorTouch5.5.png
+WCT00566;CT566;Wella;Color Touch;Tintura;CT 60ML VIB REDS 5/66;Castaño Claro Violeta Intenso 5/66;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/11ColorTouch5.66.png
+WCT00571;CT571;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 5/71;Castaño Claro Marrón Ceniza 5/71;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/11ColorTouch5.66.png
+WCT00597;CT597;Wella;Color Touch;Tintura;CT_RICH_NAT_5/97_60ML_LAEP;Castaño Claro Ceniza Marron 5/97;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/11ColorTouch5.66.png
+WCT05554;CT5554;Wella;Color Touch;Tintura;CT 60ML VIB REDS P5 55/54;Castaño Claro Intenso Rojo Caoba 55/54;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/08ColorTouch55.54.png
+WCT00060;CT60;Wella;Color Touch;Tintura;CT 60ML PURE NAT 6/0;Rubio Oscuro 6/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/43ColorTouch6.0.png
+WCT00063;CT63;Wella;Color Touch;Tintura;CT 60ML RICH NAT 6/3;Rubio Oscuro Dorado 6/3;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/44ColorTouch6.3.png
+WCT00637;CT637;Wella;Color Touch;Tintura;CT 60ML RICH NAT 6/37;Rubio Oscuro Dorado Marron 6/37;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/45ColorTouch6.37.png
+WCT00645;CT645;Wella;Color Touch;Tintura;CT 60ML VIB REDS 6/45;Rubio Oscuro Rojo Caoba 6/45;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/50ColorPerfect6.45.png
+WCT06645;CT6645;Wella;Color Touch;Tintura;CT 60ML VIB REDS P5 66/45;Rubio Oscuro Intenso Rojo Caoba 66/45;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/46ColorTouch66.45.png
+WCT00067;CT67;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 6/7;Rubio Oscuro Marrón 6/7;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/47ColorTouch6.7.png
+WCT00671;CT671;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 6/71;Rubio Oscuro Marrón Ceniza 6/71;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/48ColorTouch6.71.png
+WCT00677;CT677;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 6/77;Rubio Oscuro Marrón Intenso 6/77;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/49ColorTouch6.77.png
+WCT00070;CT70;Wella;Color Touch;Tintura;CT 60ML PURE NAT 7/0;Rubio Medio 7/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/49ColorTouch6.77.png
+WCT00071;CT71;Wella;Color Touch;Tintura;CT 60ML RICH NAT 7/1;Rubio Mediano Ceniza 7/1;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/28ColorTouch7.1.png
+WCT00073;CT73;Wella;Color Touch;Tintura;CT 60ML RICH NAT 7/3;Rubio Mediano Dorado 7/3;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/29ColorTouch7.3.png
+WCT00743;CT743;Wella;Color Touch;Tintura;CT 60ML VIB REDS 7/43;Rubio Mediano Rojo Dorado 7/43;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/36ColorTouch7.43.png
+WCT07745;CT7745;Wella;Color Touch;Tintura;CT 60ML VIB REDS P5  77/45;Rubio Mediano Intenso Rojo Caoba 77/45;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/30ColorTouch77.45.png
+WCT00077;CT77;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 7/7;Rubio Mediano Marrón 7/7;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/33ColorTouch7.7.png
+WCT00771;CT771;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 7/71;Rubio Mediano Marrón Ceniza 7/71;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/31ColorTouch7.71.png
+WCT00773;CT773;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 7/73;Rubio Mediano Marrón Dorado 7/73;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/31ColorTouch7.71.png
+WCT00789;CT789;Wella;Color Touch;Tintura;CT 60ML RICH NATURALS 7/89;Rubio Mediano Perla Cendré 7/89;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/35ColorTouch7.89.png
+WCT00797;CT797;Wella;Color Touch;Tintura;CT_RICH_NAT_7/97_60ML_LAEP;Rubio Medio Ceniza Marron 7/97;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/38ColorTouch7.97.png
+WCT00080;CT80;Wella;Color Touch;Tintura;CT 60ML PURE NAT 8/0;Rubio Claro 8/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/20ColorTouch8.0.png
+WCT00835;CT835;Wella;Color Touch;Tintura;CT 60mlRich Naturals 8/35 WE CEEMEA;Rubio Claro Dorado Caoba 8/35;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/20ColorTouch8.0.png
+WCT00841;CT841;Wella;Color Touch;Tintura;CT 60mlVibr Red 8/41 WE CEEMEA;Rubio Claro Ceniza 8/41;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/22ColorTouch8.35.png?t=2023-10-05T20%3A55%3A09.373Z
+WCT00871;CT871;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 8/71;Rubio Claro Marrón Ceniza 8/71;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/23ColorTouch8.71.png
+WCT00881;CT881;Wella;Color Touch;Tintura;CT 60ML RICH NAT 8/81;Rubio Claro Perla Ceniza 8/81;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/23ColorTouch8.71.png
+WCT00090;CT90;Wella;Color Touch;Tintura;CT 60ML PURE NAT 9/0;Rubio Muy Claro 9/0;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/39ColorTouch9.0.png
+WCT00901;CT901;Wella;Color Touch;Tintura;CT 60ML PURE NAT 9/01;Rubio Extra Claro Natural Ceniza 9/01;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/26ColorTouch9.01.png
+WCT00903;CT903;Wella;Color Touch;Tintura;CT 60ML PURE NAT 9/03;Rubio Extra Claro Natural Dorado 9/03;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/27ColorTouch9.03.png
+WCT00975;CT975;Wella;Color Touch;Tintura;CT 60mlDeep Browns 9/75 WE CEEMEA;Rubio Extra Claro Marron Caoba 9/75;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/25ColorTouch9.75.png
+WCT00986;CT986;Wella;Color Touch;Tintura;CT 60ml 9/86;Rubio Muy Claro Perla 9/86;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/42ColorTouch9.86.png
+WCT00996;CT996;Wella;Color Touch;Tintura;CT 60ml 9/96;Rubio Muy Claro Ceniza 9/96;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/41ColorTouch9.96.png
+WCT00997;CT997;Wella;Color Touch;Tintura;CT_RICH_NAT_9/97_60ML_LAEP;Rubio Muy Claro Cendre 9/97;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/40ColorTouch9.97.png
+WCT01034;CT1034;Wella;Color Touch;Tintura;CT 60mlVibr Red 10/34 WE CEEMEA;Rubio Ultra Claro Dorado Rojizo 10/34;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/15ColorTouch0.34.png
+WCT01073;CT1073;Wella;Color Touch;Tintura;CT 60ML DEEP BROWNS 10/73;Rubio Clarisimo Marrón Dorado 10/73;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/19ColorTouch10.73.png
+WCT00034;CT034;Wella;Color Touch;Tintura;CT 60ML SPECIAL MIX 0/34;Dorado Rojo 0/34;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/15ColorTouch0.34.png
+WCT00088;CT088;Wella;Color Touch;Tintura;CT 60ML SPECIAL MIX 0/88;Mix Especial Mazafiro 0/88;https://mtelzvckwsdkcqbvwewx.supabase.co/storage/v1/object/public/assets/product/CT/16ColorTouch0.88.png

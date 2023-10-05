@@ -24,7 +24,7 @@ export type Brand = {
 }
 
 export type ProductVariant = Omit<Tables<'products_variants'>, 'color'> & {
-  product: Tables<'products'>
+  product: Tables<'products'> | string
   images: Array<Tables<'products_variants_images'>>
   color: {
     label: string
