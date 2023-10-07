@@ -8,11 +8,11 @@
     "prune": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +"
   },
   "devDependencies": {
-    "@turbo/gen": "1.9.7",
-    "eslint": "7.32.0",
+    "@turbo/gen": "1.10.15",
+    "eslint": "8.51.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "2.8.8",
-    "turbo": "1.10.4"
+    "prettier": "3.0.3",
+    "turbo": "1.10.15"
   },
   "packageManager": "pnpm@8.6.10",
   "name": "exa"

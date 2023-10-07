@@ -9,21 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@googlemaps/markerclusterer": "2.4.1",
+    "@googlemaps/markerclusterer": "2.5.0",
     "@googlemaps/react-wrapper": "1.1.35",
     "@googlemaps/typescript-guards": "2.0.3",
-    "@headlessui/react": "^1.7.16",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@react-google-maps/api": "2.19.2",
     "api": "workspace:*",
-    "autoprefixer": "10.4.14",
+    "autoprefixer": "10.4.16",
     "clsx": "^2.0.0",
-    "embla-carousel-react": "8.0.0-rc11",
+    "embla-carousel-react": "8.0.0-rc14",
     "fast-csv": "4.3.6",
     "fast-equals": "5.0.1",
     "install": "^0.13.0",
-    "next": "13.5.2",
-    "postcss": "8.4.27",
+    "next": "13.5.4",
+    "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-range": "^1.8.14",
@@ -32,10 +32,10 @@
     "ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/google.maps": "3.54.1",
-    "@types/node": "20.6.3",
-    "@types/react": "18.2.22",
-    "@types/react-dom": "18.2.7",
+    "@types/google.maps": "3.54.3",
+    "@types/node": "20.8.3",
+    "@types/react": "18.2.25",
+    "@types/react-dom": "18.2.11",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   }
