@@ -100,4 +100,6 @@ export type Checkout = {
   billingAddress: Address
 }
 
-export type Store = Tables<'stores'>
+export type Store = Tables<'stores'> & {
+  hours: Record<string, { open: string; close: string }>
+}

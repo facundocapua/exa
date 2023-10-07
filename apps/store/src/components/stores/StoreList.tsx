@@ -1,4 +1,5 @@
 import type { Store } from 'api'
+import StoreListItem from './StoreListItem'
 
 type Props = {
   stores: Array<Store>
@@ -7,16 +8,12 @@ type Props = {
 
 export default function StoreList ({ stores, onClick }: Props) {
   return (
-    <div>
+    <>
       {stores.map((store) => (
-        <article
-          key={store.id}
-          onClick={() => onClick(store)}
-          className="border-b border-b-neutral-300 my-2 py-2 cursor-pointer"
-        >
-          <h2>{store.name}</h2>
-        </article>
+        <button key={store.id} onClick={() => onClick(store)} className='w-full hover:bg-neutral-100 border-b border-b-neutral-300 last:border-none py-4 cursor-pointer'>
+          <StoreListItem store={store} />
+        </button>
       ))}
-    </div>
+    </>
   )
 }
