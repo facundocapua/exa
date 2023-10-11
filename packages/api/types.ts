@@ -102,4 +102,5 @@ export type Checkout = {
 
 export type Store = Tables<'stores'> & {
   hours: Record<string, { open: string; close: string }>
+  brands: Array<Tables<'brands'>>
 }

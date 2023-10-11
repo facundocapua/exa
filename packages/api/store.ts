@@ -5,7 +5,7 @@ export async function getStores (): Promise<Array<Store>> {
   const client = initClient()
   const { data } = await client
     .from('stores')
-    .select('*')
+    .select('*, brands(*)')
     .eq('is_active', true)
     .returns<Array<Store>>()
 

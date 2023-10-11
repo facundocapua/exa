@@ -51,3 +51,16 @@ export const formatNextOpenTime = (hours: Store['hours']): string => {
 
   return nextOpenTime.toLocaleString(['es-AR'], { weekday: 'long', hour: '2-digit', minute: '2-digit' })
 }
+
+export const findClosest = (lat: number, lng: number, stores: Store[]) => {
+  let closest: Store | null = null
+  let closestDistance = Infinity
+  stores.forEach((store) => {
+    const distance = Math.sqrt(Math.pow(store.lat - lat, 2) + Math.pow(store.lng - lng, 2))
+    if (distance < closestDistance) {
+      closest = store
+      closestDistance = distance
+    }
+  })
+  return closest
+}
