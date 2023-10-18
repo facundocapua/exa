@@ -1,16 +1,23 @@
 'use client'
 
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, MarkerClusterer } from '@react-google-maps/api'
 import StoreList from './StoreList'
 import type { Store } from 'api'
 import StoreListItem from './StoreListItem'
 import useStoreLocator from './useStoreLocator'
 import StoresFilters from './StoresFilters'
+import { ListBulletIcon, MapIcon } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 
 type Props = {
   stores: Array<Store>
 }
+
+const TABS = {
+  MAP: 'map',
+  LIST: 'list'
+} as const
 
 function StoreLocator ({ stores }: Props) {
   const { isLoaded } = useJsApiLoader({
@@ -31,12 +38,14 @@ function StoreLocator ({ stores }: Props) {
     searchText
   } = useStoreLocator({ stores })
 
+  const [tab, setTab] = useState<string>(TABS.MAP)
+
   if (!isLoaded) return null
 
   return (
     <div className="flex max-w-6xl mx-auto">
-      <section className="gap-4 w-full grid grid-cols-[350px_auto]">
-        <aside className='border border-neutral-200 max-h-[600px] grid grid-rows-[120px_auto_50px]'>
+      <section className="gap-4 w-full lg:grid lg:grid-cols-[350px_auto]">
+        <aside className='border border-neutral-200 max-h-[600px] lg:grid lg:grid-rows-[minmax(120px,auto)_1fr_50px]'>
           <div>
             <form onSubmit={handleSearch} className='flex items-center border-b border-neutral-200 p-4 bg-neutral-100'>
               <div className="w-full px-4 py-2 text-sm bg-white relative">
@@ -50,10 +59,30 @@ function StoreLocator ({ stores }: Props) {
               </datalist>
               <button type='submit' className='bg-neutral-800 text-neutral-100 text-sm px-4 py-2 hover:opacity-80'>Buscar</button>
             </form>
-
-            <StoresFilters stores={stores} />
+            <div className='grid grid-cols-[1fr_auto] lg:block'>
+              <StoresFilters stores={stores} />
+              <div className='flex lg:hidden'>
+                <button onClick={() => { setTab(TABS.MAP) }} className={clsx({
+                  'border-r border-l border-neutral-300 px-4': true,
+                  'border-b-2 border-b-neutral-700': tab === TABS.MAP,
+                  'border-b': tab !== TABS.MAP
+                })}>
+                  <MapIcon className='w-7 h-7 text-neutral-700' />
+                </button>
+                <button onClick={() => { setTab(TABS.LIST) }} className={clsx({
+                  'border-r border-neutral-300 px-4': true,
+                  'border-b-2 border-b-neutral-700': tab === TABS.LIST,
+                  'border-b': tab !== TABS.LIST
+                })}>
+                  <ListBulletIcon className='w-7 h-7 text-neutral-700'/>
+                </button>
+              </div>
+            </div>
           </div>
-          <div className='overflow-y-auto'>
+          <div className={clsx({
+            'overflow-y-auto lg:block': true,
+            hidden: tab !== TABS.LIST
+          })}>
             <StoreList stores={filteredStores} onClick={handleStoreClick} />
             {filteredStores.length === 0
               ? (
@@ -63,10 +92,16 @@ function StoreLocator ({ stores }: Props) {
                 )
               : ''}
           </div>
-          <button onClick={resetFilters} className='border-t'>Mostrar todo</button>
+          <button onClick={resetFilters} className={clsx({
+            'border-t': true,
+            hidden: tab !== TABS.LIST
+          })}>Mostrar todo</button>
         </aside>
         <GoogleMap
-          mapContainerClassName='h-[600px] flex w-full'
+          mapContainerClassName={clsx({
+            'h-[600px] lg:flex w-full': true,
+            hidden: tab !== TABS.MAP
+          })}
           onLoad={onLoad}
           onUnmount={onUnmount}
           onBoundsChanged={onBoundsChanged}

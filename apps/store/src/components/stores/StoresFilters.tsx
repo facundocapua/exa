@@ -45,13 +45,15 @@ export default function StoresFilters ({ stores }: Props) {
       </button>
       {showFilters
         ? (
-          <ul className='flex flex-col pt-4'>
-            {storesBrands.map((brand) => (
-              <li key={brand.id}>
-                <label className='flex items-center gap-2 text-sm'><input type='checkbox' onChange={handleChange} value={brand.slug} checked={brands.includes(brand.slug)} />{brand.name}</label>
-              </li>
-            ))}
-          </ul>
+          <div className='absolute z-10 bg-white w-full border border-neutral-300 drop-shadow-md lg:contents lg:border-0 left-0 mt-[16px] lg:mt-0 lg:drop-shadow-none px-4 pb-4 lg:p-0 lg:z-auto'>
+            <ul className='flex flex-col pt-4 gap-2 lg:gap-0'>
+              {storesBrands.map((brand) => (
+                <li key={brand.id}>
+                  <label className='flex items-center gap-2 text'><input type='checkbox' onChange={handleChange} value={brand.slug} checked={brands.includes(brand.slug)} />{brand.name}</label>
+                </li>
+              ))}
+            </ul>
+          </div>
           )
         : ''}
     </section>
