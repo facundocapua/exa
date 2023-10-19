@@ -88,7 +88,7 @@ function StoreLocator ({ stores }: Props) {
             </div>
           </div>
           <main className={clsx({
-            'overflow-y-auto block': true,
+            'overflow-y-auto block lg:block': true,
             hidden: tab !== TABS.LIST
           })}>
             <StoreList stores={filteredStores} onClick={handleStoreListItemClick} />
@@ -101,7 +101,7 @@ function StoreLocator ({ stores }: Props) {
               : ''}
           </main>
           <footer className={clsx({
-            'border-t justify-center items-center flex': true,
+            'border-t justify-center items-center flex lg:flex': true,
             hidden: tab !== TABS.LIST
           })}>
             <button
