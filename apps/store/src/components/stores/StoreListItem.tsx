@@ -10,7 +10,7 @@ type Props = {
 
 export default function StoreListItem ({ store, showWebsite = false, showBrands = false }: Props) {
   return (
-    <article className="text-left flex flex-col gap-2 p-2">
+    <article className="text-left flex flex-col gap-2 p-2 overflow-x-hidden">
       <h2 className='text-base'>{store.name}</h2>
       <p className='text-sm text-neutral-700'>{store.address} - {store.city}</p>
       <HoursInfo hours={store.hours} />

@@ -40,12 +40,20 @@ function StoreLocator ({ stores }: Props) {
 
   const [tab, setTab] = useState<string>(TABS.MAP)
 
+  const handleStoreListItemClick = (store: Store | null) => {
+    handleStoreClick(store)
+    setTab(TABS.MAP)
+  }
+
   if (!isLoaded) return null
 
   return (
     <div className="flex max-w-6xl mx-auto">
       <section className="gap-4 w-full lg:grid lg:grid-cols-[350px_auto]">
-        <aside className='border border-neutral-200 max-h-[600px] lg:grid lg:grid-rows-[minmax(120px,auto)_1fr_50px]'>
+        <aside className={clsx({
+          'border-neutral-200 lg:max-h-[600px] grid lg:grid-rows-[minmax(120px,auto)_1fr_70px]': true,
+          'grid-rows-[minmax(120px,auto)_1fr_70px]': tab === TABS.LIST
+        })}>
           <div>
             <form onSubmit={handleSearch} className='flex items-center border-b border-neutral-200 p-4 bg-neutral-100'>
               <div className="w-full px-4 py-2 text-sm bg-white relative">
@@ -79,11 +87,11 @@ function StoreLocator ({ stores }: Props) {
               </div>
             </div>
           </div>
-          <div className={clsx({
-            'overflow-y-auto lg:block': true,
+          <main className={clsx({
+            'overflow-y-auto block': true,
             hidden: tab !== TABS.LIST
           })}>
-            <StoreList stores={filteredStores} onClick={handleStoreClick} />
+            <StoreList stores={filteredStores} onClick={handleStoreListItemClick} />
             {filteredStores.length === 0
               ? (
                 <div className='text-center p-4 text-neutral-500'>
@@ -91,11 +99,19 @@ function StoreLocator ({ stores }: Props) {
                 </div>
                 )
               : ''}
-          </div>
-          <button onClick={resetFilters} className={clsx({
-            'border-t': true,
+          </main>
+          <footer className={clsx({
+            'border-t justify-center items-center flex': true,
             hidden: tab !== TABS.LIST
-          })}>Mostrar todo</button>
+          })}>
+            <button
+              onClick={resetFilters}
+              className='rounded-md border border-neutral-300 px-4 py-2 hover:border-neutral-500 disabled:opacity-60 disabled:hover:border-neutral-300'
+              disabled={filteredStores.length === stores.length}
+            >
+              Mostrar todo
+            </button>
+          </footer>
         </aside>
         <GoogleMap
           mapContainerClassName={clsx({

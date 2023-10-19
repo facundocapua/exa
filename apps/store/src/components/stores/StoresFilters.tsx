@@ -33,6 +33,7 @@ export default function StoresFilters ({ stores }: Props) {
       : [...brands, value]
 
     setBrands(newSelected)
+    setShowFilters(false)
   }
 
   return (
