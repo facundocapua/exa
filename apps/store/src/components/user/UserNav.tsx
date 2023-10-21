@@ -3,9 +3,9 @@ import Account from './Account'
 
 export default function UserNav () {
   return (
-    <div className="flex items-center gap-2 justify-end">
+    <div className="flex items-center gap-6 justify-end">
       <Account />
-      <div>
+      <div className='flex items-center'>
         <Cart />
       </div>
     </div>
