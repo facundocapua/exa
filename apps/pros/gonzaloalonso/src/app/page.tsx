@@ -1,7 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-export default function Home() {
-  
+export default function Home () {
   return (
     <div className="relative">
       <div className="mx-auto max-w-7xl">

@@ -1,15 +1,14 @@
-import Link from "next/link";
-import Logo from "./Logo";
+import Link from 'next/link'
+import Logo from './Logo'
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { id:crypto.randomUUID(), name: 'Sobre mí', href: '/sobre-mi' },
-  { id:crypto.randomUUID(), name: 'Portfolio', href: '/portfolio' },
-  { id:crypto.randomUUID(), name: 'Galería', href: '/galeria' }  
+  { id: crypto.randomUUID(), name: 'Sobre mí', href: '/sobre-mi' },
+  { id: crypto.randomUUID(), name: 'Portfolio', href: '/portfolio' },
+  { id: crypto.randomUUID(), name: 'Galería', href: '/galeria' }
 ]
 
-
-export default async function Header(){
+export default async function Header () {
   return (
     <header className="py-10">
       <div className="flex justify-between items-center">
