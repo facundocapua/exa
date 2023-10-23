@@ -24,10 +24,10 @@ export default function StoresBanner () {
       >
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <h2 id="sale-heading" className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Exclusivo buscador eXa Pros
+            Buscador eXa Professionals
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600 [text-wrap:balance]">
-            Utiliza nuestro buscador para explorar los profesionales asociados y encontrar el que mejor se adapte a tus necesidades.
+            Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.
           </p>
           <Link href='/stores'
             className="mt-6 inline-block w-full rounded-md border border-transparent bg-gray-900 px-8 py-3 font-medium text-white hover:bg-gray-800 sm:w-auto"
