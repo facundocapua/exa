@@ -11,14 +11,16 @@ const navigation = [
 export default async function Header () {
   return (
     <header className="py-10">
-      <div className="flex justify-between items-center">
+      <div className="grid grid-cols-3 w-full items-center">
         <nav className="flex gap-8">
           {navigation.map((item) => (<Link key={item.id} href={item.href}>{item.name}</Link>))}
         </nav>
         <Logo />
-        <Link href="/tienda">
+
+        <Link href="/tienda" className='flex justify-end'>
           <ShoppingBagIcon className="h-6 w-6" />
         </Link>
+
       </div>
     </header>
   )
