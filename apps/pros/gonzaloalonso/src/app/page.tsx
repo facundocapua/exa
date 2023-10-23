@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home () {
@@ -36,10 +37,11 @@ export default function Home () {
         </div>
       </div>
       <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
-          className="object-cover lg:aspect-auto lg:h-full lg:w-full"
+        <Image
+          className="object-cover lg:aspect-auto lg:h-full lg:w-full object-top"
           src="/home.jpg"
           alt=""
+          fill
         />
       </div>
     </div>
