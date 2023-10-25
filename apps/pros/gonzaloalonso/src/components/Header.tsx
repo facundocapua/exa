@@ -10,11 +10,12 @@ const navigation = [
 
 export default async function Header () {
   return (
-    <header className="pt-4 pb-8">
+    <header className="pt-4 pb-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-3 w-full items-center">
         <nav className="flex gap-8">
           {navigation.map((item) => (<Link key={item.id} href={item.href}>{item.name}</Link>))}
         </nav>
+
         <Logo />
 
         <Link href="/tienda" className='flex justify-end'>
