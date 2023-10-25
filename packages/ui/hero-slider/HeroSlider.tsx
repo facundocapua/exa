@@ -4,9 +4,10 @@ import { useState, useEffect, Fragment } from 'react'
 import useSwipe from './useSwipe'
 import BackButton from './BackButton'
 import ForwardButton from './ForwardButton'
+import Link from 'next/link'
 
 type Props = {
-  slides: Array<{image: string, imageMobile: string}>
+  slides: Array<{image: string, imageMobile: string, link: string}>
 }
 
 export default function HeroSlider ({ slides }: Props) {
@@ -73,7 +74,7 @@ export default function HeroSlider ({ slides }: Props) {
         onTouchEnd={handleTouchEnd}
       >
         {slides.map((slide, index) => (
-          <Fragment key={index}>
+          <Link key={index} href={slide.link}>
             <Image
               // key={index}
               src={slide.imageMobile}
@@ -104,7 +105,7 @@ export default function HeroSlider ({ slides }: Props) {
               draggable={false}
               priority={index === 0}
             />
-          </Fragment>
+          </Link>
         ))}
       </div>
 

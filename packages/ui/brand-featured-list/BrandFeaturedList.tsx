@@ -43,6 +43,7 @@ export default function CategoryFeaturedList ({ brands }: Props) {
               <Image
                 src={brand.image}
                 alt={brand.name}
+                className="dark:invert"
                 width={180}
                 height={180}
               />
