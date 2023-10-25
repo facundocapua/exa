@@ -1,3 +1,4 @@
+import { getStoreBrands } from './brand'
 import type { Filter, Product } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
@@ -17,6 +18,23 @@ export const getProducts = async (): Promise<Array<Product>> => {
 
 export const getFeaturedProducts = async (): Promise<Array<Product>> => {
   const data = await getProducts()
+
+  return data
+}
+
+export const getStoreFeaturedProducts = async (storeId: string): Promise<Array<Product>> => {
+  const client = initClient()
+
+  const brands = await getStoreBrands(storeId)
+  const brandIds = brands.map((brand) => brand.id)
+
+  const { data } = await client
+    .from('products')
+    .select('*, images: products_images(image), brand(*), categories(*)')
+    .in('brand.id', brandIds)
+    .returns<Array<Product>>()
+
+  if (!data?.length) return []
 
   return data
 }
