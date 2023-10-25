@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FacebookIcon, InstagramIcon, TwitterIcon } from 'ui/server'
+import { FacebookIcon, InstagramIcon } from 'ui/server'
 
 const navigation = {
   social: [
@@ -13,11 +13,6 @@ const navigation = {
       href: 'https://www.instagram.com/gonzaloalonsoestilista/',
       icon: InstagramIcon
     }
-    // {
-    //   name: 'Twitter',
-    //   href: 'https://twitter.com/eXaBeautyOk',
-    //   icon: TwitterIcon
-    // }
   ]
 }
 export default async function Footer () {
