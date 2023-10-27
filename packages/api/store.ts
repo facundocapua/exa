@@ -13,3 +13,15 @@ export async function getStores (): Promise<Array<Store>> {
 
   return data
 }
+
+export async function getStore (storeId: Store['id']): Promise<Store | null> {
+  const client = initClient()
+  const { data } = await client
+    .from('stores')
+    .select('*, brands(*)')
+    .eq('id', storeId)
+    .returns<Store>()
+    .single()
+
+  return data
+}

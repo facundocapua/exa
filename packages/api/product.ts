@@ -30,7 +30,7 @@ export const getStoreFeaturedProducts = async (storeId: string): Promise<Array<P
 
   const { data } = await client
     .from('products')
-    .select('*, images: products_images(image), brand(*), categories(*)')
+    .select('*, images: products_images(image), brand!inner(*), categories(*)')
     .in('brand.id', brandIds)
     .returns<Array<Product>>()
 
