@@ -68,7 +68,7 @@ export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<
 
 type GetFilteredProductsType = {
   filters: FiltersType
-  restrinctions: FiltersType
+  restrinctions?: FiltersType
   exclude?: Array<string>
 }
 
@@ -85,7 +85,7 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
     .select('*, images: products_images(image), brand!inner(*), categories!inner(*)')
     .eq('is_active', true)
 
-  const { data: restrictedData } = await applyRestrinctions(query, restrinctions)
+  const { data: restrictedData } = await applyRestrinctions(query, restrinctions ?? {})
   const filteredData = applyFilters(restrictedData, filters)
 
   return new Promise((resolve) => {

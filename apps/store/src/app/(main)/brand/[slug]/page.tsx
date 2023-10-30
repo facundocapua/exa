@@ -1,9 +1,7 @@
-import Breadcrumb from '@/components/Breadcrumb'
-import AppliedFilters from '@/components/category/AppliedFilters'
-import Filters from '@/components/category/Filters'
 import { getBrand, getBrands, getFilteredProducts } from 'api'
 import { notFound } from 'next/navigation'
-import { ProductCard } from 'ui/server'
+import { Filters } from 'ui'
+import { AppliedFilters, Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
   params: {

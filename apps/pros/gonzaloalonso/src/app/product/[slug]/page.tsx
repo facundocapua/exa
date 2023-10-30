@@ -1,3 +1,4 @@
+// import RelatedProducts from '@/components/product/RelatedProducts'
 import { getProduct, getProducts } from 'api'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'

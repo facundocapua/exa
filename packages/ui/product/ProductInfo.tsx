@@ -12,7 +12,7 @@ export default function ProductInfo ({ product }: Props) {
   return (
     <>
       <Link href={`/brand/${product.brand.slug}`} className='block uppercase text-sm text-primary-700 mb-4'>{product.brand.name}</Link>
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{product.name}</h1>
       <div className="mt-3">
         <h2 className="sr-only">Información de producto</h2>
         <div className="flex gap-2 mt-6 items-center">

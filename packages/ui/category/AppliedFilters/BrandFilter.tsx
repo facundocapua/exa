@@ -1,6 +1,7 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { getBrand } from 'api'
-import { Badge } from 'ui/server'
+import { Badge } from '../../generic'
+import Link from 'next/link'
 
 type Props = {
   values: string
@@ -17,15 +18,15 @@ const BrandLabel = async ({ value }: {value: string}) => {
 export default async function BrandFilter ({ values, generateLink }: Props) {
   return (
     <div className="flex items-center py-2">
-      <span className="text-sm font-medium text-neutral-900">Marca:</span>
-      <span className="ml-2 text-sm text-neutral-700">
+      <span className="text-sm font-medium text-neutral-900 dark:text-neutral-50">Marca:</span>
+      <span className="ml-2 text-sm text-neutral-700 dark:text-neutral-200">
         {values.split(',').map((value: string) => (
-          <a key={value} href={generateLink('brand', value)}>
+          <Link key={value} href={generateLink('brand', value)}>
             <Badge className='gap-1'>
               <BrandLabel value={value} />
               <XMarkIcon className="h-4 w-4" />
             </Badge>
-          </a>
+          </Link>
         ))}
       </span>
     </div>

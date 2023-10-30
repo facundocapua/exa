@@ -29,8 +29,8 @@ export default function RootLayout ({
   children: ReactNode
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${kanit.variable} dark`}>
-      <body className='bg-black text-white'>
+    <html lang="es" className={`${inter.variable} ${kanit.variable} antialiased dark`}>
+      <body className='font-sans antialiased bg-black text-white'>
         <Header />
         {children}
         <Footer />

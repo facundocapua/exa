@@ -3,7 +3,7 @@ import BrandFilter from './AppliedFilters/BrandFilter'
 import PriceFilter from './AppliedFilters/PriceFilter'
 import GenericFilter from './AppliedFilters/GenericFilter'
 import CategoryFilter from './AppliedFilters/CategoryFilter'
-import { generateUrl, removeSearchParamValue } from 'ui/server'
+import { generateUrl, removeSearchParamValue } from '../utils/url'
 
 const ATTRIBUTES = {
   category: CategoryFilter,
@@ -33,10 +33,10 @@ export default function AppliedFilters ({ url, searchParams }: Props) {
   }
 
   return (
-    <section className='pb-4 mb-6 border-b-2 border-b-neutral-200'>
+    <section className='pb-4 mb-6 border-b-2 border-b-neutral-200 dark:border-b-neutral-700'>
       <header className='flex justify-between items-center'>
-        <h3 className='font-semibold text-neutral-700 '>Filtrado por:</h3>
-        <a href={url} className='text-xs text-primary-700'>Reiniciar</a>
+        <h3 className='font-semibold text-neutral-700 dark:text-neutral-200'>Filtrado por:</h3>
+        <a href={url} className='text-xs text-primary-700 dark:text-primary-300'>Reiniciar</a>
       </header>
 
       {filters.map(([key, values]) => (

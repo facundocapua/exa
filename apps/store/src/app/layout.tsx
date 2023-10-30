@@ -28,7 +28,7 @@ type Props = {
 export default function RootLayout ({ children }:Props) {
   return (
     <html lang="es" className={`${inter.variable} ${kanit.variable}`}>
-      <body className='font-sans bg-white'>
+      <body className="font-sans antialiased bg-white">
         {children}
       </body>
     </html>

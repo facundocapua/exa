@@ -111,7 +111,7 @@ export const applyFilters = (products: Array<Product>, filters: FiltersType) => 
 
   const categories = category?.split(',') || []
   const brands = brand?.split(',') || []
-  const [minPrice, maxPrice] = price?.split(',') || []
+  const [minPrice, maxPrice] = price?.split('-') || []
 
   const data = products.filter((product) => {
     if (categories.length) {

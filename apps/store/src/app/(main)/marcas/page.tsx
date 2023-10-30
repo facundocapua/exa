@@ -1,6 +1,6 @@
-import Breadcrumb from '@/components/Breadcrumb'
 import { getBrands } from 'api'
 import { BrandsList } from 'ui'
+import { Breadcrumb } from 'ui/server'
 
 export default async function Brand () {
   const brands = await getBrands()
