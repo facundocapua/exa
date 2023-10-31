@@ -37,7 +37,7 @@ export default function OpeningHoursSlider ({ hours }: Props) {
             <article key={item.day} className='embla__slide grow-0 shrink-0  md:basis-0'>
               <div className={clsx(
                 'rounded-full flex flex-col items-center justify-center w-[150px] h-[150px]',
-                item.hours ? 'bg-primary-700' : 'bg-gray-600'
+                item.hours ? 'bg-primary-700' : 'bg-gray-800'
               )}>
                 <span className="text-5xl">{item.day}</span>
                 <span className="text-lg">{item.hours ? item.hours : 'Cerrado'}</span>

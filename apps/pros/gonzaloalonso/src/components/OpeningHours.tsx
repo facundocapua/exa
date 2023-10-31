@@ -60,7 +60,7 @@ export default async function OpeningHours () {
   return (
     <section className='relative'>
       <div className='absolute w-full h-full -z-10 object-cover overflow-hidden'>
-        <div className='from-black from-20% to-80% via-black/20 to-black w-full h-full bg-gradient-to-r absolute z-10'></div>
+        <div className='from-black from-0 to-100% md:from-20% md:to-80% 2xl:from-25% 2xl:to-75% via-black/20 to-black w-full h-full bg-gradient-to-r absolute z-10'></div>
         <div className='relative w-[700px] md:w-full h-[350px] mx-auto'>
           <Image alt='Nuestros horarios' src="/bg-hours.png" width={900} height={442} className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
         </div>
