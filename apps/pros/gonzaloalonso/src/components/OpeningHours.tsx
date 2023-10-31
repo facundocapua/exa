@@ -1,5 +1,6 @@
 import { getStore } from 'api'
-import clsx from 'clsx'
+import Image from 'next/image'
+import { OpeningHoursSlider } from 'ui'
 
 const weekDays = {
   mon: {
@@ -57,20 +58,14 @@ export default async function OpeningHours () {
   })
 
   return (
-    <section className='py-8 my-8'>
-      <h1 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>Nuestros horarios</h1>
-      <div className="flex max-w-7xl mx-auto justify-around flex-wrap md:justify-between gap-y-4 md:gap-y-0">
-        {openingHours.map((item) => (
-          <article key={item.day} className={clsx(
-            'rounded-full flex flex-col items-center justify-center w-[150px] h-[150px]',
-            item.hours ? 'bg-primary-700' : 'bg-gray-600'
-          )}>
-            <span className="text-5xl">{item.day}</span>
-            <span className="text-lg">{item.hours ? item.hours : 'Cerrado'}</span>
-          </article>
-        ))}
-
+    <section className='relative'>
+      <div className='absolute w-full h-full -z-10 object-cover overflow-hidden'>
+        <div className='from-black from-20% to-80% via-black/20 to-black w-full h-full bg-gradient-to-r absolute z-10'></div>
+        <div className='relative w-[700px] md:w-full h-[350px] mx-auto'>
+          <Image alt='Nuestros horarios' src="/bg-hours.png" width={900} height={442} className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
+        </div>
       </div>
+      <OpeningHoursSlider hours={openingHours} />
     </section>
   )
 }
