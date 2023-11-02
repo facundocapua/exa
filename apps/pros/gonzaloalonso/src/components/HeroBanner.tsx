@@ -16,12 +16,12 @@ export default async function HeroBanner () {
               <polygon points="0,0 90,0 50,100 0,100" />
             </svg>
 
-            <div className="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0 ">
-              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+            <div className="relative px-6 py-32 sm:py-40 lg:pl-8 lg:py-56 lg:pr-0 ">
+              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-2xl">
                 <h1 className="text-4xl font-bold tracking-tight lg:text-gray-300 sm:text-6xl text-black ">
-                  Gonzalo <span className="text-black lg:text-primary-400">Alonso</span>
+                  <span className="text-black lg:text-primary-400">Gonzalo Alonso</span> Studio
                 </h1>
-                <p className="mt-6 text-lg leading-8 text-gray-900 lg:text-gray-300">
+                <p className="mt-6 text-lg font-semibold leading-8 text-gray-900 lg:text-gray-300">
                   Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
                   amet fugiat veniam occaecat fugiat aliqua.
                 </p>

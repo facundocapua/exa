@@ -13,7 +13,7 @@ export default function Header () {
     <header className="pt-4 pb-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-3 w-full px-4 items-center">
         <nav className="hidden lg:flex gap-8">
-          {navigation.map((item) => (<Link key={item.id} href={item.href}>{item.name}</Link>))}
+          {navigation.map((item) => (<Link key={item.id} href={item.href} className='whitespace-nowrap'>{item.name}</Link>))}
         </nav>
         <div className="flex lg:hidden">
           <button
