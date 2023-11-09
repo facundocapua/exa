@@ -1,6 +1,5 @@
 'use client'
 import { Dialog, Transition } from '@headlessui/react'
-import { XCircleIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { Fragment, useCallback, useEffect } from 'react'
