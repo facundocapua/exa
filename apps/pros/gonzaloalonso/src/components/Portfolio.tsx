@@ -1,19 +1,30 @@
 'use client'
 import { Dialog, Transition } from '@headlessui/react'
+import { XCircleIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import { Fragment } from 'react'
+import { Fragment, useCallback, useEffect } from 'react'
 
 type Props = {
   images: Array<string>
 }
+
+const imagesClasses = [
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl md:col-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative'
+]
+
 export default function Portfolio ({ images }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const { replace } = useRouter()
   const image = searchParams.get('image') ?? ''
 
-  const setImage = (image: number | null) => {
+  const setImage = useCallback((image: number | null) => {
     const params = new URLSearchParams(searchParams)
     if (image === null) {
       params.delete('image')
@@ -21,14 +32,35 @@ export default function Portfolio ({ images }: Props) {
       params.set('image', String(image))
     }
     replace(`${pathname}?${params.toString()}`)
-  }
+  }, [pathname, replace, searchParams])
+
+  useEffect(() => {
+    const keyDownEvent = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        const newImage = Number(image) - 1
+        const prevImage = newImage < 0 ? images.length - 1 : newImage
+        setImage(prevImage)
+        return
+      }
+      if (event.key === 'ArrowRight') {
+        const nextImage = (Number(image) + 1) % images.length
+        setImage(nextImage)
+        return
+      }
+      console.log(event.key)
+    }
+
+    window.addEventListener('keydown', keyDownEvent)
+
+    return () => window.removeEventListener('keydown', keyDownEvent)
+  }, [image, images, setImage])
 
   return (
     <>
-      <section className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-        {images.map((image, index) => (
-          <div key={image} className='relative h-[350px]' onClick={() => setImage(index)}>
-            <Image src={image} alt="" className='object-cover  rounded-lg' fill />
+      <section className="grid md:grid-cols-3 md:grid-rows-3 gap-4 md:h-screen">
+        {imagesClasses.map((imageClasses, index) => (
+          <div key={index} className={imageClasses}>
+            {images[index] && <Image src={images[index]} alt="" className='object-cover rounded-lg cursor-pointer' fill onClick={() => setImage(index)} />}
           </div>
         ))}
       </section>
@@ -58,7 +90,7 @@ export default function Portfolio ({ images }: Props) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-4 text-left align-middle shadow-xl transition-all">
                   <div className="relative">
                     {image !== '' ? (<Image src={images[Number(image)]} width={1500} height={1000} alt="image" />) : null}
                   </div>
