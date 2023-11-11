@@ -4,8 +4,7 @@ import { BrandFeaturedList } from 'ui'
 export default async function FeaturedBrands () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   const brands = await getStoreFeaturedBrands(storeId)
-
-  if (!brands) return null
+  if (!brands || brands.length === 0) return null
 
   return (
     <section className='py-8 my-8'>

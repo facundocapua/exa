@@ -1,31 +1,52 @@
 import { MapPinIcon } from '@heroicons/react/24/outline'
 import { getStore } from 'api'
 import Link from 'next/link'
-import { FacebookIcon, InstagramIcon } from 'ui/server'
-import WhatsAppIcon from '../../public/assets/whatsapp.svg'
-import WhatsAppIconBW from '../../public/assets/whatsapp-bw.png'
+import { FacebookIcon, InstagramIcon, WhatsAppIcon, WhatsAppIconBW } from 'ui/server'
 import Image from 'next/image'
+import type { FC } from 'react'
 
-const socialNetworks = [
-  {
+type SocialNetwork = {
+  name: string
+  icon: FC<{className: string}>
+  iconAlternative: FC<{className: string}>
+  href: string
+}
+
+const socialNetworksMeta: Record<string, Omit<SocialNetwork, 'href'>> = {
+  facebook: {
     name: 'Facebook',
-    href: 'https://www.facebook.com/alonsoestilista',
-    icon: FacebookIcon
+    icon: FacebookIcon,
+    iconAlternative: FacebookIcon
   },
-  {
+  instagram: {
     name: 'Instagram',
-    href: 'https://www.instagram.com/gonzaloalonsoestilista/',
-    icon: InstagramIcon
+    icon: InstagramIcon,
+    iconAlternative: InstagramIcon
+  },
+  whatsapp: {
+    name: 'WhatsApp',
+    icon: WhatsAppIconBW,
+    iconAlternative: WhatsAppIcon
   }
-]
-
-const whatsapp = '5492494381017'
+}
 
 export default async function StoreMap () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
-  const store = await getStore(storeId)
+  if (!storeId) return null
 
+  const store = await getStore(storeId)
   if (!store) return null
+
+  if (!store.map) return null
+
+  const socialNetworks: Array<SocialNetwork> = Object.keys(store.social_networks ?? {})
+    .filter(value => socialNetworksMeta[value])
+    .map((key) => {
+      return {
+        ...socialNetworksMeta[key],
+        href: store.social_networks[key]
+      }
+    })
 
   return (
     <>
@@ -35,30 +56,31 @@ export default async function StoreMap () {
           <Link href="https://maps.google.com/maps/dir//Gonzalo+Alonso+Studio+Mitre+820+B7000+Tandil+Provincia+de+Buenos+Aires/@-37.3226979,-59.1349067,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x95911fc724fd3d1b:0x73872f573ef403dd" target='_blank' rel='' className="flex justify-start py-4 gap-2"><MapPinIcon className="w-6 h-6" />{store.address} - {store.city}, {store.state}</Link>
           <div className='flex gap-8 py-10'>
             {socialNetworks.map((item) => (
-              <Link key={item.name} href={item.href} className="text-gray-300 hover:text-gray-400">
+              <Link key={item.name} href={item.href} target="_blank" rel="noreferrer nofollow" className="opacity-90 hover:opacity-70">
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-9 w-9" aria-hidden="true" />
               </Link>
             ))}
-            <Link href={`https://wa.me/${whatsapp}`} className="opacity-90 hover:opacity-70">
-              <span className="sr-only">WhatsApp</span>
-              <Image src={WhatsAppIconBW} className="h-9 w-9 invert" aria-hidden="true" alt='WhastApp' />
-            </Link>
           </div>
           <div className='relative w-[400px] h-[200px] rounded-lg self-start'>
             <Link href='/studio'>
-              <Image src='/portfolio/portfolio-1.jpg' alt='Studio' className='rounded-lg object-cover grayscale hover:grayscale-0' fill />
+              <Image src='/studio/1.jpg' alt='Studio' className='rounded-lg object-cover grayscale hover:grayscale-0' fill />
             </Link>
           </div>
 
         </div>
-        <div className="flex-grow">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.836606973158!2d-59.13748162331226!3d-37.32269787210279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95911fc724fd3d1b%3A0x73872f573ef403dd!2sGonzalo%20Alonso%20Studio!5e0!3m2!1ses-419!2sar!4v1698443707290!5m2!1ses-419!2sar" width="100%" height="450" style={{ border: 0 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <div className="flex-grow" dangerouslySetInnerHTML={{ __html: store.map }} />
+
       </section>
-      <Link href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer nofollow">
-        <Image className="w-16 fixed bottom-4 right-4 m-4" src={WhatsAppIcon} alt='WhastApp' />
-      </Link>
+      {
+        store.social_networks?.whatsapp
+          ? (<Link href={store.social_networks.whatsapp} target="_blank" rel="noreferrer nofollow">
+            <span className="sr-only">{socialNetworksMeta.whatsapp.name}</span>
+            <socialNetworksMeta.whatsapp.iconAlternative className="w-16 fixed bottom-4 right-4 m-4" aria-hidden="true" />
+          </Link>)
+          : null
+      }
+
     </>
   )
 }
