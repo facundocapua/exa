@@ -14,7 +14,7 @@ export default function AboutMe () {
       </header>
       <footer className='w-full md:w-1/2'>
         <div
-          className='absolute w-full h-[450px] md:h-[720px]'
+          className='absolute w-full md:w-1/2 h-[450px] md:h-[720px]'
           style={{
             background: 'radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 75%)'
           }}
