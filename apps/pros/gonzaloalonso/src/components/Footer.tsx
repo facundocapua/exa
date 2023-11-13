@@ -17,6 +17,11 @@ const socialNetworks = [
   }
 ]
 
+const getGoogleSearchLink = (store) => {
+  const search = `${store.address} - ${store.city}, ${store.state}`
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}`
+}
+
 export default async function Footer () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   const store = await getStore(storeId)
@@ -29,13 +34,13 @@ export default async function Footer () {
         <Logo centered={false} />
         <div className="flex flex-col text-gray-300 gap-4">
           <h3 className='uppercase text-xl text-gray-200'>Contacto</h3>
-          <Link href="mailto:gonzaloaloma@gmail.com" className='flex items-center gap-2'>
-            <EnvelopeIcon className='w-5 h-5' /> alonsoestilista@gmail.com
+          <Link href={`mailto:${store.email}`} className='flex items-center gap-2'>
+            <EnvelopeIcon className='w-5 h-5' /> {store.email}
           </Link>
-          <Link href="mailto:gonzaloaloma@gmail.com" className='flex items-center gap-2'>
-            <PhoneIcon className='w-5 h-5' /> (249) 438 1017
+          <Link href={`sms:${store.phone}`} className='flex items-center gap-2'>
+            <PhoneIcon className='w-5 h-5' /> {store.phone}
           </Link>
-          <Link href="mailto:gonzaloaloma@gmail.com" className='flex items-center gap-2'>
+          <Link href={store.map_link ?? getGoogleSearchLink(store)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
             <MapPinIcon className='w-5 h-5' /> {store.address} - {store.city}, {store.state}
           </Link>
         </div>

@@ -66,11 +66,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "brands_provider_fkey"
-            columns: ["provider"]
+            foreignKeyName: 'brands_provider_fkey'
+            columns: ['provider']
             isOneToOne: false
-            referencedRelation: "providers"
-            referencedColumns: ["id"]
+            referencedRelation: 'providers'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -113,11 +113,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "categories_parent_fkey"
-            columns: ["parent"]
+            foreignKeyName: 'categories_parent_fkey'
+            columns: ['parent']
             isOneToOne: false
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
+            referencedRelation: 'categories'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -163,18 +163,18 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_brand_fkey"
-            columns: ["brand"]
+            foreignKeyName: 'products_brand_fkey'
+            columns: ['brand']
             isOneToOne: false
-            referencedRelation: "brands"
-            referencedColumns: ["id"]
+            referencedRelation: 'brands'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "products_provider_fkey"
-            columns: ["provider"]
+            foreignKeyName: 'products_provider_fkey'
+            columns: ['provider']
             isOneToOne: false
-            referencedRelation: "providers"
-            referencedColumns: ["id"]
+            referencedRelation: 'providers'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -193,18 +193,18 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_categories_category_fkey"
-            columns: ["category"]
+            foreignKeyName: 'products_categories_category_fkey'
+            columns: ['category']
             isOneToOne: false
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
+            referencedRelation: 'categories'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "products_categories_product_fkey"
-            columns: ["product"]
+            foreignKeyName: 'products_categories_product_fkey'
+            columns: ['product']
             isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -229,11 +229,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_images_product_fkey"
-            columns: ["product"]
+            foreignKeyName: 'products_images_product_fkey'
+            columns: ['product']
             isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -252,18 +252,18 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_related_from_fkey"
-            columns: ["from"]
+            foreignKeyName: 'products_related_from_fkey'
+            columns: ['from']
             isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "products_related_to_fkey"
-            columns: ["to"]
+            foreignKeyName: 'products_related_to_fkey'
+            columns: ['to']
             isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -303,11 +303,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_variants_product_fkey"
-            columns: ["product"]
+            foreignKeyName: 'products_variants_product_fkey'
+            columns: ['product']
             isOneToOne: false
-            referencedRelation: "products"
-            referencedColumns: ["id"]
+            referencedRelation: 'products'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -332,11 +332,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "products_variants_images_variant_fkey"
-            columns: ["variant"]
+            foreignKeyName: 'products_variants_images_variant_fkey'
+            columns: ['variant']
             isOneToOne: false
-            referencedRelation: "products_variants"
-            referencedColumns: ["id"]
+            referencedRelation: 'products_variants'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -363,13 +363,16 @@ export interface Database {
           address: string | null
           city: string | null
           created_at: string
+          email: string | null
           hours: Json | null
           id: string
           is_active: boolean
           lat: number
           lng: number
           map: string | null
+          map_link: string | null
           name: string
+          phone: string | null
           social_networks: Json | null
           state: string | null
           website: string | null
@@ -378,13 +381,16 @@ export interface Database {
           address?: string | null
           city?: string | null
           created_at?: string
+          email?: string | null
           hours?: Json | null
           id?: string
           is_active?: boolean
           lat: number
           lng: number
           map?: string | null
+          map_link?: string | null
           name: string
+          phone?: string | null
           social_networks?: Json | null
           state?: string | null
           website?: string | null
@@ -393,13 +399,16 @@ export interface Database {
           address?: string | null
           city?: string | null
           created_at?: string
+          email?: string | null
           hours?: Json | null
           id?: string
           is_active?: boolean
           lat?: number
           lng?: number
           map?: string | null
+          map_link?: string | null
           name?: string
+          phone?: string | null
           social_networks?: Json | null
           state?: string | null
           website?: string | null
@@ -421,18 +430,18 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "stores_brands_brand_fkey"
-            columns: ["brand"]
+            foreignKeyName: 'stores_brands_brand_fkey'
+            columns: ['brand']
             isOneToOne: false
-            referencedRelation: "brands"
-            referencedColumns: ["id"]
+            referencedRelation: 'brands'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "stores_brands_store_fkey"
-            columns: ["store"]
+            foreignKeyName: 'stores_brands_store_fkey'
+            columns: ['store']
             isOneToOne: false
-            referencedRelation: "stores"
-            referencedColumns: ["id"]
+            referencedRelation: 'stores'
+            referencedColumns: ['id']
           }
         ]
       }
