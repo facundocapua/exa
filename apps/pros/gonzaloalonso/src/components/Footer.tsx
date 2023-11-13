@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { FacebookIcon, InstagramIcon } from 'ui/server'
 import Logo from './Logo'
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import type { Store } from 'api'
 import { getStore } from 'api'
 
 const socialNetworks = [
@@ -17,7 +18,7 @@ const socialNetworks = [
   }
 ]
 
-const getGoogleSearchLink = (store) => {
+const getGoogleSearchLink = (store: Store) => {
   const search = `${store.address} - ${store.city}, ${store.state}`
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}`
 }
