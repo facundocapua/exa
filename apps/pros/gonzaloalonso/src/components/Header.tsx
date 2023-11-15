@@ -77,6 +77,7 @@ export default function Header () {
                       key={item.name}
                       href={item.href}
                       className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
                     </Link>

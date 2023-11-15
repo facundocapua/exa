@@ -11,7 +11,7 @@ type Props = {
 
 export default function Services ({ services }: Props) {
   return (
-    <section className='grid grid-cols-3 gap-8 max-w-7xl mx-auto my-12'>
+    <section className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto my-12'>
       {services.map((service) => (
         <article key={service.name} className='relative overflow-hidden'>
           <Image src={service.image} alt={service.name} className='object-cover h-full grayscale transition-all ease-in-out duration-500 hover:grayscale-0 hover:scale-110' />
