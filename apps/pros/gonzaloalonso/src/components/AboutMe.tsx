@@ -5,10 +5,10 @@ export default function AboutMe () {
   return (
     <section className='flex w-full flex-col-reverse md:flex-row mb-10'>
       <header className='w-full md:w-1/2 px-2 md:px-4 z-10'>
-        <h1 className='text-5xl font-semibold leading-loose'>Gonzalo <span className='text-primary-300'>Alonso</span></h1>
+        <h1 className='text-4xl md:text-5xl font-semibold my-4'>Gonzalo <span className='text-primary-300'>Alonso</span></h1>
         <div className='flex flex-col gap-6 px-2 md:px-0'>
           {/* @ts-ignore */}
-          <p className='text-bal' style={{ textWrap: 'balance' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed facilisis libero. Suspendisse in nibh et elit fringilla auctor eget eu erat. Mauris eget maximus urna, ut pharetra odio. Nullam a feugiat odio. Suspendisse nec urna augue. Fusce ut iaculis mi. Quisque ac laoreet metus. Vivamus sodales ex et dui imperdiet placerat. Integer ut augue enim. Sed hendrerit vel nibh sit amet finibus.</p>
+          <p style={{ textWrap: 'balance' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed facilisis libero. Suspendisse in nibh et elit fringilla auctor eget eu erat. Mauris eget maximus urna, ut pharetra odio. Nullam a feugiat odio. Suspendisse nec urna augue. Fusce ut iaculis mi. Quisque ac laoreet metus. Vivamus sodales ex et dui imperdiet placerat. Integer ut augue enim. Sed hendrerit vel nibh sit amet finibus.</p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>Phasellus eget molestie ex. Integer sit amet luctus lacus, vel iaculis tellus. Sed elit magna, vehicula at placerat non, fermentum at metus. In at urna efficitur, interdum ante ac, cursus ex. Vestibulum mattis arcu vel libero ornare finibus. Nulla facilisi. Sed mollis nibh tincidunt rhoncus lacinia. Cras vel lacus finibus, lacinia elit ac, gravida velit. Nam eget convallis lacus, ut laoreet magna. Maecenas arcu purus, posuere sed risus nec, fermentum scelerisque augue. Aenean porta mi non nunc consectetur, volutpat sagittis massa lacinia.</p>
           {/* @ts-ignore */}
@@ -17,9 +17,9 @@ export default function AboutMe () {
       </header>
       <footer className='w-full md:w-1/2'>
         <div
-          className='absolute w-full md:w-1/2 h-[450px] md:h-[720px]'
+          className='absolute w-full md:w-[640px] h-[483px] md:h-[720px]'
           style={{
-            background: 'radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 75%)'
+            background: 'radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 70%)'
           }}
         ></div>
         <Image src={portfolioImage} alt='Gonzalo Alonso' />

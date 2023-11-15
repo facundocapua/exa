@@ -17,7 +17,7 @@ const imagesClasses = [
   'w-full block h-[350px] md:h-full rounded-xl relative'
 ]
 
-export default function Portfolio ({ images }: Props) {
+export default function Gallery ({ images }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const { replace } = useRouter()
