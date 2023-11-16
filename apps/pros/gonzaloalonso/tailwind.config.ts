@@ -6,7 +6,8 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../../packages/**/*.{js,ts,jsx,tsx,mdx}'
+    '../../../packages/api/**/*.{js,ts,jsx,tsx,mdx}',
+    '../../../packages/ui/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -17,17 +18,17 @@ const config: Config = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          50: '#faf9ec',
-          100: '#f3f0ce',
-          200: '#e8dea0',
-          300: '#dbc869',
-          400: '#cfb140',
-          500: '#c09c32',
-          600: '#987226',
-          700: '#845c24',
-          800: '#6f4b24',
-          900: '#5f3f24',
-          950: '#372211',
+          50: '#fefbec',
+          100: '#faf4cb',
+          200: '#f5e897',
+          300: '#efd55a',
+          400: '#ebc334',
+          500: '#e4a61c',
+          600: '#ca8115',
+          700: '#a75e16',
+          800: '#884918',
+          900: '#703c17',
+          950: '#401e08',
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
         },
@@ -67,6 +68,10 @@ const config: Config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
+        },
+        appear: {
+          from: { filter: 'grayscale(1)', opacity: '0' },
+          to: { filter: 'grayscale(0)', opacity: '1' }
         }
       },
       animation: {

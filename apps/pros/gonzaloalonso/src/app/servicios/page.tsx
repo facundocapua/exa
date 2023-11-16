@@ -1,22 +1,39 @@
-import Services from '@/components/Services'
-import balayageImg from '../../../public/portfolio/portfolio-3.jpg'
-import cutImg from '../../../public/portfolio/portfolio-6.jpg'
-import colorImg from '../../../public/portfolio/portfolio-1.jpg'
+import Services from '@/components/Services/Services'
+import blondeImg from '../../../public/services/blonde.jpg'
+import haistyleImg from '../../../public/services/hairstyle.jpg'
+import creativeImg from '../../../public/services/highlights.jpg'
+import colorImg from '../../../public/services/color.jpg'
+import cutImg from '../../../public/services/cut.jpg'
+import therapyImg from '../../../public/services/therapy.png'
 
 export default function ServicesPage () {
   const services = [
     {
-      name: 'Balayage',
-      image: balayageImg
+      name: 'Rubios',
+      image: blondeImg
+    },
+    {
+      name: 'Peinado',
+      image: haistyleImg
+    },
+
+    {
+      name: 'Creative Highlights',
+      image: creativeImg
+    },
+    {
+      name: 'Color',
+      image: colorImg
     },
     {
       name: 'Corte',
       image: cutImg
     },
     {
-      name: 'Color',
-      image: colorImg
+      name: 'Terapias',
+      image: therapyImg
     }
+
   ]
 
   return (

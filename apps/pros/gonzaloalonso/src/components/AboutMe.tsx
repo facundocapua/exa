@@ -5,7 +5,7 @@ export default function AboutMe () {
   return (
     <section className='flex w-full flex-col-reverse md:flex-row mb-10'>
       <header className='w-full md:w-1/2 px-2 md:px-4 z-10'>
-        <h1 className='text-4xl md:text-5xl font-semibold my-4'>Gonzalo <span className='text-primary-300'>Alonso</span></h1>
+        <h1 className='text-4xl md:text-5xl font-semibold my-4'>Gonzalo <span className='text-primary-400'>Alonso</span></h1>
         <div className='flex flex-col gap-6 px-2 md:px-0'>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed facilisis libero. Suspendisse in nibh et elit fringilla auctor eget eu erat. Mauris eget maximus urna, ut pharetra odio. Nullam a feugiat odio. Suspendisse nec urna augue. Fusce ut iaculis mi. Quisque ac laoreet metus. Vivamus sodales ex et dui imperdiet placerat. Integer ut augue enim. Sed hendrerit vel nibh sit amet finibus.</p>
