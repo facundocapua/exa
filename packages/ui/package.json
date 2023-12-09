@@ -5,7 +5,8 @@
   "types": "./client.tsx",
   "exports": {
     ".": "./client.tsx",
-    "./server": "./server.tsx"
+    "./server": "./server.tsx",
+    "./styles/*": "./styles/*"
   },
   "license": "MIT",
   "scripts": {
@@ -20,22 +21,22 @@
     "@radix-ui/react-tooltip": "1.0.7",
     "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
-    "embla-carousel-react": "8.0.0-rc14",
-    "next": "14.0.1",
+    "embla-carousel-react": "8.0.0-rc15",
+    "next": "14.0.4",
     "react-dom": "18.2.0",
-    "tailwind-merge": "2.0.0",
-    "tailwindcss": "3.3.5",
-    "zustand": "4.4.4"
+    "tailwind-merge": "2.1.0",
+    "tailwindcss": "3.3.6",
+    "zustand": "4.4.7"
   },
   "devDependencies": {
-    "@types/node": "20.8.9",
-    "@types/react": "^18.2.33",
-    "@types/react-dom": "^18.2.14",
+    "@types/node": "20.10.4",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
     "api": "workspace:*",
-    "eslint": "8.52.0",
+    "eslint": "8.55.0",
     "eslint-config-custom": "workspace:*",
     "react": "^18.2.0",
     "tsconfig": "workspace:*",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }

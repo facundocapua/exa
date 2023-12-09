@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
-  extends: ['custom'],
+  extends: ['eslint-config-custom/next.js'],
+  parser: '@typescript-eslint/parser',
   rules: {
     'react/react-in-jsx-scope': 'off'
   },
