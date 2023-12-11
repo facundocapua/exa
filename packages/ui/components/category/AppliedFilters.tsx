@@ -3,7 +3,7 @@ import BrandFilter from './AppliedFilters/BrandFilter'
 import PriceFilter from './AppliedFilters/PriceFilter'
 import GenericFilter from './AppliedFilters/GenericFilter'
 import CategoryFilter from './AppliedFilters/CategoryFilter'
-import { generateUrl, removeSearchParamValue } from '../utils/url'
+import { generateUrl, removeSearchParamValue } from '../../utils/url'
 
 const ATTRIBUTES = {
   category: CategoryFilter,

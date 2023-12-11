@@ -1,5 +1,5 @@
 import { getRelatedProducts, type Product } from 'api'
-import { ProductSlider } from '../client'
+import ProductSlider from '../product-slider/ProductSlider'
 
 type Props = {
   sku: Product['sku']

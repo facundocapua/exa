@@ -1,13 +1,13 @@
 'use client'
 
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import LoadingDots from '../LoadingDots'
 import { useRouter } from 'next/navigation'
 
 import clsx from 'clsx'
 import { removeItem } from './actions'
 import { useTransition } from 'react'
 import type { CartItem } from 'api'
+import LoadingDots from '../LoadingDots'
 
 export default function DeleteItemButton ({ item }: { item: CartItem }) {
   const router = useRouter()

@@ -1,5 +1,5 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { formatPrice } from '../../utils/price'
+import { formatPrice } from '../../../utils/price'
 import { Badge } from '../../generic'
 
 type Props = {
