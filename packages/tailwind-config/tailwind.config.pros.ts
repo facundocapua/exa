@@ -1,12 +1,12 @@
 import type { Config } from 'tailwindcss'
-import colors from 'tailwindcss/colors'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/ui/components/**/*.{js,ts,jsx,tsx,mdx}'
+    '../../../packages/ui/components/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -16,14 +16,22 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        neutral: colors.gray,
         primary: {
-          ...colors.sky,
+          50: '#fefbec',
+          100: '#faf4cb',
+          200: '#f5e897',
+          300: '#efd55a',
+          400: '#ebc334',
+          500: '#e4a61c',
+          600: '#ca8115',
+          700: '#a75e16',
+          800: '#884918',
+          900: '#703c17',
+          950: '#401e08',
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
-          ...colors.amber,
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'
         },
@@ -48,14 +56,8 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))'
         }
       },
-      // borderRadius: {
-      //   lg: 'var(--radius)',
-      //   md: 'calc(var(--radius) - 2px)',
-      //   sm: 'calc(var(--radius) - 4px)'
-      // },
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        logo: ['var(--font-kanit)']
+        sans: ['var(--font-inter)']
       },
       keyframes: {
         'accordion-down': {
@@ -65,6 +67,10 @@ const config: Config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
+        },
+        appear: {
+          from: { filter: 'grayscale(1)', opacity: '0' },
+          to: { filter: 'grayscale(0)', opacity: '1' }
         }
       },
       animation: {

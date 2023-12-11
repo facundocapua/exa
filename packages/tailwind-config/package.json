@@ -1,0 +1,19 @@
+{
+  "name": "tailwind-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "tailwind-merge": "2.1.0",
+    "tailwindcss-animate": "1.0.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.3.6"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
