@@ -1,29 +1,11 @@
-import type { StaticImageData } from 'next/image'
-import Image from 'next/image'
+import { SERVICES } from '@/data/services'
+import ServiceCard from './service-card'
 
-type Props = {
-  services: Array<{
-    name: string
-    image: StaticImageData
-  }>
-
-}
-
-export default function Services ({ services }: Props) {
+export default function Services () {
   return (
-    <section className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto my-12'>
-      {services.map((service) => (
-        <article
-          key={service.name}
-          className='relative overflow-hidden animate-[appear_linear_both] [animation-timeline:view()] [animation-range:entry_20%_cover_40%] md:animate-none'
-        >
-          <Image
-            src={service.image}
-            alt={service.name}
-            className='object-cover h-full aspect-[9/16] md:grayscale transition-all ease-in-out duration-500 hover:grayscale-0 hover:scale-110'
-          />
-          <h2 className='absolute w-full bottom-3 left-0 text-center font-semibold text-3xl bg-black/25 py-2'>{service.name}</h2>
-        </article>
+    <section className='grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto my-12'>
+      {SERVICES.map((service) => (
+        <ServiceCard key={service.title} {...service} />
       ))}
     </section>
   )

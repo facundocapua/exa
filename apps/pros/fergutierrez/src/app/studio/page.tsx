@@ -1,4 +1,4 @@
-import Portfolio from '@/components/Gallery'
+import Gallery from '@/components/gallery'
 
 const images = [
   '/studio/1.jpg',
@@ -16,7 +16,7 @@ export default function StudioPage () {
         <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Studio</h1>
       </div>
 
-      <Portfolio images={images} />
+      <Gallery images={images} />
     </div>
   )
 }

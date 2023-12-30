@@ -1,4 +1,4 @@
-import Portfolio from '@/components/Gallery'
+import Portfolio from '@/components/gallery'
 import { Breadcrumb } from 'ui/server'
 
 const images = [

@@ -29,9 +29,9 @@ export default function Header () {
         </div>
 
         <nav className="hidden lg:flex max-w-xl mx-auto gap-16 grow items-center justify-around">
-          {navLeft.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname === item.href} />))}
+          {navLeft.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname.startsWith(item.href)} />))}
           <Logo />
-          {navRight.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname === item.href} />))}
+          {navRight.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname.startsWith(item.href)} />))}
         </nav>
 
         <Link href="/tienda" className='flex shrink grow-0 text-gray-100'>

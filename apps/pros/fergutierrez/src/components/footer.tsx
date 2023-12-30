@@ -18,7 +18,7 @@ export default async function Footer () {
 
   return (
     <footer className='bg-gray-600'>
-      <div className='mx-auto max-w-7xl px-6 py-12 lg:px-8 flex w-full justify-between'>
+      <div className='mx-auto max-w-7xl px-6 py-12 lg:px-8 flex flex-col md:flex-row items-center gap-8 w-full justify-between'>
         <Logo />
         <div className="flex flex-col text-gray-300 gap-4">
           <h3 className='uppercase text-xl text-gray-200'>Contacto</h3>
