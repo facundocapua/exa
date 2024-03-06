@@ -1,8 +1,6 @@
-import type { Product } from 'api'
-
 type Props = {
-  price: Product['price']
-  salePrice: Product['sale_price']
+  price: number
+  salePrice: number
 }
 
 export default function DiscountBadge ({ price, salePrice }: Props) {

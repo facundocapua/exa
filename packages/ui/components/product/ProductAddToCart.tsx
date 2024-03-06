@@ -20,8 +20,10 @@ export default function ProductAddToCart ({ product, className }: Props) {
 
   const router = useRouter()
   const handleAddToCart = () => {
+    if (!currentVariant) return
+
     startTransition(async () => {
-      const error = await addItem(product.sku)
+      const error = await addItem(currentVariant.sku ?? '')
 
       if (error) {
         // Trigger the error boundary in the root error.js
@@ -32,7 +34,7 @@ export default function ProductAddToCart ({ product, className }: Props) {
     })
   }
 
-  if (currentVariant && currentVariant?.stock <= 0) {
+  if (currentVariant && currentVariant?.inventory_quantity <= 0) {
     return (
       <button
         aria-label="Agregar al carrito"

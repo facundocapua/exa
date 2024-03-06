@@ -1,8 +1,8 @@
-import type { Category } from 'api'
 import CategoryLink from './CategoryLink'
+import { ProductCategory } from '@medusajs/medusa'
 
 type Props = {
-  category: Category,
+  category: ProductCategory,
   onClick: () => void
 }
 
@@ -12,14 +12,14 @@ const subLevelClasess = {
 }
 
 export default function CategorySubLevel ({ category, onClick }: Props) {
-  const typeImage = category.main_menu?.type === 'image'
+  const typeImage = category.metadata?.type === 'image'
   const containerClases = typeImage ? subLevelClasess.image : subLevelClasess.text
 
   return (
     <div className="relative bg-white">
       <div className="mx-auto max-w-7xl px-8">
         <div className={containerClases}>
-          {category.children?.map((item) => (
+          {category.category_children?.map((item) => (
             <CategoryLink key={item.name} category={item} noImage={!typeImage} onClick={onClick} />
           ))}
           <CategoryLink category={category} noImage={!typeImage} customLabel={category.name === 'Marcas' ? 'Todas las marcas' : 'Ver todo'} onClick={onClick} />

@@ -13,7 +13,7 @@ export async function generateStaticParams () {
   const categories = await getCategories()
 
   return categories.map((category) => ({
-    slug: category.slug
+    slug: category.handle
   }))
 }
 
@@ -25,21 +25,21 @@ export default async function Category ({ params, searchParams }: Props) {
     notFound()
   }
 
-  const brecrumbs = []
+  const breadcrumbs = []
 
   if (category) {
-    const { parent } = category
+    const { parent_category: parent } = category
     if (parent) {
-      brecrumbs.push({
+      breadcrumbs.push({
         name: parent.name,
-        url: `/${parent.slug}`,
+        url: `/${parent.handle}`,
         current: false
       })
     }
 
-    brecrumbs.push({
+    breadcrumbs.push({
       name: category.name,
-      url: `/${category.slug}`,
+      url: `/${category.handle}`,
       current: true
     })
   }
@@ -52,13 +52,13 @@ export default async function Category ({ params, searchParams }: Props) {
 
   return (
     <ProductListPage
-      brecrumbs={brecrumbs}
+      breadcrumbs={breadcrumbs}
       searchParams={searchParams}
       filters={filters}
       products={products}
       total={total}
       title={category.name}
-      url={`/${category.slug}`}
+      url={`/${category.handle}`}
     />
   )
 }

@@ -10,7 +10,6 @@ type Props = {
 }
 
 export default function ProductColorSelector ({ variants }: Props) {
-  // const [currentVariant, setCurrentVariant] = useProductStore(state => [state.currentVariant, state.setCurrentVariant])
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -22,7 +21,7 @@ export default function ProductColorSelector ({ variants }: Props) {
     <div className="my-4">
       <h3 className="text-lg font-medium text-gray-900 mb-2">
         Color
-        {currentVariant && (<span className="text-sm text-neutral-500">: {currentVariant.color.label}</span>)}
+        {currentVariant && (<span className="text-sm text-neutral-500">: {currentVariant.title}</span>)}
       </h3>
       <div className="flex gap-2 flex-wrap">
         {
@@ -33,20 +32,20 @@ export default function ProductColorSelector ({ variants }: Props) {
               'border-2 border-neutral-300 rounded-lg hover:opacity-70 relative': true,
               'border-primary-600': variant.sku === currentVariant?.sku
             })}
-            aria-label={variant.sku}
+            aria-label={variant.sku ?? variant.title}
             onClick={() => {
               router.replace(`${pathname}?v=${variant.sku}`, { scroll: false })
             }}
           >
             {
-              variant.stock <= 0
+              variant.inventory_quantity <= 0
                 ? (<hr className={clsx({
                     'border border-neutral-300 absolute top-[19px] left-[-7px] w-[55px] rotate-45': true,
                     'border-primary-600': variant.sku === currentVariant?.sku
                   })} />)
                 : ''
             }
-            <ProductVariantOption {...variant.color} />
+            <ProductVariantOption label={variant.title} image={variant?.metadata?.swatch as string} />
           </button>
         ))
       }

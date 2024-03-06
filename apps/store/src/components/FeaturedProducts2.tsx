@@ -5,7 +5,7 @@ export default async function FeaturedProducts2 () {
   const products = await getFeaturedProducts()
   const topProducts = products.slice(9, 15)
 
-  if (!products) return null
+  if (!topProducts || topProducts.length < 1) return null
 
   return (
     <div className='py-8 bg-neutral-200'>

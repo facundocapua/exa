@@ -18,11 +18,11 @@ export default function ProductCard ({ product, containerClassName }: Props) {
       containerClassName
     )}>
       <div className="group relative basis-full flex flex-col p-2 md:p-0">
-        <DiscountBadge price={product.price} salePrice={product.sale_price} />
-        <Link href={`/product/${product.slug}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75">
+        <DiscountBadge price={product.price} salePrice={product.salePrice} />
+        <Link href={`/product/${product.handle}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75">
           <Image
-            src={product.images[0].image}
-            alt={product.name}
+            src={product.thumbnail ?? '/product-img-placeholder.svg'}
+            alt={product.title}
             width={250}
             height={250}
             className="w-full h-full object-contain object-center bg-white"
@@ -30,12 +30,12 @@ export default function ProductCard ({ product, containerClassName }: Props) {
         </Link>
         <div className="flex flex-col grow justify-between">
           <div>
-            <Link href={`/brand/${product?.brand?.slug}`} className="my-2 block uppercase text-sm text-primary-700 dark:text-primary-300">{product?.brand?.name}</Link>
+            <Link href={`/brand/${product?.brand?.handle}`} className="my-2 block uppercase text-sm text-primary-700 dark:text-primary-300">{product?.brand?.name}</Link>
             <h3 className="text-sm text-gray-900 dark:text-gray-200">
-              <Link href={`/product/${product.slug}`}>{product.name}</Link>
+              <Link href={`/product/${product.handle}`}>{product.title}</Link>
             </h3>
           </div>
-          <ProductPrice price={product.price} salePrice={product.sale_price} />
+          <ProductPrice price={product.price} salePrice={product.salePrice} />
         </div>
       </div>
       <div className="mt-6">

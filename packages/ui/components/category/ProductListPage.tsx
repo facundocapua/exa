@@ -4,7 +4,7 @@ import AppliedFilters from './AppliedFilters'
 import Filters from './Filters'
 
 type Props = {
-  brecrumbs: {
+  breadcrumbs: {
     name: string
     url: string
     current: boolean
@@ -17,10 +17,10 @@ type Props = {
   url: string
 }
 
-export default function ProductListPage ({ brecrumbs, searchParams, filters, products, total, title, url }: Props) {
+export default function ProductListPage ({ breadcrumbs, searchParams, filters, products, total, title, url }: Props) {
   return (
     <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
-      <Breadcrumb pages={brecrumbs} />
+      <Breadcrumb pages={breadcrumbs} />
 
       <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
         <h1 className="text-4xl font-bold tracking-tight border-neutral-900">{title}</h1>
@@ -46,7 +46,7 @@ export default function ProductListPage ({ brecrumbs, searchParams, filters, pro
 
           <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
             {products.map((product) => (
-              <ProductCard key={product.sku} product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </section>

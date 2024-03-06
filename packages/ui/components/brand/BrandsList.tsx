@@ -23,8 +23,8 @@ export default function BrandsList ({ brands }: Props) {
       <section className='lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-5 lg:gap-y-12'>
         {filteredBrands.map((brand) => (
           <div className='col-span-1' key={brand.id}>
-            <Link href={`/brand/${brand.slug}`}>
-              <Image src={brand.image} alt={brand.name} width={150} height={150} />
+            <Link href={`/brand/${brand.handle}`}>
+              <Image src={brand.logo} alt={brand.name} width={150} height={150} />
             </Link>
           </div>
         ))}

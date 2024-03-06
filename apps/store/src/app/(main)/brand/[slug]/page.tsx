@@ -14,7 +14,7 @@ export async function generateStaticParams () {
   const brands = await getBrands()
 
   return brands.map((brand) => ({
-    slug: brand.slug
+    slug: brand.handle
   }))
 }
 
@@ -30,7 +30,7 @@ export default async function Brand ({ params, searchParams }: Props) {
   if (brand) {
     brecrumbs.push({
       name: brand.name,
-      url: `/${brand.slug}`,
+      url: `/${brand.handle}`,
       current: true
     })
   }
@@ -69,7 +69,7 @@ export default async function Brand ({ params, searchParams }: Props) {
 
           <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
             {products.map((product) => (
-              <ProductCard key={product.sku} product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </section>

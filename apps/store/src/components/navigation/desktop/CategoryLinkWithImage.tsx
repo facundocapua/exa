@@ -1,25 +1,25 @@
-import type { Category } from 'api'
+import { ProductCategory } from '@medusajs/medusa'
 import Image from 'next/image'
 import Link from 'next/link'
 
 type Props = {
-  category: Category
+  category: ProductCategory
   customLabel?: string
   onClick: () => void
 }
 
 export default function CategoryLinkWithImage ({ category, customLabel, onClick }: Props) {
-  if (!category.image) return null
+  if (!category.metadata.image) return null
 
   return (
-    <Link key={category.name} href={`/${category.slug}`} className="group relative" onClick={onClick}>
+    <Link key={category.name} href={`/${category.handle}`} className="group relative" onClick={onClick}>
       <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
         <Image
-            src={category.image}
+            src={category.metadata.image as string}
             alt={customLabel || category.name}
             className="object-cover object-center m-auto rounded-md"
-            width={category.main_menu?.size === 'small' ? 80 : 120 }
-            height={category.main_menu?.size === 'small' ? 80 : 120 }
+            width={category.metadata?.size === 'small' ? 80 : 120 }
+            height={category.metadata?.size === 'small' ? 80 : 120 }
           />
       </div>
       <h4 className="mt-4 block font-medium text-gray-900 text-center">

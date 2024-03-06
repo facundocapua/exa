@@ -21,21 +21,21 @@ export default function ProductImageGallery ({ product }: Props) {
         <Tab.List className="grid grid-cols-4 gap-6 mx-2 md:mx-0">
           {product.images.map((image) => (
             <Tab
-              key={image.image}
+              key={image.id}
               className="relative flex cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
-                <ProductImageGalleryThumb label={product.name} image={image.image} selected={selected} />
+                <ProductImageGalleryThumb label={product.title} image={image.url} selected={selected} />
               )}
             </Tab>
           ))}
           {currentVariant?.images?.map((image) => (
             <Tab
-              key={image.image}
+              key={image.id}
               className="relative flex cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
-                <ProductImageGalleryThumb label={product.name} image={image.image} selected={selected} />
+                <ProductImageGalleryThumb label={product.title} image={image.url} selected={selected} />
               )}
             </Tab>
           ))}
@@ -44,13 +44,13 @@ export default function ProductImageGallery ({ product }: Props) {
 
       <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
         {product.images.map((image) => (
-          <Tab.Panel key={image.image}>
-            <ZoomImage image={image.image} alt={product.name} />
+          <Tab.Panel key={image.id}>
+            <ZoomImage image={image.url} alt={product.title} />
           </Tab.Panel>
         ))}
         {currentVariant?.images?.map((image) => (
-          <Tab.Panel key={image.image}>
-            <ZoomImage image={image.image} alt={product.name} />
+          <Tab.Panel key={image.id}>
+            <ZoomImage image={image.url} alt={product.title} />
           </Tab.Panel>
         ))}
       </Tab.Panels>

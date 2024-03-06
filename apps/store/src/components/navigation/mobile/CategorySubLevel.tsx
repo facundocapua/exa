@@ -15,7 +15,7 @@ export default function CategorySubLevel ({ category, onClick }: Props) {
       'grid grid-cols-2 gap-x-4 gap-y-10': typeImage,
       'flex flex-col gap-y-4': !typeImage
     })}>
-      {category.children?.map((item) => (
+      {category.category_children?.map((item) => (
         <CategoryLink
           key={item.name}
           category={item}

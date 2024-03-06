@@ -1,16 +1,30 @@
 import type { Brand } from './types'
 import { initClient } from './utils/supabase'
+import { getMedusaUrl } from './utils/medusa'
+import { get } from 'http'
 
-export const getBrands = async (): Promise<Array<Brand>> => {
-  const client = initClient()
-  const { data } = await client
-    .from('brands')
-    .select('*')
-    .eq('is_active', true)
+type BrandsFilter = {
+  handle?: string
+  isFeatured?: boolean
+}
 
-  if (!data) return []
+export const getBrands = async ({ handle, isFeatured }: BrandsFilter = {}): Promise<Array<Brand>> => {
+  const params = new URLSearchParams()
+  if (handle) {
+    params.append('handle', handle)
+  }
 
-  return data
+  if (isFeatured) {
+    params.append('is_featured', 'true')
+  }
+
+  const brands = fetch(`${getMedusaUrl()}/store/brands?${params.toString()}`)
+    .then((res) => res.json())
+    .then(data => {
+      return data.brands
+    })
+
+  return brands
 }
 
 export const getStoreBrands = async (storeId: string): Promise<Array<Brand>> => {
@@ -26,18 +40,15 @@ export const getStoreBrands = async (storeId: string): Promise<Array<Brand>> => 
 }
 
 export const getFeaturedBrands = async (): Promise<Array<Brand>> => {
-  const client = initClient()
-  const { data } = await client.from('brands').select('*').eq('is_featured', true)
-  if (!data) return []
+  const data = getBrands({ isFeatured: true })
 
   return data
 }
 
-export const getBrand = async (slug: string): Promise<Brand | null> => {
-  const client = initClient()
-  const { data } = await client.from('brands').select('*').eq('slug', slug).single()
+export const getBrand = async (handle: string): Promise<Brand | null> => {
+  const brands = await getBrands({ handle })
 
-  return data
+  return brands[0] || null
 }
 
 export const getStoreFeaturedBrands = async (storeId: string): Promise<Array<Brand>> => {

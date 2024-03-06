@@ -1,8 +1,11 @@
-import { initClient } from './utils/supabase'
+import { getMedusaUrl } from './utils/medusa'
 
 export const getFeaturedBanners = async () => {
-  const client = initClient()
-  const { data } = await client.from('banners').select('*')
+  const banners = fetch(`${getMedusaUrl()}/store/banners`)
+    .then((res) => res.json())
+    .then(data => {
+      return data.banners
+    })
 
-  return data
+  return banners
 }

@@ -42,3 +42,5 @@ yarn-error.log*
 apps/store/public/brand/*
 apps/store/public/category/*
 apps/store/public/product/*
+
+bkp/

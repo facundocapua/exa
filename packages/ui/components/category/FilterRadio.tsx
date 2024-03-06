@@ -14,10 +14,10 @@ export default function FilterRadio ({ filter }: Props) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = new URLSearchParams(searchParams)
-    const value = event.target.value
+    const newValue = event.target.value
 
     if (event.target.checked) {
-      query.set(filter.attribute, value)
+      query.set(filter.attribute, value.concat(newValue).join(','))
     } else {
       query.delete(filter.attribute)
     }

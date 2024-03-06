@@ -1,13 +1,7 @@
+import { Product as MedusaProduct, ProductCategory as MedusaProductCategory, ProductVariant as MedusaProductVariant } from '@medusajs/medusa'
 import type { Tables } from './database'
 
-export type Category = Tables<'categories'> & {
-  parent?: Category
-  children?: Array<Category>
-  main_menu?: {
-    type?: 'text' | 'image'
-    size?: string
-  }
-}
+export type Category = MedusaProductCategory
 
 export type Banner = {
   id: string
@@ -19,18 +13,14 @@ export type Banner = {
 export type Brand = {
   id: string
   name: string
-  slug: string
-  image: string
+  handle: string
+  logo: string
 }
 
-export type ProductVariant = Omit<Tables<'products_variants'>, 'color'> & {
-  product: Tables<'products'> | string
-  images: Array<Tables<'products_variants_images'>>
-  color: {
-    label: string
-    hexa?: string
-    image?: string
-  }
+export type ProductVariant = MedusaProductVariant & {
+  original_price: number
+  calculated_price: number
+  images: MedusaProduct['images']
 }
 
 export const FILTER_TYPE = {
@@ -38,11 +28,11 @@ export const FILTER_TYPE = {
   RANGE: 'range'
 } as const
 
-export type Product = Tables<'products'> & {
-  brand: Tables<'brands'>
-  categories: Array<Tables<'categories'>>
-  images: Array<Tables<'products_images'>>
-  variants?: Array<ProductVariant>
+export type Product = MedusaProduct & {
+  brand: any
+  price: number
+  salePrice: number
+  variants: Array<ProductVariant>
 }
 
 export type FilterOption = {

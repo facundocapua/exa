@@ -1,8 +1,8 @@
-import { getBrands, getCategories } from 'api'
+import { getBrands, getTopLevelCategories } from 'api'
 import Navigation from './Navigation'
 
 export default async function MainNavigation () {
-  const categories = await getCategories()
+  const categories = await getTopLevelCategories()
   const brands = await getBrands()
   const navigation = {
     categories,

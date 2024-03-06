@@ -9,7 +9,7 @@ type Props = {
 export default function Price ({ amount, className }: Props) {
   return (
     <p suppressHydrationWarning={true} className={className}>
-      {`${formatPrice(amount)}`}
+      {`${formatPrice(amount / 100)}`}
     </p>
   )
 }

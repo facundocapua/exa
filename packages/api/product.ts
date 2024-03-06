@@ -1,19 +1,82 @@
 import { getStoreBrands } from './brand'
-import type { Filter, Product } from './types'
+import type { Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 import { initClient } from './utils/supabase'
+import { getMedusaUrl } from './utils/medusa'
 
-export const getProducts = async (): Promise<Array<Product>> => {
-  const client = initClient()
-  const { data } = await client
-    .from('products')
-    .select('*, images: products_images(image), brand(*), categories(*)')
-    .returns<Array<Product>>()
+export const getProductVariants = async (variantIds: string[]): Promise<Array<ProductVariant>> => {
+  const params = new URLSearchParams({
+    expand: 'prices',
+    ids: variantIds.join(','),
+    currency_code: 'ars'
 
-  if (!data?.length) return []
+  })
+  const products = fetch(`${getMedusaUrl()}/store/variants?${params.toString()}`)
+    .then((res) => res.json())
+    .then(data => {
+      return data.variants
+    })
 
-  return data
+  return products
+}
+
+type ProductParams = {
+  expand?: string
+  currency_code?: string
+  category_id?: string[]
+  brand_id?: string[]
+  handle?: string
+}
+
+export const getProducts = async ({ category_id, brand_id, handle }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+  const params = new URLSearchParams({
+    expand: 'categories,images,variants,brand',
+    currency_code: 'ars'
+  })
+
+  if (category_id) {
+    for (const catId of category_id) {
+      params.append('category_id[]', catId)
+    }
+  }
+
+  if (brand_id) {
+    for (const brandIds of brand_id) {
+      params.append('brand_id[]', brandIds)
+    }
+  }
+
+  if (handle) {
+    params.append('handle', handle)
+  }
+
+  const products: Array<Product> = await fetch(`${getMedusaUrl()}/store/products?${params.toString()}`)
+    .then((res) => res.json())
+    .then(data => {
+      return data.products
+    })
+
+  const variantsIds = products.map((product) => product.variants.map((variant) => variant.id)).flat()
+  const variants = await getProductVariants(variantsIds)
+
+  products.forEach((product) => {
+    product.variants = variants.filter((variant) => product.id === variant.product_id)
+    product.price = product.variants[0].original_price
+    product.salePrice = product.variants[0]?.calculated_price
+
+    product.variants.forEach((variant: ProductVariant) => {
+      if (variant?.metadata?.image) {
+        const imageIndex = product.images.findIndex((image) => image.url === variant?.metadata?.image)
+        if (imageIndex > -1) {
+          variant.images = [product.images[imageIndex]]
+          product.images.splice(imageIndex, 1)
+        }
+      }
+    })
+  })
+
+  return products
 }
 
 export const getFeaturedProducts = async (): Promise<Array<Product>> => {
@@ -79,13 +142,10 @@ type GetCategoryProductsResponse = {
 }
 
 export const getFilteredProducts = async ({ filters, restrinctions, exclude = [] }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
-  const client = initClient()
-  const query = client
-    .from('products')
-    .select('*, images: products_images(image), brand!inner(*), categories!inner(*)')
-    .eq('is_active', true)
+  const params = await applyRestrinctions(restrinctions ?? {}) as ProductParams
+  console.log('params', params)
+  const restrictedData = await getProducts(params)
 
-  const { data: restrictedData } = await applyRestrinctions(query, restrinctions ?? {})
   const filteredData = applyFilters(restrictedData, filters)
 
   return new Promise((resolve) => {
@@ -97,18 +157,10 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
   })
 }
 
-export const getProduct = async (slug: string): Promise<Product | null> => {
-  const client = initClient()
-  const { data } = await client
-    .from('products')
-    .select('*, images: products_images(image), brand(*), categories(*), variants: products_variants(*, images: products_variants_images(image))')
-    .eq('is_active', true)
-    .eq('slug', slug)
-    .eq('products_variants.is_active', true)
-    .returns<Product>()
-    .single()
+export const getProduct = async (handle: string): Promise<Product | null> => {
+  const products = await getProducts({ handle })
 
-  return data
+  return products[0] ?? null
 }
 
 export const getProductBySku = async (sku: Product['sku']): Promise<Product | null> => {
