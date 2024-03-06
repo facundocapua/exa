@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { SocialNetworks } from 'ui/server'
 import Logo from './logo'
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
-import { getStore, type Store } from 'api'
+import { getSalon, type Salon } from 'api'
 
-const getGoogleSearchLink = (store: Store) => {
+const getGoogleSearchLink = (store: Salon) => {
   const search = `${store.address} - ${store.city}, ${store.state}`
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}`
 }
@@ -13,7 +13,7 @@ export default async function Footer () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   if (!storeId) return null
 
-  const store = await getStore(storeId)
+  const store = await getSalon(storeId)
   if (!store) return null
 
   return (

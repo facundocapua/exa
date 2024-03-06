@@ -1,14 +1,14 @@
 import { ClockIcon } from '@heroicons/react/24/outline'
 import Button from '../button'
 import { generateWhatsAppLink } from 'utils'
-import { getStore } from 'api'
+import { getSalon } from 'api'
 
 export default async function BrideMakeup () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   if (!storeId) return null
 
-  const store = await getStore(storeId)
-  if (!store) return null
+  const store = await getSalon(storeId)
+  if (!store || !store.social_networks) return null
 
   const { whatsapp } = store.social_networks
   const message = 'Hola, me gustaría solicitar presupueso para el servicio de maquillaje de novias/eventos.'

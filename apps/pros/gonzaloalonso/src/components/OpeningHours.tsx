@@ -1,4 +1,4 @@
-import { getStore } from 'api'
+import { getSalon } from 'api'
 import Image from 'next/image'
 import { OpeningHoursSlider } from 'ui'
 
@@ -42,11 +42,13 @@ const weekDays = {
 
 export default async function OpeningHours () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
-  const store = await getStore(storeId)
+  const store = await getSalon(storeId)
 
   if (!store) return null
 
   const { hours } = store
+
+  if (!hours) return null
 
   const openingHours = Object.entries(weekDays).map(([key, value]) => {
     const openingHours = hours[key] ? `${hours[key].open} - ${hours[key].close}` : ''

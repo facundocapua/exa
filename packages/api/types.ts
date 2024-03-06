@@ -1,5 +1,4 @@
 import { Product as MedusaProduct, ProductCategory as MedusaProductCategory, ProductVariant as MedusaProductVariant } from '@medusajs/medusa'
-import type { Tables } from './database'
 
 export type Category = MedusaProductCategory
 
@@ -15,6 +14,8 @@ export type Brand = {
   name: string
   handle: string
   logo: string
+  is_featured: boolean
+  is_active: boolean
 }
 
 export type ProductVariant = MedusaProductVariant & {
@@ -90,8 +91,23 @@ export type Checkout = {
   billingAddress: Address
 }
 
-export type Store = Tables<'stores'> & {
-  hours: Record<string, { open: string; close: string }>
-  brands: Array<Tables<'brands'>>
-  social_networks: Record<string, string>
+export interface Salon {
+  id: string
+  name: string
+  lat?: number
+  lng?: number
+  is_active: boolean
+  address?: string
+  city?: string
+  state?: string
+  website?: string
+  map?: string
+  phone?: string
+  map_link?: string
+  email?: string
+  created_at: string
+  updated_at: string
+  hours?: Record<string, { open: string; close: string }>
+  brands?: Array<Brand>
+  social_networks?: Record<string, string>
 }

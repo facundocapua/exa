@@ -1,17 +1,17 @@
 import { findClosest } from '@/utils/store'
-import type { Store } from 'api'
+import type { Salon } from 'api'
 import type { FormEvent } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useStoresStore } from './useStoresStore'
 
 type Props = {
-  stores: Array<Store>
+  stores: Array<Salon>
 }
 
 export default function useStoreLocator ({ stores }: Props) {
   const [map, setMap] = useState<google.maps.Map | null>(null)
-  const [currentStore, setCurrentStore] = useState<Store | null>()
-  const [filteredStores, setFilteredStores] = useState<Store[]>(stores)
+  const [currentStore, setCurrentStore] = useState<Salon | null>()
+  const [filteredStores, setFilteredStores] = useState<Salon[]>(stores)
   const [searchText, setSearchText] = useState<string>('')
   const [brands] = useStoresStore(state => [state.brands, state.setBrands])
 
@@ -21,7 +21,7 @@ export default function useStoreLocator ({ stores }: Props) {
 
     if (brands.length > 0) {
       filteredStores = stores.filter((store) => {
-        return store.brands.some((brand) => brands.includes(brand.slug))
+        return store.brands.some((brand) => brands.includes(brand.handle))
       })
     }
 
@@ -54,14 +54,14 @@ export default function useStoreLocator ({ stores }: Props) {
       if (!bounds?.contains({ lat: store.lat, lng: store.lng })) return false
 
       if (brands.length > 0) {
-        return store.brands.some((brand) => brands.includes(brand.slug))
+        return store.brands.some((brand) => brands.includes(brand.handle))
       }
       return true
     })
     setFilteredStores(filteredStores)
   }, [map, stores, brands])
 
-  const handleStoreClick = (store: Store | null) => {
+  const handleStoreClick = (store: Salon | null) => {
     setCurrentStore(store)
     if (!store) return
 

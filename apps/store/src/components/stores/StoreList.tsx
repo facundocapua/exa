@@ -1,9 +1,9 @@
-import type { Store } from 'api'
+import type { Salon } from 'api'
 import StoreListItem from './StoreListItem'
 
 type Props = {
-  stores: Array<Store>
-  onClick: (store: Store) => void
+  stores: Array<Salon>
+  onClick: (store: Salon) => void
 }
 
 export default function StoreList ({ stores, onClick }: Props) {

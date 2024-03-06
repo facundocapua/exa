@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default function CategorySubLevel ({ category, onClick }: Props) {
-  const typeImage = category.main_menu?.type === 'image'
+  const typeImage = category.metadata?.type === 'image'
 
   return (
     <div className={clsx({

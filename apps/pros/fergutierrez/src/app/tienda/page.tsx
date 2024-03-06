@@ -10,7 +10,7 @@ export default async function Category ({ searchParams }: Props) {
     filters: searchParams
   })
 
-  const brecrumbs = [
+  const breadcrumbs = [
     {
       name: 'Tienda',
       url: '/tienda',
@@ -20,7 +20,7 @@ export default async function Category ({ searchParams }: Props) {
 
   return (
     <ProductListPage
-      brecrumbs={brecrumbs}
+      breadcrumbs={breadcrumbs}
       searchParams={searchParams}
       filters={filters}
       products={products}

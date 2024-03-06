@@ -44,10 +44,10 @@ export default function BrandNavigation ({ brands }: Props) {
                 <div className="mx-auto max-w-7xl px-8">
                   <div className="grid grid-cols-5 gap-y-12 py-16">
                     {brands.map((item) => (
-                      <Link key={item.name} href={`/brand/${item.slug}`} className="group relative" onClick={close}>
+                      <Link key={item.name} href={`/brand/${item.handle}`} className="group relative" onClick={close}>
                         <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md group-hover:opacity-75 transition-all duration-150 ease-in-out">
                           <Image
-                            src={item.image}
+                            src={item.logo}
                             alt={item.name}
                             className="object-cover object-center m-auto"
                             width="80"

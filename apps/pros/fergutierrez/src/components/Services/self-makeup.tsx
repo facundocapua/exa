@@ -1,13 +1,13 @@
 import { SELF_MAKEUP_CLASSES } from '@/data/services'
-import { getStore } from 'api'
+import { getSalon } from 'api'
 import CourseCard from './course-card'
 
 export default async function SelfMakeup () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   if (!storeId) return null
 
-  const store = await getStore(storeId)
-  if (!store) return null
+  const store = await getSalon(storeId)
+  if (!store || !store.social_networks) return null
 
   const { whatsapp } = store.social_networks
 

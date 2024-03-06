@@ -1,13 +1,14 @@
 import { ChevronDownIcon, ChevronUpIcon, FunnelIcon } from '@heroicons/react/24/outline'
-import type { Brand, Store } from 'api'
+import type { Brand, Salon } from 'api'
 import { useSearchParams } from 'next/navigation'
 import type { ChangeEvent } from 'react'
 import { useState } from 'react'
 import { useStoresStore } from './useStoresStore'
 
-const getBrands = (stores: Array<Store>) => {
+const getBrands = (stores: Array<Salon>) => {
   const allBrands = {} as Record<Brand['id'], Brand>
   stores.forEach(({ brands }) => {
+    if (!brands) return
     brands.forEach((brand) => {
       allBrands[brand.id] = brand
     })
@@ -17,7 +18,7 @@ const getBrands = (stores: Array<Store>) => {
 }
 
 type Props = {
-  stores: Array<Store>
+  stores: Array<Salon>
 }
 export default function StoresFilters ({ stores }: Props) {
   const storesBrands = getBrands(stores)
@@ -50,7 +51,7 @@ export default function StoresFilters ({ stores }: Props) {
             <ul className='flex flex-col pt-4 gap-2 lg:gap-0'>
               {storesBrands.map((brand) => (
                 <li key={brand.id}>
-                  <label className='flex items-center gap-2 text'><input type='checkbox' onChange={handleChange} value={brand.slug} checked={brands.includes(brand.slug)} />{brand.name}</label>
+                  <label className='flex items-center gap-2 text'><input type='checkbox' onChange={handleChange} value={brand.handle} checked={brands.includes(brand.handle)} />{brand.name}</label>
                 </li>
               ))}
             </ul>

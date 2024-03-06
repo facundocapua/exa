@@ -2,6 +2,7 @@ import type { Brand } from './types'
 import { initClient } from './utils/supabase'
 import { getMedusaUrl } from './utils/medusa'
 import { get } from 'http'
+import { getSalon } from './salon'
 
 type BrandsFilter = {
   handle?: string
@@ -27,16 +28,10 @@ export const getBrands = async ({ handle, isFeatured }: BrandsFilter = {}): Prom
   return brands
 }
 
-export const getStoreBrands = async (storeId: string): Promise<Array<Brand>> => {
-  const client = initClient()
-  const { data } = await client
-    .from('brands')
-    .select('stores_brands!inner(*), *')
-    .eq('stores_brands.store', storeId)
+export const getSalonBrands = async (salonId: string): Promise<Array<Brand>> => {
+  const salon = await getSalon(salonId)
 
-  if (!data) return []
-
-  return data
+  return salon?.brands ?? []
 }
 
 export const getFeaturedBrands = async (): Promise<Array<Brand>> => {
@@ -51,15 +46,8 @@ export const getBrand = async (handle: string): Promise<Brand | null> => {
   return brands[0] || null
 }
 
-export const getStoreFeaturedBrands = async (storeId: string): Promise<Array<Brand>> => {
-  const client = initClient()
-  const { data } = await client
-    .from('brands')
-    .select('stores_brands!inner(*), *')
-    .eq('stores_brands.store', storeId)
-    .eq('is_featured', true)
+export const getStoreFeaturedBrands = async (salonId: string): Promise<Array<Brand>> => {
+  const brands = await (getSalonBrands(salonId))
 
-  if (!data) return []
-
-  return data
+  return brands.filter((brand) => brand.is_featured)
 }

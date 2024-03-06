@@ -1,9 +1,9 @@
 import { formatNextOpenTime, formatOpenTime, isStoreOpen } from '@/utils/store'
 import { ClockIcon } from '@heroicons/react/24/outline'
-import type { Store } from 'api'
+import type { Salon } from 'api'
 
 type Props = {
-  hours: Store['hours']
+  hours: Salon['hours']
 }
 
 export default function HoursInfo ({ hours }: Props) {

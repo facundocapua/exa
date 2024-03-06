@@ -1,9 +1,9 @@
-import type { Store } from 'api'
+import type { Salon } from 'api'
 import { inBetweenTimes } from './time'
 
 const daysPrefix = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const
 
-export const isStoreOpen = (hours: Store['hours']): boolean => {
+export const isStoreOpen = (hours: Salon['hours']): boolean => {
   const today = new Date()
   const day = daysPrefix[today.getDay()]
   if (!hours[day]) return false
@@ -13,7 +13,7 @@ export const isStoreOpen = (hours: Store['hours']): boolean => {
   return inBetweenTimes(open, close)
 }
 
-export const getClosestOpenTime = (hours: Store['hours']): Date | false => {
+export const getClosestOpenTime = (hours: Salon['hours']): Date | false => {
   const checkingDate = new Date()
 
   for (let i = 0; i < 7; i++) {
@@ -30,7 +30,7 @@ export const getClosestOpenTime = (hours: Store['hours']): Date | false => {
   return false
 }
 
-export const formatOpenTime = (hours: Store['hours']): string => {
+export const formatOpenTime = (hours: Salon['hours']): string => {
   const today = new Date()
   const { open, close } = hours[daysPrefix[today.getDay()]]
 
@@ -40,7 +40,7 @@ export const formatOpenTime = (hours: Store['hours']): string => {
   return `${openTime.toLocaleTimeString(['es-AR'], { hour: '2-digit', minute: '2-digit' })} - ${closeTime.toLocaleTimeString(['es-AR'], { hour: '2-digit', minute: '2-digit' })}`
 }
 
-export const formatNextOpenTime = (hours: Store['hours']): string => {
+export const formatNextOpenTime = (hours: Salon['hours']): string => {
   const nextOpenTime = getClosestOpenTime(hours)
   if (!nextOpenTime) return ''
 
@@ -52,8 +52,8 @@ export const formatNextOpenTime = (hours: Store['hours']): string => {
   return nextOpenTime.toLocaleString(['es-AR'], { weekday: 'long', hour: '2-digit', minute: '2-digit' })
 }
 
-export const findClosest = (lat: number, lng: number, stores: Store[]) => {
-  let closest: Store | null = null
+export const findClosest = (lat: number, lng: number, stores: Salon[]) => {
+  let closest: Salon | null = null
   let closestDistance = Infinity
   stores.forEach((store) => {
     const distance = Math.sqrt(Math.pow(store.lat - lat, 2) + Math.pow(store.lng - lng, 2))

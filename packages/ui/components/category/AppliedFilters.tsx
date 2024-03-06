@@ -1,4 +1,4 @@
-import { createElement } from 'react'
+import { ComponentProps, createElement } from 'react'
 import BrandFilter from './AppliedFilters/BrandFilter'
 import PriceFilter from './AppliedFilters/PriceFilter'
 import GenericFilter from './AppliedFilters/GenericFilter'
@@ -40,7 +40,7 @@ export default function AppliedFilters ({ url, searchParams }: Props) {
       </header>
 
       {filters.map(([key, values]) => (
-        createElement(ATTRIBUTES[key as keyof typeof ATTRIBUTES] ?? ATTRIBUTES.generic, { attribute: key, values, generateLink })
+        createElement<ComponentProps<typeof GenericFilter>>(ATTRIBUTES[key as keyof typeof ATTRIBUTES] ?? ATTRIBUTES.generic, { attribute: key, values, generateLink })
       ))}
     </section>
   )

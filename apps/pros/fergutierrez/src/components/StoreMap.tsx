@@ -1,5 +1,5 @@
 import { MapPinIcon } from '@heroicons/react/24/outline'
-import { getStore } from 'api'
+import { getSalon } from 'api'
 import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon, WhatsAppIconBW } from 'ui/server'
 import Image from 'next/image'
@@ -34,17 +34,15 @@ export default async function StoreMap () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   if (!storeId) return null
 
-  const store = await getStore(storeId)
-  if (!store) return null
-
-  if (!store.map) return null
+  const store = await getSalon(storeId)
+  if (!store || !store.map) return null
 
   const socialNetworks: Array<SocialNetwork> = Object.keys(store.social_networks ?? {})
     .filter(value => socialNetworksMeta[value])
     .map((key) => {
       return {
         ...socialNetworksMeta[key],
-        href: store.social_networks[key]
+        href: store?.social_networks?.[key] ?? ''
       }
     })
 

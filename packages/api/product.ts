@@ -1,8 +1,7 @@
-import { getStoreBrands } from './brand'
+import { getSalonBrands } from './brand'
 import type { Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
-import { initClient } from './utils/supabase'
 import { getMedusaUrl } from './utils/medusa'
 
 export const getProductVariants = async (variantIds: string[]): Promise<Array<ProductVariant>> => {
@@ -86,20 +85,10 @@ export const getFeaturedProducts = async (): Promise<Array<Product>> => {
 }
 
 export const getStoreFeaturedProducts = async (storeId: string): Promise<Array<Product>> => {
-  const client = initClient()
-
-  const brands = await getStoreBrands(storeId)
+  const brands = await getSalonBrands(storeId)
   const brandIds = brands.map((brand) => brand.id)
 
-  const { data } = await client
-    .from('products')
-    .select('*, images: products_images(image), brand!inner(*), categories(*)')
-    .in('brand.id', brandIds)
-    .returns<Array<Product>>()
-
-  if (!data?.length) return []
-
-  return data
+  return getProducts({ brand_id: brandIds })
 }
 
 export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<string> = []): Array<Filter> => {
@@ -163,42 +152,12 @@ export const getProduct = async (handle: string): Promise<Product | null> => {
   return products[0] ?? null
 }
 
-export const getProductBySku = async (sku: Product['sku']): Promise<Product | null> => {
-  const client = initClient()
-  const { data } = await client
-    .from('products')
-    .select('*, images: products_images(image), brand(*), categories(*)')
-    .eq('is_active', true)
-    .eq('sku', sku)
-    .returns<Product>()
-    .single()
-
-  return data
+export const getProductBySku = async (id: Product['id']): Promise<Product | null> => {
+  return null
 }
 
-export const getRelatedProducts = async (sku: Product['sku']): Promise<Array<Product>> => {
-  const client = initClient()
-  const { data: relatedData } = await client
-    .from('products_related')
-    .select('from!inner(*), to(*)')
-    .eq('from.sku', sku)
+export const getRelatedProducts = async (id: Product['id']): Promise<Array<Product>> => {
+  const products = getProducts()
 
-  if (!relatedData?.length) return []
-
-  const skus = relatedData.map(
-    (data) => {
-      const { to } = data as {to: Partial<Product>, from: Partial<Product>}
-      return to.sku
-    })
-
-  const { data } = await client
-    .from('products')
-    .select('*, images: products_images(image), brand(*), categories(*)')
-    .eq('is_active', true)
-    .in('sku', skus)
-    .returns<Array<Product>>()
-
-  if (!data?.length) return []
-
-  return data
+  return products.then((data) => data.splice(0, 4))
 }

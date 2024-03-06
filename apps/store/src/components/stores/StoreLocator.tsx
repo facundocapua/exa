@@ -3,7 +3,7 @@
 import { memo, useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, MarkerClusterer } from '@react-google-maps/api'
 import StoreList from './StoreList'
-import type { Store } from 'api'
+import type { Salon } from 'api'
 import StoreListItem from './StoreListItem'
 import useStoreLocator from './useStoreLocator'
 import StoresFilters from './StoresFilters'
@@ -11,7 +11,7 @@ import { ListBulletIcon, MapIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
 type Props = {
-  stores: Array<Store>
+  stores: Array<Salon>
 }
 
 const TABS = {
@@ -40,7 +40,7 @@ function StoreLocator ({ stores }: Props) {
 
   const [tab, setTab] = useState<string>(TABS.MAP)
 
-  const handleStoreListItemClick = (store: Store | null) => {
+  const handleStoreListItemClick = (store: Salon | null) => {
     handleStoreClick(store)
     setTab(TABS.MAP)
   }

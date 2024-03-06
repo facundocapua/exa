@@ -1,9 +1,9 @@
 import StoreLocator from '@/components/stores/StoreLocator'
-import { getStores } from 'api/store'
+import { getSalons } from 'api'
 import { Breadcrumb } from 'ui/server'
 
 export default async function Stores () {
-  const stores = await getStores()
+  const stores = await getSalons()
   const brecrumbs = [{
     name: 'Buscador de Salones',
     url: '/stores',

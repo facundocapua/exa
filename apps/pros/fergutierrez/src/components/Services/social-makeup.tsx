@@ -1,5 +1,5 @@
 import { SOCIAL_MAKEUP_SERVICES } from '@/data/services'
-import { getStore } from 'api'
+import { getSalon } from 'api'
 import MakeupCard from './makeup-card'
 import { generateWhatsAppLink } from 'utils'
 
@@ -7,8 +7,8 @@ export default async function SocialMakeup () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   if (!storeId) return null
 
-  const store = await getStore(storeId)
-  if (!store) return null
+  const store = await getSalon(storeId)
+  if (!store || !store.social_networks) return null
 
   const { whatsapp } = store.social_networks
 

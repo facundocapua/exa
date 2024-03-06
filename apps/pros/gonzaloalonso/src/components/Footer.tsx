@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { FacebookIcon, InstagramIcon } from 'ui/server'
 import Logo from './Logo'
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
-import type { Store } from 'api'
-import { getStore } from 'api'
+import type { Salon } from 'api'
+import { getSalon } from 'api'
 
 const socialNetworks = [
   {
@@ -18,14 +18,14 @@ const socialNetworks = [
   }
 ]
 
-const getGoogleSearchLink = (store: Store) => {
+const getGoogleSearchLink = (store: Salon) => {
   const search = `${store.address} - ${store.city}, ${store.state}`
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}`
 }
 
 export default async function Footer () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
-  const store = await getStore(storeId)
+  const store = await getSalon(storeId)
 
   if (!store) return null
 

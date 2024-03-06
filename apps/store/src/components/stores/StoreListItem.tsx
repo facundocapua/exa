@@ -1,9 +1,9 @@
-import type { Store } from 'api'
+import type { Salon } from 'api'
 import HoursInfo from './StoreItemList/HoursInfo'
 import BrandsList from './StoreItemList/BrandsList'
 
 type Props = {
-  store: Store
+  store: Salon
   showWebsite?: boolean
   showBrands?: boolean
 }

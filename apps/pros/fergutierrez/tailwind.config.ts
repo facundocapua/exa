@@ -15,7 +15,8 @@ const config: Pick<Config, 'presets'> = {
         extend: {
           ...sharedConfig.theme?.extend,
           fontFamily: {
-            sans: ['var(--font-rubik)']
+            ...sharedConfig.theme?.extend?.fontFamily,
+            custom: ['var(--font-rubik)']
           },
           colors: {
             ...sharedConfig.theme?.extend?.colors,

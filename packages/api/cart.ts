@@ -10,7 +10,7 @@ export const getCart = async (data: Record<string, number>): Promise<Cart> => {
     if (!product) throw new Error(`Product ${sku} not found`)
 
     const price = product ? product.price * qty : 0
-    const salePrice = product ? product.sale_price * qty : 0
+    const salePrice = product ? product.salePrice * qty : 0
     totalQuantity += qty
     subtotal += price
     discount += (price - salePrice)

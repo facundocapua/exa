@@ -2,7 +2,7 @@ import { getRelatedProducts, type Product } from 'api'
 import ProductSlider from '../product-slider/ProductSlider'
 
 type Props = {
-  sku: Product['sku']
+  sku: Product['id']
 }
 
 export default async function RelatedProducts ({ sku }: Props) {

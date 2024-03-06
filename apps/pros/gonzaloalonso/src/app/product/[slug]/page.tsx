@@ -15,7 +15,7 @@ export async function generateStaticParams () {
   const products = await getProducts()
 
   return products.map((product) => ({
-    slug: product.slug
+    slug: product.handle
   }))
 }
 
@@ -27,9 +27,9 @@ export default async function Product ({ params }: Props) {
     notFound()
   }
 
-  if (product.variants) {
-    product.variants = product.variants.sort((a, b) => a.sort - b.sort)
-  }
+  // if (product.variants) {
+  //   product.variants = product.variants.sort((a, b) => a.sort - b.sort)
+  // }
 
   return (
     <main>
@@ -47,7 +47,7 @@ export default async function Product ({ params }: Props) {
         </div>
       </section>
       <Suspense>
-        <RelatedProducts sku={product.sku} />
+        <RelatedProducts sku={product.id} />
       </Suspense>
     </main>
   )

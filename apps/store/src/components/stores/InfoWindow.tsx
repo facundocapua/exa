@@ -1,9 +1,9 @@
-import type { Store } from 'api'
+import type { Salon } from 'api'
 import { useEffect, useState } from 'react'
 
 type Props = {
-  storeId: Store['id']
-  onClick: (id: Store['id']) => void
+  storeId: Salon['id']
+  onClick: (id: Salon['id']) => void
 } & google.maps.MarkerOptions
 
 export default function InfoWindow ({ storeId, onClick, ...options }: Props) {

@@ -34,9 +34,9 @@ export default function BrandNavigationMobile ({ brands, setOpen }: Props) {
             <Disclosure.Panel className="space-y-12 px-4 py-6" static>
               <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                 {brands.map((item) => (
-                  <Link href={`/brand/${item.slug}`} key={item.name} className="group relative" onClick={() => setOpen(false)}>
+                  <Link href={`/brand/${item.handle}`} key={item.name} className="group relative" onClick={() => setOpen(false)}>
                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md  group-hover:opacity-75">
-                      <Image src={item.image} alt={item.name} className="object-cover object-center" width={280} height={280} />
+                      <Image src={item.logo} alt={item.name} className="object-cover object-center" width={280} height={280} />
                     </div>
                     <h3 className="mt-6 block text-sm font-medium text-neutral-900">
                       <span className="absolute inset-0 z-10" aria-hidden="true" />

@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
 import Header from '@/components/header'
-import { Rubik } from 'next/font/google'
+import { Inter, Rubik } from 'next/font/google'
 import type { ReactNode } from 'react'
 import Footer from '@/components/footer'
 import 'ui/styles/global.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+})
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -22,8 +28,8 @@ export default function RootLayout ({
   children: ReactNode
 }) {
   return (
-    <html lang="es" className={`${rubik.variable}`}>
-      <body className='font-sans antialiased'>
+    <html lang="es" className={`${inter.variable} ${rubik.variable}`}>
+      <body className='font-custom antialiased'>
         <Header />
         {children}
         <Footer />

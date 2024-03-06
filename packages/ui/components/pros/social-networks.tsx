@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon, WhatsAppIconBW } from '../icons'
-import { Store } from 'api'
+import type { Salon } from 'api'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -35,7 +35,7 @@ const socialNetworksData: Record<string, Omit<SocialNetwork, 'href'>> = {
 } as const
 
 type Props = {
-  socialNetworks: Store['social_networks']
+  socialNetworks: Salon['social_networks']
   exclude?: Array<keyof typeof socialNetworksData>
   containerClassName?: string
   className?: string
@@ -47,7 +47,7 @@ export default function SocialNetworks ({ socialNetworks, exclude, containerClas
     .map((key) => {
       return {
         ...socialNetworksData[key],
-        href: socialNetworks[key]
+        href: socialNetworks?.[key] ?? ''
       }
     })
 

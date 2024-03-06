@@ -18,15 +18,15 @@ export default function OrderSummary ({ cart }: Props) {
         {cart.lines.map((line) => (
           <li key={line.sku} className="flex space-x-6 py-6 justify-between">
             <Image
-              src={line.product.images[0].image}
-              alt={line.product.name}
+              src={line.product.thumbnail ?? '/product-image-placeholder.svg'}
+              alt={line.product.title}
               width={175}
               height={175}
               className="h-40 w-40 flex-none rounded-md bg-gray-200 object-cover object-center"
             />
             <div className="flex flex-col justify-between space-y-4">
               <div className="space-y-1 text-sm font-medium">
-                <h3 className="text-gray-900">{line.product.name}</h3>
+                <h3 className="text-gray-900">{line.product.title}</h3>
                 <Price
                   className="flex justify-end space-y-2 text-right text-sm"
                   amount={line.salePrice}

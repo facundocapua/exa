@@ -1,6 +1,5 @@
 import { ClockIcon } from '@heroicons/react/24/outline'
 import { generateWhatsAppLink } from 'utils'
-import Button from '../button'
 import Image from 'next/image'
 
 type Props = {

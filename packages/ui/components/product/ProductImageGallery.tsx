@@ -1,7 +1,7 @@
 'use client'
 
 import { Tab } from '@headlessui/react'
-import type { Product } from 'api'
+import type { Product, ProductVariant } from 'api'
 import ZoomImage from './ZoomImage'
 import ProductImageGalleryThumb from './ProductImageGalleryThumb'
 import { useSearchParams } from 'next/navigation'
@@ -12,7 +12,9 @@ type Props = {
 
 export default function ProductImageGallery ({ product }: Props) {
   const searchParams = useSearchParams()
-  const currentVariant = searchParams.get('v') ? product.variants?.find(variant => variant.sku === searchParams.get('v')) : null
+  const currentVariant = searchParams.get('v')
+    ? product.variants?.find(variant => variant.sku === searchParams.get('v')) as ProductVariant
+    : null
 
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
