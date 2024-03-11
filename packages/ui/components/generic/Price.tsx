@@ -7,6 +7,8 @@ type Props = {
 } & React.ComponentProps<'p'>
 
 export default function Price ({ amount, className }: Props) {
+  if (!amount) return null
+
   return (
     <p suppressHydrationWarning={true} className={className}>
       {`${formatPrice(amount / 100)}`}

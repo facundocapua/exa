@@ -95,14 +95,14 @@ export default function CartModal ({ cart }: { cart: Cart | undefined }) {
                                     className="h-full w-full object-cover"
                                     width={64}
                                     height={64}
-                                    alt={item.product.name}
-                                    src={item.product.images[0].image}
+                                    alt={item.variant.product.title}
+                                    src={item.variant.product.thumbnail}
                                   />
                                 </div>
 
                                 <div className="flex flex-1 flex-col text-base">
                                   <span className="leading-tight">
-                                    {item.product.title}
+                                    {item.variant.product.title}
                                   </span>
                                 </div>
                               </Link>

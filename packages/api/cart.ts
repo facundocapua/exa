@@ -1,26 +1,26 @@
-import { getProductBySku } from './product'
+import { getProductVariant } from './product'
 import type { Cart } from './types'
 
 export const getCart = async (data: Record<string, number>): Promise<Cart> => {
   let totalQuantity = 0
   let subtotal = 0
   let discount = 0
-  const items = await Promise.all(Object.entries(data).map(async ([sku, qty]) => {
-    const product = await getProductBySku(sku)
-    if (!product) throw new Error(`Product ${sku} not found`)
+  const items = await Promise.all(Object.entries(data).map(async ([variantId, qty]) => {
+    const variant = await getProductVariant(variantId)
+    if (!variant) throw new Error(`Product ${variantId} not found`)
 
-    const price = product ? product.price * qty : 0
-    const salePrice = product ? product.salePrice * qty : 0
+    const price = variant ? variant.original_price * qty : 0
+    const salePrice = variant ? variant.calculated_price * qty : 0
     totalQuantity += qty
     subtotal += price
     discount += (price - salePrice)
 
     return {
-      sku,
+      variantId,
       qty,
       price,
       salePrice,
-      product
+      variant
     }
   }))
 

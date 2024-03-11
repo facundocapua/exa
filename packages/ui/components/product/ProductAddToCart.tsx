@@ -16,14 +16,14 @@ type Props = {
 export default function ProductAddToCart ({ product, className }: Props) {
   const [isPending, startTransition] = useTransition()
   const searchParams = useSearchParams()
-  const currentVariant = searchParams.get('v') ? product.variants?.find(variant => variant.sku === searchParams.get('v')) : null
+  const currentVariant = searchParams.get('v') ? product.variants?.find(variant => variant.sku === searchParams.get('v')) : product.variants[0]
 
   const router = useRouter()
   const handleAddToCart = () => {
     if (!currentVariant) return
 
     startTransition(async () => {
-      const error = await addItem(currentVariant.sku ?? '')
+      const error = await addItem(currentVariant.id ?? '')
 
       if (error) {
         // Trigger the error boundary in the root error.js

@@ -61,8 +61,8 @@ export const getProducts = async ({ category_id, brand_id, handle }: Partial<Pro
 
   products.forEach((product) => {
     product.variants = variants.filter((variant) => product.id === variant.product_id)
-    product.price = product.variants[0].original_price
-    product.salePrice = product.variants[0]?.calculated_price
+    product.price = product.variants[0]?.original_price ?? 0
+    product.salePrice = product.variants[0]?.calculated_price ?? 0
 
     product.variants.forEach((variant: ProductVariant) => {
       if (variant?.metadata?.image) {
@@ -152,8 +152,17 @@ export const getProduct = async (handle: string): Promise<Product | null> => {
   return products[0] ?? null
 }
 
-export const getProductBySku = async (id: Product['id']): Promise<Product | null> => {
-  return null
+export const getProductVariant = async (id: ProductVariant['id']): Promise<ProductVariant | null> => {
+  const params = new URLSearchParams({
+    currency_code: 'ars'
+  })
+  const variant = fetch(`${getMedusaUrl()}/store/variants/${id}?${params.toString()}`)
+    .then((res) => res.json())
+    .then(data => {
+      return data.variant
+    })
+
+  return variant
 }
 
 export const getRelatedProducts = async (id: Product['id']): Promise<Array<Product>> => {

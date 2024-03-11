@@ -2,13 +2,13 @@
 
 import { cookies } from 'next/headers'
 
-export const addItem = async (sku: string): Promise<String | undefined> => {
+export const addItem = async (variantId: string): Promise<String | undefined> => {
   const cartRaw = cookies().get('cart')?.value
   const cart = new Map(Object.entries(JSON.parse(cartRaw ?? '{}')))
 
   try {
-    const qty = cart.get(sku) as number ?? 0
-    cart.set(sku, qty + 1)
+    const qty = cart.get(variantId) as number ?? 0
+    cart.set(variantId, qty + 1)
 
     cookies().set('cart', JSON.stringify(Object.fromEntries(cart)))
   } catch (e) {
@@ -16,12 +16,12 @@ export const addItem = async (sku: string): Promise<String | undefined> => {
   }
 }
 
-export const removeItem = async (sku: string): Promise<String | undefined> => {
+export const removeItem = async (variantId: string): Promise<String | undefined> => {
   const cartRaw = cookies().get('cart')?.value
   const cart = new Map(Object.entries(JSON.parse(cartRaw ?? '{}')))
 
   try {
-    cart.delete(sku)
+    cart.delete(variantId)
 
     cookies().set('cart', JSON.stringify(Object.fromEntries(cart)))
   } catch (e) {
@@ -30,17 +30,17 @@ export const removeItem = async (sku: string): Promise<String | undefined> => {
 }
 
 export const updateItemQuantity = async ({
-  sku,
+  variantId,
   qty
 }: {
-  sku: string;
+  variantId: string;
   qty: number;
 }): Promise<String | undefined> => {
   const cartRaw = cookies().get('cart')?.value
   const cart = new Map(Object.entries(JSON.parse(cartRaw ?? '{}')))
 
   try {
-    cart.set(sku, qty)
+    cart.set(variantId, qty)
 
     cookies().set('cart', JSON.stringify(Object.fromEntries(cart)))
   } catch (e) {

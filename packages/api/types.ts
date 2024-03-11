@@ -50,11 +50,11 @@ export type Filter = {
 }
 
 export type CartItem = {
-  sku: string
+  variantId: string
   qty: number
   price: number
   salePrice: number
-  product: Product
+  variant: ProductVariant
 }
 
 export type Cart = {

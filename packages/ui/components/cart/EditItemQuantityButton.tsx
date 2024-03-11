@@ -25,9 +25,9 @@ export default function EditItemQuantityButton ({
         startTransition(async () => {
           const error =
             type === 'minus' && item.qty - 1 === 0
-              ? await removeItem(item.sku)
+              ? await removeItem(item.variantId)
               : await updateItemQuantity({
-                sku: item.sku,
+                variantId: item.variantId,
                 qty: type === 'plus' ? item.qty + 1 : item.qty - 1
               })
 

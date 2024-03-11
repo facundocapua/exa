@@ -27,17 +27,17 @@ export default function MobileOrderSummary ({ cart }: Props) {
             <Disclosure.Panel>
               <ul role="list" className="divide-y divide-gray-200 border-b border-gray-200">
                 {cart.lines.map((line) => (
-                  <li key={line.sku} className="flex space-x-6 py-6">
+                  <li key={line.variantId} className="flex space-x-6 py-6">
                     <Image
-                       src={line.product.thumbnail ?? '/product-image-placeholder.svg'}
-                       alt={line.product.title}
+                       src={line.variant.product.thumbnail ?? '/product-image-placeholder.svg'}
+                       alt={line.variant.product.title}
                        width={175}
                        height={175}
                        className="h-40 w-40 flex-none rounded-md bg-gray-200 object-cover object-center"
                      />
                     <div className="flex flex-col justify-between space-y-4">
                       <div className="space-y-1 text-sm font-medium">
-                        <h3 className="text-gray-900">{line.product.title}</h3>
+                        <h3 className="text-gray-900">{line.variant.product.title}</h3>
                         <Price
                           className="flex justify-end space-y-2 text-right text-sm"
                           amount={line.salePrice}
