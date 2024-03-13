@@ -18,7 +18,7 @@ export default function DeleteItemButton ({ item }: { item: CartItem }) {
       aria-label="Remove cart item"
       onClick={() => {
         startTransition(async () => {
-          const error = await removeItem(item.variantId)
+          const error = await removeItem(item.id)
 
           if (error) {
             // Trigger the error boundary in the root error.js

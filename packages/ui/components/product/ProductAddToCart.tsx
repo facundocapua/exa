@@ -7,16 +7,20 @@ import { addItem } from '../cart/actions'
 
 import type {} from 'react/experimental'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 type Props = {
   product: Product
+  isProductPage?: boolean
   className?: string
 }
 
-export default function ProductAddToCart ({ product, className }: Props) {
+export default function ProductAddToCart ({ product, isProductPage, className }: Props) {
   const [isPending, startTransition] = useTransition()
   const searchParams = useSearchParams()
-  const currentVariant = searchParams.get('v') ? product.variants?.find(variant => variant.sku === searchParams.get('v')) : product.variants[0]
+  const currentVariant = searchParams.get('v')
+    ? product.variants?.find(variant => variant.sku === searchParams.get('v'))
+    : (product.variants.length === 1 ? product.variants[0] : null)
 
   const router = useRouter()
   const handleAddToCart = () => {
@@ -26,6 +30,7 @@ export default function ProductAddToCart ({ product, className }: Props) {
       const error = await addItem(currentVariant.id ?? '')
 
       if (error) {
+        console.log(error)
         // Trigger the error boundary in the root error.js
         throw new Error(error.toString())
       }
@@ -36,32 +41,52 @@ export default function ProductAddToCart ({ product, className }: Props) {
 
   if (currentVariant && currentVariant?.inventory_quantity <= 0) {
     return (
-      <button
-        aria-label="Agregar al carrito"
-        disabled
-        type="button"
+      <div className={className}>
+        <span className='text-xs'>&nbsp;</span>
+        <button
+          aria-label="Product agotado"
+          disabled
+          type="button"
+          className={clsx(
+            'flex items-center justify-center md:rounded-md bg-neutral-400 w-full py-4 text-base font-medium text-white focus:outline-none'
+          )}
+        >
+          Producto agotado
+        </button>
+      </div>
+    )
+  }
+
+  if (!isProductPage && product.variants.length > 1) {
+    return (
+      <Link
+        href={`/product/${product.handle}`}
         className={clsx(
-          'flex items-center justify-center md:rounded-md bg-neutral-400 w-full py-4 text-base font-medium text-white focus:outline-none',
+          'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
           className
-        )}
-      >
-        Producto agotado
-      </button>
+        )}>
+        Comprar
+      </Link>
     )
   }
 
   return (
-    <button
-      aria-label="Agregar al carrito"
-      disabled={isPending}
-      type="button"
-      className={clsx(
-        'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
-        className
-      )}
-      onClick={handleAddToCart}
-    >
-      Agregar al carrito
-    </button>
+    <div className={className}>
+      { isProductPage && !currentVariant
+        ? (<span className='text-sm text-primary-700'>Primero debes seleccionar una opción de arriba</span>)
+        : (<span className='text-xs'>&nbsp;</span>) }
+      <button
+        aria-label="Agregar al carrito"
+        disabled={isPending || (isProductPage && !currentVariant)}
+        type="button"
+        className={clsx(
+          'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
+          'disabled:opacity-50 disabled:cursor-not-allowed'
+        )}
+        onClick={handleAddToCart}
+      >
+        Comprar
+      </button>
+    </div>
   )
 }

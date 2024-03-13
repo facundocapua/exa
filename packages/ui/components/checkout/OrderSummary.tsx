@@ -15,8 +15,8 @@ export default function OrderSummary ({ cart }: Props) {
       </h2>
 
       <ul role="list" className="flex-auto divide-y divide-gray-200 overflow-y-auto px-6">
-        {cart.lines.map((line) => (
-          <li key={line.variantId} className="flex space-x-6 py-6 justify-between">
+        {cart.items.map((line) => (
+          <li key={line.id} className="flex space-x-6 py-6 justify-between">
             <Image
               src={line.variant.product.thumbnail ?? '/product-image-placeholder.svg'}
               alt={line.variant.product.title}
@@ -29,18 +29,18 @@ export default function OrderSummary ({ cart }: Props) {
                 <h3 className="text-gray-900">{line.variant.product.title}</h3>
                 <Price
                   className="flex justify-end space-y-2 text-right text-sm"
-                  amount={line.salePrice}
+                  amount={Number(line.subtotal)}
                 />
-                {line.price !== line.salePrice && (
+                {line.original_total !== line.subtotal && (
                   <Price
                     className="flex justify-end space-y-2 text-right text-sm line-through text-neutral-500 dark:text-neutral-400"
-                    amount={line.price}
+                    amount={Number(line.original_total)}
                   />
                 )}
                 <div className="ml-auto flex h-9 flex-row items-center rounded-full border max-w-[98px] border-neutral-200 dark:border-neutral-700">
                   <EditItemQuantityButton item={line} type="minus" />
                   <p className="w-6 text-center">
-                    <span className="w-full text-sm">{line.qty}</span>
+                    <span className="w-full text-sm">{line.quantity}</span>
                   </p>
                   <EditItemQuantityButton item={line} type="plus" />
                 </div>
@@ -55,7 +55,7 @@ export default function OrderSummary ({ cart }: Props) {
           <div className="flex justify-between">
             <dt>Subtotal</dt>
             <dd className="text-gray-900">
-              <Price amount={cart.cost.subtotal} />
+              <Price amount={Number(cart.subtotal)} />
             </dd>
           </div>
           <div className="flex justify-between">
@@ -63,14 +63,14 @@ export default function OrderSummary ({ cart }: Props) {
               Descuento
             </dt>
             <dd className="text-gray-900">
-              <Price amount={-cart.cost.discount} />
+              <Price amount={-Number(cart.discount_total)} />
             </dd>
           </div>
-          {cart.cost.shipping > 0 && (
+          {cart.shipping_total && (
             <div className="flex justify-between">
               <dt>Envio</dt>
               <dd className="text-gray-900">
-                <Price amount={cart.cost.shipping} />
+                <Price amount={cart.shipping_total} />
               </dd>
             </div>
           )}
@@ -78,7 +78,7 @@ export default function OrderSummary ({ cart }: Props) {
           <div className="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
             <dt className="text-base">Total</dt>
             <dd className="text-base">
-              <Price amount={cart.cost.total} />
+              <Price amount={Number(cart.total)} />
             </dd>
           </div>
         </dl>

@@ -9,7 +9,6 @@ export const getProductVariants = async (variantIds: string[]): Promise<Array<Pr
     expand: 'prices',
     ids: variantIds.join(','),
     currency_code: 'ars'
-
   })
   const products = fetch(`${getMedusaUrl()}/store/variants?${params.toString()}`)
     .then((res) => res.json())

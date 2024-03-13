@@ -1,4 +1,10 @@
-import { Product as MedusaProduct, ProductCategory as MedusaProductCategory, ProductVariant as MedusaProductVariant } from '@medusajs/medusa'
+import {
+  Product as MedusaProduct,
+  ProductCategory as MedusaProductCategory,
+  ProductVariant as MedusaProductVariant,
+  Cart as MedusaCart,
+  LineItem as MedusaLineItem
+} from '@medusajs/medusa'
 
 export type Category = MedusaProductCategory
 
@@ -49,25 +55,21 @@ export type Filter = {
   options: Array<FilterOption>
 }
 
-export type CartItem = {
-  variantId: string
-  qty: number
-  price: number
-  salePrice: number
-  variant: ProductVariant
-}
+// export type Cart = {
+//   id: string
+//   lines: Array<CartItem>
+//   cost: {
+//     subtotal: number
+//     discount: number
+//     shipping: number
+//     total: number
+//   }
+//   totalQuantity: number
+// }
 
-export type Cart = {
-  id: string
-  lines: Array<CartItem>
-  cost: {
-    subtotal: number
-    discount: number
-    shipping: number
-    total: number
-  }
-  totalQuantity: number
-}
+export type Cart = MedusaCart
+
+export type CartItem = MedusaLineItem
 
 export type State = {
   id: string

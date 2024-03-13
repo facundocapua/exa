@@ -39,7 +39,7 @@ export default function ProductListPage ({ breadcrumbs, searchParams, filters, p
 
         <section aria-labelledby="product-heading" className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
           <h2 id="product-heading" className="sr-only">
-            Products
+            Productos
           </h2>
 
           {products.length === 0 && (<span>No se encontraron productos</span>)}

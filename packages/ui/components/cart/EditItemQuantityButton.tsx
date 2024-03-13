@@ -24,11 +24,11 @@ export default function EditItemQuantityButton ({
       onClick={() => {
         startTransition(async () => {
           const error =
-            type === 'minus' && item.qty - 1 === 0
-              ? await removeItem(item.variantId)
+            type === 'minus' && item.quantity - 1 === 0
+              ? await removeItem(item.id)
               : await updateItemQuantity({
-                variantId: item.variantId,
-                qty: type === 'plus' ? item.qty + 1 : item.qty - 1
+                itemId: item.id,
+                quantity: type === 'plus' ? item.quantity + 1 : item.quantity - 1
               })
 
           if (error) {
