@@ -7,7 +7,7 @@ import ForwardButton from './ForwardButton'
 import Link from 'next/link'
 
 type Props = {
-  slides: Array<{image: string, imageMobile: string, link: string}>
+  slides: Array<{image: string, image_mobile: string, link: string}>
 }
 
 export default function HeroSlider ({ slides }: Props) {
@@ -77,7 +77,7 @@ export default function HeroSlider ({ slides }: Props) {
           <Link key={index} href={slide.link}>
             <Image
               // key={index}
-              src={slide.imageMobile}
+              src={slide.image_mobile}
               width={780}
               height={546}
               sizes="100vw"
