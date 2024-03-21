@@ -1,4 +1,5 @@
 import Portfolio from '@/components/Gallery'
+import { Suspense } from 'react'
 import { Breadcrumb } from 'ui/server'
 
 const images = [
@@ -27,7 +28,9 @@ export default function Page () {
         <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Portfolio</h1>
       </div>
 
-      <Portfolio images={images} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Portfolio images={images} />
+      </Suspense>
     </div>
   )
 }

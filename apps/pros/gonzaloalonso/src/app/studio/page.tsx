@@ -1,4 +1,5 @@
 import Portfolio from '@/components/Gallery'
+import { Suspense } from 'react'
 
 const images = [
   '/studio/1.jpg',
@@ -16,7 +17,9 @@ export default function StudioPage () {
         <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Studio</h1>
       </div>
 
-      <Portfolio images={images} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Portfolio images={images} />
+      </Suspense>
     </div>
   )
 }
