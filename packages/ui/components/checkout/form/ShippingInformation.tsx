@@ -1,100 +1,122 @@
 'use client'
 
-import { states } from 'api'
+import { Cart } from 'api'
+import Input from '../../form/input'
+import StateSelector from '../../form/state-selector'
+import { useState } from 'react'
 
-// import { Listbox } from '@headlessui/react'
-// import type { State } from 'api'
-// import { getState, states } from 'api'
-// import { useCheckoutStore } from '../useCheckoutStore'
+type Props = {
+  cart: Cart
+}
 
-export default function ShippingInformation () {
-  // const [shippingAddress, setShippingAddress] = useCheckoutStore((state) => [state.shippingAddress, state.setShippingAddress])
+export default function ShippingInformation ({ cart }: Props) {
+  const [shippingAddress, setShippingAddress] = useState({
+    'shipping_address.first_name': cart?.shipping_address?.first_name || '',
+    'shipping_address.last_name': cart?.shipping_address?.last_name || '',
+    'shipping_address.address_1': cart?.shipping_address?.address_1 || '',
+    // 'shipping_address.company': cart?.shipping_address?.company || '',
+    'shipping_address.postal_code': cart?.shipping_address?.postal_code || '',
+    'shipping_address.city': cart?.shipping_address?.city || '',
+    // 'shipping_address.country_code':
+    //   cart?.shipping_address?.country_code || countryCode || '',
+    'shipping_address.province': cart?.shipping_address?.province || '',
+    email: cart?.email || '',
+    'shipping_address.phone': cart?.shipping_address?.phone || ''
+  })
 
-  // const handleChangeState = (stateId: State['id']) => {
-  //   const newShippingAddress = structuredClone(shippingAddress)
-  //   newShippingAddress.state = getState(stateId) as State
-
-  //   setShippingAddress(newShippingAddress)
-  // }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setShippingAddress({
+      ...shippingAddress,
+      [e.target.name]: e.target.value
+    })
+  }
 
   return (
-    <section className="mt-12">
-      <h2 className='font-semibold text-neutral-700 text-xl mb-2'>Dirección de envío</h2>
-      <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
-          <div className="flex flex-col basis-1/2">
-            <label htmlFor="firstname" className="text-sm text-neutral-500">Nombre</label>
-            <input
-              type="text"
-              id="firstname"
-              autoComplete="given-name"
-              className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
-            />
-          </div>
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4">
+        <Input
+          label="Nombre"
+          id="shipping_address.first_name"
+          name="shipping_address.first_name"
+          required={true}
+          autoComplete="given-name"
+          value={shippingAddress['shipping_address.first_name']}
+          onChange={handleChange}
+        />
 
-          <div className="flex flex-col basis-1/2">
-            <label htmlFor="lastname" className="text-sm text-neutral-500">Apellido</label>
-            <input
-              type="text"
-              id="lastname"
-              autoComplete="family-name"
-              className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="shipping-address" className="text-sm text-neutral-500">Dirección</label>
-          <input
-            type="text"
-            id="shipping-address"
-            autoComplete="shipping address-line1"
-            className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label htmlFor="shipping-additional" className="text-sm text-neutral-500">Información adicional (ej.: depto. 201)</label>
-          <input
-            type="text"
-            id="shipping-additional"
-            autoComplete="shipping address-line2"
-            className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
-          />
-        </div>
-
-        <div className="flex gap-4">
-          <div className="flex flex-col basis-1/3">
-            <label htmlFor="shipping-city" className="text-sm text-neutral-500">Ciudad</label>
-            <input
-              type="text"
-              id="shipping-city"
-              autoComplete="shipping address-level2"
-              className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
-            />
-          </div>
-
-          <div className="flex flex-col basis-1/3">
-            <label htmlFor="lastname" className="text-sm text-neutral-500">Provincia</label>
-            <select className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm">
-              <option value="" disabled>Seleccionar</option>
-              {states.map((state) => (
-                <option key={state.id} value={state.id}>{state.name}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex flex-col basis-1/3">
-            <label htmlFor="shipping-postalcode" className="text-sm text-neutral-500">Código postal</label>
-            <input
-              type="text"
-              id="shipping-postalcode"
-              autoComplete="shipping postal-code"
-              className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
-            />
-          </div>
-        </div>
+        <Input
+          label="Apellido"
+          id="shipping_address.last_name"
+          name="shipping_address.last_name"
+          required={true}
+          autoComplete="family-name"
+          value={shippingAddress['shipping_address.last_name']}
+          onChange={handleChange}
+        />
       </div>
-    </section>
+
+      <Input
+        label="Dirección"
+        id="shipping_address.address_1"
+        name="shipping_address.address_1"
+        required={true}
+        autoComplete="shipping address-line1"
+        value={shippingAddress['shipping_address.address_1']}
+        onChange={handleChange}
+      />
+
+      <div className='flex gap-4'>
+        <Input
+          label="Ciudad"
+          id="shipping_address.city"
+          name="shipping_address.city"
+          required={true}
+          autoComplete="shipping address-level2"
+          containerClassName='basis-1/3'
+          value={shippingAddress['shipping_address.city']}
+          onChange={handleChange}
+        />
+
+        <StateSelector
+          placeholder='Provincia'
+          id='shipping_address.province'
+          name='shipping_address.province'
+          value={shippingAddress['shipping_address.province']}
+          onChange={handleChange}
+        />
+
+        <Input
+          label="Código postal"
+          id="shipping_address.postal_code"
+          name="shipping_address.postal_code"
+          required={true}
+          autoComplete="shipping postal-code"
+          containerClassName='basis-1/3'
+          value={shippingAddress['shipping_address.postal_code']}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="flex gap-4">
+        <Input
+          label="Email"
+          name="email"
+          type="email"
+          title="Ingrese un email válido"
+          autoComplete="email"
+          value={shippingAddress.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          label="Teléfono"
+          id="shipping_address.phone"
+          name="shipping_address.phone"
+          autoComplete="tel"
+          value={shippingAddress['shipping_address.phone']}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
   )
 }

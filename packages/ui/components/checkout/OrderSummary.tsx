@@ -9,7 +9,7 @@ type Props = {
 
 export default function OrderSummary ({ cart }: Props) {
   return (
-    <section aria-labelledby="summary-heading" className="hidden w-full max-w-md flex-col bg-gray-50 lg:flex">
+    <section aria-labelledby="summary-heading" className="hidden w-full max-w-md flex-col bg-gray-50 lg:flex h-fit">
       <h2 id="summary-heading" className="sr-only">
         Resumen de compra
       </h2>

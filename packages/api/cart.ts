@@ -1,3 +1,4 @@
+import { StorePostCartsCartReq } from '@medusajs/medusa'
 import type { Cart } from './types'
 import { getMedusaRegionId, getMedusaSalesChannelId, getMedusaUrl } from './utils/medusa'
 
@@ -11,7 +12,10 @@ export const createCart = async (): Promise<Cart> => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(params)
+    body: JSON.stringify(params),
+    next: {
+      tags: ['cart']
+    }
   }).then((res) => res.json())
     .then(data => {
       return data.cart
@@ -21,8 +25,11 @@ export const createCart = async (): Promise<Cart> => {
 }
 
 export const getCart = async (id: string): Promise<Cart> => {
-  const cart = fetch(`${getMedusaUrl()}/store/carts/${id}`)
-    .then((res) => res.json())
+  const cart = fetch(`${getMedusaUrl()}/store/carts/${id}`, {
+    next: {
+      tags: ['cart']
+    }
+  }).then((res) => res.json())
     .then(data => {
       return data.cart
     })
@@ -41,7 +48,10 @@ export const addCartItem = async (cartId: string, variantId: string, quantity: n
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(params)
+    body: JSON.stringify(params),
+    next: {
+      tags: ['cart']
+    }
   }).then((res) => res.json())
     .then(data => {
       return data.cart
@@ -52,7 +62,10 @@ export const addCartItem = async (cartId: string, variantId: string, quantity: n
 
 export const removeCartItem = async (cartId: string, lineItemId: string): Promise<Cart> => {
   const cart = fetch(`${getMedusaUrl()}/store/carts/${cartId}/line-items/${lineItemId}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    next: {
+      tags: ['cart']
+    }
   }).then((res) => res.json())
     .then(data => {
       return data.cart
@@ -71,7 +84,10 @@ export const updateCartItem = async (cartId: string, lineItemId: string, quantit
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(params)
+    body: JSON.stringify(params),
+    next: {
+      tags: ['cart']
+    }
   }).then((res) => res.json())
     .then(data => {
       return data.cart
@@ -80,38 +96,24 @@ export const updateCartItem = async (cartId: string, lineItemId: string, quantit
   return cart
 }
 
-// export const getCart = async (data: Record<string, number>): Promise<Cart> => {
-//   let totalQuantity = 0
-//   let subtotal = 0
-//   let discount = 0
-//   const items = await Promise.all(Object.entries(data).map(async ([variantId, qty]) => {
-//     const variant = await getProductVariant(variantId)
-//     if (!variant) throw new Error(`Product ${variantId} not found`)
+export async function updateCart (cartId: string, data: StorePostCartsCartReq): Promise<Cart> {
+  const cart = fetch(`${getMedusaUrl()}/store/carts/${cartId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+    next: {
+      tags: ['cart']
+    }
+  }).then((res) => {
+    console.log(res)
+    return res.json()
+  })
+    .then(data => {
+      console.log(data)
+      return data.cart
+    })
 
-//     const price = variant ? variant.original_price * qty : 0
-//     const salePrice = variant ? variant.calculated_price * qty : 0
-//     totalQuantity += qty
-//     subtotal += price
-//     discount += (price - salePrice)
-
-//     return {
-//       variantId,
-//       qty,
-//       price,
-//       salePrice,
-//       variant
-//     }
-//   }))
-
-//   return {
-//     id: '1',
-//     lines: items,
-//     cost: {
-//       subtotal,
-//       discount,
-//       shipping: 0,
-//       total: subtotal - discount
-//     },
-//     totalQuantity
-//   }
-// }
+  return cart
+}

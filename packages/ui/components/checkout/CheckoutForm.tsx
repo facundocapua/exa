@@ -1,15 +1,19 @@
-import ContactInformation from './form/ContactInformation'
-import ShippingInformation from './form/ShippingInformation'
+// import ContactInformation from './form/ContactInformation'
+import { Cart } from 'api'
+import CheckoutFirstStep from './steps/checkout-frist-step'
 
-export default function CheckoutForm () {
+type Props = {
+  cart: Cart
+}
+
+export default function CheckoutForm ({ cart }: Props) {
   return (
-    <form className="mt-6">
+    <div className="mt-6">
       <div className="grid grid-cols-12 gap-x-4 gap-y-6">
         <div className="col-span-full">
-          <ContactInformation />
-          <ShippingInformation />
+          <CheckoutFirstStep cart={cart} />
         </div>
       </div>
-    </form>
+    </div>
   )
 }
