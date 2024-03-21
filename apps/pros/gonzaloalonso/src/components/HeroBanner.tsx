@@ -22,8 +22,7 @@ export default async function HeroBanner () {
                   <span className="text-black lg:text-primary-400">Gonzalo Alonso</span> Studio
                 </h1>
                 <p className="mt-6 text-lg font-semibold leading-8 text-gray-900 lg:text-gray-300">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                  amet fugiat veniam occaecat fugiat aliqua.
+                  Un espacio propicio para encontrar tu Hair Style. Disfrutá de la Experiencia GA, en un mundo de calidad, calidez y lujo, guiado por profesionales expertos.
                 </p>
                 <div className="mt-10 flex items-center gap-x-6">
                   <Link

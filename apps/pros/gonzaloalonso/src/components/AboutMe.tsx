@@ -8,11 +8,29 @@ export default function AboutMe () {
         <h1 className='text-4xl md:text-5xl font-semibold my-4'>Gonzalo <span className='text-primary-400'>Alonso</span></h1>
         <div className='flex flex-col gap-6 px-2 md:px-0'>
           {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed facilisis libero. Suspendisse in nibh et elit fringilla auctor eget eu erat. Mauris eget maximus urna, ut pharetra odio. Nullam a feugiat odio. Suspendisse nec urna augue. Fusce ut iaculis mi. Quisque ac laoreet metus. Vivamus sodales ex et dui imperdiet placerat. Integer ut augue enim. Sed hendrerit vel nibh sit amet finibus.</p>
+          <p style={{ textWrap: 'balance' }}>
+            Reconocido estilista y artista Argentino, actualmente de la ciudad de Tandil. Ha destacado en eventos de moda y estilismo, al ganar el Trend Vision en Nueva York.
+          </p>
           {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>Phasellus eget molestie ex. Integer sit amet luctus lacus, vel iaculis tellus. Sed elit magna, vehicula at placerat non, fermentum at metus. In at urna efficitur, interdum ante ac, cursus ex. Vestibulum mattis arcu vel libero ornare finibus. Nulla facilisi. Sed mollis nibh tincidunt rhoncus lacinia. Cras vel lacus finibus, lacinia elit ac, gravida velit. Nam eget convallis lacus, ut laoreet magna. Maecenas arcu purus, posuere sed risus nec, fermentum scelerisque augue. Aenean porta mi non nunc consectetur, volutpat sagittis massa lacinia.</p>
+          <p style={{ textWrap: 'balance' }}>
+            Se destaca por un estilo que refleja arrojo y atrevimiento en sus creaciones. Sus bastas colecciones, peinados únicos y trabajos vibrantes de color han recorrido el mundo. Sus trabajos reflejan audacia, arrojo y atrevimiento; sin perder la calidad y profesionalismo que tanto lo caracteriza.
+          </p>
           {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>Pellentesque pharetra velit non est tincidunt, nec convallis velit ornare. Vivamus at turpis tellus. Mauris dignissim, dolor non efficitur interdum, urna metus eleifend purus, a vestibulum dolor quam sit amet lorem. Sed non enim nec orci blandit commodo non non nunc. Vestibulum eget rutrum felis, ut molestie sapien. Fusce molestie mattis ante sit amet varius. Duis vitae pretium risus. In hendrerit eros arcu, in ornare enim laoreet blandit. Curabitur congue velit velit, sit amet eleifend orci placerat sollicitudin. Vivamus eget aliquam sapien, vitae tincidunt lectus. Aliquam erat volutpat.</p>
+          <p style={{ textWrap: 'balance' }}>
+            Siempre orientando a sus clientes, estudiando y diagnosticando de manera precisa para obtener un cambio tanto físico como espiritual; fomentando la audacia, realzando virtudes y eliminando tabúes.
+          </p>
+          {/* @ts-ignore */}
+          <p style={{ textWrap: 'balance' }}>
+            Su Studio, Gonzalo Alonso Studio, es conocido por su exclusividad, lujo, profesionalismo, organización y atención detallada a los clientes.
+          </p>
+          {/* @ts-ignore */}
+          <p style={{ textWrap: 'balance' }}>
+            En el contexto de Wella Company, es Artista exclusivo para la marca, y reconocido por su participación en el concurso Internacional Trend Vision, donde obtuvo el primer puesto con su producción "Estilo Pasionista", destacando su talento y creatividad en el ámbito estilístico.
+          </p>
+          {/* @ts-ignore */}
+          <p style={{ textWrap: 'balance' }}>
+            La filosofía de Gonzalo Alonso en su trabajo se centra en la combinación de audacia y atrevimiento en sus creaciones, reflejando un estilo arrojado y creativo. Siempre con un enfoque innovador y vibrante en el mundo del estilismo.
+          </p>
         </div>
       </header>
       <footer className='w-full md:w-1/2'>
