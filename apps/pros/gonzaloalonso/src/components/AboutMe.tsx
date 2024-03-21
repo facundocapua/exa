@@ -29,7 +29,7 @@ export default function AboutMe () {
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            La filosofía de Gonzalo Alonso en su trabajo se centra en la combinación de audacia y atrevimiento en sus creaciones, reflejando un estilo arrojado y creativo. Siempre con un enfoque innovador y vibrante en el mundo del estilismo.
+            La filosofía de Gonzalo Alonso en su trabajo se centra en la combinación de audacia y atrevimiento en sus creaciones, reflejando un estilo osado y creativo. Siempre con un enfoque innovador y vibrante en el mundo del estilismo.
           </p>
         </div>
       </header>
