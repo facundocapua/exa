@@ -34,11 +34,27 @@ export default function useStoreLocator ({ stores }: Props) {
   }, [brands, setFilteredStores, stores, map])
 
   const onLoad = useCallback(function callback (map: google.maps.Map) {
-    const bounds = new window.google.maps.LatLngBounds()
-    stores.forEach((store) => {
-      bounds.extend({ lat: store.lat, lng: store.lng })
-    })
-    map?.fitBounds(bounds)
+    const options = {
+      enableHighAccuracy: false,
+      // timeout: 5000,
+      maximumAge: 1000 * 60 * 60 // 1 hour
+    }
+
+    const success = (position) => {
+      map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude })
+      map.setZoom(15)
+    }
+    const error = (error) => {
+      console.error('error', error)
+      const bounds = new window.google.maps.LatLngBounds()
+      stores.forEach((store) => {
+        bounds.extend({ lat: store.lat, lng: store.lng })
+      })
+      map?.fitBounds(bounds)
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options)
+
     setMap(map)
   }, [stores])
 

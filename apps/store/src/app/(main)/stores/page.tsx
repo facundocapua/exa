@@ -5,7 +5,7 @@ import { Breadcrumb } from 'ui/server'
 export default async function Stores () {
   const stores = await getSalons()
   const brecrumbs = [{
-    name: 'Buscador de Salones',
+    name: 'Buscador de profesionales',
     url: '/stores',
     current: true
   }]
@@ -15,7 +15,7 @@ export default async function Stores () {
       <Breadcrumb pages={brecrumbs} />
 
       <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
-        <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Buscador de Salones</h1>
+        <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Buscador de profesionales</h1>
       </div>
 
       <StoreLocator stores={stores} />
