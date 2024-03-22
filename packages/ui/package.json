@@ -23,6 +23,8 @@
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.0",
     "embla-carousel-react": "8.0.0",
+    "just-compare": "2.3.0",
+    "just-omit": "2.2.0",
     "next": "14.1.4",
     "react-dom": "18.2.0",
     "tailwind-merge": "2.2.2",
@@ -31,7 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "20.11.30",
-    "@types/react": "^18.2.67",
+    "@types/react": "^18.2.69",
     "@types/react-dom": "^18.2.22",
     "api": "workspace:*",
     "eslint": "8.57.0",
