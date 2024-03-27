@@ -42,7 +42,7 @@ export default function useStoreLocator ({ stores }: Props) {
 
     const success = (position) => {
       map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude })
-      map.setZoom(15)
+      map.setZoom(13)
     }
     const error = (error) => {
       console.error('error', error)
