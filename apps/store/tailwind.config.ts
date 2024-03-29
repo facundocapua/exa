@@ -48,6 +48,9 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))'
         }
       },
+      boxShadow: {
+        interactive: '0 0 0 1px theme(colors.primary.500),0 0 0 4px theme(colors.primary.500 / 20%)'
+      },
       // borderRadius: {
       //   lg: 'var(--radius)',
       //   md: 'calc(var(--radius) - 2px)',

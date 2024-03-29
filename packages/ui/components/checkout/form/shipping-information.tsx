@@ -1,15 +1,18 @@
 'use client'
 
-import { Cart } from 'api'
+import { CartWithCheckoutStep } from 'api'
 import Input from '../../form/input'
 import StateSelector from '../../form/state-selector'
 import { useState } from 'react'
+import Checkbox from '../../form/checkbox'
 
 type Props = {
-  cart: Cart
+  cart: CartWithCheckoutStep
+  sameAsBilling: boolean
+  onSameAsBillingChange: (value: boolean) => void
 }
 
-export default function ShippingInformation ({ cart }: Props) {
+export default function ShippingInformation ({ cart, sameAsBilling, onSameAsBillingChange }: Props) {
   const [shippingAddress, setShippingAddress] = useState({
     'shipping_address.first_name': cart?.shipping_address?.first_name || '',
     'shipping_address.last_name': cart?.shipping_address?.last_name || '',
@@ -94,6 +97,19 @@ export default function ShippingInformation ({ cart }: Props) {
           containerClassName='basis-1/3'
           value={shippingAddress['shipping_address.postal_code']}
           onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <Checkbox
+          label="Misma dirección de facturación"
+          type="checkbox"
+          id="same_as_billing"
+          name="same_as_billing"
+          containerClassName='my-4'
+          checked={sameAsBilling}
+          value="on"
+          onChange={() => onSameAsBillingChange(!sameAsBilling)}
         />
       </div>
 

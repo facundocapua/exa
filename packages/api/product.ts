@@ -24,10 +24,11 @@ type ProductParams = {
   currency_code?: string
   category_id?: string[]
   brand_id?: string[]
-  handle?: string
+  handle?: string,
+  ids?: string[]
 }
 
-export const getProducts = async ({ category_id, brand_id, handle }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+export const getProducts = async ({ category_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
   const params = new URLSearchParams({
     expand: 'categories,images,variants,brand',
     currency_code: 'ars'
@@ -47,6 +48,12 @@ export const getProducts = async ({ category_id, brand_id, handle }: Partial<Pro
 
   if (handle) {
     params.append('handle', handle)
+  }
+
+  if (ids) {
+    for (const id of ids) {
+      params.append('id[]', id)
+    }
   }
 
   const products: Array<Product> = await fetch(`${getMedusaUrl()}/store/products?${params.toString()}`)

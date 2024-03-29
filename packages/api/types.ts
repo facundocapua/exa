@@ -1,10 +1,15 @@
-import {
+import type {
   Product as MedusaProduct,
   ProductCategory as MedusaProductCategory,
   ProductVariant as MedusaProductVariant,
   Cart as MedusaCart,
-  LineItem as MedusaLineItem
+  LineItem as MedusaLineItem,
+  Address as MedusaAddress,
+  PaymentSession as MedusaPaymentSession,
+  StoreCompleteCartRes,
+  Order as MedusaOrder
 } from '@medusajs/medusa'
+import type { PricedShippingOption } from '@medusajs/medusa/dist/types/pricing'
 
 export type Category = MedusaProductCategory
 
@@ -55,43 +60,29 @@ export type Filter = {
   options: Array<FilterOption>
 }
 
-// export type Cart = {
-//   id: string
-//   lines: Array<CartItem>
-//   cost: {
-//     subtotal: number
-//     discount: number
-//     shipping: number
-//     total: number
-//   }
-//   totalQuantity: number
-// }
-
 export type Cart = MedusaCart
 
+export type CartWithCheckoutStep = Omit<
+  Cart,
+  'beforeInsert' | 'beforeUpdate' | 'afterUpdateOrLoad'
+> & {
+  checkout_step: 'address' | 'delivery' | 'payment'
+}
+
 export type CartItem = MedusaLineItem
+
+export type ShippingMethod = PricedShippingOption
+
+export type PaymentSession = MedusaPaymentSession
+
+export type PlaceOrderResponse = StoreCompleteCartRes
 
 export type State = {
   id: string
   name: string
 }
 
-export type Address = {
-  firstName?: string
-  lastName?: string
-  street?: string
-  aditional?: string
-  postalCode?: string
-  city?: string
-  state?: State
-}
-
-export type Checkout = {
-  email: string
-  subscribe: boolean
-  shippingAddress: Address
-  billingAddress: Address
-}
+export type Address = MedusaAddress
 
 export interface Salon {
   id: string
@@ -113,3 +104,5 @@ export interface Salon {
   brands?: Array<Brand>
   social_networks?: Record<string, string>
 }
+
+export type Order = MedusaOrder

@@ -19,7 +19,7 @@ const StateSelector = forwardRef<HTMLSelectElement, NativeSelectProps>(
         {...props}
       >
         {states.map((state) => (
-          <option key={state.id} value={state.id}>{state.name}</option>
+          <option key={state.id} value={state.name}>{state.name}</option>
         ))}
       </NativeSelect>
     )

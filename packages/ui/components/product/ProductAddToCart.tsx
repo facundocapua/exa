@@ -45,6 +45,7 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
         <span className='text-xs'>&nbsp;</span>
         <button
           aria-label="Product agotado"
+          aria-disabled
           disabled
           type="button"
           className={clsx(

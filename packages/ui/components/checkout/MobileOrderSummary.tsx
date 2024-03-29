@@ -1,12 +1,12 @@
 'use client'
 import { Disclosure } from '@headlessui/react'
-import type { Cart } from 'api'
+import type { CartWithCheckoutStep } from 'api'
 import Image from 'next/image'
 import EditItemQuantityButton from '../cart/EditItemQuantityButton'
 import Price from '../generic/Price'
 
 type Props = {
-  cart: Cart
+  cart: CartWithCheckoutStep
 }
 
 export default function MobileOrderSummary ({ cart }: Props) {
