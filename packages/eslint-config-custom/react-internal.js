@@ -54,6 +54,14 @@ module.exports = {
     'react/jsx-indent': [
       'error',
       2
+    ],
+    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        disallowTypeAnnotations: true
+      }
     ]
   }
 }

@@ -1,12 +1,14 @@
 'use server'
 
 import { cookies } from 'next/headers'
-import { StorePostCartsCartReq } from '@medusajs/medusa'
-import { updateCart } from 'api'
+import type { StorePostCartsCartReq } from '@medusajs/medusa'
+import type { Cart, PlaceOrderResponse } from 'api'
+import { addShippingMethod, completeCart, setPaymentSession, updateCart } from 'api'
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export async function setAddresses (currentState: unknown, formData: FormData) {
+  // await new Promise(r => setTimeout(r, 2000))
   if (!formData) return 'No form data received'
 
   const cartId = cookies().get('cart')?.value
@@ -56,4 +58,48 @@ export async function setAddresses (currentState: unknown, formData: FormData) {
   }
 
   redirect('/checkout?step=delivery')
+}
+
+export async function setShippingMethod (shippingMethodId: string) {
+  const cartId = cookies().get('cart')?.value
+
+  if (!cartId) return { message: 'No cartId cookie found' }
+
+  try {
+    await addShippingMethod(cartId, shippingMethodId)
+    revalidateTag('cart')
+  } catch (error: any) {
+    return error.toString()
+  }
+}
+
+export async function setPaymentMethod (providerId: string): Promise<Cart> {
+  const cartId = cookies().get('cart')?.value
+
+  if (!cartId) throw new Error('No cartId cookie found')
+
+  const cart = await setPaymentSession(cartId, providerId)
+  revalidateTag('cart')
+
+  return cart
+}
+
+export async function placeOrder ({ noRedirect }: {noRedirect: boolean} = { noRedirect: false }): Promise<PlaceOrderResponse> {
+  const cartId = cookies().get('cart')?.value
+
+  if (!cartId) throw new Error('No cartId cookie found')
+
+  // try {
+  const cart = await completeCart(cartId)
+  revalidateTag('cart')
+  // } catch (error: any) {
+  //   throw error
+  // }
+
+  if (cart?.type === 'order') {
+    cookies().set('cart', '', { maxAge: -1 })
+    if (!noRedirect) redirect(`/order/confirmed/${cart?.data.id}`)
+  }
+
+  return cart
 }

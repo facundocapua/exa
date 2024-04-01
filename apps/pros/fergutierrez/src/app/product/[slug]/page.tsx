@@ -37,16 +37,20 @@ export default async function Product ({ params }: Props) {
         <div className="mx-auto max-w-2xl lg:max-w-none">
           {/* Product */}
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            <ProductImageGallery product={product} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <ProductImageGallery product={product} />
+            </Suspense>
             {/* Product info */}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-              <ProductInfo product={product} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <ProductInfo product={product} />
+              </Suspense>
             </div>
           </div>
 
         </div>
       </section>
-      <Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <RelatedProducts sku={product.id} />
       </Suspense>
     </main>

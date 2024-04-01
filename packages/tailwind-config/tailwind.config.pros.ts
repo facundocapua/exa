@@ -59,6 +59,9 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)']
       },
+      boxShadow: {
+        interactive: '0 0 0 1px theme(colors.primary.500),0 0 0 4px theme(colors.primary.500 / 20%)'
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

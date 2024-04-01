@@ -2,26 +2,6 @@ import type { Category } from './types'
 import { initClient } from './utils/supabase'
 import { getMedusaUrl } from './utils/medusa'
 
-// export const getCategories = async (): Promise<Array<Category>> => {
-//   const client = initClient()
-//   const { data } = await client
-//     .from('categories')
-//     .select('*')
-//     .order('sort', { ascending: true })
-//     .returns<Array<Category>>()
-
-//   if (!data) return []
-
-//   const categories = data.filter((item) => !item.parent).map((item) => {
-//     return {
-//       ...item,
-//       children: data.filter(subitem => subitem.parent === item.id)
-//     }
-//   })
-
-//   return categories
-// }
-
 export const getCategories = async (): Promise<Array<Category>> => {
   const params = new URLSearchParams({
     include_descendants_tree: 'true'

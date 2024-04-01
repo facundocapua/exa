@@ -1,10 +1,10 @@
-import type { Cart } from 'api'
+import type { CartWithCheckoutStep } from 'api'
 import Image from 'next/image'
 import Price from '../generic/Price'
 import EditItemQuantityButton from '../cart/EditItemQuantityButton'
 
 type Props = {
-  cart: Cart
+  cart: CartWithCheckoutStep
 }
 
 export default function OrderSummary ({ cart }: Props) {

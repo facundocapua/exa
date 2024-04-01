@@ -25,7 +25,7 @@ export default function AboutMe () {
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            En el contexto de Wella Company, es Artista exclusivo para la marca, y reconocido por su participación en el concurso Internacional Trend Vision, donde obtuvo el primer puesto con su producción "Estilo Pasionista", destacando su talento y creatividad en el ámbito estilístico.
+            En el contexto de Wella Company, es Artista exclusivo para la marca, y reconocido por su participación en el concurso Internacional Trend Vision, donde obtuvo el primer puesto con su producción &ldquo;Estilo Pasionista&rdquo;, destacando su talento y creatividad en el ámbito estilístico.
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
