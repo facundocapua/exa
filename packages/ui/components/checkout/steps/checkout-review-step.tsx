@@ -12,8 +12,6 @@ type Props = {
 
 export default function CheckoutReviewStep ({ cart }: Props) {
   const searchParams = useSearchParams()
-  const router = useRouter()
-  const pathname = usePathname()
 
   const isOpen = searchParams.get('step') === 'review'
 

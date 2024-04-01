@@ -1,8 +1,7 @@
 'use client'
 
-import { CartWithCheckoutStep } from 'api'
+import type { CartWithCheckoutStep } from 'api'
 import ShippingInformation from '../form/shipping-information'
-import { useFormState } from 'react-dom'
 import { setAddresses } from '../actions'
 import ContinueButton from './continue-button'
 import { useState } from 'react'
@@ -11,6 +10,7 @@ import { compareAddresses } from '../../../utils/address'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import AddressInfo from '../form/address-info'
+import { useFormState } from 'react-dom'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -21,7 +21,8 @@ export default function CheckoutAddressStep ({ cart }: Props) {
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get('step') === 'address'
+  const step = searchParams.get('step') ?? cart.checkout_step
+  const isOpen = step === 'address'
 
   const handleEdit = () => {
     router.push(pathname + '?step=address')

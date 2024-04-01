@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { placeOrder } from '../actions'
 
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import ErrorMessage from '../../generic/error-message'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -20,7 +21,7 @@ export default function PaymentButton ({ cart }: Props) {
 
   switch (paymentSession.provider_id) {
     case 'mercadopago':
-      return <MercadoPagoPaymentButton />
+      return <MercadoPagoPaymentButton session={paymentSession} />
     case 'manual':
       return <ManualTestPaymentButton notReady={notReady} />
     default:
@@ -54,15 +55,36 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
       >
         Finalizar pedido
       </Button>
-      {/* <ErrorMessage error={errorMessage} /> */}
+      <ErrorMessage error={errorMessage} />
     </>
   )
 }
 
-const MercadoPagoPaymentButton = () => {
-  initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY ?? '')
+initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY ?? '')
+
+const MercadoPagoPaymentButton = ({ session }: {session: PaymentSession}) => {
+  const { data } = session
+  const { preferenceId } = data as { preferenceId: string}
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const handlePayment = () => {
+    return placeOrder({ noRedirect: true })
+      .then(() => {
+        return preferenceId
+      })
+      .catch((err) => {
+        setErrorMessage(err.toString())
+      })
+  }
 
   return (
-    <Wallet initialization={{ preferenceId: '<PREFERENCE_ID>' }} customization={{ texts: { valueProp: 'smart_option' } }} />
+    <>
+      <Wallet
+        initialization={{ preferenceId }}
+        customization={{ texts: { valueProp: 'smart_option' } }}
+        // onSubmit={handlePayment}
+      />
+      <ErrorMessage error={errorMessage} />
+    </>
   )
 }

@@ -1,5 +1,6 @@
 export { default as FacebookIcon } from './FacebookIcon'
 export { default as InstagramIcon } from './InstagramIcon'
+export { default as MercadoPagoIcon } from './MercadoPagoIcon'
 export { default as TikTokIcon } from './TikTokIcon'
 export { default as TwitterIcon } from './TwitterIcon'
 export { default as WhatsAppIcon } from './WhatsAppIcon'

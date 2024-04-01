@@ -84,7 +84,7 @@ export async function setPaymentMethod (providerId: string): Promise<Cart> {
   return cart
 }
 
-export async function placeOrder (): Promise<PlaceOrderResponse> {
+export async function placeOrder ({ noRedirect }: {noRedirect: boolean} = { noRedirect: false }): Promise<PlaceOrderResponse> {
   const cartId = cookies().get('cart')?.value
 
   if (!cartId) throw new Error('No cartId cookie found')
@@ -98,7 +98,7 @@ export async function placeOrder (): Promise<PlaceOrderResponse> {
 
   if (cart?.type === 'order') {
     cookies().set('cart', '', { maxAge: -1 })
-    redirect(`/order/confirmed/${cart?.data.id}`)
+    if (!noRedirect) redirect(`/order/confirmed/${cart?.data.id}`)
   }
 
   return cart
