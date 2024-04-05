@@ -16,7 +16,7 @@ export const addItem = async (variantId: string): Promise<String | undefined> =>
   try {
     await addCartItem(cart.id, variantId, 1)
   } catch (e) {
-    console.log(e)
+    console.error(e)
     return 'Error adding item to cart'
   }
 }
