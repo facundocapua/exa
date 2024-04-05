@@ -16,4 +16,5 @@ export { default as ProductListPage } from './components/category/ProductListPag
 export { default as RelatedProducts } from './components/product/RelatedProducts'
 export { default as SocialNetworks } from './components/pros/social-networks'
 export { default as OrderCompleted } from './components/order/order-completed'
+export { default as CartCompleted } from './components/order/cart-completed'
 export { default as SkeletonOrderCompleted } from './components/order/skeleton/skeleton-order-completed'

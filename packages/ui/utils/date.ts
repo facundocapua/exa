@@ -29,6 +29,16 @@ export const formatDateShort = (date: string) => {
   return dateObj.toLocaleDateString('es-AR', options)
 }
 
+export const formatDateSmall = (date: string) => {
+  const dateObj = new Date(date)
+  const options: Intl.DateTimeFormatOptions = {
+    day: '2-digit',
+    month: 'long'
+  }
+
+  return dateObj.toLocaleDateString('es-AR', options)
+}
+
 export const formatDateTime = (date: string) => {
   const dateObj = new Date(date)
   const options: Intl.DateTimeFormatOptions = {

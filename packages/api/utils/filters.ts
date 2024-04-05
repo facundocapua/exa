@@ -101,7 +101,6 @@ export const applyRestrinctions = async (filters: FiltersType) => {
     const categoryIds = categories
       .filter((category) => categoryHandles.includes(category.handle))
       .map((category) => category.id)
-    console.log(categoryIds)
     restrictions.category_id = categoryIds
   }
 

@@ -44,9 +44,7 @@ export default function Gallery ({ images }: Props) {
       if (event.key === 'ArrowRight') {
         const nextImage = (Number(image) + 1) % images.length
         setImage(nextImage)
-        return
       }
-      console.log(event.key)
     }
 
     window.addEventListener('keydown', keyDownEvent)

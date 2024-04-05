@@ -7,7 +7,8 @@ import type {
   Address as MedusaAddress,
   PaymentSession as MedusaPaymentSession,
   StoreCompleteCartRes,
-  Order as MedusaOrder
+  Order as MedusaOrder,
+  Payment as MedusaPayment
 } from '@medusajs/medusa'
 import type { PricedShippingOption } from '@medusajs/medusa/dist/types/pricing'
 
@@ -106,3 +107,26 @@ export interface Salon {
 }
 
 export type Order = MedusaOrder
+
+export type Payment = MedusaPayment
+
+export type MercadoPagoPaymentData = {
+  id:number
+  payment_method: {
+    id: string
+  }
+  installments: number
+  transaction_details: {
+    installment_amount: number
+    total_paid_amount: number
+  }
+  card?: {
+    bin: string,
+    last_four_digits:string
+  }
+  date_created: string
+}
+
+export type MercadoPagoPayment = Payment & {
+  data: MercadoPagoPaymentData
+}

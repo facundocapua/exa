@@ -1,9 +1,9 @@
-import type { Order } from 'api'
+import type { Cart, Order } from 'api'
 import { formatPrice } from '../../server'
 import Divider from '../generic/divider'
 
 type Props = {
-  order: Order
+  order: Order | Cart
 }
 
 export default function OrderTotals ({ order }: Props) {

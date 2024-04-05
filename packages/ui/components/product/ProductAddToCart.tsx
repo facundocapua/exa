@@ -30,7 +30,7 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
       const error = await addItem(currentVariant.id ?? '')
 
       if (error) {
-        console.log(error)
+        console.error(error)
         // Trigger the error boundary in the root error.js
         throw new Error(error.toString())
       }
