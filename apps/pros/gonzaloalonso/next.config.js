@@ -9,6 +9,12 @@ const nextConfig = {
         hostname: 'mtelzvckwsdkcqbvwewx.supabase.co',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.exabeauty.com.ar',
+        port: '',
+        pathname: '/**'
       }
     ]
   }
