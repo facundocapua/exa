@@ -1,7 +1,5 @@
 import type { Brand } from './types'
-import { initClient } from './utils/supabase'
 import { getMedusaUrl } from './utils/medusa'
-import { get } from 'http'
 import { getSalon } from './salon'
 
 type BrandsFilter = {
@@ -19,7 +17,13 @@ export const getBrands = async ({ handle, isFeatured }: BrandsFilter = {}): Prom
     params.append('is_featured', 'true')
   }
 
-  const brands = fetch(`${getMedusaUrl()}/store/brands?${params.toString()}`)
+  const brands = fetch(
+    `${getMedusaUrl()}/store/brands?${params.toString()}`,
+    {
+      next: {
+        tags: ['brands']
+      }
+    })
     .then((res) => res.json())
     .then(data => {
       return data.brands

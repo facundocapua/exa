@@ -4,11 +4,12 @@ import { ScrollTop } from 'ui'
 
 type Props = {
   children: React.ReactNode
+  cart: React.ReactNode
 }
 
-export default async function CatalogLayout ({ children }: Props) {
+export default async function CatalogLayout ({ children, cart }: Props) {
   return (
-    <MainLayout>
+    <MainLayout cart={cart}>
       <div className='mx-auto'>
         {children}
       </div>
