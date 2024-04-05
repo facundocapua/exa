@@ -1,9 +1,10 @@
-import type { Order } from 'api'
+import type { MercadoPagoPayment, Order } from 'api'
 import { compareAddresses } from '../../utils/address'
 import { formatPrice } from '../../server'
 import { formatDateTime } from '../../utils/date'
 import { paymentInfoMap } from '../generic/constants'
 import Divider from '../generic/divider'
+import MercadoPagoPaymentDetails from './mercadopago-payment-details'
 
 type Props = {
   order: Order
@@ -35,20 +36,21 @@ export default function PaymentDetails ({ order }: Props) {
           }
           </div>
         </div>
-        <div>
-          <h4 className='font-medium'>Forma de pago</h4>
-          <div className='opacity-70'>
-            <p>{paymentInfoMap[payment.provider_id].title}</p>
-          </div>
-        </div>
-        <div>
+        <div className='col-span-2'>
           <h4 className='font-medium'>Detalle del pago</h4>
-          <p className="opacity-70 flex gap-2">
-            <span className="justify-self-end text-gray-700">
-              {paymentInfoMap[payment.provider_id]?.icon}
-            </span>
-            {`${formatPrice(payment.amount / 100)} pagado el ${formatDateTime(payment.created_at.toString())}`}
-          </p>
+          <div className="opacity-70 flex gap-2">
+            {payment.provider_id === 'mercadopago'
+              ? <MercadoPagoPaymentDetails payment={payment as MercadoPagoPayment} />
+              : (
+                <>
+                  <span className="justify-self-end text-gray-700">
+                    {paymentInfoMap[payment.provider_id]?.icon}
+                  </span>
+                  {`${formatPrice(payment.amount / 100)} pagado el ${formatDateTime(payment.created_at.toString())}`}
+                </>
+                )}
+
+          </div>
         </div>
       </div>
       <Divider />

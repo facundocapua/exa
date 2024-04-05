@@ -111,10 +111,7 @@ export async function updateCart (cartId: string, data: StorePostCartsCartReq): 
   }).then((res) => {
     return res.json()
   })
-    .then(data => {
-      console.log(data)
-      return data.cart
-    })
+    .then(data => data.cart)
 
   return cart
 }
@@ -175,10 +172,7 @@ export async function setPaymentSession (cartId: string, providerId: string): Pr
       tags: ['cart']
     }
   }).then((res) => res.json())
-    .then(data => {
-      console.log(data, providerId)
-      return data.cart
-    })
+    .then(data => data.cart)
 
   return cart
 }

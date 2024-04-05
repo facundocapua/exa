@@ -7,14 +7,15 @@ import Footer from './Footer'
 
 type Props = {
   children: React.ReactNode
+  cart: React.ReactNode
 }
 
-export default function MainLayout ({ children }: Props) {
+export default function MainLayout ({ children, cart }: Props) {
   return (
     <Context>
       <header className='sticky top-0 w-full z-20 bg-white drop-shadow-md'>
         <BannerTop />
-        <Header />
+        <Header cart={cart} />
         <MainNavigation />
       </header>
       <main>{children}</main>

@@ -138,7 +138,6 @@ type GetCategoryProductsResponse = {
 
 export const getFilteredProducts = async ({ filters, restrinctions, exclude = [] }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
   const params = await applyRestrinctions(restrinctions ?? {}) as ProductParams
-  console.log('params', params)
   const restrictedData = await getProducts(params)
 
   const filteredData = applyFilters(restrictedData, filters)

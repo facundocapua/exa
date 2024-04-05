@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "dev:mails": "email dev --dir=./src/emails"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "2.5.3",
@@ -16,6 +17,7 @@
     "@googlemaps/typescript-guards": "2.0.3",
     "@headlessui/react": "1.7.18",
     "@heroicons/react": "2.1.2",
+    "@react-email/components": "0.0.16",
     "@react-google-maps/api": "2.19.3",
     "api": "workspace:*",
     "autoprefixer": "10.4.19",
@@ -29,6 +31,7 @@
     "postcss": "8.4.38",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-email": "2.1.1",
     "react-range": "^1.8.14",
     "tailwind-merge": "2.2.2",
     "tailwindcss": "3.4.1",

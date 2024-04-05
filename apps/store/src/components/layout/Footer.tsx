@@ -4,7 +4,7 @@ import { createElement } from 'react'
 
 const navigation = {
   solutions: [
-    { name: 'Términos y condiciones', href: '#' },
+    { name: 'Términos y condiciones', href: '/terminos-y-condiciones' },
     { name: 'Preguntas frecuentes', href: '#' },
     { name: '¿Cómo comprar?', href: '#' }
   ],
@@ -117,7 +117,7 @@ export default function Footer () {
           </div>
         </div>
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-500">&copy; 2020 Your Company, Inc. All rights reserved.</p>
+          <p className="text-xs leading-5 text-gray-500">&copy; 2024 eXa Beauy Solutions, todos los derechos reservados</p>
         </div>
       </div>
     </footer>

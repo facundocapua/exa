@@ -68,7 +68,7 @@ const MercadoPagoPaymentButton = ({ session }: {session: PaymentSession}) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handlePayment = () => {
-    return placeOrder({ noRedirect: true })
+    return placeOrder()
       .then(() => {
         return preferenceId
       })
@@ -80,9 +80,9 @@ const MercadoPagoPaymentButton = ({ session }: {session: PaymentSession}) => {
   return (
     <>
       <Wallet
-        initialization={{ preferenceId }}
+        // initialization={{ preferenceId }}
         customization={{ texts: { valueProp: 'smart_option' } }}
-        // onSubmit={handlePayment}
+        onSubmit={handlePayment}
       />
       <ErrorMessage error={errorMessage} />
     </>

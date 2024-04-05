@@ -15,7 +15,14 @@ export async function getSalons (): Promise<Array<Salon>> {
 }
 
 export async function getSalon (salonId: Salon['id']): Promise<Salon | null> {
-  const salon = fetch(`${getMedusaUrl()}/store/salons/${salonId}`)
+  const salon = fetch(
+    `${getMedusaUrl()}/store/salons/${salonId}`,
+    {
+      next: {
+        tags: ['salon', `salon-${salonId}`]
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.salon
