@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "dev:mails": "email dev --dir=./src/emails"
+    "dev:mails": "email dev --dir=./src/emails --port 3010"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "2.5.3",

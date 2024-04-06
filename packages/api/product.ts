@@ -10,7 +10,14 @@ export const getProductVariants = async (variantIds: string[]): Promise<Array<Pr
     ids: variantIds.join(','),
     currency_code: 'ars'
   })
-  const products = fetch(`${getMedusaUrl()}/store/variants?${params.toString()}`)
+  const products = fetch(
+    `${getMedusaUrl()}/store/variants?${params.toString()}`,
+    {
+      next: {
+        tags: ['variants']
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.variants
@@ -56,7 +63,14 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
     }
   }
 
-  const products: Array<Product> = await fetch(`${getMedusaUrl()}/store/products?${params.toString()}`)
+  const products: Array<Product> = await fetch(
+    `${getMedusaUrl()}/store/products?${params.toString()}`,
+    {
+      next: {
+        tags: ['products']
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.products
