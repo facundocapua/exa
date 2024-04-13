@@ -9,6 +9,7 @@ import { Suspense } from 'react'
 import { HeroSliderSkeleton } from 'ui/components/hero-slider/hero-slider-skeleton'
 import { FeaturedBannersSkeleton } from 'ui/components/banners/featured-banners-skeleton'
 import { ProductSliderSkeleton } from 'ui/components/product-slider/product-slider-skeleton'
+import { Metadata } from 'next'
 
 export default function Home () {
   return (

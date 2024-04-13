@@ -1,4 +1,3 @@
-import { sleep } from './utils/general'
 import { getSalonBrands } from './brand'
 import type { Collection, Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
