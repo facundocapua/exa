@@ -9,11 +9,11 @@
     "dev:mails": "turbo run dev:mails"
   },
   "devDependencies": {
-    "@turbo/gen": "1.13.0",
-    "eslint": "8.57.0",
+    "@turbo/gen": "1.13.2",
+    "eslint": "9.0.0",
     "eslint-config-custom": "workspace:*",
     "prettier": "3.2.5",
-    "turbo": "1.13.0"
+    "turbo": "1.13.2"
   },
   "packageManager": "pnpm@8.6.10",
   "name": "exa"
