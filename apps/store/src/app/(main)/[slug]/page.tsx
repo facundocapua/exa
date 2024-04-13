@@ -2,7 +2,6 @@ import { getCategories, getCategory, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ProductListPage } from 'ui/server'
-import { i } from 'vitest/dist/reporters-P7C2ytIv'
 
 type Props = {
   params: {
