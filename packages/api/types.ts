@@ -2,6 +2,7 @@ import type {
   Product as MedusaProduct,
   ProductCategory as MedusaProductCategory,
   ProductVariant as MedusaProductVariant,
+  ProductCollection as MedusaProductCollection,
   Cart as MedusaCart,
   LineItem as MedusaLineItem,
   Address as MedusaAddress,
@@ -35,6 +36,8 @@ export type ProductVariant = MedusaProductVariant & {
   calculated_price: number
   images: MedusaProduct['images']
 }
+
+export type Collection = MedusaProductCollection
 
 export const FILTER_TYPE = {
   RADIO: 'radio',
