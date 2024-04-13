@@ -122,7 +122,7 @@ export const getCollections = async (): Promise<Array<Collection>> => {
   return collections
 }
 
-export const getCollection = async (handle: string): Promise<Collection | null> => {
+export const getCollection = async (handle: string): Promise<Collection | undefined> => {
   const collection = getCollections()
     .then((collections) => {
       return collections.find((collection) => collection.handle === handle)
@@ -131,7 +131,7 @@ export const getCollection = async (handle: string): Promise<Collection | null> 
   return collection
 }
 
-export const getCollectionProducts = async (handle: string): Promise<Array<Product>> => {
+export const getCollectionProducts = async (handle: string): Promise<Array<Product> | null> => {
   // await sleep(2000)
   const collection = await getCollection(handle)
   if (!collection) return null
