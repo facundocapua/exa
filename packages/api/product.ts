@@ -1,3 +1,4 @@
+import { sleep } from './utils/general'
 import { getSalonBrands } from './brand'
 import type { Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
@@ -99,6 +100,7 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
 }
 
 export const getFeaturedProducts = async (): Promise<Array<Product>> => {
+  await sleep(2000)
   const data = await getProducts()
 
   return data

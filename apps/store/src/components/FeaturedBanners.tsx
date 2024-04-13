@@ -8,7 +8,7 @@ export default async function FeaturedBanners () {
   if (!banners) return null
 
   return (
-    <div className="flex justify-evenly my-6 gap-4 flex-wrap mx-4 md:mx-0">
+    <div className="flex justify-evenly my-6 gap-4 flex-wrap md:flex-nowrap mx-4 md:mx-0">
       {banners.map((banner) => (
         <Link href={banner.link} title={banner.title} key={banner.id} className='w-[170px] md:w-auto'>
           <Image
