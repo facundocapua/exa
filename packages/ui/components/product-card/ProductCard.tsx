@@ -38,7 +38,7 @@ export default function ProductCard ({ product, containerClassName }: Props) {
           <ProductPrice price={product.price} salePrice={product.salePrice} />
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-2">
         <ProductAddToCart product={product} />
       </div>
     </article>

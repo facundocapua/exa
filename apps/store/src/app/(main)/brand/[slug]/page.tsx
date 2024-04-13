@@ -1,4 +1,5 @@
 import { getBrand, getBrands, getFilteredProducts } from 'api'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Filters } from 'ui'
 import { AppliedFilters, Breadcrumb, ProductCard } from 'ui/server'
@@ -16,6 +17,39 @@ export async function generateStaticParams () {
   return brands.map((brand) => ({
     slug: brand.handle
   }))
+}
+
+export async function generateMetadata ({ params }: Props): Promise<Metadata> {
+  const { slug } = params
+  const brand = await getBrand(slug)
+  if (!brand) return null
+
+  return {
+    title: `${brand.name} | eXa Beauty Store`,
+    description: 'Tienda de productos de belleza de marcas premium.',
+    openGraph: {
+      title: `${brand.name} | eXa Beauty Store`,
+      description: 'Tienda de productos de belleza de marcas premium.',
+      type: 'website',
+      locale: 'es_AR',
+      siteName: 'eXa Beauty Solutions',
+      images: [
+        {
+          url: brand.logo,
+          width: 1200,
+          height: 630,
+          alt: 'eXa Beauty Store'
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary',
+      creator: '@eXaBeautyOk',
+      title: `${brand.name} | eXa Beauty Store`,
+      description: 'Tienda de productos de belleza de marcas premium.',
+      site: '@eXaBeautyOk'
+    }
+  }
 }
 
 export default async function Brand ({ params, searchParams }: Props) {

@@ -6,7 +6,8 @@
   "exports": {
     ".": "./client.tsx",
     "./server": "./server.tsx",
-    "./styles/*": "./styles/*"
+    "./styles/*": "./styles/*",
+    "./components/*": "./components/*"
   },
   "license": "MIT",
   "scripts": {

@@ -1,5 +1,5 @@
 import { getSalonBrands } from './brand'
-import type { Filter, Product, ProductVariant } from './types'
+import type { Collection, Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 import { getMedusaUrl } from './utils/medusa'
@@ -30,12 +30,13 @@ type ProductParams = {
   expand?: string
   currency_code?: string
   category_id?: string[]
+  collection_id?: string[]
   brand_id?: string[]
   handle?: string,
   ids?: string[]
 }
 
-export const getProducts = async ({ category_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
   const params = new URLSearchParams({
     expand: 'categories,images,variants,brand',
     currency_code: 'ars'
@@ -44,6 +45,12 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
   if (category_id) {
     for (const catId of category_id) {
       params.append('category_id[]', catId)
+    }
+  }
+
+  if (collection_id) {
+    for (const colId of collection_id) {
+      params.append('collection_id[]', colId)
     }
   }
 
@@ -98,8 +105,38 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
   return products
 }
 
-export const getFeaturedProducts = async (): Promise<Array<Product>> => {
-  const data = await getProducts()
+export const getCollections = async (): Promise<Array<Collection>> => {
+  const collections = fetch(
+    `${getMedusaUrl()}/store/collections`,
+    {
+      next: {
+        tags: ['collections', 'products']
+      }
+    }
+  )
+    .then((res) => res.json())
+    .then(data => {
+      return data.collections
+    })
+
+  return collections
+}
+
+export const getCollection = async (handle: string): Promise<Collection | null> => {
+  const collection = getCollections()
+    .then((collections) => {
+      return collections.find((collection) => collection.handle === handle)
+    })
+
+  return collection
+}
+
+export const getCollectionProducts = async (handle: string): Promise<Array<Product>> => {
+  // await sleep(2000)
+  const collection = await getCollection(handle)
+  if (!collection) return null
+
+  const data = await getProducts({ collection_id: [collection.id] })
 
   return data
 }
