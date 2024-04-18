@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { Fragment, useState } from 'react'
 import CategorySubLevel from './mobile/CategorySubLevel'
 import Logo from '../layout/Logo'
-import SearchBox from '../layout/SearchBox'
+import { SearchBox } from 'ui/components/search-box/search-box'
 
 type Props = {
   navigation: {

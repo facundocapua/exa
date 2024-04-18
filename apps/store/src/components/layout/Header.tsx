@@ -1,7 +1,7 @@
 import MainNavigationMobile from '../navigation/MainNavigationMobile'
 import UserNav from '../user/UserNav'
 import Logo from './Logo'
-import SearchBox from './SearchBox'
+import { SearchBox } from 'ui/components/search-box/search-box'
 
 type Props = {
   cart: React.ReactNode

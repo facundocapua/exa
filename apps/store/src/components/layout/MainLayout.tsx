@@ -13,12 +13,12 @@ type Props = {
 export default function MainLayout ({ children, cart }: Props) {
   return (
     <Context>
-      <header className='sticky top-0 w-full z-20 bg-white drop-shadow-md'>
+      <header className='absolute top-0 w-full z-20 bg-white drop-shadow-md'>
         <BannerTop />
         <Header cart={cart} />
         <MainNavigation />
       </header>
-      <main>{children}</main>
+      <main className='pt-[114px] md:pt-[179px]'>{children}</main>
       <Footer />
     </Context>
   )
