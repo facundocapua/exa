@@ -76,7 +76,6 @@ export default function HeroSlider ({ slides }: Props) {
         {slides.map((slide, index) => (
           <Link key={index} href={slide.link}>
             <Image
-              // key={index}
               src={slide.image_mobile}
               width={780}
               height={546}
@@ -91,7 +90,6 @@ export default function HeroSlider ({ slides }: Props) {
               priority={index === 0}
             />
             <Image
-              // key={index}
               src={slide.image}
               width={2560}
               height={300}

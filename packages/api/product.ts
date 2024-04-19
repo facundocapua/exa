@@ -132,7 +132,7 @@ export const getCollection = async (handle: string): Promise<Collection | undefi
 }
 
 export const getCollectionProducts = async (handle: string): Promise<Array<Product> | null> => {
-  // await sleep(2000)
+  // await sleep(3000)
   const collection = await getCollection(handle)
   if (!collection) return null
 

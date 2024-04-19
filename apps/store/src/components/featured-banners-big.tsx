@@ -7,7 +7,7 @@ export default async function FeaturedBannersBig () {
   if (!banners) return null
 
   return (
-    <div className="hidden md:flex justify-evenly my-6 gap-4 flex-wrap md:flex-nowrap mx-4 md:mx-0">
+    <div className="hidden md:flex justify-evenly my-6 gap-4 flex-nowrap mx-4">
       {banners.splice(0, 3).map((banner) => (
         <Link href={banner.link} title={banner.title} key={banner.id} className='w-full md:w-auto'>
           <Image

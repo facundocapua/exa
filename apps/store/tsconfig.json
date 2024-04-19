@@ -19,6 +19,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "../../packages/ui/components/search-box/search-box.tsx"  ],
+  ],
   "exclude": ["node_modules"]
 }
