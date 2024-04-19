@@ -26,6 +26,7 @@ export default function ProductCard ({ product, containerClassName }: Props) {
             width={250}
             height={250}
             className="w-full h-full object-contain object-center bg-white"
+            loading='lazy'
           />
         </Link>
         <div className="flex flex-col grow justify-between">

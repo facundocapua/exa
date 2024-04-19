@@ -11,13 +11,13 @@ export default function StoresBanner () {
             alt="Studios"
             layout="fill"
             className="h-full w-full object-cover object-center"
+            loading='lazy'
           />
         </div>
         <div className="absolute inset-0 bg-white bg-opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
       </div>
 
-      {/* Callout */}
       <section
         aria-labelledby="sale-heading"
         className="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-36 pb-8 text-center sm:px-6 lg:px-8"
