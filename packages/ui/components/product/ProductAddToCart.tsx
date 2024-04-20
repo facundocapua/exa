@@ -65,7 +65,7 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
         <Link
           href={`/product/${product.handle}`}
           className={clsx(
-            'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
+            'flex items-center justify-center md:rounded-md bg-primary-700 w-full py-4 text-base font-medium text-white hover:bg-primary-600 focus:outline-none',
             className
           )}>
           Comprar
@@ -84,7 +84,7 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
         disabled={isPending || (isProductPage && !currentVariant)}
         type="button"
         className={clsx(
-          'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
+          'flex items-center justify-center md:rounded-md bg-primary-700 w-full py-4 text-base font-medium text-white hover:bg-primary-600 focus:outline-none',
           'disabled:opacity-50 disabled:cursor-not-allowed'
         )}
         onClick={handleAddToCart}

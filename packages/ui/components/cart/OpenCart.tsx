@@ -9,7 +9,7 @@ type Props = {
 
 export default function OpenCart ({ className, onClick, quantity }: Props) {
   return (
-    <button aria-label="Open cart" onClick={onClick} className='relative'>
+    <button aria-label="Abrir carrito" onClick={onClick} className='relative'>
       <ShoppingCartIcon
         className={clsx(
           'h-8 w-8 text-neutral-700 transition-colors dark:text-white',
