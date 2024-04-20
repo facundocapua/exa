@@ -133,3 +133,12 @@ export type MercadoPagoPaymentData = {
 export type MercadoPagoPayment = Payment & {
   data: MercadoPagoPaymentData
 }
+
+
+export type Slide = {
+  id: string
+  title: string
+  image: string
+  image_mobile: string
+  link: string
+}
