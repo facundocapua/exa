@@ -18,7 +18,7 @@ export default function MainLayout ({ children, cart }: Props) {
         <Header cart={cart} />
         <MainNavigation />
       </header>
-      <main className='pt-[114px] md:pt-[179px]'>{children}</main>
+      <main className='pt-[114px] lg:pt-[179px]'>{children}</main>
       <Footer />
     </Context>
   )

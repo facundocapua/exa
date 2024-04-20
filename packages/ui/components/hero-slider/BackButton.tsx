@@ -8,7 +8,7 @@ export default function BackButton ({ onClick }: Props) {
   return (
     <button
         type="button"
-        className="absolute top-0 left-0 z-10 items-center justify-center flex h-full px-4 cursor-pointer group focus:outline-none"
+        className="absolute top-0 left-0 z-10 items-center justify-center  h-full px-4 cursor-pointer group focus:outline-none hidden md:flex"
         onClick={onClick}
       >
       <span className="inline-flex items-center justify-center w-8 h-8 border-2 border-gray-300 rounded-full md:w-10 sm:h-10 bg-gray-400/10 group-hover:bg-gray-400/20 group-hover:scale-105 group-focus:outline-none">

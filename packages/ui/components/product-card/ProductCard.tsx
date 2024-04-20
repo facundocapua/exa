@@ -31,8 +31,8 @@ export default function ProductCard ({ product, containerClassName }: Props) {
         </Link>
         <div className="flex flex-col grow justify-between">
           <div>
-            <Link href={`/brand/${product?.brand?.handle}`} className="my-2 block uppercase text-sm text-primary-700 dark:text-primary-300">{product?.brand?.name}</Link>
-            <h3 className="text-sm text-gray-900 dark:text-gray-200">
+            <Link href={`/brand/${product?.brand?.handle}`} className="py-3 block uppercase text-sm text-primary-700 dark:text-primary-300">{product?.brand?.name}</Link>
+            <h3 className="text-base text-gray-900 dark:text-gray-200">
               <Link href={`/product/${product.handle}`}>{product.title}</Link>
             </h3>
           </div>
