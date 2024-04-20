@@ -1,4 +1,4 @@
-import { Slide } from 'types'
+import { Slide } from './types'
 import { getMedusaUrl } from './utils/medusa'
 
 export const getFeaturedSlides = async (): Promise<Slide[]> => {
