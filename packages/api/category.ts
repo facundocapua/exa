@@ -21,6 +21,20 @@ export const getCategories = async (): Promise<Array<Category>> => {
   return categories
 }
 
+const filterActiveCategories = (categories: Array<Category>): Array<Category> => {
+  
+  const result = categories
+  .filter((c) => c.is_active === undefined || c.is_active) // is_active is undefined for top level categories
+  .map((c) => {
+    return {
+      ...c,
+      category_children: filterActiveCategories(c.category_children)
+    } as Category
+  })
+
+  return result
+}
+
 export const getTopLevelCategories = async (): Promise<Array<Category>> => {
   const params = new URLSearchParams({
     parent_category_id: 'null',
@@ -36,7 +50,8 @@ export const getTopLevelCategories = async (): Promise<Array<Category>> => {
   )
     .then((res) => res.json())
     .then(data => {
-      return data.product_categories
+      const activeCategories = filterActiveCategories(data.product_categories)
+      return activeCategories
     })
 
   return categories

@@ -13,6 +13,7 @@ import { BrandFeaturedSkeleton } from 'ui/components/brand-featured-list/brand-f
 export default function Home () {
   return (
     <div>
+      <h1 className='hidden'>eXa Beauty Store</h1>
       <Suspense fallback={<HeroSliderSkeleton />}>
         <MainSlider />
       </Suspense>

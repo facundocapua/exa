@@ -10,7 +10,7 @@ export default async function FeaturedProducts2 () {
 
   return (
     <div className='py-8 bg-neutral-200'>
-      <h1 className='mx-auto text-center text-3xl font-semibold mb-6'>Descubrí lo Nuevo</h1>
+      <h2 className='mx-auto text-center text-3xl font-semibold mb-6'>Descubrí lo Nuevo</h2>
       <ProductSlider products={products} />
     </div>
   )
