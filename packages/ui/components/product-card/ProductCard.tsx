@@ -9,9 +9,10 @@ import ProductAddToCart from '../product/ProductAddToCart'
 type Props = {
   product: Product
   containerClassName?: string
+  loading?: 'lazy' | 'eager' | undefined
 }
 
-export default function ProductCard ({ product, containerClassName }: Props) {
+export default function ProductCard ({ product, containerClassName, loading = 'lazy' }: Props) {
   return (
     <article className={clsx(
       'bg-white md:p-2 rounded-md border border-neutral-200 flex flex-col justify-between dark:bg-gray-600 dark:border-gray-700',
@@ -26,7 +27,7 @@ export default function ProductCard ({ product, containerClassName }: Props) {
             width={250}
             height={250}
             className="w-full h-full object-contain object-center bg-white"
-            loading='lazy'
+            loading={loading}
           />
         </Link>
         <div className="flex flex-col grow justify-between">
