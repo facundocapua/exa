@@ -28,6 +28,7 @@ export default function ProductCard ({ product, containerClassName, loading = 'l
             height={250}
             className="w-full h-full object-contain object-center bg-white"
             loading={loading}
+            priority={loading === 'eager'}
           />
         </Link>
         <div className="flex flex-col grow justify-between">
