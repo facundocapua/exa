@@ -76,14 +76,14 @@ export default async function Brand ({ params, searchParams }: Props) {
   })
 
   return (
-    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-12">
+    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
       <Breadcrumb pages={brecrumbs} />
 
-      <div className="pt-12 pb-6 mb-6 border-b border-neutral-300">
+      <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
         <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{brand.name}</h1>
       </div>
 
-      <div className="pb-24 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
+      <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
         {total > 0 && (
         <aside>
           <h2 className='text-xl mb-4'>Filtros</h2>

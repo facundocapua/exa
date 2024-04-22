@@ -13,7 +13,7 @@ type Props = {
 export default function MainLayout ({ children, cart }: Props) {
   return (
     <Context>
-      <header className='absolute top-0 w-full z-20 bg-white drop-shadow-md'>
+      <header className='absolute top-0 w-full z-20 bg-white drop-shadow-md dark:bg-[#121212]'>
         <BannerTop />
         <Header cart={cart} />
         <MainNavigation />

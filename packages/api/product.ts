@@ -37,6 +37,7 @@ type ProductParams = {
 }
 
 export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+  
   const params = new URLSearchParams({
     expand: 'categories,images,variants,brand',
     currency_code: 'ars'
@@ -132,7 +133,6 @@ export const getCollection = async (handle: string): Promise<Collection | undefi
 }
 
 export const getCollectionProducts = async (handle: string): Promise<Array<Product> | null> => {
-  // await sleep(3000)
   const collection = await getCollection(handle)
   if (!collection) return null
 

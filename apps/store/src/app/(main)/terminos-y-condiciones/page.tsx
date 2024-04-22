@@ -93,7 +93,7 @@ export default function TermsAndConditionsPage () {
           En caso de no poder acceder al seguimiento del pedido, el Usuario podrá consultarlo directamente con Atención al Cliente.</p>
 
         <h3 className='text-lg py-4'>17 - FACTURACIÓN</h3>
-        <p>Junto con el producto será remitida la factura correspondiente. Las facturas son emitidas por eXa Beauty Solutions, con domicilio en Garibaldi 1082, B7000 Tandil, Buenos Aires, Argentina CUIT Nº 20-32000292-4</p>
+        <p>Junto con el producto será remitida la factura correspondiente. Las facturas son emitidas por Facundo Javier Velazquez, con domicilio en Jose Hernandez 229, B7000 Tandil, Buenos Aires, Argentina CUIT N.º 20-25739618-6</p>
 
         <h3 className='text-lg py-4'>18 - CANCELACIÓN DE ÓRDENES DE COMPRA</h3>
         <p>Sin perjuicio de lo establecido en el punto 16, el Usuario podrá cancelar una orden, siempre y cuando ésta no haya sido aún despachada. Para esto deberá ponerse en contacto con eXa Beauty Solutions. dentro de las 24 horas de realizada la compra enviando un e-mail a <a href="mailto:info@exabeauty.com.ar">info@exabeauty.com.ar</a> .
@@ -107,7 +107,7 @@ export default function TermsAndConditionsPage () {
           El contenido del presente website, incluyendo, aunque no limitado al texto, logos, gráficos, y todo el diseño en general, así como su base de datos y software, es de propiedad de eXa Beauty Solutions. o tiene derecho a usarlo en virtud de licencias de uso otorgadas y se encuentra protegido por las legislación nacional e internacional vigente sobre propiedad intelectual.</p>
 
         <h3 className='text-lg py-4'>21 - RAZÓN SOCIAL Y DOMICILIO</h3>
-        <p>La razón social de la empresa es eXa Beauty Solutions., con domicilio en Garibaldi 1082, B7000 Tandil, Buenos Aires, Argentina CUIT N.º 20-32000292-4</p>
+        <p>La razón social de la empresa es Facundo Javier Velazquez, con domicilio en Jose Hernandez 229, B7000 Tandil, Buenos Aires, Argentina CUIT N.º 20-25739618-6</p>
 
         <h3 className='text-lg py-4'>22 - NOTIFICACIONES</h3>
         <p>Todas las notificaciones y/o comunicaciones que deban efectuarse por el uso de website bajo estos Términos y Condiciones Generales, deberán realizarse por escrito: (i) al Usuario: mediante correo electrónico, a la cuenta de correo consignada por éste, o por carta documento, al domicilio declarado en el formulario de registración; (ii) a eXa Beauty Solutions.: a la cuenta de correo electrónico <a href="mailto:info@exabeauty.com.ar">info@exabeauty.com.ar</a>, o a su domicilio legal indicado en el punto anterior , Buenos Aires, Argentina.</p>
