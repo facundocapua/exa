@@ -6,6 +6,7 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['api', 'ui'],
   images: {
+    deviceSizes: [375, 430, 640, 750, 828, 1080, 1200, 1920],
     remotePatterns: [
       {
         protocol: 'https',
