@@ -16,7 +16,7 @@ export default function CategorySubLevel ({ category, onClick }: Props) {
   const containerClases = typeImage ? subLevelClasess.image : subLevelClasess.text
 
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white dark:bg-[#121212]">
       <div className="mx-auto max-w-7xl px-8">
         <div className={containerClases}>
           {category.category_children?.map((item) => (
