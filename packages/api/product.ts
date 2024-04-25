@@ -167,9 +167,11 @@ export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<
 
   if (!exclude.includes('price')) {
     const priceFilter = extractPriceFilter(products)
-    if (priceFilter.options[0].value !== priceFilter.options[1].value) {
+    const [min, max] = priceFilter.options.map((option) => option.value)
+    if (min !== max) {
       filters.push(priceFilter)
     }
+    
   }
 
   return filters

@@ -11,7 +11,7 @@ export const extractCategoryFilter = (products: Array<Product>) => {
         value: category.handle,
         count: 0
       }
-      options[category.handle].count++
+      options[category.handle]!.count++
     })
   })
 
@@ -33,7 +33,7 @@ export const extractBrandFilter = (products: Array<Product>) => {
     options: products.reduce((acc, product) => {
       const index = acc.findIndex((option) => option.value === product.brand.handle)
       if (index !== -1) {
-        acc[index].count++
+        acc[index]!.count++
         return acc
       }
       const newOption = {

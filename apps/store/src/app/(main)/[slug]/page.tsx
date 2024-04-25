@@ -18,10 +18,10 @@ export async function generateStaticParams () {
   }))
 }
 
-export async function generateMetadata ({ params, searchParams }: Props): Promise<Metadata> {
+export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   const { slug } = params
   const category = await getCategory(slug)
-  if (!category) return null
+  if (!category) return {}
 
   return {
     title: `${category.name} | eXa Beauty Store`,

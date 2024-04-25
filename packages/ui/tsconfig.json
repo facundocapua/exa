@@ -1,15 +1,7 @@
 {
-  "extends": "tsconfig/nextjs.json",
+  "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "outDir": "dist",
   },
   "include": [
     "next-env.d.ts",
@@ -18,5 +10,5 @@
     "**/*.tsx",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

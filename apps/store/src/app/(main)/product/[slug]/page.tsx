@@ -1,9 +1,7 @@
 import { getProduct, getProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
-import {ProductPage} from 'ui/components/product/product-page'
-import ProductSkeleton from 'ui/components/product/product-skeleton'
+import { ProductPage } from 'ui/components/product/product-page'
 
 type Props = {
   params: {
@@ -22,7 +20,7 @@ export async function generateStaticParams () {
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   const { slug } = params
   const product = await getProduct(slug)
-  if (!product) return null
+  if (!product) return {}
 
   return {
     title: `${product.title} | eXa Beauty Store`,
@@ -35,7 +33,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       siteName: 'eXa Beauty Solutions',
       images: [
         {
-          url: product.thumbnail,
+          url: product.thumbnail ?? 'https://cdn.exabeauty.com.ar/exa-og.jpg',
           width: 640,
           height: 640,
           alt: product.title

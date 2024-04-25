@@ -22,7 +22,7 @@ export async function generateStaticParams () {
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   const { slug } = params
   const brand = await getBrand(slug)
-  if (!brand) return null
+  if (!brand) return {}
 
   return {
     title: `${brand.name} | eXa Beauty Store`,

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon, WhatsAppIconBW } from '../icons'
 import type { Salon } from 'api'
 import Link from 'next/link'
@@ -35,20 +35,19 @@ const socialNetworksData: Record<string, Omit<SocialNetwork, 'href'>> = {
 } as const
 
 type Props = {
-  socialNetworks: Salon['social_networks']
+  socialNetworks: Record<string, string>
   exclude?: Array<keyof typeof socialNetworksData>
   containerClassName?: string
-  className?: string
 }
 
-export default function SocialNetworks ({ socialNetworks, exclude, containerClassName, className }: Props) {
+export default function SocialNetworks ({ socialNetworks, exclude, containerClassName }: Props) {
   const networks: Array<SocialNetwork> = Object.keys(socialNetworks ?? {})
     .filter(value => socialNetworksData[value] && !exclude?.includes(value))
     .map((key) => {
       return {
         ...socialNetworksData[key],
         href: socialNetworks?.[key] ?? ''
-      }
+      } as SocialNetwork
     })
 
   if (!networks.length) return null

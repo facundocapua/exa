@@ -25,13 +25,19 @@ export const searchProducts = async (q: string) => {
   return products
 }
 
+type GetSearchProductsRequest = {
+  filters: Record<string, string>
+  q: string
+  exclude?: string[]
+}
+
 type GetSearchProductsResponse = {
   filters: Array<Filter>
   products: Array<Product>
   total: number
 }
 
-export const getFilteredSearchProducts = async ({ filters, q, exclude = [] }): Promise<GetSearchProductsResponse> => {
+export const getFilteredSearchProducts = async ({ filters, q, exclude = [] }: GetSearchProductsRequest): Promise<GetSearchProductsResponse> => {
   const restrictedData = await searchProducts(q)
 
   const filteredData = applyFilters(restrictedData, filters)

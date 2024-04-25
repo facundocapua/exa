@@ -1,6 +1,6 @@
 export const removeSearchParamValue = (searchParams: Record<string, string>, key: string, value: string) => {
   const newSearchParams = structuredClone(searchParams)
-  const values = newSearchParams[key].split(',')
+  const values = newSearchParams[key]?.split(',') ?? []
   const index = values.findIndex((v) => v === value)
   if (index !== -1) {
     values.splice(index, 1)

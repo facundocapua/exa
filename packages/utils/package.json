@@ -9,9 +9,9 @@
   },
   "devDependencies": {
     "@types/node": "20.12.7",
-    "eslint": "9.0.0",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
+    "eslint": "8.57.0",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "typescript": "5.4.5"
   },
   "keywords": [],

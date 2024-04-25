@@ -28,7 +28,7 @@ export default function OrderTotals ({ order }: Props) {
           </div>
         </div>
         {
-          order.discount_total > 0 &&
+          Number(order.discount_total) > 0 &&
           <div className="flex justify-between gap-x-6 ">
             <div className="flex min-w-0 gap-x-4">
               <p className="text-sm leading-6 text-neutral-800">Descuento</p>

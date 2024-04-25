@@ -1,29 +1,30 @@
 'use client'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import type { ChangeEventHandler, FormEventHandler } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { executeSearch } from './actions'
-import { Product } from 'api'
+import type { Product } from 'api'
 import SearchResults from './search-results'
-import debouce from 'just-debounce-it'
+import debounce from 'just-debounce-it'
 
 export const SearchBox = () => {
   const router = useRouter()
   const pathname = usePathname()
-  
+
   const [search, setSearch] = useState('')
   const [focus, setFocus] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [results, setResults] = useState<Product[]>([])
 
-  const handleChange = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearch(e.target.value)
   }
 
   const dbSearch = useCallback(
-    debouce(() => {
-      const searchAction = async (q) => {
+    debounce(() => {
+      const searchAction = async (q: string) => {
         const result = await executeSearch(q)
         setResults(result)
         setIsLoading(false)
@@ -34,7 +35,7 @@ export const SearchBox = () => {
     [search])
 
   useEffect(() => {
-    if (!search){
+    if (!search) {
       setResults([])
       return
     }
@@ -48,7 +49,7 @@ export const SearchBox = () => {
     setSearch('')
   }, [pathname])
 
-  const handleSubmit = (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     router.push(`/search/${search}`)
   }
@@ -76,8 +77,8 @@ export const SearchBox = () => {
           value={search}
         />
       </div>
-      {results.length > 0  && focus && <SearchResults products={results} />}
-      {search !== '' && results.length === 0  && !isLoading && (<div className='absolute text-sm z-20 pt-2'>No se encontraron resultados</div>)}
+      {results.length > 0 && focus && <SearchResults products={results} />}
+      {search !== '' && results.length === 0 && !isLoading && (<div className='absolute text-sm z-20 pt-2'>No se encontraron resultados</div>)}
     </form>
   )
 }
