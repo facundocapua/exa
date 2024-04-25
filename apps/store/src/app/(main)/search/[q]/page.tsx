@@ -1,11 +1,18 @@
-import { getFilteredSearchProducts } from "api"
-import { redirect } from "next/navigation"
+import { getFilteredSearchProducts } from 'api'
+import { redirect } from 'next/navigation'
 import { ProductListPage } from 'ui/server'
 
-export default async function SearchPage({params, searchParams}) {
+type Props = {
+  params: {
+    q: string
+  }
+  searchParams: Record<string, string>
+}
+
+export default async function SearchPage ({ params, searchParams }: Props) {
   const breadcrumbs = []
-  const {q} = params
-  if(!q){
+  const { q } = params
+  if (!q) {
     redirect('/')
   }
 
@@ -32,5 +39,4 @@ export default async function SearchPage({params, searchParams}) {
       url={`/search/${q}`}
     />
   )
-
 }

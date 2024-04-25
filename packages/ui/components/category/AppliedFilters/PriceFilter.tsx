@@ -16,7 +16,7 @@ export default function PriceFilter ({ values, generateLink }: Props) {
       <span className="ml-2 text-sm text-neutral-700 flex gap-1 w-full flex-wrap dark:text-neutral-200">
         <a href={generateLink('price', values)}>
           <Badge className='gap-1'>
-            {formatPrice(min)} - {formatPrice(max)}
+            {formatPrice(Number(min))} - {formatPrice(Number(max))}
             <XMarkIcon className="h-4 w-4" />
           </Badge>
         </a>

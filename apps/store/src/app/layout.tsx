@@ -45,13 +45,15 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode
+  auth: React.ReactNode
 }
 
-export default function RootLayout ({ children }:Props) {
+export default function RootLayout ({ children, auth }:Props) {
   return (
     <html lang="es" className={`${inter.variable} ${kanit.variable}`}>
       <body className="font-sans antialiased bg-white dark:bg-gray-800">
         {children}
+        {auth}
       </body>
     </html>
   )

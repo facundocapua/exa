@@ -1,13 +1,13 @@
-import Account from './Account'
 
 type Props = {
   cart: React.ReactNode
+  user: React.ReactNode
 }
 
-export default function UserNav ({ cart }: Props) {
+export default function UserNav ({ cart, user }: Props) {
   return (
     <div className="flex items-center gap-6 justify-end">
-      <Account />
+      {user}
       <div className='flex items-center'>
         {cart}
       </div>

@@ -1,10 +1,10 @@
-import { addCartItem, createCart, getCart } from "api"
-import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
+import { addCartItem, createCart, getCart } from 'api'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
-export const GET =  async (request: Request, {params}) => {
+export const GET = async (request: Request, { params }: {params: {id: string}}) => {
   const { id } = params
-  
+
   const cartId = cookies().get('cart')?.value
   let cart
   if (!cartId) {

@@ -1,6 +1,5 @@
 import * as path from 'path'
 import * as csv from 'fast-csv'
-import { initClient } from 'api/utils/supabase'
 
 export async function GET (request: Request) {
   const { searchParams } = new URL(request.url)
@@ -9,7 +8,7 @@ export async function GET (request: Request) {
   if (secret !== 'secret') return Response.json({ success: false })
 
   let rowCount = 0
-  const client = initClient()
+  // const client = initClient()
 
   await csv.parseFile(path.resolve('import', 'wcp-variants.csv'), { delimiter: ';', skipLines: 1 })
     .on('error', error => console.error(error))
@@ -28,21 +27,21 @@ export async function GET (request: Request) {
           image
         }
       }
-      const { data } = await client
-        .from('products_variants')
-        .insert(variant)
-        .select()
+      // const { data } = await client
+      //   .from('products_variants')
+      //   .insert(variant)
+      //   .select()
 
-      if (!data) return
+      // if (!data) return
 
-      const variantImage = {
-        variant: data[0].id,
-        image
-      }
+      // const variantImage = {
+      //   variant: data[0].id,
+      //   image
+      // }
 
-      await client
-        .from('products_variants_images')
-        .insert(variantImage)
+      // await client
+      //   .from('products_variants_images')
+      //   .insert(variantImage)
     })
     .on('end', (rowCount: number) => console.log(`Parsed ${rowCount} rows`))
 
