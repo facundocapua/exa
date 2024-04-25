@@ -12,6 +12,7 @@ type Props = {
 export default function PaymentDetails ({ order }: Props) {
   const sameAsBilling = order?.shipping_address && order?.billing_address ? compareAddresses(order?.shipping_address, order?.billing_address) : true
   const payment = order.payments[0]
+  if (!payment) return null
 
   return (
     <section className='mt-8'>
