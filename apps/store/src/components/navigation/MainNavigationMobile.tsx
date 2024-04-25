@@ -1,8 +1,8 @@
-import { getBrands, getCategories } from 'api'
+import { getBrands, getTopLevelCategories } from 'api'
 import NavigationMobile from './NavigationMobile'
 
 export default async function MainNavigationMobile () {
-  const categories = await getCategories()
+  const categories = await getTopLevelCategories()
   const brands = await getBrands()
   const navigation = {
     categories,

@@ -5,9 +5,11 @@ import useSwipe from './useSwipe'
 import BackButton from './BackButton'
 import ForwardButton from './ForwardButton'
 import Link from 'next/link'
+import { Slide } from 'api'
+import clsx from 'clsx'
 
 type Props = {
-  slides: Array<{image: string, image_mobile: string, link: string}>
+  slides: Array<Slide>
 }
 
 export default function HeroSlider ({ slides }: Props) {
@@ -76,7 +78,6 @@ export default function HeroSlider ({ slides }: Props) {
         {slides.map((slide, index) => (
           <Link key={index} href={slide.link}>
             <Image
-              // key={index}
               src={slide.image_mobile}
               width={780}
               height={546}
@@ -86,22 +87,21 @@ export default function HeroSlider ({ slides }: Props) {
                 height: 'auto'
               }}
               className="inline-block w-full h-auto md:hidden"
-              alt="imagen promocional"
+              alt={slide.title}
               draggable={false}
               priority={index === 0}
             />
             <Image
-              // key={index}
               src={slide.image}
-              width={2560}
-              height={300}
+              width={2500}
+              height={520}
               sizes="100vw"
               style={{
                 width: '100%',
                 height: 'auto'
               }}
               className="hidden w-full h-auto md:inline-block"
-              alt="imagen promocional"
+              alt={slide.title}
               draggable={false}
               priority={index === 0}
             />
@@ -109,14 +109,14 @@ export default function HeroSlider ({ slides }: Props) {
         ))}
       </div>
 
-      <div className="absolute z-10 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+      <div className="absolute z-10 flex -translate-x-1/2 bottom-0 left-1/2">
         {slides.map((_, index) => {
           return (
             <button
               key={index}
               type="button"
               disabled={activeSlide === index}
-              className={'w-3 h-3 rounded-full bg-gray-400/80 disabled:bg-gray-200 shadow disabled:border-none transition-all duration-100 ease-in-out hover:scale-110'}
+              className="p-5"
               aria-current={index === 0 ? 'true' : 'false'}
               aria-label={`Slide ${index + 1}`}
               onClick={() => {
@@ -124,7 +124,11 @@ export default function HeroSlider ({ slides }: Props) {
                 setIsPlaying(false)
               }}
             >
-              <span className="sr-only">Slide {index + 1}</span>
+              <span className={clsx(
+                'w-3 h-3 block rounded-full shadow border-none transition-all duration-100 ease-in-out hover:scale-110',
+                {'bg-gray-200': activeSlide === index},
+                {'bg-gray-400': activeSlide !== index}
+              )}></span>
             </button>
           )
         })}

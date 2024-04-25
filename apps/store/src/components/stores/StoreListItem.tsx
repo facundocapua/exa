@@ -28,7 +28,7 @@ export default function StoreListItem ({ store, showWebsite = false, showBrands 
         ? (
           <>
             <hr />
-            <BrandsList brands={store.brands} />
+            <BrandsList brands={store.brands ?? []} />
           </>
           )
         : null }

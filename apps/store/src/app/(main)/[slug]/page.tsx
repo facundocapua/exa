@@ -1,4 +1,5 @@
 import { getCategories, getCategory, getFilteredProducts } from 'api'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ProductListPage } from 'ui/server'
 
@@ -15,6 +16,39 @@ export async function generateStaticParams () {
   return categories.map((category) => ({
     slug: category.handle
   }))
+}
+
+export async function generateMetadata ({ params }: Props): Promise<Metadata> {
+  const { slug } = params
+  const category = await getCategory(slug)
+  if (!category) return {}
+
+  return {
+    title: `${category.name} | eXa Beauty Store`,
+    description: category.description || 'Tienda de productos de belleza de marcas premium.',
+    openGraph: {
+      title: `${category.name} | eXa Beauty Store`,
+      description: category.description || 'Tienda de productos de belleza de marcas premium.',
+      type: 'website',
+      locale: 'es_AR',
+      siteName: 'eXa Beauty Solutions',
+      images: [
+        {
+          url: 'https://cdn.exabeauty.com.ar/exa-og.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'eXa Beauty Store'
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary',
+      creator: '@eXaBeautyOk',
+      title: `${category.name} | eXa Beauty Store`,
+      description: category.description || 'Tienda de productos de belleza de marcas premium.',
+      site: '@eXaBeautyOk'
+    }
+  }
 }
 
 export default async function Category ({ params, searchParams }: Props) {

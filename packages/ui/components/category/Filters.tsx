@@ -13,7 +13,7 @@ export default function Filters ({ filters }: Props) {
   return (
     <>
       {filters.map((filter, filterIdx) => (
-        (filter.options.length > 1 && filter.options[0].value !== filter.options[1].value &&
+        (filter.options.length > 1 && filter.options[0]!.value !== filter.options[1]!.value &&
           <div key={filter.attribute} className={filterIdx === 0 ? undefined : 'pt-10'}>
             <fieldset>
               <legend className="block text-sm font-medium text-gray-900 dark:text-gray-100">{filter.name}</legend>

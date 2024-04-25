@@ -3,7 +3,12 @@ import { AmexIcon, MaestroIcon, MastercardIcon, MercadoPagoIcon, NaranjaIcon, Vi
 import { formatPriceWithDecimals } from '../../utils/price'
 import { formatDateSmall } from '../../utils/date'
 
-const paymentInfoMap = {
+type PaymentInfoMapType = Record<string, {
+  icon: JSX.Element
+  title?: string
+}>
+
+const paymentInfoMap: PaymentInfoMapType = {
   master: {
     icon: <MastercardIcon className='w-12 h-12 rounded-full bg-neutral-300' />,
     title: 'Mastercard'
@@ -46,7 +51,7 @@ export default function MercadoPagoPaymentDetails ({ payment }: Props) {
   return (
     <article className='flex justify-start items-start gap-4'>
       <header>
-        {paymentInfoMap[data.payment_method?.id]?.icon ?? paymentInfoMap.default.icon}
+        {paymentInfoMap[data.payment_method?.id]?.icon ?? paymentInfoMap.default!.icon}
       </header>
       <footer className='flex flex-col gap-1'>
         {data.payment_method_id === 'account_money'

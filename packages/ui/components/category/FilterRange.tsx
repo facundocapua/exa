@@ -12,8 +12,7 @@ export default function FilterRange ({ filter }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const defaultValue = searchParams.get(filter.attribute)?.split('-').map(Number) ?? null
-  const minValue = filter.options[0].value as number
-  const maxValue = filter.options[1].value as number
+  const [minValue, maxValue] = filter.options.map((option) => option.value as number)
 
   const [defaultMinValue, defaultMaxValue] = defaultValue ?? [minValue, maxValue]
 
@@ -34,15 +33,15 @@ export default function FilterRange ({ filter }: Props) {
   return (
     <>
       <Slider
-        defaultValue={[defaultMinValue, defaultMaxValue]}
+        defaultValue={[Number(defaultMinValue), Number(defaultMaxValue)]}
         min={minValue}
         max={maxValue}
         minStepsBetweenThumbs={100}
         onValueCommit={handleChange}
       />
       <div className='flex justify-between'>
-        <Price className='text-sm text-gray-600 dark:text-gray-400' amount={minValue} />
-        <Price className='text-sm text-gray-600 dark:text-gray-400' amount={maxValue} />
+        <Price className='text-sm text-gray-600 dark:text-gray-400' amount={Number(minValue)} />
+        <Price className='text-sm text-gray-600 dark:text-gray-400' amount={Number(maxValue)} />
       </div>
     </>
   )

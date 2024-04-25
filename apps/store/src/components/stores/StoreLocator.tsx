@@ -128,7 +128,7 @@ function StoreLocator ({ stores }: Props) {
                 {filteredStores.map((store) => (
                   <Marker
                     key={store.id}
-                    position={{ lat: store.lat, lng: store.lng }}
+                    position={{ lat: store.lat as number, lng: store.lng as number }}
                     onClick={() => handleStoreClick(store)}
                     animation={google.maps.Animation.DROP}
                     icon={{

@@ -21,6 +21,7 @@ export default function useStoreLocator ({ stores }: Props) {
 
     if (brands.length > 0) {
       filteredStores = stores.filter((store) => {
+        if (!store.brands) return false
         return store.brands.some((brand) => brands.includes(brand.handle))
       })
     }
@@ -28,7 +29,7 @@ export default function useStoreLocator ({ stores }: Props) {
     setFilteredStores(filteredStores)
     const bounds = new window.google.maps.LatLngBounds()
     filteredStores.forEach((store) => {
-      bounds.extend({ lat: store.lat, lng: store.lng })
+      bounds.extend({ lat: store.lat as number, lng: store.lng as number })
     })
     map?.fitBounds(bounds)
   }, [brands, setFilteredStores, stores, map])
@@ -40,15 +41,15 @@ export default function useStoreLocator ({ stores }: Props) {
       maximumAge: 1000 * 60 * 60 // 1 hour
     }
 
-    const success = (position) => {
+    const success = (position: any) => {
       map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude })
       map.setZoom(13)
     }
-    const error = (error) => {
+    const error = (error: any) => {
       console.error('error', error)
       const bounds = new window.google.maps.LatLngBounds()
       stores.forEach((store) => {
-        bounds.extend({ lat: store.lat, lng: store.lng })
+        bounds.extend({ lat: store.lat as number, lng: store.lng as number })
       })
       map?.fitBounds(bounds)
     }
@@ -67,9 +68,10 @@ export default function useStoreLocator ({ stores }: Props) {
     const bounds = map?.getBounds()
 
     const filteredStores = stores.filter((store) => {
-      if (!bounds?.contains({ lat: store.lat, lng: store.lng })) return false
+      if (!bounds?.contains({ lat: store.lat as number, lng: store.lng as number })) return false
 
       if (brands.length > 0) {
+        if (!store.brands) return false
         return store.brands.some((brand) => brands.includes(brand.handle))
       }
       return true
@@ -81,7 +83,7 @@ export default function useStoreLocator ({ stores }: Props) {
     setCurrentStore(store)
     if (!store) return
 
-    map?.setCenter({ lat: store.lat, lng: store.lng })
+    map?.setCenter({ lat: store.lat as number, lng: store.lng as number })
     map?.setZoom(15)
   }
 
@@ -129,7 +131,7 @@ export default function useStoreLocator ({ stores }: Props) {
     setFilteredStores(stores)
     const bounds = new window.google.maps.LatLngBounds()
     stores.forEach((store) => {
-      bounds.extend({ lat: store.lat, lng: store.lng })
+      bounds.extend({ lat: store.lat as number, lng: store.lng as number })
     })
     map?.fitBounds(bounds)
   }

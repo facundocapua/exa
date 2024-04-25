@@ -1,13 +1,14 @@
 import MainNavigationMobile from '../navigation/MainNavigationMobile'
 import UserNav from '../user/UserNav'
 import Logo from './Logo'
-import SearchBox from './SearchBox'
+import { SearchBox } from 'ui/components/search-box/search-box'
 
 type Props = {
   cart: React.ReactNode
+  user: React.ReactNode
 }
 
-export default function Header ({ cart }: Props) {
+export default function Header ({ cart, user }: Props) {
   return (
     <header className="w-full flex justify-between items-center p-4 lg:pb-0 container mx-auto">
       <div className="w-1/3">
@@ -22,7 +23,7 @@ export default function Header ({ cart }: Props) {
         <Logo />
       </div>
       <div className="w-1/3 text-right">
-        <UserNav cart={cart} />
+        <UserNav cart={cart} user={user} />
       </div>
     </header>
   )

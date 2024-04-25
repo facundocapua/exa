@@ -4,24 +4,28 @@ import { inBetweenTimes } from './time'
 const daysPrefix = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const
 
 export const isStoreOpen = (hours: Salon['hours']): boolean => {
+  if (!hours) return false
+
   const today = new Date()
-  const day = daysPrefix[today.getDay()]
+  const day = daysPrefix[today.getDay()] as keyof Salon['hours']
   if (!hours[day]) return false
 
-  const { open, close } = hours[day]
+  const { open, close } = hours[day] as { open: string, close: string }
 
   return inBetweenTimes(open, close)
 }
 
 export const getClosestOpenTime = (hours: Salon['hours']): Date | false => {
+  if (!hours) return false
+
   const checkingDate = new Date()
 
   for (let i = 0; i < 7; i++) {
     checkingDate.setDate(checkingDate.getDate() + 1)
-    const day = daysPrefix[checkingDate.getDay()]
+    const day = daysPrefix[checkingDate.getDay()] as keyof Salon['hours']
     if (!hours[day]) continue
 
-    const { open } = hours[day]
+    const { open } = hours[day] as { open: string }
     const openTime = new Date(`${checkingDate.toDateString()} ${open}`)
 
     return openTime
@@ -31,8 +35,11 @@ export const getClosestOpenTime = (hours: Salon['hours']): Date | false => {
 }
 
 export const formatOpenTime = (hours: Salon['hours']): string => {
+  if (!hours) return ''
+
   const today = new Date()
-  const { open, close } = hours[daysPrefix[today.getDay()]]
+  const day = daysPrefix[today.getDay()] as keyof Salon['hours']
+  const { open, close } = hours[day] as { open: string, close: string }
 
   const openTime = new Date(`2021-01-01 ${open}`)
   const closeTime = new Date(`2021-01-01 ${close}`)
@@ -56,7 +63,7 @@ export const findClosest = (lat: number, lng: number, stores: Salon[]) => {
   let closest: Salon | null = null
   let closestDistance = Infinity
   stores.forEach((store) => {
-    const distance = Math.sqrt(Math.pow(store.lat - lat, 2) + Math.pow(store.lng - lng, 2))
+    const distance = Math.sqrt(Math.pow(Number(store.lat) - lat, 2) + Math.pow(Number(store.lng) - lng, 2))
     if (distance < closestDistance) {
       closest = store
       closestDistance = distance

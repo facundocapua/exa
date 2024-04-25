@@ -1,5 +1,6 @@
+import { Image } from '@medusajs/medusa'
 import { getSalonBrands } from './brand'
-import type { Filter, Product, ProductVariant } from './types'
+import type { Collection, Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 import { getMedusaUrl } from './utils/medusa'
@@ -10,7 +11,14 @@ export const getProductVariants = async (variantIds: string[]): Promise<Array<Pr
     ids: variantIds.join(','),
     currency_code: 'ars'
   })
-  const products = fetch(`${getMedusaUrl()}/store/variants?${params.toString()}`)
+  const products = fetch(
+    `${getMedusaUrl()}/store/variants?${params.toString()}`,
+    {
+      next: {
+        tags: ['variants']
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.variants
@@ -23,12 +31,14 @@ type ProductParams = {
   expand?: string
   currency_code?: string
   category_id?: string[]
+  collection_id?: string[]
   brand_id?: string[]
   handle?: string,
   ids?: string[]
 }
 
-export const getProducts = async ({ category_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+  
   const params = new URLSearchParams({
     expand: 'categories,images,variants,brand',
     currency_code: 'ars'
@@ -37,6 +47,12 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
   if (category_id) {
     for (const catId of category_id) {
       params.append('category_id[]', catId)
+    }
+  }
+
+  if (collection_id) {
+    for (const colId of collection_id) {
+      params.append('collection_id[]', colId)
     }
   }
 
@@ -56,7 +72,14 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
     }
   }
 
-  const products: Array<Product> = await fetch(`${getMedusaUrl()}/store/products?${params.toString()}`)
+  const products: Array<Product> = await fetch(
+    `${getMedusaUrl()}/store/products?${params.toString()}`,
+    {
+      next: {
+        tags: ['products']
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.products
@@ -74,7 +97,7 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
       if (variant?.metadata?.image) {
         const imageIndex = product.images.findIndex((image) => image.url === variant?.metadata?.image)
         if (imageIndex > -1) {
-          variant.images = [product.images[imageIndex]]
+          variant.images = [product.images[imageIndex] as Image]
           product.images.splice(imageIndex, 1)
         }
       }
@@ -84,8 +107,37 @@ export const getProducts = async ({ category_id, brand_id, handle, ids }: Partia
   return products
 }
 
-export const getFeaturedProducts = async (): Promise<Array<Product>> => {
-  const data = await getProducts()
+export const getCollections = async (): Promise<Array<Collection>> => {
+  const collections = fetch(
+    `${getMedusaUrl()}/store/collections`,
+    {
+      next: {
+        tags: ['collections', 'products']
+      }
+    }
+  )
+    .then((res) => res.json())
+    .then(data => {
+      return data.collections
+    })
+
+  return collections
+}
+
+export const getCollection = async (handle: string): Promise<Collection | undefined> => {
+  const collection = getCollections()
+    .then((collections) => {
+      return collections.find((collection) => collection.handle === handle)
+    })
+
+  return collection
+}
+
+export const getCollectionProducts = async (handle: string): Promise<Array<Product> | null> => {
+  const collection = await getCollection(handle)
+  if (!collection) return null
+
+  const data = await getProducts({ collection_id: [collection.id] })
 
   return data
 }
@@ -116,9 +168,11 @@ export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<
 
   if (!exclude.includes('price')) {
     const priceFilter = extractPriceFilter(products)
-    if (priceFilter.options[0].value !== priceFilter.options[1].value) {
+    const [min, max] = priceFilter.options.map((option) => option.value)
+    if (min !== max) {
       filters.push(priceFilter)
     }
+    
   }
 
   return filters

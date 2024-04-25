@@ -1,18 +1,38 @@
 import type { Category } from './types'
-import { initClient } from './utils/supabase'
 import { getMedusaUrl } from './utils/medusa'
 
 export const getCategories = async (): Promise<Array<Category>> => {
   const params = new URLSearchParams({
     include_descendants_tree: 'true'
   })
-  const categories = fetch(`${getMedusaUrl()}/store/product-categories?${params.toString()}`)
+  const categories = fetch(
+    `${getMedusaUrl()}/store/product-categories?${params.toString()}`,
+    {
+      next: {
+        tags: ['categories']
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.product_categories
     })
 
   return categories
+}
+
+const filterActiveCategories = (categories: Array<Category>): Array<Category> => {
+  
+  const result = categories
+  .filter((c) => c.is_active === undefined || c.is_active) // is_active is undefined for top level categories
+  .map((c) => {
+    return {
+      ...c,
+      category_children: filterActiveCategories(c.category_children)
+    } as Category
+  })
+
+  return result
 }
 
 export const getTopLevelCategories = async (): Promise<Array<Category>> => {
@@ -20,27 +40,21 @@ export const getTopLevelCategories = async (): Promise<Array<Category>> => {
     parent_category_id: 'null',
     include_descendants_tree: 'true'
   })
-  const categories = fetch(`${getMedusaUrl()}/store/product-categories?${params.toString()}`)
+  const categories = fetch(
+    `${getMedusaUrl()}/store/product-categories?${params.toString()}`,
+    {
+      next: {
+        tags: ['categories']
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
-      return data.product_categories
+      const activeCategories = filterActiveCategories(data.product_categories)
+      return activeCategories
     })
 
   return categories
-}
-
-export const getFeaturedCategories = async (): Promise<Array<Category>> => {
-  const client = initClient()
-  const { data } = await client
-    .from('categories')
-    .select('*')
-    .eq('is_featured', true)
-    .order('sort', { ascending: true })
-    .returns<Array<Category>>()
-
-  if (!data) return []
-
-  return data
 }
 
 export const getCategory = async (handle: string): Promise<Category | null> => {
@@ -48,7 +62,14 @@ export const getCategory = async (handle: string): Promise<Category | null> => {
     handle,
     include_descendants_tree: 'true'
   })
-  const data = fetch(`${getMedusaUrl()}/store/product-categories?${params.toString()}`)
+  const data = fetch(
+    `${getMedusaUrl()}/store/product-categories?${params.toString()}`,
+    {
+      next: {
+        tags: ['categories', `category-${handle}`]
+      }
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.product_categories[0]

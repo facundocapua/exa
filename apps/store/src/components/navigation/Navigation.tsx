@@ -18,11 +18,11 @@ type Props = {
 
 export default function Navigation ({ navigation }: Props) {
   return (
-    <div className="bg-white hidden lg:block">
+    <div className="bg-white hidden lg:block dark:bg-[#121212]">
       <header className="relative">
         <nav aria-label="Top">
           {/* Secondary navigation */}
-          <div className="bg-white">
+          <div className="bg-white dark:bg-[#121212]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div>
                 <div className="flex h-16 items-center justify-between">
@@ -38,8 +38,8 @@ export default function Navigation ({ navigation }: Props) {
                                   <Popover.Button
                                     className={clsx(
                                       open
-                                        ? 'border-primary-600 text-primary-600'
-                                        : 'border-transparent text-neutral-700 hover:text-neutral-800',
+                                        ? 'border-primary-600 text-primary-600 dark:text-primary-500 dark:border-primary-500'
+                                        : 'border-transparent text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300',
                                       'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-none focus:outline-none'
                                     )}
                                   >
