@@ -9,7 +9,7 @@ export default function ShippingInfo ({ cart }: Props) {
   return (
     <div>
       <div className="text-sm">
-        {cart && cart.shipping_methods.length > 0 && (
+        {cart && cart.shipping_methods[0] && (
           <div className="flex flex-col w-1/3">
             <h4 className='font-medium'>Método de envío</h4>
             <p className="opacity-70">
