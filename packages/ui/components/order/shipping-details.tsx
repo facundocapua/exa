@@ -32,11 +32,18 @@ export default function ShippingDetails ({ order }: Props) {
         <div>
           <h4 className='font-medium'>Método de envío</h4>
           <p className="opacity-70">
-            {order.shipping_methods[0].shipping_option.name} (
-            {formatPrice(order.shipping_methods[0].price / 100)
-              .replace(/,/g, '')
-              .replace(/\./g, ',')}
-            )
+            {order.shipping_methods && order.shipping_methods[0]
+              ? (
+                <>
+                  {order.shipping_methods[0].shipping_option.name} (
+                  {formatPrice(order.shipping_methods[0].price / 100)
+                    .replace(/,/g, '')
+                    .replace(/\./g, ',')}
+                  )
+                </>
+                )
+              : null}
+
           </p>
         </div>
       </div>
