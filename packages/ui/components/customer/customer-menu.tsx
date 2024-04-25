@@ -4,8 +4,13 @@ import { UserIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { Fragment } from 'react'
+import { logCustomerOut } from './actions'
 
 export const CustomerMenu = () => {
+  const handleLogout = async () => {
+    await logCustomerOut()
+  }
+
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -40,21 +45,19 @@ export const CustomerMenu = () => {
               )}
             </Menu.Item>
 
-            <form method="POST" action="#">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    type="submit"
-                    className={clsx(
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                      'block w-full px-4 py-2 text-left text-sm'
-                    )}
-                  >
-                    Salir
-                  </button>
-                )}
-              </Menu.Item>
-            </form>
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  onClick={handleLogout}
+                  className={clsx(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block w-full px-4 py-2 text-left text-sm'
+                  )}
+                >
+                  Salir
+                </button>
+              )}
+            </Menu.Item>
           </div>
         </Menu.Items>
       </Transition>

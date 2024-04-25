@@ -1,3 +1,4 @@
+import { Image } from '@medusajs/medusa'
 import { getSalonBrands } from './brand'
 import type { Collection, Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
@@ -96,7 +97,7 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
       if (variant?.metadata?.image) {
         const imageIndex = product.images.findIndex((image) => image.url === variant?.metadata?.image)
         if (imageIndex > -1) {
-          variant.images = [product.images[imageIndex]]
+          variant.images = [product.images[imageIndex] as Image]
           product.images.splice(imageIndex, 1)
         }
       }

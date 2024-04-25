@@ -3,6 +3,7 @@
 import { getToken } from 'api'
 import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export const logCustomerIn = async (
   _currentState: unknown,
@@ -24,4 +25,13 @@ export const logCustomerIn = async (
   } catch (error: any) {
     return error.toString()
   }
+}
+
+export const logCustomerOut = async () => {
+  cookies().set('auth_jwt', '', {
+    maxAge: -1
+  })
+  revalidateTag('auth')
+  revalidateTag('customer')
+  redirect('/')
 }
