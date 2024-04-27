@@ -1,11 +1,10 @@
-import { cookies } from 'next/headers'
 import AccountLoginButton from './account-login-button'
 import { CustomerMenu } from './customer-menu'
+import { getLoginCustomer } from './utils'
 
-export const AccountHeader = () => {
-  const userToken = cookies().get('auth_jwt')
-
-  if (!userToken) {
+export const AccountHeader = async () => {
+  const customer = await getLoginCustomer()
+  if (!customer) {
     return <AccountLoginButton />
   }
 

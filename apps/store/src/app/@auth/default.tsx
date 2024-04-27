@@ -1,3 +1,3 @@
-export default function DefaultLoginPage() {
+export default function DefaultLoginPage () {
   return null
 }

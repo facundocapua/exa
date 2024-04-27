@@ -9,7 +9,8 @@ import type {
   PaymentSession as MedusaPaymentSession,
   StoreCompleteCartRes,
   Order as MedusaOrder,
-  Payment as MedusaPayment
+  Payment as MedusaPayment,
+  Customer as MedusaCustomer
 } from '@medusajs/medusa'
 import type { PricedShippingOption } from '@medusajs/medusa/dist/types/pricing'
 
@@ -142,3 +143,5 @@ export type Slide = {
   image_mobile: string
   link: string
 }
+
+export type Customer = MedusaCustomer

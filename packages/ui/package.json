@@ -35,14 +35,14 @@
     "zustand": "4.5.2"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
     "api": "workspace:*",
     "eslint": "8.57.0",
-    "@repo/eslint-config": "workspace:*",
     "react": "18.2.0",
-    "@repo/typescript-config": "workspace:*",
     "typescript": "5.4.5"
   }
 }

@@ -1,10 +1,10 @@
-import { LoginForm } from 'ui/components/customer/login-form';
-import { Modal } from 'ui/components/generic/modal';
+import { getLoginCustomer } from 'ui/components/customer/utils'
+import { LoginModal } from 'ui/components/customer/login-modal'
 
-export default function ModalLoginPage(){
+export default async function ModalLoginPage () {
+  const customer = await getLoginCustomer()
+
   return (
-    <Modal>
-      <LoginForm />
-    </Modal>
+    <LoginModal customer={customer} />
   )
 }

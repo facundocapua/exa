@@ -5,7 +5,7 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 
 const menu = [
   {
-    name: 'Mi cuenta',
+    name: 'General',
     slug: null,
     icon: HomeIcon,
     current: true

@@ -6,6 +6,8 @@ import { logCustomerIn } from './actions'
 export const LoginForm = () => {
   const [message, formAction] = useFormState(logCustomerIn, null)
 
+  console.log(message)
+
   return (
     <div>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
