@@ -18,19 +18,17 @@ export default async function CheckoutForm ({ cart }: Props) {
     return null
   }
 
+  const uniquePayment = cart?.payment_sessions?.length === 1
+
   return (
-    <div className="mt-6">
-      <div className="grid grid-cols-12 gap-x-4 gap-y-6">
-        <div className="col-span-full">
-          <CheckoutAddressStep cart={cart} />
+    <div className="md:mt-6">
+      <CheckoutAddressStep cart={cart} />
 
-          <CheckoutDevliveryStep cart={cart} availableShippingMethods={availableShippingMethods} />
+      <CheckoutDevliveryStep cart={cart} availableShippingMethods={availableShippingMethods} />
 
-          <CheckoutPaymentStep cart={cart} />
+      {!uniquePayment ? (<CheckoutPaymentStep cart={cart} />) : null}
 
-          <CheckoutReviewStep cart={cart} />
-        </div>
-      </div>
+      <CheckoutReviewStep cart={cart} title={uniquePayment ? 'Pago' : 'Revisar pedido'} />
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import { ProductListSkeleton }  from 'ui/components/product-list/product-list-skeleton'
+import { ProductListSkeleton } from 'ui/components/product-list/product-list-skeleton'
 
-export default function LoadingCategoryPage(){
+export default function LoadingCategoryPage () {
   return (
     <ProductListSkeleton />
   )

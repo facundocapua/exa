@@ -58,22 +58,26 @@ export default function OrderSummary ({ cart }: Props) {
               <Price amount={Number(cart.subtotal)} />
             </dd>
           </div>
-          <div className="flex justify-between">
-            <dt className="flex">
-              Descuento
-            </dt>
-            <dd className="text-gray-900">
-              <Price amount={-Number(cart.discount_total)} />
-            </dd>
-          </div>
-          {cart.shipping_total && (
-            <div className="flex justify-between">
-              <dt>Envio</dt>
+          {cart.discount_total
+            ? (<div className="flex justify-between">
+              <dt className="flex">
+                Descuento
+              </dt>
               <dd className="text-gray-900">
-                <Price amount={cart.shipping_total} />
+                <Price amount={-Number(cart.discount_total)} />
               </dd>
-            </div>
-          )}
+            </div>)
+            : null}
+          {cart.shipping_total
+            ? (
+              <div className="flex justify-between">
+                <dt>Envio</dt>
+                <dd className="text-gray-900">
+                  <Price amount={cart.shipping_total} />
+                </dd>
+              </div>
+              )
+            : null}
 
           <div className="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
             <dt className="text-base">Total</dt>

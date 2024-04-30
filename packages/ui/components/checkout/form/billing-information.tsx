@@ -1,6 +1,6 @@
 'use client'
 
-import { CartWithCheckoutStep } from 'api'
+import type { CartWithCheckoutStep } from 'api'
 import Input from '../../form/input'
 import StateSelector from '../../form/state-selector'
 import { useState } from 'react'
@@ -64,19 +64,20 @@ export default function BillingInformation ({ cart }: Props) {
         onChange={handleChange}
       />
 
-      <div className='flex gap-4'>
+      <div className='flex flex-wrap md:flex-nowrap gap-4'>
         <Input
           label="Ciudad"
           id="billing_address.city"
           name="billing_address.city"
           required={true}
           autoComplete="shipping address-level2"
-          containerClassName='basis-1/3'
+          containerClassName='basis-[calc(50%-8px)] md:basis-1/3 order-1'
           value={billingAddress['billing_address.city']}
           onChange={handleChange}
         />
 
         <StateSelector
+          containerClassName='flex-1 order-3 md:order-2 md:flex-initial'
           placeholder='Provincia'
           id='billing_address.province'
           name='billing_address.province'
@@ -90,7 +91,7 @@ export default function BillingInformation ({ cart }: Props) {
           name="billing_address.postal_code"
           required={true}
           autoComplete="shipping postal-code"
-          containerClassName='basis-1/3'
+          containerClassName='basis-[calc(50%-8px)] md:basis-1/3 order-2 md:order-3'
           value={billingAddress['billing_address.postal_code']}
           onChange={handleChange}
         />

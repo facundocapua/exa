@@ -1,7 +1,7 @@
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import type { SelectHTMLAttributes } from 'react'
 import {
-  SelectHTMLAttributes,
   forwardRef,
   useEffect,
   useImperativeHandle,
@@ -13,11 +13,12 @@ export type NativeSelectProps = {
   placeholder?: string
   errors?: Record<string, unknown>
   touched?: Record<string, unknown>
+  containerClassName?: string
 } & SelectHTMLAttributes<HTMLSelectElement>
 
 const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
-    { placeholder = 'Select...', defaultValue, className, children, ...props },
+    { placeholder = 'Seleccione...', defaultValue, className, children, containerClassName, ...props },
     ref
   ) => {
     const innerRef = useRef<HTMLSelectElement>(null)
@@ -37,12 +38,12 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
     }, [innerRef.current?.value])
 
     return (
-      <div>
+      <div className={containerClassName}>
         <div
           onFocus={() => innerRef.current?.focus()}
           onBlur={() => innerRef.current?.blur()}
           className={clsx(
-            'relative flex items-center rounded-md rounded-md text-sm shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600 px-4 w-full h-11',
+            'relative flex items-center rounded-md text-sm shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-primary-600 px-4 w-full h-11',
             'bg-neutral-50 transition-all duration-200 ease-in-out hover:bg-neutral-100 focus-within:bg-neutral-100',
             className,
             {

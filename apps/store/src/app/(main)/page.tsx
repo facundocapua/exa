@@ -23,7 +23,7 @@ export default function Home () {
       <Suspense fallback={<ProductSliderSkeleton title='Destacados del mes' />}>
         <FeaturedProducts />
       </Suspense>
-      
+
       <Suspense fallback={<BrandFeaturedSkeleton />}>
         <FeaturedBrands />
       </Suspense>
@@ -31,7 +31,7 @@ export default function Home () {
       <Suspense fallback={<ProductSliderSkeleton title='Descubrí lo Nuevo' />}>
         <FeaturedProducts2 />
       </Suspense>
-      
+
       <StoresBanner />
     </div>
   )

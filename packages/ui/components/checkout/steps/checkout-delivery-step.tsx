@@ -34,7 +34,8 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
-    router.push(pathname + '?step=payment', { scroll: false })
+    const nextStep = cart.payment_sessions?.length > 1 ? 'payment' : 'review'
+    router.push(pathname + `?step=${nextStep}`, { scroll: false })
   }
 
   const handleChange = async (value: string) => {

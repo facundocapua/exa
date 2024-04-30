@@ -1,5 +1,6 @@
 import { forwardRef, useImperativeHandle, useRef } from 'react'
-import NativeSelect, { NativeSelectProps } from './native-select'
+import type { NativeSelectProps } from './native-select'
+import NativeSelect from './native-select'
 import { states } from 'api'
 
 const StateSelector = forwardRef<HTMLSelectElement, NativeSelectProps>(

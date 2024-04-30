@@ -68,19 +68,20 @@ export default function ShippingInformation ({ cart, sameAsBilling, onSameAsBill
         onChange={handleChange}
       />
 
-      <div className='flex gap-4'>
+      <div className='flex flex-wrap md:flex-nowrap gap-4'>
         <Input
           label="Ciudad"
           id="shipping_address.city"
           name="shipping_address.city"
           required={true}
           autoComplete="shipping address-level2"
-          containerClassName='basis-1/3'
+          containerClassName='basis-[calc(50%-8px)] md:basis-1/3 order-1'
           value={shippingAddress['shipping_address.city']}
           onChange={handleChange}
         />
 
         <StateSelector
+          containerClassName='flex-1 order-3 md:order-2 md:flex-initial'
           placeholder='Provincia'
           id='shipping_address.province'
           name='shipping_address.province'
@@ -94,7 +95,7 @@ export default function ShippingInformation ({ cart, sameAsBilling, onSameAsBill
           name="shipping_address.postal_code"
           required={true}
           autoComplete="shipping postal-code"
-          containerClassName='basis-1/3'
+          containerClassName='basis-[calc(50%-8px)] md:basis-1/3 order-2 md:order-3'
           value={shippingAddress['shipping_address.postal_code']}
           onChange={handleChange}
         />

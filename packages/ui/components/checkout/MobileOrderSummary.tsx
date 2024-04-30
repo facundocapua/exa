@@ -17,10 +17,10 @@ export default function MobileOrderSummary ({ cart }: Props) {
           <>
             <div className="flex items-center justify-between">
               <h2 id="order-heading" className="text-lg font-medium text-gray-900">
-                Your Order
+                Tu pedido
               </h2>
-              <Disclosure.Button className="font-medium text-indigo-600 hover:text-indigo-500">
-                {open ? <span>Hide full summary</span> : <span>Show full summary</span>}
+              <Disclosure.Button className="font-medium text-primary-600 hover:text-primary-500">
+                {open ? <span>Ocultar detalles</span> : <span>Mostrar detalles</span>}
               </Disclosure.Button>
             </div>
 
@@ -80,14 +80,16 @@ export default function MobileOrderSummary ({ cart }: Props) {
                     <Price amount={-Number(cart.discount_total)} />
                   </dd>
                 </div>
-                {cart.shipping_total && (
-                <div className="flex justify-between">
-                  <dt>Shipping</dt>
-                  <dd className="text-gray-900">
-                    <Price amount={cart.shipping_total} />
-                  </dd>
-                </div>
-                )}
+                {cart.shipping_total
+                  ? (
+                    <div className="flex justify-between">
+                      <dt>Shipping</dt>
+                      <dd className="text-gray-900">
+                        <Price amount={cart.shipping_total} />
+                      </dd>
+                    </div>
+                    )
+                  : null}
               </dl>
             </Disclosure.Panel>
 
