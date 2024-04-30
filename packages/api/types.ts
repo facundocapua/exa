@@ -145,3 +145,12 @@ export type Slide = {
 }
 
 export type Customer = MedusaCustomer
+
+export type OrderReturnRequest = {
+  first_name: string
+  last_name: string
+  email: string
+  phone: string
+  order_number: string
+  notes: string
+}

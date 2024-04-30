@@ -1,3 +1,4 @@
+import { OrderReturnRequest } from './types'
 import { getMedusaUrl } from './utils/medusa'
 
 export const retrieveOrder = (orderId: string) => {
@@ -18,4 +19,23 @@ export const retrieveOrderByCartId = (cartId: string) => {
     })
 
   return data
+}
+
+export const sendOrderReturnRequest = (data: OrderReturnRequest) => {
+  const result = fetch(`${getMedusaUrl()}/store/order/return/request`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+    next: {
+      tags: ['order_return_request']
+    }
+  })
+    .then((res) => res.json())
+    .then(data => {
+      return data.orderReturnRequest
+    })
+
+    return result
 }
