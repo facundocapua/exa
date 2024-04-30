@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import { InputHTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react'
+import type { InputHTMLAttributes } from 'react'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 
 type InputProps = Omit<
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
@@ -23,14 +24,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         containerClassName
       )}>
         <input
-        type="text"
-        className={clsx(
-          'peer h-11 rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600 px-4 pt-3 w-full text-sm',
-          'bg-neutral-50 transition-all duration-200 ease-in-out hover:bg-neutral-100 focus-within:bg-neutral-100'
-        )}
-        placeholder=' '
-        {...inputProps}
-      />
+          type="text"
+          className={clsx(
+            'peer h-11 rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-2 focus-within:ring-primary-600 px-4 pt-3 w-full text-sm',
+            'bg-neutral-50 transition-all duration-200 ease-in-out hover:bg-neutral-100 focus-within:bg-neutral-100'
+          )}
+          placeholder=' '
+          {...inputProps}
+        />
         <label
         htmlFor={inputProps.id}
         className={clsx(

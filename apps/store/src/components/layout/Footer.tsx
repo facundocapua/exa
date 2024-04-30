@@ -1,11 +1,13 @@
 import { FacebookIcon, InstagramIcon, TwitterIcon } from 'ui/server'
 import Logo from './Logo'
 import { createElement } from 'react'
+import Image from 'next/image'
 
 const navigation = {
   solutions: [
     { name: 'Términos y condiciones', href: '/terminos-y-condiciones' },
-    { name: 'Arrepentimiento', href: '/arrepentimiento' }
+    { name: 'Arrepentimiento', href: '/arrepentimiento' },
+    { name: 'AFIP', href: 'http://qr.afip.gob.ar/?qr=IUsHD3VMWpJNosIMv6Dg0w,,', image: '/afip.webp', width: 23, height: 32 }
     // { name: '¿Cómo comprar?', href: '#' }
   ],
   support: [
@@ -62,7 +64,7 @@ export default function Footer () {
                 {navigation.solutions.map((item) => (
                   <li key={item.name}>
                     <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                      {item.name}
+                      { item.image ? <Image src={item.image} width={item.width} height={item.height} alt={item.name} /> : item.name }
                     </a>
                   </li>
                 ))}

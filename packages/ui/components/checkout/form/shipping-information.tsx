@@ -1,6 +1,6 @@
 'use client'
 
-import { CartWithCheckoutStep } from 'api'
+import type { CartWithCheckoutStep } from 'api'
 import Input from '../../form/input'
 import StateSelector from '../../form/state-selector'
 import { useState } from 'react'
