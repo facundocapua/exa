@@ -5,6 +5,10 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off'
   },
+  parserOptions: {
+    project: "./tsconfig.lint.json",
+    tsconfigRootDir: __dirname,
+  },
   globals: {
     google: 'readonly'
   }

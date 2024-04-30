@@ -25,8 +25,8 @@ export default async function CheckoutPage () {
   const cart = (await createPaymentSession(cartId).then(cart => cart)) as CartWithCheckoutStep
   if (!cart) return redirect('/')
 
-  if (cart.payment_sessions?.length === 1) {
-    const providerId = cart.payment_sessions[0].provider_id
+  if (cart?.payment_sessions?.length === 1) {
+    const providerId = cart?.payment_sessions?.[0].provider_id
     await setPaymentSession(cartId, providerId)
     revalidateTag('cart')
   }
