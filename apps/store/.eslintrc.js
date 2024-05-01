@@ -1,15 +1,12 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
   extends: ["@repo/eslint-config/next.js"],
-  parser: '@typescript-eslint/parser',
-  rules: {
-    'react/react-in-jsx-scope': 'off'
-  },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.lint.json",
-    tsconfigRootDir: __dirname,
+    project: true,
   },
   globals: {
     google: 'readonly'
   }
-}
+};

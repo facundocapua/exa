@@ -2,15 +2,14 @@
 
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import type { Brand } from 'api'
+import type { Brand, Category } from 'api'
 import Link from 'next/link'
 import clsx from 'clsx'
 import CategorySubLevel from './desktop/CategorySubLevel'
-import { ProductCategory } from '@medusajs/medusa'
 
 type Props = {
   navigation: {
-    categories: Array<ProductCategory>
+    categories: Array<Category>
     brands: Array<Brand>
     pages: Array<{ name: string, href: string }>
   }

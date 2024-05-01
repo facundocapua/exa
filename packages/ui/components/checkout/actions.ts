@@ -1,8 +1,7 @@
 'use server'
 
 import { cookies } from 'next/headers'
-import type { StorePostCartsCartReq } from '@medusajs/medusa'
-import type { Cart, PlaceOrderResponse } from 'api'
+import type { Cart, PlaceOrderResponse, StorePostCartsCartReq } from 'api'
 import { addShippingMethod, completeCart, setPaymentSession, updateCart } from 'api'
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'

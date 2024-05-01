@@ -1,8 +1,8 @@
+import { Category } from 'api'
 import CategoryLink from './CategoryLink'
-import { ProductCategory } from '@medusajs/medusa'
 
 type Props = {
-  category: ProductCategory,
+  category: Category,
   onClick: () => void
 }
 

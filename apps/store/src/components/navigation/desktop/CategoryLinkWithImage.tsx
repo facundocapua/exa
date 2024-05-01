@@ -1,9 +1,9 @@
-import { ProductCategory } from '@medusajs/medusa'
+import { Category } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
 
 type Props = {
-  category: ProductCategory
+  category: Category
   customLabel?: string
   onClick: () => void
 }

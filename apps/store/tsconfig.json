@@ -14,7 +14,7 @@
   "include": [
     "next-env.d.ts",
     "next.config.js",
-    "./src/",
+    "src",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]

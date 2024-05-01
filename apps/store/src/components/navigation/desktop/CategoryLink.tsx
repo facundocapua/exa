@@ -1,9 +1,9 @@
+import { Category } from 'api'
 import CategoryLinkText from './CategoryLinkText'
 import CategoryLinkWithImage from './CategoryLinkWithImage'
-import { ProductCategory } from '@medusajs/medusa'
 
 type Props = {
-  category: ProductCategory
+  category: Category
   customLabel?: string
   noImage?: boolean
   onClick: () => void

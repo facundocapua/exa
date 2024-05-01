@@ -10,7 +10,8 @@ import type {
   StoreCompleteCartRes,
   Order as MedusaOrder,
   Payment as MedusaPayment,
-  Customer as MedusaCustomer
+  Customer as MedusaCustomer,
+  StorePostCartsCartReq as MedusaStorePostCartsCartReq
 } from '@medusajs/medusa'
 import type { PricedShippingOption } from '@medusajs/medusa/dist/types/pricing'
 
@@ -154,3 +155,5 @@ export type OrderReturnRequest = {
   order_number: string
   notes: string
 }
+
+export type StorePostCartsCartReq = MedusaStorePostCartsCartReq
