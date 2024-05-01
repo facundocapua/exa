@@ -24,7 +24,7 @@ export default function OrderDetails ({ order, showStatus }: Props) {
       <p className="mt-2">
         Fecha del pedido: {formatDate(new Date(order.created_at).toISOString())}
       </p>
-      <p className="mt-2 text-primary-600 font-semibold text-xl">
+      <p className="mt-2 text-primary-600 font-semibold text-xl dark:text-primary-400">
         Número de pedido: {order.display_id}
       </p>
 

@@ -9,12 +9,12 @@ type Props = {
 
 export default function OrderSummary ({ cart }: Props) {
   return (
-    <section aria-labelledby="summary-heading" className="hidden w-full max-w-md flex-col bg-gray-50 lg:flex h-fit">
+    <section aria-labelledby="summary-heading" className="hidden w-full max-w-md flex-col bg-gray-50 dark:bg-gray-800 lg:flex h-fit">
       <h2 id="summary-heading" className="sr-only">
         Resumen de compra
       </h2>
 
-      <ul role="list" className="flex-auto divide-y divide-gray-200 overflow-y-auto px-6">
+      <ul role="list" className="flex-auto divide-y divide-gray-200 dark:divide-gray-700 overflow-y-auto px-6">
         {cart.items.map((line) => (
           <li key={line.id} className="flex space-x-6 py-6 justify-between">
             <Image
@@ -22,11 +22,11 @@ export default function OrderSummary ({ cart }: Props) {
               alt={line.variant.product.title}
               width={175}
               height={175}
-              className="h-40 w-40 flex-none rounded-md bg-gray-200 object-cover object-center"
+              className="h-40 w-40 flex-none rounded-md bg-gray-200 dark:bg-gray-700 object-cover object-center"
             />
             <div className="flex flex-col justify-between space-y-4">
               <div className="space-y-1 text-sm font-medium">
-                <h3 className="text-gray-900">{line.variant.product.title}</h3>
+                <h3 className="text-gray-900 dark:text-neutral-100">{line.variant.product.title}</h3>
                 <Price
                   className="flex justify-end space-y-2 text-right text-sm"
                   amount={Number(line.subtotal)}
@@ -50,11 +50,11 @@ export default function OrderSummary ({ cart }: Props) {
         ))}
       </ul>
 
-      <div className="sticky bottom-0 flex-none border-t border-gray-200 bg-gray-50 p-6">
-        <dl className="mt-10 space-y-6 text-sm font-medium text-gray-500">
+      <div className="sticky bottom-0 flex-none border-t border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800 p-6">
+        <dl className="mt-10 space-y-6 text-sm font-medium text-gray-500 dark:text-gray-300">
           <div className="flex justify-between">
             <dt>Subtotal</dt>
-            <dd className="text-gray-900">
+            <dd className="text-gray-900 dark:text-gray-100">
               <Price amount={Number(cart.subtotal)} />
             </dd>
           </div>
@@ -63,7 +63,7 @@ export default function OrderSummary ({ cart }: Props) {
               <dt className="flex">
                 Descuento
               </dt>
-              <dd className="text-gray-900">
+              <dd className="text-gray-900 dark:text-gray-100">
                 <Price amount={-Number(cart.discount_total)} />
               </dd>
             </div>)
@@ -72,14 +72,14 @@ export default function OrderSummary ({ cart }: Props) {
             ? (
               <div className="flex justify-between">
                 <dt>Envio</dt>
-                <dd className="text-gray-900">
+                <dd className="text-gray-900 dark:text-gray-100">
                   <Price amount={cart.shipping_total} />
                 </dd>
               </div>
               )
             : null}
 
-          <div className="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
+          <div className="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900 dark:text-gray-100">
             <dt className="text-base">Total</dt>
             <dd className="text-base">
               <Price amount={Number(cart.total)} />

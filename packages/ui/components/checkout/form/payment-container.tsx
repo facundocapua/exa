@@ -27,9 +27,9 @@ export default function PaymentContainer ({
         value={paymentSession.provider_id}
         disabled={disabled}
         className={clsx(
-          'flex flex-col gap-y-2 text-small-regular cursor-pointer py-4 border rounded-lg px-8 mb-2 hover:shadow-interactive',
+          'flex flex-col gap-y-2 text-small-regular cursor-pointer py-4 border rounded-lg px-8 mb-2 hover:shadow-interactive dark:bg-gray-800',
           {
-            'border-primary-600':
+            'border-primary-600 dark:border-primary-400':
               selectedPaymentOptionId === paymentSession.provider_id
           }
         )}
@@ -47,7 +47,7 @@ export default function PaymentContainer ({
               <PaymentTest className="hidden small:block" />
             )}
           </div>
-          <span className="justify-self-end text-gray-700">
+          <span className="justify-self-end text-gray-700 dark:text-gray-300">
             {paymentInfoMap[paymentSession.provider_id]?.icon}
           </span>
         </div>

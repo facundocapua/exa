@@ -15,7 +15,7 @@ export default function OrderItems ({ items }: Props) {
       </h2>
       <div className="flex flex-col">
         <Divider />
-        <ul role="list" className="divide-y border-t-neutral-200">
+        <ul role="list" className="divide-y border-t-neutral-200 dark:border-t-neutral-700">
           {items?.length
             ? items
               .sort((a, b) => {

@@ -25,7 +25,7 @@ export default function CheckoutReviewStep ({ cart, title }: Props) {
     <section className="mt-12">
       <div className='flex justify-between'>
         <h2 className={clsx(
-          'font-semibold text-black text-3xl mb-4 flex items-center gap-2',
+          'font-semibold text-black text-3xl mb-4 flex items-center gap-2 dark:text-gray-50',
           { 'opacity-50 pointer-events-none select-none': !isOpen }
         )}>
           {title || 'Revisar pedido'}
@@ -36,7 +36,7 @@ export default function CheckoutReviewStep ({ cart, title }: Props) {
         <>
           <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full">
-              <p className="text-base text-gray-800 mb-1">
+              <p className="text-base text-gray-800 mb-1 dark:text-gray-300">
                 Al hacer clic en el botón de Pagar, aceptas los <a href="/terminos-y-condiciones" target='_blank' className='underline'>términos y condiciones</a> de la tienda.
               </p>
             </div>

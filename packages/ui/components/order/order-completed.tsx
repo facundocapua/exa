@@ -13,7 +13,7 @@ export default function OrderCompleted ({ order }: Props) {
   return (
     <div className="py-6 min-h-[calc(100vh-64px)]">
       <div className="flex flex-col justify-center items-center gap-y-10 h-full w-full">
-        <div className="flex flex-col gap-4 max-w-4xl h-full bg-white w-full py-10">
+        <div className="flex flex-col gap-4 max-w-4xl h-full bg-white w-full py-10 dark:bg-black">
           <h1 className="flex flex-col gap-y-3 text-3xl mb-4">
             <span>¡Gracias!</span>
             <span>Tu pedido se ha completado con éxito.</span>

@@ -28,7 +28,7 @@ const socialNetworksMeta: Record<string, Omit<SocialNetwork, 'href'>> = {
     icon: WhatsAppIconBW,
     iconAlternative: WhatsAppIcon
   }
-}
+} as const
 
 export default async function StoreMap () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
@@ -43,7 +43,7 @@ export default async function StoreMap () {
     .filter(value => socialNetworksMeta[value])
     .map((key) => {
       return {
-        ...socialNetworksMeta[key],
+        ...socialNetworksMeta[key]!,
         href: store?.social_networks?.[key] ?? ''
       }
     })
@@ -75,8 +75,16 @@ export default async function StoreMap () {
       {
         store.social_networks?.whatsapp
           ? (<Link href={store.social_networks.whatsapp} target="_blank" rel="noreferrer nofollow">
-            <span className="sr-only">{socialNetworksMeta.whatsapp.name}</span>
-            <socialNetworksMeta.whatsapp.iconAlternative className="w-16 fixed bottom-4 right-4 m-4" aria-hidden="true" />
+            {
+            socialNetworksMeta.whatsapp
+              ? (
+                <>
+                  <span className="sr-only">{socialNetworksMeta.whatsapp.name}</span>
+                  <socialNetworksMeta.whatsapp.iconAlternative className="w-16 fixed bottom-4 right-4 m-4" aria-hidden="true" />
+                </>
+                )
+              : null}
+
           </Link>)
           : null
       }

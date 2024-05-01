@@ -29,7 +29,7 @@ export default function CategoryFeaturedList ({ brands }: Props) {
   if (!brands) return null
 
   return (
-    <section className='embla relative'>
+    <div className='embla relative'>
       <div className="embla__viewport overflow-hidden md:mx-12 mx-8" ref={emblaRef}>
         <div className='embla__container flex gap-8 md:mx-4 mx-0'>
           {brands.map((brand) => (
@@ -53,6 +53,6 @@ export default function CategoryFeaturedList ({ brands }: Props) {
       </div>
       <BackButton onClick={scrollPrev} />
       <ForwardButton onClick={scrollNext} />
-    </section>
+    </div>
   )
 }

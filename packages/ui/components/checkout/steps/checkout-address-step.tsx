@@ -38,11 +38,11 @@ export default function CheckoutAddressStep ({ cart }: Props) {
   return (
     <section className="mt-12 md:mt-4">
       <div className='flex justify-between'>
-        <h2 className="font-semibold text-black text-3xl mb-4 flex items-center gap-2">
+        <h2 className="font-semibold text-black text-3xl mb-4 flex items-center gap-2 dark:text-gray-50">
           Dirección de envío
           {!isOpen && <CheckCircleIcon className='w-5 h-5' />}
         </h2>
-        {!isOpen && <button onClick={handleEdit} className='text-primary-600 text-sm'>Editar</button>}
+        {!isOpen && <button onClick={handleEdit} className='text-primary-600 text-sm dark:text-primary-400'>Editar</button>}
       </div>
       {
         isOpen

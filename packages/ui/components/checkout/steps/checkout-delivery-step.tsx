@@ -54,7 +54,7 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
     <section className="mt-12">
       <div className='flex justify-between'>
         <h2 className={clsx(
-          'font-semibold text-black text-3xl mb-4 flex items-center gap-2',
+          'font-semibold text-black text-3xl mb-4 flex items-center gap-2 dark:text-gray-50',
           { 'opacity-50 pointer-events-none select-none': !isOpen && cart.shipping_methods.length === 0 }
         )}>
           Envío
@@ -64,7 +64,7 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
           cart?.shipping_address &&
           cart?.billing_address &&
           cart?.email && (
-            <button onClick={handleEdit} className='text-primary-600 text-sm'>Editar</button>
+            <button onClick={handleEdit} className='text-primary-600 text-sm dark:text-primary-400'>Editar</button>
         )}
       </div>
       { isOpen
@@ -83,9 +83,9 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
                           key={option.id}
                           value={option.id}
                           className={clsx(
-                            'flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-lg px-8 mb-2 hover:shadow-interactive',
+                            'flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-lg px-8 mb-2 hover:shadow-interactive dark:bg-gray-800',
                             {
-                              'border-primary-600':
+                              'border-primary-600 dark:border-primary-400':
                                 option.id ===
                                 cart.shipping_methods[0]?.shipping_option_id
                             }

@@ -51,7 +51,7 @@ export default async function OpeningHours () {
   if (!hours) return null
 
   const openingHours = Object.entries(weekDays).map(([key, value]) => {
-    const openingHours = hours[key] ? `${hours[key].open} - ${hours[key].close}` : ''
+    const openingHours = hours[key] ? `${hours[key]!.open} - ${hours[key]!.close}` : ''
 
     return {
       ...value,

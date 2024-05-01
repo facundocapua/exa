@@ -39,12 +39,12 @@ export default function PaymentDetails ({ order }: Props) {
         </div>
         <div className='col-span-2'>
           <h4 className='font-medium'>Detalle del pago</h4>
-          <div className="opacity-70 flex gap-2">
+          <div className="opacity-70 flex items-center gap-2">
             {payment.provider_id === 'mercadopago'
               ? <MercadoPagoPaymentDetails payment={payment as MercadoPagoPayment} />
               : (
                 <>
-                  <span className="justify-self-end text-gray-700">
+                  <span className="justify-self-end text-gray-700 dark:text-neutral-300">
                     {paymentInfoMap[payment.provider_id]?.icon}
                   </span>
                   {`${formatPrice(payment.amount / 100)} pagado el ${formatDateTime(payment.created_at.toString())}`}

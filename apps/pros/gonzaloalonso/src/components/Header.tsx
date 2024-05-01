@@ -1,12 +1,16 @@
 'use client'
 import Link from 'next/link'
 import Logo from './Logo'
-import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 
-export default function Header () {
+type Props = {
+  cart: React.ReactNode
+}
+
+export default function Header ({ cart }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -28,9 +32,9 @@ export default function Header () {
 
         <Logo />
 
-        <Link href="/tienda" className='flex justify-end'>
-          <ShoppingBagIcon className="h-6 w-6" />
-        </Link>
+        <div className='flex justify-end'>
+          {cart}
+        </div>
 
       </div>
 

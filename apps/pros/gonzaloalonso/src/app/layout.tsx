@@ -1,8 +1,7 @@
+import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
 import type { Metadata } from 'next'
-import Header from '@/components/Header'
 import { Inter } from 'next/font/google'
 import type { ReactNode } from 'react'
-import Footer from '@/components/Footer'
 import 'ui/styles/global.css'
 
 const inter = Inter({
@@ -12,8 +11,30 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Gonzalo Alonso',
-  description: 'Gonzalo Alonso Studio - Lo que vos mereces'
+  title: STORE_NAME,
+  description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
+  openGraph: {
+    title: STORE_NAME,
+    description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
+    type: 'website',
+    locale: 'es_AR',
+    siteName: 'eXa Pros',
+    images: [
+      {
+        url: STORE_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: STORE_NAME
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary',
+    creator: '@eXaBeautyOk',
+    title: STORE_NAME,
+    description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
+    site: '@eXaBeautyOk'
+  }
 }
 
 export default function RootLayout ({
@@ -24,9 +45,7 @@ export default function RootLayout ({
   return (
     <html lang="es" className={`${inter.variable}`}>
       <body className='font-sans antialiased bg-black text-white dark'>
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   )

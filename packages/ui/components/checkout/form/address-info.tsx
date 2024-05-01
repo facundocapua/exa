@@ -1,4 +1,4 @@
-import { CartWithCheckoutStep } from 'api'
+import type { CartWithCheckoutStep } from 'api'
 import { compareAddresses } from '../../../utils/address'
 
 type Props = {

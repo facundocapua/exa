@@ -74,14 +74,14 @@ export default function CheckoutPaymentStep ({ cart }: Props) {
     <section className="mt-12">
       <div className='flex justify-between'>
         <h2 className={clsx(
-          'font-semibold text-black text-3xl mb-4 flex items-center gap-2',
+          'font-semibold text-black text-3xl mb-4 flex items-center gap-2 dark:text-gray-50',
           { 'opacity-50 pointer-events-none select-none': !isOpen && cart.shipping_methods.length === 0 }
         )}>
           Pago
           {!isOpen && paymentReady && <CheckCircleIcon className='w-5 h-5' />}
         </h2>
         {!isOpen && paymentReady && (
-        <button onClick={handleEdit} className='text-primary-600 text-sm'>Editar</button>
+        <button onClick={handleEdit} className='text-primary-600 text-sm dark:text-primary-400'>Editar</button>
         )}
       </div>
 
@@ -90,9 +90,9 @@ export default function CheckoutPaymentStep ({ cart }: Props) {
           ? (
             <div className={isOpen ? 'block' : 'hidden'}>
               <RadioGroup
-              value={cart.payment_session?.provider_id || ''}
-              onChange={(value: string) => handleChange(value)}
-            >
+                value={cart.payment_session?.provider_id || ''}
+                onChange={(value: string) => handleChange(value)}
+              >
                 {cart.payment_sessions
                   .sort((a, b) => {
                     return a.provider_id > b.provider_id ? 1 : -1

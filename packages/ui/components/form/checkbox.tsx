@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import { InputHTMLAttributes, forwardRef, useImperativeHandle, useRef } from 'react'
+import type { InputHTMLAttributes } from 'react'
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 
 type InputProps = Omit<
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
@@ -26,9 +27,9 @@ const Checkbox = forwardRef<HTMLInputElement, InputProps>(
       />
         <label
         htmlFor={inputProps.id}
-        className="text-black text-sm transition-all">
+        className="text-black text-sm transition-all dark:text-neutral-100">
           {label}
-          {inputProps.required && <span className='text-red-500'>*</span>}
+          {inputProps.required && <span className='text-red-500 dark:text-red-400'>*</span>}
         </label>
       </div>
     )

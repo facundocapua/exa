@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 
 const BrandItemSkeleton = () => {
   return (
@@ -5,22 +6,33 @@ const BrandItemSkeleton = () => {
   )
 }
 
-export const BrandFeaturedSkeleton = () => {
+type Props = {
+  title?: string
+  containerClassname?: string
+}
+
+export const BrandFeaturedSkeleton = ({ title, containerClassname }: Props) => {
   return (
-    <div className='py-8 bg-neutral-100'>
-      <h1 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>Marcas Líderes de Belleza</h1>
-      <section className='embla relative'>
-      <div className="embla__viewport overflow-hidden md:mx-12 mx-8">
-        <div className='embla__container flex gap-8 md:mx-4 mx-0'>
-          <BrandItemSkeleton />
-          <BrandItemSkeleton />
-          <BrandItemSkeleton />
-          <BrandItemSkeleton />
-          <BrandItemSkeleton />
-          <BrandItemSkeleton />
+    <div className={clsx(
+      'py-8',
+      { 'bg-neutral-100': !containerClassname },
+      containerClassname
+    )}>
+      <h1 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>
+        { title ?? 'Marcas Líderes de Belleza' }
+      </h1>
+      <div className='embla relative'>
+        <div className="embla__viewport overflow-hidden md:mx-12 mx-8">
+          <div className='embla__container flex gap-8 md:mx-4 mx-0'>
+            <BrandItemSkeleton />
+            <BrandItemSkeleton />
+            <BrandItemSkeleton />
+            <BrandItemSkeleton />
+            <BrandItemSkeleton />
+            <BrandItemSkeleton />
+          </div>
         </div>
       </div>
-    </section>
     </div>
   )
 }
