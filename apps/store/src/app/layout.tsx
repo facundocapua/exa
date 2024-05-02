@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_AR',
     siteName: 'eXa Beauty Solutions',
+    url: 'https://exabeauty.com.ar',
     images: [
       {
         url: 'https://cdn.exabeauty.com.ar/exa-og.jpg',

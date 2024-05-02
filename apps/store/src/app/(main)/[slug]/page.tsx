@@ -32,6 +32,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       type: 'website',
       locale: 'es_AR',
       siteName: 'eXa Beauty Solutions',
+      url: `https://exabeauty.com.ar/${category.handle}`,
       images: [
         {
           url: 'https://cdn.exabeauty.com.ar/exa-og.jpg',

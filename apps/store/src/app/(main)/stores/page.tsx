@@ -1,6 +1,35 @@
 import StoreLocator from '@/components/stores/StoreLocator'
 import { getSalons } from 'api'
+import { Metadata } from 'next'
 import { Breadcrumb } from 'ui/server'
+
+export const metadata: Metadata = {
+  title: 'Buscador eXa Pros | eXa Beauty Store',
+  description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.',
+  openGraph: {
+    title: 'Buscador eXa Pros | eXa Beauty Store',
+    description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.',
+    type: 'website',
+    locale: 'es_AR',
+    siteName: 'eXa Beauty Solutions',
+    url: 'https://exabeauty.com.ar/stores',
+    images: [
+      {
+        url: 'https://cdn.exabeauty.com.ar/exa-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Buscador eXa Pros | eXa Beauty Store'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary',
+    creator: '@eXaBeautyOk',
+    title: 'Buscador eXa Pros | eXa Beauty Store',
+    description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.',
+    site: '@eXaBeautyOk'
+  }
+}
 
 export default async function Stores () {
   const stores = await getSalons()
