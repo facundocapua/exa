@@ -133,6 +133,9 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/ui
     devDependencies:
+      '@react-email/components':
+        specifier: 0.0.16
+        version: 0.0.16(@types/react@18.2.79)(react@18.2.0)
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../../packages/eslint-config
@@ -151,6 +154,9 @@ importers:
       eslint:
         specifier: 8.57.0
         version: 8.57.0
+      react-email:
+        specifier: 2.1.1
+        version: 2.1.1(@babel/core@7.24.5)(@swc/helpers@0.5.5)(eslint@8.57.0)(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.12.7)(typescript@5.4.5))
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -172,9 +178,6 @@ importers:
       '@heroicons/react':
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
-      '@react-email/components':
-        specifier: 0.0.16
-        version: 0.0.16(@types/react@18.2.79)(react@18.2.0)
       '@react-google-maps/api':
         specifier: 2.19.3
         version: 2.19.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -208,9 +211,6 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
-      react-email:
-        specifier: 2.1.1
-        version: 2.1.1(@babel/core@7.24.5)(@swc/helpers@0.5.5)(eslint@8.57.0)(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.12.7)(typescript@5.4.5))
       react-range:
         specifier: ^1.8.14
         version: 1.8.14(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -230,6 +230,9 @@ importers:
         specifier: 4.5.2
         version: 4.5.2(@types/react@18.2.79)(react@18.2.0)
     devDependencies:
+      '@react-email/components':
+        specifier: 0.0.16
+        version: 0.0.16(@types/react@18.2.79)(react@18.2.0)
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -266,6 +269,9 @@ importers:
       next-router-mock:
         specifier: 0.9.13
         version: 0.9.13(next@14.2.3(@babel/core@7.24.5)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      react-email:
+        specifier: 2.1.1
+        version: 2.1.1(@babel/core@7.24.5)(@swc/helpers@0.5.5)(eslint@8.57.0)(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.12.7)(typescript@5.4.5))
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -12422,7 +12428,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
 
   postcss@8.4.38:
     dependencies:
@@ -13278,7 +13284,7 @@ snapshots:
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       didyoumean: 1.2.2
       dlv: 1.1.3
       fast-glob: 3.3.2

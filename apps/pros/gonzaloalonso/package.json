@@ -6,7 +6,8 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:mails": "email dev --dir=./src/emails --port 3011"
   },
   "dependencies": {
     "@headlessui/react": "1.7.19",
@@ -31,6 +32,8 @@
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
     "eslint": "8.57.0",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "react-email": "2.1.1",
+    "@react-email/components": "0.0.16"
   }
 }
