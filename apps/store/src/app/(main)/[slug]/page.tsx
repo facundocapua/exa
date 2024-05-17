@@ -48,6 +48,9 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       title: `${category.name} | eXa Beauty Store`,
       description: category.description || 'Tienda de productos de belleza de marcas premium.',
       site: '@eXaBeautyOk'
+    },
+    alternates: {
+      canonical: `https://exabeauty.com.ar/${slug}`
     }
   }
 }

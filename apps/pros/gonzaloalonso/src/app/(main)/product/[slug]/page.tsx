@@ -24,11 +24,11 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   if (!product) return {}
 
   return {
-    title: `${product.title} | ${STORE_NAME}`,
-    description: product.description || 'Tienda de productos de belleza de marcas premium.',
+    title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
+    description: product.description ?? `${product.brand.name} ${product.title}`,
     openGraph: {
-      title: `${product.title} | ${STORE_NAME}`,
-      description: product.description || 'Tienda de productos de belleza de marcas premium.',
+      title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
+      description: product.description ?? `${product.brand.name} ${product.title}`,
       type: 'website',
       locale: 'es_AR',
       siteName: 'eXa Pros',
@@ -44,8 +44,8 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary',
       creator: '@eXaBeautyOk',
-      title: `${product.title} | ${STORE_NAME}`,
-      description: product.description || 'Tienda de productos de belleza de marcas premium.',
+      title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
+      description: product.description ?? `${product.brand.name} ${product.title}`,
       site: '@eXaBeautyOk'
     },
     alternates: {
@@ -62,7 +62,22 @@ export default async function Product ({ params }: Props) {
     notFound()
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${product.brand.name} ${product.title}`,
+    image: product.thumbnail ?? STORE_OG_IMAGE,
+    description: product.description ?? `${product.brand.name} ${product.title}`
+  }
+
   return (
-    <ProductPage product={product} />
+    <>
+      <ProductPage product={product} />
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </>
   )
 }

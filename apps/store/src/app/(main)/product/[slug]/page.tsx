@@ -23,11 +23,11 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   if (!product) return {}
 
   return {
-    title: `${product.title} | eXa Beauty Store`,
-    description: product.description || 'Tienda de productos de belleza de marcas premium.',
+    title: `${product.brand.name} ${product.title} | eXa Beauty Store`,
+    description: product.description ?? `${product.brand.name} ${product.title}`,
     openGraph: {
-      title: `${product.title} | eXa Beauty Store`,
-      description: product.description || 'Tienda de productos de belleza de marcas premium.',
+      title: `${product.brand.name} ${product.title} | eXa Beauty Store`,
+      description: product.description ?? `${product.brand.name} ${product.title}`,
       type: 'website',
       locale: 'es_AR',
       siteName: 'eXa Beauty Solutions',
@@ -44,9 +44,12 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary',
       creator: '@eXaBeautyOk',
-      title: `${product.title} | eXa Beauty Store`,
-      description: product.description || 'Tienda de productos de belleza de marcas premium.',
+      title: `${product.brand.name} ${product.title} | eXa Beauty Store`,
+      description: product.description ?? `${product.brand.name} ${product.title}`,
       site: '@eXaBeautyOk'
+    },
+    alternates: {
+      canonical: `https://exabeauty.com.ar/product/${slug}`
     }
   }
 }
@@ -59,7 +62,22 @@ export default async function Product ({ params }: Props) {
     notFound()
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${product.brand.name} ${product.title}`,
+    image: product.thumbnail ?? 'https://cdn.exabeauty.com.ar/exa-og.jpg',
+    description: product.description ?? `${product.brand.name} ${product.title}`
+  }
+
   return (
-    <ProductPage product={product} />
+    <>
+      <ProductPage product={product} />
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </>
   )
 }
