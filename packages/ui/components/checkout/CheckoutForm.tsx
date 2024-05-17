@@ -9,10 +9,28 @@ type Props = {
   cart: CartWithCheckoutStep
 }
 
+const getAvailableShippingMethods = async (cart: CartWithCheckoutStep) => {
+  const availableShippingMethods = await listShippingMethodsForCart(cart.id)
+    .then((methods) => methods?.filter((m) => !m.is_return))
+
+  const shippingPostalCode = cart?.shipping_address?.postal_code
+  if (!shippingPostalCode) return availableShippingMethods
+
+  const freeShipping = availableShippingMethods?.find((method) => method?.price_incl_tax === 0)
+  if (freeShipping) return [freeShipping]
+
+  const filteredShippingMethods = availableShippingMethods?.filter((method) => {
+    if (!method?.metadata?.postal_code) return false
+    return method?.metadata?.postal_code === shippingPostalCode
+  })
+
+  const globalShippingMethods = availableShippingMethods?.filter((method) => !method?.metadata?.postal_code)
+
+  return filteredShippingMethods?.length > 0 ? filteredShippingMethods : globalShippingMethods
+}
+
 export default async function CheckoutForm ({ cart }: Props) {
-  const availableShippingMethods = await listShippingMethodsForCart(
-    cart.id
-  ).then((methods) => methods?.filter((m) => !m.is_return))
+  const availableShippingMethods = await getAvailableShippingMethods(cart)
 
   if (!availableShippingMethods) {
     return null
