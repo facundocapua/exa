@@ -70,7 +70,7 @@ export default function Navigation ({ navigation }: Props) {
                           <Link
                             key={page.name}
                             href={page.href}
-                            className="flex items-center text-base font-bold text-primary-700 hover:text-primary-500"
+                            className="flex items-center font-bold text-gray-500 hover:text-gray-700"
                           >
                             {page.name}
                           </Link>

@@ -109,7 +109,7 @@ export default function NavigationMobile ({ navigation }: Props) {
                 <div className="space-y-6 border-t border-neutral-200 px-4 py-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <Link href={page.href} className="-m-2 block p-2 font-bold text-primary-700 hover:text-primary-500">
+                      <Link href={page.href} className="-m-2 block p-2 font-bold text-gray-500 hover:text-gray-700">
                         {page.name}
                       </Link>
                     </div>
