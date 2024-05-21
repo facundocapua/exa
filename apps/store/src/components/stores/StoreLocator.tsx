@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useState } from 'react'
+import { KeyboardEvent, memo, useRef, useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, MarkerClusterer } from '@react-google-maps/api'
 import StoreList from './StoreList'
 import type { Salon } from 'api'
@@ -45,6 +45,14 @@ function StoreLocator ({ stores }: Props) {
     setTab(TABS.MAP)
   }
 
+  const submitRef = useRef<HTMLButtonElement>(null)
+  const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      if (!submitRef.current) return
+      submitRef.current.click()
+    }
+  }
+
   if (!isLoaded) return null
 
   return (
@@ -57,7 +65,7 @@ function StoreLocator ({ stores }: Props) {
           <div>
             <form onSubmit={handleSearch} className='flex items-center border-b border-neutral-200 p-4 bg-neutral-100'>
               <div className="w-full px-4 py-2 text-sm bg-white relative">
-                <input type="text" className='w-full' placeholder="Buscar salón" list='stores-list' onInput={handleInput} value={searchText} />
+                <input type="text" className='w-full' placeholder="Buscar salón" list='stores-list' onInput={handleInput} onKeyUp={handleKeyUp} value={searchText} />
                 {searchText ? (<button type="button" className='absolute right-0 text-neutral-700 bg-transparent text-xs h-full top-0 px-2' onClick={() => resetFilters()}>X</button>) : null}
               </div>
               <datalist id="stores-list">
@@ -65,7 +73,7 @@ function StoreLocator ({ stores }: Props) {
                   <option key={store.id} value={`${store.name} - ${store.address}, ${store.city}, ${store.state}`} />
                 ))}
               </datalist>
-              <button type='submit' className='bg-neutral-800 text-neutral-100 text-sm px-4 py-2 hover:opacity-80'>Buscar</button>
+              <button type='submit' className='bg-neutral-800 text-neutral-100 text-sm px-4 py-2 hover:opacity-80' ref={submitRef}>Buscar</button>
             </form>
             <div className='grid grid-cols-[1fr_auto] lg:block'>
               <StoresFilters stores={stores} />

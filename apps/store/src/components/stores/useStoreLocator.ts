@@ -1,4 +1,3 @@
-import { findClosest } from '@/utils/store'
 import type { Salon } from 'api'
 import type { FormEvent } from 'react'
 import { useCallback, useEffect, useState } from 'react'
@@ -104,10 +103,9 @@ export default function useStoreLocator ({ stores }: Props) {
         if (results.length === 0) return
         const { geometry } = results[0]
         const { location } = geometry
-        const closest = findClosest(location.lat, location.lng, stores)
-        if (closest) {
-          handleStoreClick(closest)
-        }
+        const { lat, lng } = location
+        map?.setCenter({ lat, lng })
+        map?.setZoom(13)
       })
   }
 
