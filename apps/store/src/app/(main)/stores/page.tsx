@@ -5,10 +5,10 @@ import { Breadcrumb } from 'ui/server'
 
 export const metadata: Metadata = {
   title: 'Buscador eXa Pros | eXa Beauty Store',
-  description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.',
+  description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
   openGraph: {
     title: 'Buscador eXa Pros | eXa Beauty Store',
-    description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.',
+    description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     type: 'website',
     locale: 'es_AR',
     siteName: 'eXa Beauty Solutions',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary',
     creator: '@eXaBeautyOk',
     title: 'Buscador eXa Pros | eXa Beauty Store',
-    description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades.',
+    description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     site: '@eXaBeautyOk'
   }
 }

@@ -18,10 +18,10 @@ const kanit = Kanit({
 
 export const metadata: Metadata = {
   title: 'eXa Beauty Store',
-  description: 'Tienda de productos de belleza de marcas premium.',
+  description: 'Tienda de productos de belleza de marcas premium. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
   openGraph: {
     title: 'eXa Beauty Store',
-    description: 'Tienda de productos de belleza de marcas premium.',
+    description: 'Tienda de productos de belleza de marcas premium. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     type: 'website',
     locale: 'es_AR',
     siteName: 'eXa Beauty Solutions',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary',
     creator: '@eXaBeautyOk',
     title: 'eXa Beauty Store',
-    description: 'Tienda de productos de belleza de marcas premium.',
+    description: 'Tienda de productos de belleza de marcas premium. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     site: '@eXaBeautyOk'
   }
 }
