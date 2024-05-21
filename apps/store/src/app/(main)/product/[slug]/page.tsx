@@ -2,6 +2,7 @@ import { getProduct, getProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ProductPage } from 'ui/components/product/product-page'
+import { formatPrice } from 'ui/server'
 
 type Props = {
   params: {
@@ -70,7 +71,7 @@ export default async function Product ({ params }: Props) {
     description: product.description ?? `${product.brand.name} ${product.title}`,
     offers: {
       '@type': 'Offer',
-      price: product.salePrice,
+      price: formatPrice(product.salePrice / 100),
       priceCurrency: 'ARS',
       availability: product.variants?.some(variant => variant.inventory_quantity > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
     }
