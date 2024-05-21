@@ -71,7 +71,7 @@ export default async function Product ({ params }: Props) {
     description: product.description ?? `${product.brand.name} ${product.title}`,
     offers: {
       '@type': 'Offer',
-      price: formatPrice(product.salePrice / 100),
+      price: Number(product.salePrice / 100),
       priceCurrency: 'ARS',
       availability: product.variants?.some(variant => variant.inventory_quantity > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
     }
