@@ -5,10 +5,11 @@ import { Bars2Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outli
 import type { Brand, Category } from 'api'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import CategorySubLevel from './mobile/CategorySubLevel'
 import Logo from '../layout/Logo'
-import { SearchBox } from 'ui/components/search-box/search-box'
+import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
+import { usePathname } from 'next/navigation'
 
 type Props = {
   navigation: {
@@ -20,6 +21,11 @@ type Props = {
 
 export default function NavigationMobile ({ navigation }: Props) {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
   return (
     <>
@@ -61,7 +67,7 @@ export default function NavigationMobile ({ navigation }: Props) {
                 </div>
 
                 <div className='flex p-4'>
-                  <SearchBox />
+                  <SearchBoxMobile />
                 </div>
 
                 {/* Links */}
@@ -91,7 +97,7 @@ export default function NavigationMobile ({ navigation }: Props) {
                             className="transition-all overflow-hidden"
                           >
                             <Disclosure.Panel className="space-y-12 px-4 py-6" static>
-                              <CategorySubLevel category={category} onClick={() => setOpen(false)} />
+                              <CategorySubLevel category={category} />
                             </Disclosure.Panel>
                           </Transition>
                         </>
@@ -103,7 +109,7 @@ export default function NavigationMobile ({ navigation }: Props) {
                 <div className="space-y-6 border-t border-neutral-200 px-4 py-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <Link href={page.href} className="-m-2 block p-2 font-medium text-neutral-900" onClick={() => setOpen(false)}>
+                      <Link href={page.href} className="-m-2 block p-2 font-bold text-primary-700 hover:text-primary-500">
                         {page.name}
                       </Link>
                     </div>

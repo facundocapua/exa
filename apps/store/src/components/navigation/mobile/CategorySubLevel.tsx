@@ -3,11 +3,10 @@ import CategoryLink from './CategoryLink'
 import clsx from 'clsx'
 
 type Props = {
-  category: Category,
-  onClick: () => void
+  category: Category
 }
 
-export default function CategorySubLevel ({ category, onClick }: Props) {
+export default function CategorySubLevel ({ category }: Props) {
   const typeImage = category.metadata?.type === 'image'
 
   return (
@@ -20,10 +19,9 @@ export default function CategorySubLevel ({ category, onClick }: Props) {
           key={item.name}
           category={item}
           noImage={!typeImage}
-          onClick={onClick}
         />
       ))}
-      <CategoryLink category={category} noImage={!typeImage} customLabel={category.name === 'Marcas' ? 'Todas las marcas' : 'Ver todo'} onClick={onClick} />
+      <CategoryLink category={category} noImage={!typeImage} customLabel={category.name === 'Marcas' ? 'Todas las marcas' : 'Ver todo'} />
     </div>
   )
 }

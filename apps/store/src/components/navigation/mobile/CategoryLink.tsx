@@ -5,14 +5,13 @@ import Link from 'next/link'
 type Props = {
   category: Category,
   customLabel?: string,
-  noImage?: boolean,
-  onClick?: () => void
+  noImage?: boolean
 }
 
-export default function CategoryLink ({ category, customLabel, noImage, onClick }: Props) {
+export default function CategoryLink ({ category, customLabel, noImage }: Props) {
   if (!category.metadata.image || noImage) {
     return (
-      <Link href={`/${category.handle}`} key={category.name} className='relative' onClick={onClick}>
+      <Link href={`/${category.handle}`} key={category.name} className='relative'>
         <h3 className="mt-6 block text-sm font-medium text-neutral-900">
           <span className="absolute inset-0 z-10" aria-hidden="true" />
           {customLabel || category.name}
@@ -22,7 +21,7 @@ export default function CategoryLink ({ category, customLabel, noImage, onClick 
   }
 
   return (
-    <Link href={`/${category.handle}`} key={category.name} className="relative" onClick={onClick}>
+    <Link href={`/${category.handle}`} key={category.name} className="relative">
       {category.metadata.image && (
       <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md ">
         <Image src={category.metadata.image as string} alt={category.description} className="object-cover object-center" width={280} height={280} />
