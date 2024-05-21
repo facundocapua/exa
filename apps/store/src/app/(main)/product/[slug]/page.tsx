@@ -67,7 +67,13 @@ export default async function Product ({ params }: Props) {
     '@type': 'Product',
     name: `${product.brand.name} ${product.title}`,
     image: product.thumbnail ?? 'https://cdn.exabeauty.com.ar/exa-og.jpg',
-    description: product.description ?? `${product.brand.name} ${product.title}`
+    description: product.description ?? `${product.brand.name} ${product.title}`,
+    offers: {
+      '@type': 'Offer',
+      price: product.salePrice,
+      priceCurrency: 'ARS',
+      availability: product.variants?.some(variant => variant.inventory_quantity > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
+    }
   }
 
   return (
