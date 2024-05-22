@@ -31,7 +31,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       description: product.description ?? `${product.brand.name} ${product.title}`,
       type: 'website',
       locale: 'es_AR',
-      siteName: 'eXa Pros',
+      siteName: 'eXa Pro',
       images: [
         {
           url: product.thumbnail ?? STORE_OG_IMAGE,

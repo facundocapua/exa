@@ -4,10 +4,10 @@ import { Metadata } from 'next'
 import { Breadcrumb } from 'ui/server'
 
 export const metadata: Metadata = {
-  title: 'Buscador eXa Pros | eXa Beauty Store',
+  title: 'Buscador eXa Pro | eXa Beauty Store',
   description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
   openGraph: {
-    title: 'Buscador eXa Pros | eXa Beauty Store',
+    title: 'Buscador eXa Pro | eXa Beauty Store',
     description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     type: 'website',
     locale: 'es_AR',
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
         url: 'https://cdn.exabeauty.com.ar/exa-og.jpg',
         width: 1200,
         height: 630,
-        alt: 'Buscador eXa Pros | eXa Beauty Store'
+        alt: 'Buscador eXa Pro | eXa Beauty Store'
       }
     ]
   },
   twitter: {
     card: 'summary',
     creator: '@eXaBeautyOk',
-    title: 'Buscador eXa Pros | eXa Beauty Store',
+    title: 'Buscador eXa Pro | eXa Beauty Store',
     description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     site: '@eXaBeautyOk'
   }

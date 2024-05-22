@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
     type: 'website',
     locale: 'es_AR',
-    siteName: 'eXa Pros',
+    siteName: 'eXa Pro',
     images: [
       {
         url: STORE_OG_IMAGE,

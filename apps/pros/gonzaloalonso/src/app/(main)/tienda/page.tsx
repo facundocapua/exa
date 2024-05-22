@@ -16,7 +16,7 @@ export async function generateMetadata (): Promise<Metadata> {
       description: 'Tienda de productos de belleza de marcas premium.',
       type: 'website',
       locale: 'es_AR',
-      siteName: 'eXa Pros',
+      siteName: 'eXa Pro',
       images: [
         {
           url: STORE_OG_IMAGE,
