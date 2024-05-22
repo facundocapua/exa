@@ -69,7 +69,7 @@ function StoreLocator ({ stores }: Props) {
                 {searchText ? (<button type="button" className='absolute right-0 text-neutral-700 bg-transparent text-xs h-full top-0 px-2' onClick={() => resetFilters()}>X</button>) : null}
               </div>
               <datalist id="stores-list">
-                {stores.map((store) => (
+                {filteredStores.map((store) => (
                   <option key={store.id} value={`${store.name} - ${store.address}, ${store.city}, ${store.state}`} />
                 ))}
               </datalist>
@@ -156,7 +156,6 @@ function StoreLocator ({ stores }: Props) {
                       : null
                     }
                   </Marker>
-
                 ))}
               </div>
             )}
