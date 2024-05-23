@@ -2,12 +2,45 @@ import { getProduct, getProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ProductPage } from 'ui/components/product/product-page'
-import { formatPrice } from 'ui/server'
 
 type Props = {
   params: {
     slug: string
   }
+}
+
+export default async function Product ({ params }: Props) {
+  const { slug } = params
+  const product = await getProduct(slug)
+
+  if (!product) {
+    notFound()
+  }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${product.brand.name} ${product.title}`,
+    image: product.thumbnail ?? 'https://cdn.exabeauty.com.ar/exa-og.jpg',
+    description: product.description ?? `${product.brand.name} ${product.title}`,
+    offers: {
+      '@type': 'Offer',
+      price: Number(product.salePrice / 100),
+      priceCurrency: 'ARS',
+      availability: product.variants?.some(variant => variant.inventory_quantity > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
+    }
+  }
+
+  return (
+    <>
+      <ProductPage product={product} />
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </>
+  )
 }
 
 export async function generateStaticParams () {
@@ -53,38 +86,4 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       canonical: `https://exabeauty.com.ar/product/${slug}`
     }
   }
-}
-
-export default async function Product ({ params }: Props) {
-  const { slug } = params
-  const product = await getProduct(slug)
-
-  if (!product) {
-    notFound()
-  }
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `${product.brand.name} ${product.title}`,
-    image: product.thumbnail ?? 'https://cdn.exabeauty.com.ar/exa-og.jpg',
-    description: product.description ?? `${product.brand.name} ${product.title}`,
-    offers: {
-      '@type': 'Offer',
-      price: Number(product.salePrice / 100),
-      priceCurrency: 'ARS',
-      availability: product.variants?.some(variant => variant.inventory_quantity > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
-    }
-  }
-
-  return (
-    <>
-      <ProductPage product={product} />
-      {/* Add JSON-LD to your page */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </>
-  )
 }

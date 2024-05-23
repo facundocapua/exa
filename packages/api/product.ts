@@ -40,7 +40,7 @@ type ProductParams = {
 export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
   
   const params = new URLSearchParams({
-    expand: 'categories,images,variants,brand',
+    expand: 'categories,images,variants,brand,options',
     currency_code: 'ars'
   })
 

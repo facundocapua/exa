@@ -6,10 +6,11 @@ import clsx from 'clsx'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 type Props = {
+  title: string
   variants: Product['variants']
 }
 
-export default function ProductColorSelector ({ variants }: Props) {
+export default function ProductColorSelector ({ title, variants }: Props) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -20,7 +21,7 @@ export default function ProductColorSelector ({ variants }: Props) {
   return (
     <div className="my-4">
       <h3 className="text-lg font-medium text-gray-900 mb-2">
-        Color
+        {title}
         {currentVariant && (<span className="text-sm text-neutral-500">: {currentVariant.title}</span>)}
       </h3>
       <div className="flex gap-2 flex-wrap">

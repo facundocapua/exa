@@ -22,7 +22,7 @@ export default function ProductInfo ({ product }: Props) {
       </div>
 
       { product.variants && product.variants.length > 1 && (
-        <ProductColorSelector variants={product.variants} />
+        <ProductColorSelector title={product?.options?.[0]?.title ?? 'Color'} variants={product.variants} />
       )}
 
       <ProductAddToCart product={product} isProductPage={true} className='my-8' />
