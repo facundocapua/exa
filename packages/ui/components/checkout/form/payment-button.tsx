@@ -55,6 +55,7 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
       >
         Finalizar pedido
       </Button>
+      <p className='text-balance mt-4 text-sm'>Una vez realizado el pedido nos pondremos en contacto para coordinar el pago y realizar el énvio.</p>
       <ErrorMessage error={errorMessage} />
     </>
   )
