@@ -68,14 +68,11 @@ const MercadoPagoPaymentButton = ({ session }: {session: PaymentSession}) => {
   const { preferenceId } = data as { preferenceId: string}
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handlePayment = () => {
-    return placeOrder()
-      .then(() => {
-        return preferenceId
-      })
-      .catch((err) => {
-        setErrorMessage(err.toString())
-      })
+  const handlePayment = async () => {
+    await placeOrder()
+      .catch((err) => { setErrorMessage(err.toString()) })
+
+    return preferenceId
   }
 
   return (
