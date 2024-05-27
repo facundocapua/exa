@@ -1,7 +1,8 @@
 import { Cart, CartItem, Order, enrichLineItems, getCart, retrieveOrderByCartId } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { CartCompleted, OrderCompleted } from 'ui/server'
+import { OrderCompleted } from 'ui/server'
+import { MercadoPagoRedirectPage } from 'ui/components/order/mercadopago/redirect-page'
 
 type Props = {
   params: { id: string }
@@ -35,12 +36,14 @@ export const metadata: Metadata = {
 
 export default async function MercadoPagoConfirmationPage ({ params }: Props) {
   const { order, cart } = await getOrder(params.id)
+
   if (!order && !cart) {
     return notFound()
   }
 
   if (!order) {
-    return <CartCompleted cart={cart} />
+    // return <CartCompleted cart={cart} />
+    return <MercadoPagoRedirectPage paymentSession={cart.payment_session?.data as {url: string}} />
   }
 
   return <OrderCompleted order={order} />
