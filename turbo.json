@@ -5,7 +5,7 @@
     ".env",
     ".env.local"
   ],
-  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY"],
+  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY", "BASE_URL"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
