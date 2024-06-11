@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: pnpm install && npx playwright install --with-deps
+        run: npm install -g pnpm && pnpm install && npx playwright install --with-deps
         working-directory: ./apps/store
       - name: Run tests
         run: npx playwright test
