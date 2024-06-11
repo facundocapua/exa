@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test'
+import { getConfigForEnv } from './config'
 
 test('checkout with mercadopago works correctly', async ({ page }) => {
   const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+  const config = getConfigForEnv(baseUrl)
   await page.goto(baseUrl)
 
   const button = await page.getByLabel('Agregar al carrito', { exact: true })
@@ -42,7 +44,7 @@ test('checkout with mercadopago works correctly', async ({ page }) => {
   await mercadoPagoButton.click()
 
   await page.waitForTimeout(5000)
-  const title = await page.getByText('eXa Beauty Solutions')
+  const title = await page.getByText(config.mercadoPagoTitle)
   expect(title).toBeVisible()
   expect(page.url()).toContain('https://www.mercadopago.com.ar/checkout/v1/payment')
 })
