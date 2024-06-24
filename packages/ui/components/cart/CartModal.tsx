@@ -15,7 +15,12 @@ const getTotalQuantity = (cart: Cart | undefined) => {
   return cart.items.reduce((acc, item) => acc + item.quantity, 0)
 }
 
-export default function CartModal ({ cart }: { cart: Cart | undefined }) {
+type Props = {
+  cart: Cart | undefined
+  cartIconClassName?: string
+}
+
+export default function CartModal ({ cart, cartIconClassName }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const quantityRef = useRef(getTotalQuantity(cart))
   const openCart = () => setIsOpen(true)
@@ -36,7 +41,7 @@ export default function CartModal ({ cart }: { cart: Cart | undefined }) {
 
   return (
     <>
-      <OpenCart quantity={getTotalQuantity(cart)} onClick={openCart} />
+      <OpenCart quantity={getTotalQuantity(cart)} onClick={openCart} className={cartIconClassName} />
       <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
           <Transition.Child

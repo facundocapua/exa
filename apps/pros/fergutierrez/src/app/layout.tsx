@@ -1,8 +1,7 @@
+import { STORE_NAME, STORE_DESCRIPTION, STORE_OG_IMAGE } from '@/utils/const'
 import type { Metadata } from 'next'
-import Header from '@/components/header'
 import { Inter, Rubik } from 'next/font/google'
 import type { ReactNode } from 'react'
-import Footer from '@/components/footer'
 import 'ui/styles/global.css'
 
 const inter = Inter({
@@ -17,9 +16,32 @@ const rubik = Rubik({
   variable: '--font-rubik'
 })
 
+
 export const metadata: Metadata = {
-  title: 'Fer Gutierrez Makeup',
-  description: 'Fer Gutierrez Makeup'
+  title: STORE_NAME,
+  description: STORE_DESCRIPTION,
+  openGraph: {
+    title: STORE_NAME,
+    description: STORE_DESCRIPTION,
+    type: 'website',
+    locale: 'es_AR',
+    siteName: 'eXa Pro',
+    images: [
+      {
+        url: STORE_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: STORE_NAME
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary',
+    creator: '@eXaBeautyOk',
+    title: STORE_NAME,
+    description: STORE_DESCRIPTION,
+    site: '@eXaBeautyOk'
+  }
 }
 
 export default function RootLayout ({
@@ -30,9 +52,7 @@ export default function RootLayout ({
   return (
     <html lang="es" className={`${inter.variable} ${rubik.variable}`}>
       <body className='font-custom antialiased'>
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   )

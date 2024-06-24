@@ -2,7 +2,11 @@ import { getCart } from 'api'
 import CartModal from './CartModal'
 import { cookies } from 'next/headers'
 
-export default async function Cart () {
+type Props = {
+  cartIconClassName?: string
+}
+
+export default async function Cart ({ cartIconClassName }: Props) {
   const cartId = cookies().get('cart')?.value
   let cart
 
@@ -11,6 +15,6 @@ export default async function Cart () {
   }
 
   return (
-    <CartModal cart={cart} />
+    <CartModal cart={cart} cartIconClassName={cartIconClassName} />
   )
 }

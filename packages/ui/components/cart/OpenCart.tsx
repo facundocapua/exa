@@ -1,5 +1,6 @@
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   className?: string;
@@ -11,10 +12,10 @@ export default function OpenCart ({ className, onClick, quantity }: Props) {
   return (
     <button aria-label="Abrir carrito" onClick={onClick} className='relative'>
       <ShoppingCartIcon
-        className={clsx(
+        className={twMerge(clsx(
           'h-8 w-8 text-neutral-700 transition-colors dark:text-white',
           className
-        )}
+        ))}
       />
       {quantity
         ? (

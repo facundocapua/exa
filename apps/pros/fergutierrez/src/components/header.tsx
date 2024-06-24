@@ -1,14 +1,19 @@
 'use client'
 import Link from 'next/link'
 import Logo from './logo'
-import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import NavLink from './nav-link'
 import { usePathname } from 'next/navigation'
 
-export default function Header () {
+type Props = {
+  cart: React.ReactNode
+}
+
+
+export default function Header ({ cart }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navLeft = navigation.slice(0, 2)
   const navRight = navigation.slice(2, navigation.length)
@@ -28,15 +33,15 @@ export default function Header () {
           </button>
         </div>
 
-        <nav className="hidden lg:flex max-w-xl mx-auto gap-16 grow items-center justify-around">
+        <nav className="hidden lg:flex max-w-xl mx-auto gap-16 grow items-center justify-center">
           {navLeft.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname.startsWith(item.href)} />))}
           <Logo />
           {navRight.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname.startsWith(item.href)} />))}
         </nav>
 
-        <Link href="/tienda" className='flex shrink grow-0 text-gray-100'>
-          <ShoppingBagIcon className="h-6 w-6" />
-        </Link>
+        <div className='flex justify-end'>
+          {cart}
+        </div>
 
       </div>
 
