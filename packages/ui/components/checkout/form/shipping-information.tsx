@@ -17,7 +17,7 @@ export default function ShippingInformation ({ cart, sameAsBilling, onSameAsBill
     'shipping_address.first_name': cart?.shipping_address?.first_name || '',
     'shipping_address.last_name': cart?.shipping_address?.last_name || '',
     'shipping_address.address_1': cart?.shipping_address?.address_1 || '',
-    // 'shipping_address.company': cart?.shipping_address?.company || '',
+    'shipping_address.company': cart?.shipping_address?.company || '',
     'shipping_address.postal_code': cart?.shipping_address?.postal_code || '',
     'shipping_address.city': cart?.shipping_address?.city || '',
     // 'shipping_address.country_code':
@@ -125,13 +125,26 @@ export default function ShippingInformation ({ cart, sameAsBilling, onSameAsBill
           onChange={handleChange}
           required
         />
+      </div>
+      <div className="flex gap-4">
         <Input
-          label="Teléfono"
+          label="DNI"
+          name="shipping_address.company"
+          id="shipping_address.company"
+          type="text"
+          value={shippingAddress['shipping_address.company']}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          label="Teléfono / Celular"
           id="shipping_address.phone"
           name="shipping_address.phone"
           autoComplete="tel"
           value={shippingAddress['shipping_address.phone']}
+          required={true}
           onChange={handleChange}
+          type='tel'
         />
       </div>
     </div>
