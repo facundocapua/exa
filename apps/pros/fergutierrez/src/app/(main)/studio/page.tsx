@@ -1,4 +1,7 @@
-import Gallery from '@/components/gallery'
+import { Suspense } from 'react'
+import { Breadcrumb } from 'ui/server'
+import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
+import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
 
 const images = [
   '/studio/1.jpg',
@@ -10,13 +13,25 @@ const images = [
 ]
 
 export default function StudioPage () {
+  const breadcrumbs = [
+    {
+      name: 'Studio',
+      url: '/studio',
+      current: true
+    }
+  ]
+
   return (
-    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl mb-4">
-      <div className="pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
+    <section className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
+      <Breadcrumb pages={breadcrumbs} />
+
+      <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
         <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Studio</h1>
       </div>
 
-      <Gallery images={images} />
-    </div>
+      <Suspense fallback={<CmsGallerySkeleton />}>
+        <CmsGallery images={images} />
+      </Suspense>
+    </section>
   )
 }

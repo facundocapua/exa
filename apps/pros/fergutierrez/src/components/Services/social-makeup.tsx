@@ -17,7 +17,7 @@ export default async function SocialMakeup () {
       <h2 className="text-2xl text-center mb-4">Elije tu maquillaje</h2>
       <div className="grid grid-cols-1 lg:max-w-none mx-auto lg:grid-cols-3 gap-8">
         {SOCIAL_MAKEUP_SERVICES.map((service, index) => (
-          <MakeupCard key={index} {...service} link={generateWhatsAppLink(whatsapp, service.message)} />
+          <MakeupCard key={index} {...service} link={generateWhatsAppLink(whatsapp!, service.message)} />
         ))}
       </div>
     </section>

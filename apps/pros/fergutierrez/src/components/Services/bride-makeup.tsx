@@ -50,7 +50,7 @@ export default async function BrideMakeup () {
             <span className="font-light text-md">Duración: <span className="font-semibold">60</span> <small>minutos</small></span>
           </div>
 
-          <Button link={generateWhatsAppLink(whatsapp, message)}>Solicitar presupuesto</Button>
+          <Button link={generateWhatsAppLink(whatsapp!, message)}>Solicitar presupuesto</Button>
         </li>
       </ol>
     </section>

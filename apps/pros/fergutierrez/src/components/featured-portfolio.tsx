@@ -1,5 +1,7 @@
+import { Suspense } from 'react'
 import FeaturedTitle from './featured-title'
-import Gallery from './gallery'
+import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
+import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
 
 const images = [
   '/portfolio/1.jpg',
@@ -14,7 +16,9 @@ export default function FeaturedPortfolio () {
   return (
     <section className='py-8 my-8 px-8'>
       <FeaturedTitle>Portfolio</FeaturedTitle>
-      <Gallery images={images} />
+      <Suspense fallback={<CmsGallerySkeleton />}>
+        <CmsGallery images={images} />
+      </Suspense>
     </section>
   )
 }

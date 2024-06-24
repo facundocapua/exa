@@ -33,7 +33,7 @@ export default async function SelfMakeup () {
                 price={item.price}
                 duration={item.duration}
                 message={item.message}
-                whatsapp={whatsapp}
+                whatsapp={whatsapp!}
               />
             ))}
           </div>
