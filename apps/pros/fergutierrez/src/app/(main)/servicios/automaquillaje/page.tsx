@@ -1,5 +1,5 @@
 import SectionTitle from '@/components/section-title'
-import SelfMakeup from '@/components/services/self-makeup'
+import SelfMakeup from '@/components/service/self-makeup'
 import { Breadcrumb } from 'ui/server'
 
 export default function ServicesBrideMakeup () {

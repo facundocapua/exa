@@ -1,5 +1,5 @@
 import SectionTitle from '@/components/section-title'
-import SocialMakeup from '@/components/services/social-makeup'
+import SocialMakeup from '@/components/service/social-makeup'
 import { Breadcrumb } from 'ui/server'
 
 export default function ServicesSocial () {

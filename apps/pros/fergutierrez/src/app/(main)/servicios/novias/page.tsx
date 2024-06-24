@@ -1,5 +1,5 @@
 import SectionTitle from '@/components/section-title'
-import BrideMakeup from '@/components/services/bride-makeup'
+import BrideMakeup from '@/components/service/bride-makeup'
 import { Breadcrumb } from 'ui/server'
 
 export default function ServicesBrideMakeup () {
