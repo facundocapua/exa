@@ -3,13 +3,14 @@ import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { Fragment, useCallback, useEffect } from 'react'
-import { imagesClasses } from './consts'
+import { imagesClasses as defaultImagesClasses } from './consts'
 
 type Props = {
   images: Array<string>
+  imagesClasses?: Array<string>
 }
 
-export const CmsGallery = ({ images }: Props) => {
+export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses }: Props) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const { replace } = useRouter()

@@ -4,12 +4,21 @@ import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
 
 const images = [
-  '/portfolio/portfolio-1.jpg',
-  '/portfolio/portfolio-2.jpg',
-  '/portfolio/portfolio-3.jpg',
+  '/portfolio/portfolio-1.webp',
+  '/portfolio/portfolio-2.webp',
+  '/portfolio/portfolio-3.webp',
   '/portfolio/portfolio-4.jpg',
   '/portfolio/portfolio-5.jpg',
   '/portfolio/portfolio-6.jpg'
+]
+
+const imagesClasses = [
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl md:col-span-2 relative [&>*]:object-[50%_12%]',
+  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative'
 ]
 
 export default function Page () {
@@ -30,7 +39,7 @@ export default function Page () {
       </div>
 
       <Suspense fallback={<CmsGallerySkeleton />}>
-        <CmsGallery images={images} />
+        <CmsGallery images={images} imagesClasses={imagesClasses} />
       </Suspense>
     </section>
   )

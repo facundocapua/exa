@@ -4,12 +4,12 @@ import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
 
 const images = [
-  '/studio/1.jpg',
-  '/studio/2.jpg',
+  '/studio/1.webp',
+  '/studio/2.webp',
   '/studio/3.jpg',
-  '/studio/4.jpg',
+  '/studio/4.webp',
   '/studio/5.jpg',
-  '/studio/6.jpg'
+  '/studio/6.webp'
 ]
 
 export default function StudioPage () {
