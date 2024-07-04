@@ -4,6 +4,7 @@ import type { Collection, Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 import { getMedusaUrl } from './utils/medusa'
+import { getSalon } from './salon'
 
 export const getProductVariants = async (variantIds: string[]): Promise<Array<ProductVariant>> => {
   const params = new URLSearchParams({
@@ -34,10 +35,11 @@ type ProductParams = {
   collection_id?: string[]
   brand_id?: string[]
   handle?: string,
-  ids?: string[]
+  ids?: string[],
+  sales_channel_id?: string[]
 }
 
-export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids, sales_channel_id }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
   
   const params = new URLSearchParams({
     expand: 'categories,images,variants,brand,options',
@@ -69,6 +71,12 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
   if (ids) {
     for (const id of ids) {
       params.append('id[]', id)
+    }
+  }
+
+  if (sales_channel_id) {
+    for (const salesChannelId of sales_channel_id) {
+      params.append('sales_channel_id[]', salesChannelId)
     }
   }
 
@@ -142,11 +150,13 @@ export const getCollectionProducts = async (handle: string): Promise<Array<Produ
   return data
 }
 
-export const getStoreFeaturedProducts = async (storeId: string): Promise<Array<Product>> => {
-  const brands = await getSalonBrands(storeId)
+export const getStoreFeaturedProducts = async (salonId: string): Promise<Array<Product>> => {
+  const salon = await getSalon(salonId)
+
+  const brands = await getSalonBrands(salonId)
   const brandIds = brands.map((brand) => brand.id)
 
-  return getProducts({ brand_id: brandIds })
+  return getProducts({ brand_id: brandIds, sales_channel_id: [salon?.sales_channel_id ?? ''] })
 }
 
 export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<string> = []): Array<Filter> => {

@@ -109,6 +109,7 @@ export interface Salon {
   hours?: Record<string, { open: string; close: string }>
   brands?: Array<Brand>
   social_networks?: Record<string, string>
+  sales_channel_id?: string
 }
 
 export type Order = MedusaOrder
