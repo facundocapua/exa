@@ -12,7 +12,7 @@ type Props = {
   brands: Array<Brand>
 }
 
-export default function CategoryFeaturedList ({ brands }: Props) {
+export default function BrandFeaturedList ({ brands }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     // loop: true,
     slidesToScroll: 'auto'

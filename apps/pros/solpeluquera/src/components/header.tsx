@@ -1,0 +1,119 @@
+'use client'
+import Link from 'next/link'
+import Logo from './logo'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
+import { navigation } from '@/utils/navigation'
+import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
+
+type Props = {
+  cart: React.ReactNode
+}
+
+export default function Header ({ cart }: Props) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  return (
+    <header className={clsx(
+      'pt-4 pb-8 w-full',
+      {
+        'bg-secondary-100': pathname === '/',
+        'bg-white': pathname !== '/'
+      }
+    )}>
+      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] w-full px-4 items-center">
+
+        <Logo />
+
+        <nav className="hidden lg:flex gap-8">
+          {navigation.map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              className={clsx(
+                'whitespace-nowrap uppercase font-custom text-sm text-primary-600 border-b-2',
+                {
+                  'border-transparent hover:border-primary-600': pathname !== item.href,
+                  'border-primary-600': pathname === item.href
+                }
+              )}
+            >{item.name}</Link>
+          ))}
+        </nav>
+
+        <div className='flex justify-end items-center'>
+          <div className="lg:hidden mr-4">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-md text-gray-700"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <span className="sr-only">Abrir menú principal</span>
+              <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+            </button>
+          </div>
+          {cart}
+        </div>
+
+      </div>
+
+      <Transition.Root show={mobileMenuOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileMenuOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="transition-opacity ease-linear duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity ease-linear duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+           >
+            <div className="fixed inset-0 bg-white bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-40 flex">
+            <Transition.Child
+            as={Fragment}
+            enter="transition ease-in-out duration-300 transform"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition ease-in-out duration-300 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+          >
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+                <div className="flex justify-between px-4 pb-2 pt-5">
+                  <Logo centered={false} />
+                  <button
+                    type="button"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-primary-100"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className="sr-only">Cerrar menu</span>
+                    <XMarkIcon className="h-8 w-8" aria-hidden="true" />
+                  </button>
+                </div>
+
+                <div className="mt-6 space-y-2">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="block rounded-lg px-3 py-2 text-base leading-7 text-primary-600 uppercase text-custom"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition.Root>
+    </header>
+  )
+}
