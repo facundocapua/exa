@@ -11,8 +11,8 @@ export default function Home () {
   return (
     <main>
       <HeroBanner />
-      <Suspense fallback={<BrandFeaturedSkeleton title='Marcas que utilizamos' />}>
-        <FeaturedBrands />
+      <Suspense fallback={<BrandFeaturedSkeleton title='Nuestras Marcas' />}>
+        <FeaturedBrands title='Nuestras Marcas' />
       </Suspense>
       <OpeningHours />
       <Suspense fallback={<ProductSliderSkeleton title='Destacados del mes' />}>

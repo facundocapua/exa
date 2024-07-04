@@ -1,10 +1,9 @@
 import Services from '@/components/services/services'
-import blondeImg from '@public/services/blonde.jpg'
-import haistyleImg from '@public/services/hairstyle.jpg'
-import creativeImg from '@public/services/highlights.jpg'
-import colorImg from '@public/services/color.jpg'
-import cutImg from '@public/services/cut.jpg'
-import therapyImg from '@public/services/therapy.png'
+import colorImg from '@public/services/color.webp'
+import fantasyImg from '@public/services/fantasy-2.jpg'
+import cutImg from '@public/services/cut.webp'
+import treatmentImg from '@public/services/treatment.jpg'
+import styleImg from '@public/services/hairstyle.jpg'
 import { Breadcrumb } from 'ui/server'
 import Title from '@/components/title'
 
@@ -19,29 +18,25 @@ export default function ServicesPage () {
 
   const services = [
     {
-      name: 'Rubios',
-      image: blondeImg
-    },
-    {
-      name: 'Peinado',
-      image: haistyleImg
-    },
-
-    {
-      name: 'Creative Highlights',
-      image: creativeImg
-    },
-    {
       name: 'Color',
       image: colorImg
     },
+    {
+      name: 'Fantasía',
+      image: fantasyImg
+    },
+
     {
       name: 'Corte',
       image: cutImg
     },
     {
-      name: 'Terapias',
-      image: therapyImg
+      name: 'Tratamientos',
+      image: treatmentImg
+    },
+    {
+      name: 'Peinados',
+      image: styleImg
     }
   ]
 

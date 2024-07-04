@@ -36,10 +36,10 @@ const fashionFetish = localFont({
 
 export const metadata: Metadata = {
   title: STORE_NAME,
-  description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
+  description: 'Sol La Peluquera - Una pelu diferente',
   openGraph: {
     title: STORE_NAME,
-    description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
+    description: 'Sol La Peluquera - Una pelu diferente',
     type: 'website',
     locale: 'es_AR',
     siteName: 'eXa Pro',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary',
     creator: '@eXaBeautyOk',
     title: STORE_NAME,
-    description: 'Gonzalo Alonso Studio - Lo que vos mereces.',
+    description: 'Sol La Peluquera - Una pelu diferente',
     site: '@eXaBeautyOk'
   }
 }

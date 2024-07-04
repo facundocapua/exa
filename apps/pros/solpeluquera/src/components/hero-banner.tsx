@@ -23,10 +23,7 @@ export default async function HeroBanner () {
                 <Link href="/portfolio" className="mt-6 block md:text-lg md:leading-8 text-gray-900 md:text-gray-900">
                   Lipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </Link>
-                {/* <p className="mt-6 text-lg leading-8 text-gray-900">
-                  Lipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p> */}
-                <div className="mt-10 flex items-center gap-x-6 hidden md:block">
+                <div className="mt-10 items-center gap-x-6 hidden md:block">
                   <Link
                     href="/portfolio"
                     className="rounded-md bg-primary-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

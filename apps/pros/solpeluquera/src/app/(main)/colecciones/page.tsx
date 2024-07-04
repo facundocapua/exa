@@ -13,6 +13,15 @@ const images = [
   '/studio/6.jpg'
 ]
 
+const imagesClasses = [
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl md:col-span-2 relative [&>*]:object-[50%_25%]',
+  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative'
+]
+
 export default function StudioPage () {
   const breadcrumbs = [
     {
@@ -29,7 +38,7 @@ export default function StudioPage () {
       <Title>Colecciones</Title>
 
       <Suspense fallback={<CmsGallerySkeleton />}>
-        <CmsGallery images={images} />
+        <CmsGallery images={images} imagesClasses={imagesClasses} />
       </Suspense>
     </section>
   )
