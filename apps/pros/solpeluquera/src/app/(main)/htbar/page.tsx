@@ -48,7 +48,7 @@ export default function ServicesPage () {
             <Image
               src={image.image}
               alt='Hair Tatoo Bar'
-              className='object-cover h-full aspect-[9/16] md:grayscale transition-all ease-in-out duration-500 hover:grayscale-0 hover:scale-110'
+              className='object-cover h-full aspect-[9/16] md:blur-sm transition-all ease-in-out duration-500 hover:blur-none hover:scale-110'
             />
           </article>
         ))}

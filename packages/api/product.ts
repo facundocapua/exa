@@ -150,6 +150,17 @@ export const getCollectionProducts = async (handle: string): Promise<Array<Produ
   return data
 }
 
+export const getStoreCollectionProducts = async (salonId: string, handle: string): Promise<Array<Product> | null> => {
+  const salon = await getSalon(salonId)
+
+  const collection = await getCollection(handle)
+  if (!collection) return null
+
+  const data = await getProducts({ collection_id: [collection.id], sales_channel_id: [salon?.sales_channel_id ?? ''] })
+
+  return data
+}
+
 export const getStoreFeaturedProducts = async (salonId: string): Promise<Array<Product>> => {
   const salon = await getSalon(salonId)
 
@@ -192,6 +203,7 @@ type GetFilteredProductsType = {
   filters: FiltersType
   restrinctions?: FiltersType
   exclude?: Array<string>
+  salesChannelId?: string
 }
 
 type GetCategoryProductsResponse = {
@@ -200,8 +212,12 @@ type GetCategoryProductsResponse = {
   total: number
 }
 
-export const getFilteredProducts = async ({ filters, restrinctions, exclude = [] }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
+export const getFilteredProducts = async ({ filters, restrinctions, exclude = [], salesChannelId }: GetFilteredProductsType): Promise<GetCategoryProductsResponse> => {
   const params = await applyRestrinctions(restrinctions ?? {}) as ProductParams
+  if(salesChannelId) {
+    params.sales_channel_id = [salesChannelId]
+  }
+
   const restrictedData = await getProducts(params)
 
   const filteredData = applyFilters(restrictedData, filters)

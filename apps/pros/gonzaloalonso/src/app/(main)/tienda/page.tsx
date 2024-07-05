@@ -1,5 +1,5 @@
 import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
-import { getFilteredProducts } from 'api'
+import { getFilteredProducts, getSalon } from 'api'
 import { Metadata } from 'next'
 import { ProductListPage } from 'ui/server'
 
@@ -37,8 +37,11 @@ export async function generateMetadata (): Promise<Metadata> {
 }
 
 export default async function StorePage ({ searchParams }: Props) {
+  const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
+  const salon = await getSalon(salonId)
   const { filters, products, total } = await getFilteredProducts({
-    filters: searchParams
+    filters: searchParams,
+    salesChannelId: salon?.sales_channel_id
   })
 
   const breadcrumbs = [

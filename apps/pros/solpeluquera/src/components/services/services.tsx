@@ -20,7 +20,7 @@ export default function Services ({ services }: Props) {
           <Image
             src={service.image}
             alt={service.name}
-            className='object-cover h-full aspect-[9/16] md:grayscale transition-all ease-in-out duration-500 hover:grayscale-0 hover:scale-110'
+            className='object-cover h-full aspect-[9/16] md:blur-sm transition-all ease-in-out duration-500 hover:blur-none hover:scale-110'
           />
           <h2 className='absolute w-full bottom-3 left-0 text-center font-semibold text-3xl text-primary-300 bg-primary-700/40 py-2'>{service.name}</h2>
         </article>

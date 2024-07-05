@@ -1,9 +1,11 @@
-import { getStoreFeaturedProducts } from 'api'
+import { getStoreCollectionProducts } from 'api'
 import { ProductSlider } from 'ui'
+
+const collectionHandle = 'featured'
 
 export default async function FeaturedProducts () {
   const storeId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
-  const products = await getStoreFeaturedProducts(storeId)
+  const products = await getStoreCollectionProducts(storeId, collectionHandle)
 
   if (!products || products.length === 0) return null
 
