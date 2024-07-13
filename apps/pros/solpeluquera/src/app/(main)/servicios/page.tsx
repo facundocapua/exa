@@ -1,9 +1,9 @@
 import Services from '@/components/services/services'
 import colorImg from '@public/services/color.webp'
-import fantasyImg from '@public/services/fantasy-2.jpg'
+import fantasyImg from '@public/services/fantasy.webp'
 import cutImg from '@public/services/cut.webp'
-import treatmentImg from '@public/services/treatment.jpg'
-import styleImg from '@public/services/hairstyle.jpg'
+import treatmentImg from '@public/services/treatment.webp'
+import styleImg from '@public/services/hairstyle.webp'
 import { Breadcrumb } from 'ui/server'
 import Title from '@/components/title'
 

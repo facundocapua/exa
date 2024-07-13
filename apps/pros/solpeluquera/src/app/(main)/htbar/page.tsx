@@ -1,6 +1,9 @@
 import firstImg from '@public/htbar/1.webp'
 import secondImg from '@public/htbar/2.webp'
 import thirdImg from '@public/htbar/3.webp'
+import fourthImg from '@public/htbar/4.webp'
+import fifthImg from '@public/htbar/5.webp'
+import sixthImg from '@public/htbar/6.webp'
 import { Breadcrumb } from 'ui/server'
 import Title from '@/components/title'
 import Image from 'next/image'
@@ -23,6 +26,15 @@ export default function ServicesPage () {
     },
     {
       image: thirdImg
+    },
+    {
+      image: fourthImg
+    },
+    {
+      image: fifthImg
+    },
+    {
+      image: sixthImg
     }
   ]
 

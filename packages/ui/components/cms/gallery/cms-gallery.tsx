@@ -8,25 +8,28 @@ import { imagesClasses as defaultImagesClasses } from './consts'
 type Props = {
   images: Array<string>
   imagesClasses?: Array<string>
+  param?: string
 }
 
-export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses }: Props) => {
+export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses, param = 'image' }: Props) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const { replace } = useRouter()
-  const image = searchParams.get('image') ?? ''
+  const image = searchParams.get(param) ?? ''
 
   const setImage = useCallback((image: number | null) => {
     const params = new URLSearchParams(searchParams)
     if (image === null) {
-      params.delete('image')
+      params.delete(param)
     } else {
-      params.set('image', String(image))
+      params.set(param, String(image))
     }
     replace(`${pathname}?${params.toString()}`)
   }, [pathname, replace, searchParams])
 
   useEffect(() => {
+    if (image === '') return
+
     const keyDownEvent = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft') {
         const newImage = Number(image) - 1
@@ -80,9 +83,9 @@ export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses }: Pro
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-4 text-left align-middle shadow-xl transition-all">
-                  <div className="relative">
-                    {image !== '' ? (<Image src={images[Number(image)]!} width={1500} height={1000} alt="image" />) : ''}
+                <Dialog.Panel className="h-full transform overflow-hidden rounded-2xl bg-white p-4 text-left align-middle shadow-xl transition-all">
+                  <div className="overflow-hidden w-full h-full object-cover">
+                    {image !== '' ? (<Image src={images[Number(image)]!} width={1500} height={800} alt="image" />) : ''}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
