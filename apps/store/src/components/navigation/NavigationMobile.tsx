@@ -1,6 +1,5 @@
 'use client'
 
-import { Dialog, Disclosure, Transition } from '@headlessui/react'
 import { Bars2Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import type { Brand, Category } from 'api'
 import clsx from 'clsx'
@@ -10,6 +9,7 @@ import CategorySubLevel from './mobile/CategorySubLevel'
 import Logo from '../layout/Logo'
 import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 import { usePathname } from 'next/navigation'
+import { Dialog, Disclosure, DisclosureButton, DisclosurePanel, Transition, TransitionChild } from '@headlessui/react'
 
 type Props = {
   navigation: {
@@ -31,7 +31,7 @@ export default function NavigationMobile ({ navigation }: Props) {
     <>
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
-          <Transition.Child
+          <TransitionChild
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
           enterFrom="opacity-0"
@@ -41,7 +41,7 @@ export default function NavigationMobile ({ navigation }: Props) {
           leaveTo="opacity-0"
         >
             <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="fixed inset-0 z-40 flex">
             <Transition.Child
@@ -76,7 +76,7 @@ export default function NavigationMobile ({ navigation }: Props) {
                     <Disclosure key={category.name}>
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className={clsx(
+                          <DisclosureButton className={clsx(
                             open ? 'border-primary-600 text-primary-600' : 'border-transparent text-neutral-900',
                             'flex w-full whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium justify-between'
                           )}>
@@ -85,7 +85,7 @@ export default function NavigationMobile ({ navigation }: Props) {
                               'w-6 h-6 text-current transition-transform ease-in-out duration-300',
                               open ? 'transform rotate-180' : ''
                             )} />
-                          </Disclosure.Button>
+                          </DisclosureButton>
                           <Transition
                             show={open}
                             enter="transition-[height] ease-in-out duration-300 transform"
@@ -94,11 +94,10 @@ export default function NavigationMobile ({ navigation }: Props) {
                             leave="transition ease-in-out duration-300 transform"
                             leaveFrom="h-auto"
                             leaveTo="h-0"
-                            className="transition-all overflow-hidden"
                           >
-                            <Disclosure.Panel className="space-y-12 px-4 py-6" static>
+                            <DisclosurePanel className="space-y-12 px-4 py-6 transition-all overflow-hidden" static>
                               <CategorySubLevel category={category} />
-                            </Disclosure.Panel>
+                            </DisclosurePanel>
                           </Transition>
                         </>
                       )}
