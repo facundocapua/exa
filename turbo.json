@@ -1,15 +1,24 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "globalDotEnv": [
+  "globalDependencies": [
+    "**/.env.*local",
     ".env",
     ".env.local"
   ],
-  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY", "BASE_URL"],
-  "pipeline": {
+  "globalEnv": [
+    "NODE_ENV",
+    "NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY",
+    "BASE_URL"
+  ],
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "lint": {},
     "dev": {
