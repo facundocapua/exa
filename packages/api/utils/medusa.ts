@@ -1,7 +1,7 @@
 import Medusa from '@medusajs/medusa-js'
 
 export const getMedusaUrl = () => {
-  return process.env.MEDUSA_BACKEND_URL ?? 'https://backend.exabeauty.com.ar'
+  return process.env.MEDUSA_BACKEND_URL ?? 'http://localhost:9000'
 }
 
 export const getMedusaRegionId = () => {
