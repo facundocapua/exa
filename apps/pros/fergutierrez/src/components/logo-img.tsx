@@ -5,10 +5,10 @@ export default function LogoImg ({ className }: {className?: string}) {
         <style>
           {
             `.cls-1 {
-              fill: #e6c4c3;
+              fill: #fff;
             }
             .cls-2 {
-              fill: #fff;
+              fill: #000;
             }`
           }
         </style>

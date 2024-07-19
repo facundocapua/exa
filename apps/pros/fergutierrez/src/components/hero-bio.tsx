@@ -1,5 +1,14 @@
 import ProfilePic from '@public/about-me/main.png'
 import Image from 'next/image'
+import { ReactNode } from 'react'
+
+const Text = ({children}: {children: ReactNode}) => {
+  return (
+    <p className='text-lg my-4 text-gray-600'>
+      {children}
+    </p>
+  )
+}
 
 export default function HeroBio () {
   return (
@@ -8,9 +17,19 @@ export default function HeroBio () {
         <Image src={ProfilePic} alt='Fernanda Gutierrez' className='mx-auto' />
         <article>
           <h1 className='text-4xl'>Soy Fernanda Gutiérrez</h1>
-          <p className='text-lg my-4 text-gray-600'>Nací en Bs As argentina. Soy maquilladora desde hace 20 años, me recibí en Mulet Estudio. Me perfeccioné con Mabby Autino, Sebastián Correa, Vero Fioravanti , Bettina Frumboli y Vero Luna.</p>
-          <p className='text-lg my-4 text-gray-600'>Actualmente vivo en Tandil donde tengo mi estudio y brindo servicios de maquillaje social y dicto cursos.</p>
-          <p className='text-lg my-4 text-gray-600'>Tengo un estilo natural que se ve reflejado en mis trabajos, adapto las tendencias de la moda buscando resaltar la belleza.</p>
+          <Text>
+            Maquilladora profesional, con mas de 22 años de experiencia. Maquillo para todo tipo de eventos, dicto cursos de
+            perfeccionamiento y clases de automaquillaje.
+          </Text>
+          <Text>
+            Tengo un estilo natural, que se ve reflejado en mis trabajos, apasionada de las tendencias, las adapto buscando resaltar lo mejor de mis clientas.
+          </Text>
+          <Text>
+            Me gusta estar actualizada, por ello constantemente me perfecciono en distintas técnicas para lograr trabajos de excelencia.
+          </Text>
+          <Text>
+            Actualmente vivo en Tandil donde tengo mi estudio y brindo todos mis servicios.
+          </Text>
         </article>
       </div>
     </section>

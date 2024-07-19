@@ -10,7 +10,7 @@ type Props = {
 export default function ServiceCard ({ image, title, link }: Props) {
   const titleParts = title.split(' ')
   return (
-    <Link href={link} className="bg-gray-800 py cursor-pointer">
+    <Link href={link} className="bg-slate-700 py cursor-pointer">
       <div className="relative w-full aspect-[5/6] overflow-hidden
         before:absolute before:bottom-4 before:right-4 before:h-0 before:w-0 before:border-b before:border-r before:transition-all before:duration-500 before:ease-in-out
         after:absolute after:top-4 after:left-4 after:h-0 after:w-0 after:border-t after:border-l after:transition-all after:duration-500 after:ease-in-out
@@ -21,7 +21,7 @@ export default function ServiceCard ({ image, title, link }: Props) {
       </div>
       <h2 className="text-xl font-extralight text-center py-4 text-white tracking-wide">
         <span>{`${titleParts[0]} `}</span>
-        <span className="text-primary-300 font-semibold">{titleParts.slice(1).join(' ')}</span>
+        <span className="text-white font-semibold">{titleParts.slice(1).join(' ')}</span>
       </h2>
     </Link>
   )

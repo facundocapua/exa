@@ -33,7 +33,7 @@ export default function MakeupCard ({ name, price, duration, description, link }
       </div>
 
       <div>
-        <button className='w-full uppercase bg-primary-300 text-xl py-2 px-8 rounded-md inline-block mt-6 hover:scale-110 transition-all duration-300'>
+        <button className='w-full uppercase bg-black text-white text-xl py-2 px-8 rounded-md inline-block mt-6 hover:scale-110 transition-all duration-300'>
           Reservar
         </button>
       </div>

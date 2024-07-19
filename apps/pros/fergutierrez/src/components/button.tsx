@@ -13,7 +13,7 @@ export default function Button ({ children, link, className }: Props) {
     <Link
       href={link}
       className={clsx(
-        'uppercase bg-primary-300 font-extralight py-2 px-8 rounded-md inline-block mt-6 hover:scale-110 transition-all duration-300',
+        'uppercase bg-slate-700 text-white font-extralight py-2 px-8 rounded-md inline-block mt-6 hover:scale-110 transition-all duration-300',
         className
       )}>
       {children}

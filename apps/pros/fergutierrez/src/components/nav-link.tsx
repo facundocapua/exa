@@ -7,13 +7,13 @@ export default function NavLink ({ href, name, active = false }: { href: string,
       <span className={clsx(
         'font-medium text-lg',
         {
-          'text-gray-100 group-hover:text-primary-400 transition-all duration-200': !active,
-          'text-primary-400': active
+          'text-gray-100 group-hover:text-black transition-all duration-200': !active,
+          'text-black': active
         }
       )}>{name}</span>
       <div className={clsx({
-        'bg-primary-400 w-0 h-0.5 group-hover:w-full transition-all duration-200': !active,
-        'bg-primary-400 w-full h-0.5': active
+        'bg-black w-0 h-0.5 group-hover:w-full transition-all duration-200': !active,
+        'bg-black w-full h-0.5': active
       })}></div>
     </Link>
   )

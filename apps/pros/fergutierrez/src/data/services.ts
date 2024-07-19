@@ -29,6 +29,7 @@ export const SERVICES = [
 export const SOCIAL_MAKEUP_SERVICES = [
   {
     name: 'Makeup Express',
+    subtitle: 'Para las que no suelen maquillarse',
     description: [
       'Preparación de la piel.',
       'Base, corrector, tonalizador, rubor, labial, sombras suaves y máscaras de pestañas.',
@@ -36,10 +37,12 @@ export const SOCIAL_MAKEUP_SERVICES = [
     ],
     price: '25.000',
     duration: 30,
+    image: '/services/social/1.jpg',
     message: '¡Hola! ¿Cómo estás? Quisiera reservar un turno para *Makeup Express*.'
   },
   {
     name: 'Makeup Básico',
+    subtitle: 'Ideal para realzar tus facciones',
     description: [
       'Diseñamos un maquillaje especial para tu evento.',
       'Variedad de sombras, pigmentos y delineados.',
@@ -48,10 +51,12 @@ export const SOCIAL_MAKEUP_SERVICES = [
     ],
     price: '29.000',
     duration: 45,
+    image: '/services/social/2.jpg',
     message: '¡Hola! ¿Cómo estás? Quisiera reservar un turno para *Makeup Básico*.'
   },
   {
     name: 'Makeup Full',
+    subtitle: 'Para darlo todo en tu evento',
     description: [
       'Maquillaje a medida para tu gran evento.',
       'Distintas técnicas de ojos.',
@@ -61,6 +66,7 @@ export const SOCIAL_MAKEUP_SERVICES = [
     ],
     price: '32.000',
     duration: 60,
+    image: '/services/social/3.jpg',
     message: '¡Hola! ¿Cómo estás? Quisiera reservar un turno para *Makeup Full*.'
   }
 ]

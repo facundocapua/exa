@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Logo from './logo'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import NavLink from './nav-link'
@@ -20,15 +20,15 @@ export default function Header ({ cart }: Props) {
   const pathname = usePathname()
 
   return (
-    <header className="pt-4 pb-8 bg-gray-600">
-      <div className="flex max-w-7xl mx-auto px-4 items-center justify-between">
+    <header className="pt-4 pb-8 bg-slate-600">
+      <div className="grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto] w-full items-center px-4">
         <div className="flex lg:hidden">
           <button
               type="button"
               className="inline-flex items-center justify-center rounded-md text-gray-100"
               onClick={() => setMobileMenuOpen(true)}
             >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">Abrir menú principal</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -39,15 +39,19 @@ export default function Header ({ cart }: Props) {
           {navRight.map((item) => (<NavLink key={item.id} href={item.href} name={item.name} active={pathname.startsWith(item.href)} />))}
         </nav>
 
+        <div className='flex items-center justify-center lg:hidden'>
+          <Logo />
+        </div>
+
         <div className='flex justify-end'>
           {cart}
         </div>
 
       </div>
 
-      <Transition.Root show={mobileMenuOpen} as={Fragment}>
+      <Transition show={mobileMenuOpen} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileMenuOpen}>
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -56,11 +60,11 @@ export default function Header ({ cart }: Props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
            >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
+            <div className="fixed inset-0 bg-slate-600 bg-opacity-25" />
+          </TransitionChild>
 
           <div className="fixed inset-0 z-40 flex">
-            <Transition.Child
+            <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="-translate-x-full"
@@ -69,7 +73,7 @@ export default function Header ({ cart }: Props) {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-black pb-12 shadow-xl">
+              <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-slate-600 pb-12 shadow-xl">
                 <div className="flex justify-between px-4 pb-2 pt-5">
                   <Logo />
                   <button
@@ -94,11 +98,11 @@ export default function Header ({ cart }: Props) {
                     </Link>
                   ))}
                 </div>
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition>
     </header>
   )
 }

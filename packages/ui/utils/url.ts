@@ -1,3 +1,5 @@
+import type { Salon } from 'api'
+
 export const removeSearchParamValue = (searchParams: Record<string, string>, key: string, value: string) => {
   const newSearchParams = structuredClone(searchParams)
   const values = newSearchParams[key]?.split(',') ?? []
@@ -17,4 +19,9 @@ export const removeSearchParamValue = (searchParams: Record<string, string>, key
 export const generateUrl = (url: string, searchParams:Record<string, string>) => {
   const params = new URLSearchParams(searchParams)
   return `${url}?${params.toString()}`
+}
+
+export const getGoogleSearchLink = (store: Salon) => {
+  const search = `${store.address} - ${store.city}, ${store.state}`
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}`
 }
