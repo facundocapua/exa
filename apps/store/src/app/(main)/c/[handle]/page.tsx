@@ -1,8 +1,7 @@
-import { getBrand, getBrands, getCollection, getCollectionProducts, getCollections, getFilteredProducts, Product } from 'api'
+import { getCollection, getCollectionProducts, Product } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Filters } from 'ui'
-import { AppliedFilters, Breadcrumb, ProductCard } from 'ui/server'
+import { Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
   params: {
@@ -11,15 +10,15 @@ type Props = {
   searchParams: Record<string, string>
 }
 
-export async function generateStaticParams () {
-  const collections = await getCollections()
+// export async function generateStaticParams () {
+//   const collections = await getCollections()
 
-  return collections
-    .filter((collection) => collection?.metadata?.isPage)
-    .map(({ handle }) => ({
-      handle
-    }))
-}
+//   return collections
+//     .filter((collection) => collection?.metadata?.isPage)
+//     .map(({ handle }) => ({
+//       handle
+//     }))
+// }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
   const { handle } = params
