@@ -25,12 +25,11 @@ export default function FeaturedServices () {
           ))}
         </div>
         <div className="text-left md:w-1/2">
-          <h1 className="text-3xl text-gray-700 font-extralight mb-8">Servicios</h1>
+          <h1 className="text-3xl text-black font-extralight mb-8">Servicios</h1>
 
           <Paragraph>Los servicios pueden ser en el estudio o a domicilio. Tienen distintos honorarios.</Paragraph>
           <Paragraph>En el caso del servicio de maquillaje para eventos, se deben señar 15 días antes, para reservar el turno.</Paragraph>
           <Paragraph>En el caso de novias y madrinas 1 mes antes como mínimo.</Paragraph>
-          <Paragraph>No incluye colocación de pestañas postizas.</Paragraph>
 
           <Button link="/servicios">Más info</Button>
         </div>

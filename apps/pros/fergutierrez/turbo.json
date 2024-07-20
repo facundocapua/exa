@@ -1,12 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "extends": [
-    "//"
+  "globalEnv":[
+    "NEXT_PUBLIC_STORE_ID",
+    "GOOGLE_API_KEY"
   ],
   "tasks": {
     "build": {
       "env": [
-        "NEXT_PUBLIC_STORE_ID"
+        
       ]
     }
   }

@@ -1,8 +1,8 @@
-import ProfilePic from '@public/about-me/main.png'
+import ProfilePic from '@public/about-me/main-new.jpg'
 import Image from 'next/image'
 import { ReactNode } from 'react'
 
-const Text = ({children}: {children: ReactNode}) => {
+const Text = ({ children }: {children: ReactNode}) => {
   return (
     <p className='text-lg my-4 text-gray-600'>
       {children}
@@ -14,7 +14,9 @@ export default function HeroBio () {
   return (
     <section className="w-full py-8">
       <div className='max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center'>
-        <Image src={ProfilePic} alt='Fernanda Gutierrez' className='mx-auto' />
+        <div className='relative h-[500px] overflow-hidden'>
+          <Image src={ProfilePic} alt='Fernanda Gutierrez' fill className='object-cover object-[50%_70%]' />
+        </div>
         <article>
           <h1 className='text-4xl'>Soy Fernanda Gutiérrez</h1>
           <Text>

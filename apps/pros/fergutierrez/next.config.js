@@ -15,6 +15,12 @@ const nextConfig = {
         hostname: 'cdn.exabeauty.com.ar',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**'
       }
     ]
   }
