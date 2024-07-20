@@ -48,9 +48,9 @@ export default async function Testimonials () {
     <div className="relative isolate bg-white pb-12 pt-12">
       <div className="mx-auto max-w-7xl lg:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-lg font-semibold leading-8 tracking-tight text-slate-600">Testimonios</h2>
+          <h2 className="text-lg font-semibold leading-8 tracking-tight text-slate-600">Reseñas</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Lo que dicen de mi trabajo
+            Lo que opinan mis clientas
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-12 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">

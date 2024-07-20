@@ -1,7 +1,7 @@
 import { SOCIAL_MAKEUP_SERVICES } from '@/data/services'
 import { getSalon } from 'api'
 import MakeupCardBig from './makeup-card-big'
-import MakeupCard from './makeup-card'
+// import MakeupCard from './makeup-card'
 import { generateWhatsAppLink } from 'utils'
 
 export default async function SocialMakeup () {
@@ -25,12 +25,12 @@ export default async function SocialMakeup () {
           />
         ))}
       </div>
-      <hr className='my-12' />
+      {/* <hr className='my-12' />
       <div className="grid grid-cols-1 lg:max-w-none mx-auto lg:grid-cols-3 gap-8">
         {SOCIAL_MAKEUP_SERVICES.map((service, index) => (
           <MakeupCard key={index} {...service} link={generateWhatsAppLink(whatsapp!, service.message)} />
         ))}
-      </div>
+      </div> */}
     </section>
   )
 }
