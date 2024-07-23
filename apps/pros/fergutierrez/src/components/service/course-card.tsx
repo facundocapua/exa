@@ -50,7 +50,7 @@ export default async function CourseCard ({ name, description, price, duration, 
         }
         </div>
 
-        <button className='w-full uppercase bg-primary-300 text-xl py-2 px-8 rounded-md inline-block mt-6'>
+        <button className='w-full uppercase bg-black text-white text-xl py-2 px-8 rounded-md inline-block mt-6'>
           Consultar
         </button>
       </div>

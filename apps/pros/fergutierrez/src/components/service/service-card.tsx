@@ -17,7 +17,7 @@ export default function ServiceCard ({ image, title, link }: Props) {
         hover:before:w-[calc(100%-32px)] hover:before:h-[calc(100%-32px)]
         hover:after:h-[calc(100%-32px)] hover:after:w-[calc(100%-32px)]
       ">
-        <Image alt={title} className="transition-all ease-in-out duration-500" src={image} />
+        <Image alt={title} className="transition-all ease-in-out duration-500 object-cover" src={image} />
       </div>
       <h2 className="text-xl font-extralight text-center py-4 text-white tracking-wide">
         <span>{`${titleParts[0]} `}</span>

@@ -12,7 +12,6 @@ type Props = {
   cart: React.ReactNode
 }
 
-
 export default function Header ({ cart }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navLeft = navigation.slice(0, 2)

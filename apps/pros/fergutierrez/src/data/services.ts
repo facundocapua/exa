@@ -1,6 +1,6 @@
 import service1 from '@public/services/2.jpg'
 import service2 from '@public/services/1.jpg'
-import service3 from '@public/services/3.jpg'
+// import service3 from '@public/services/3.jpg'
 import service4 from '@public/services/4.jpg'
 
 export const SERVICES = [
@@ -14,11 +14,11 @@ export const SERVICES = [
     title: 'Maquillaje Novias',
     link: '/servicios/novias'
   },
-  {
-    image: service3,
-    title: 'Clases Automaquillaje',
-    link: '/servicios/automaquillaje'
-  },
+  // {
+  //   image: service3,
+  //   title: 'Clases Automaquillaje',
+  //   link: '/servicios/automaquillaje'
+  // },
   {
     image: service4,
     title: 'Perfilado Cejas',
