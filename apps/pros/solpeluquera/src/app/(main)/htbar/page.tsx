@@ -45,10 +45,10 @@ export default function ServicesPage () {
       <Title>Hair Tatoo Bar</Title>
 
       <p className='text-primary-700 pt-2 text-lg'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu eros et turpis imperdiet cursus. Aenean lobortis lacus feugiat, vulputate sapien et, pellentesque est. In venenatis felis risus, et dapibus mauris semper vitae. Fusce velit tellus, iaculis id porta nec, consequat ac lorem. Nam purus lectus, consequat vel enim sit amet, euismod tempus velit. Nullam fermentum sit amet purus et porttitor. Ut vel urna commodo, fringilla ligula aliquet, congue ligula.
+        ¡Bienvenidos al innovador “Hair Tattoo Bar”! Después de meses de búsqueda y estudio incansable, hemos materializado una idea única que no encontrarás en ningún otro lugar. Inspirado por una visión amorfa y caótica que finalmente tomó forma clara y ordenada, “HT Bar” es el primer bar de Hair Tattoo para tus eventos. Ofrecemos un nuevo concepto para tus fiestas, donde pintamos tu cabello con diseños únicos y temporales que se van con el agua.
       </p>
       <p className='text-primary-700 pt-2 text-lg'>
-        Donec feugiat nisi mauris, nec euismod elit elementum sit amet. Curabitur tristique ut tellus at dignissim. Nam consectetur tempor felis, sed interdum lorem malesuada vehicula. Aliquam feugiat dolor in dignissim condimentum. Mauris faucibus lacinia velit, id malesuada magna dignissim a. Donec blandit ultricies est, blandit congue eros efficitur gravida. Sed tincidunt maximus tellus quis finibus. Morbi ac consectetur felis, quis laoreet lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec et pulvinar tellus, ac malesuada nisi. Donec ac ultrices neque, sit amet ultrices nunc.
+        Tu cabello se convierte en el lienzo de nuestra creatividad, permitiéndote experimentar con estilos y diseños sin compromiso. Desde patrones vibrantes hasta arte capilar sofisticado, nuestro servicio temporal te permite transformar tu look para cualquier ocasión especial. Si quieres saber más sobre “HT Bar” y cómo podemos hacer que tu evento sea inolvidable, no dudes en contactarte.
       </p>
 
       <section className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto my-12'>
