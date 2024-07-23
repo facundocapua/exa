@@ -9,27 +9,27 @@ export default function AboutMe () {
         <div className='flex flex-col gap-6 px-2 md:px-0 text-gray-700'>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta?
+            Sol La Peluquera nace por los 2000 bajo el nombre de “Sol peluqueria unisex”. Los años pasaron y todo se transformó, hasta nuestra marca.
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            Sed porta ullamcorper massa. Etiam convallis ac magna ac blandit. In aliquet tortor vel quam dignissim, nec tincidunt justo iaculis.
+            Con más de 20 años de experiencia en el rubro, Sol (más allá de ser peluquera general) es experta en color y especialista en rulos. Se distingue por su estilo “vanguardista” y LIBRE!
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            Maecenas suscipit neque lorem, lacinia vehicula ipsum laoreet eget. Mauris ornare ornare ultricies. Praesent at sapien accumsan massa vestibulum finibus.
+            Estudiante incansable de todas las áreas relacionadas a la peluquería y afines. Formada internacionalmente (desde color hasta tricologia capilar). Así mismo, hizo la carrera de Maestra Instructora de 5 años de duración. Para luego convertirse en educadora independiente.
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            Ut vel ligula in enim egestas molestie posuere quis purus. Suspendisse at sollicitudin dui, in facilisis erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus vehicula iaculis posuere. Pellentesque mollis tempor tellus quis bibendum. Fusce tellus libero, rhoncus eu ex quis, pretium tempor lorem.
+            Nunca deja de formarse, para brindar lo mejor en el salón y a sus estudiantes.
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla id tellus et lorem aliquet pulvinar. Pellentesque efficitur iaculis ex, ac consequat est cursus ut. In luctus purus sit amet tortor lobortis vulputate.
+            Hoy día, Sol La Peluquera está ubicado en Olavarria, Provincia de Buenos Aires. Pero viaja por  distintos lugares, compartiendo sus saberes y brindando todo tipo de formaciones.
           </p>
           {/* @ts-ignore */}
           <p style={{ textWrap: 'balance' }}>
-            Suspendisse placerat imperdiet augue quis commodo. Suspendisse rhoncus risus in mauris maximus, ac accumsan justo rhoncus. Aliquam magna lacus, varius at suscipit eleifend, euismod vel lacus. Proin ex diam, tempor non tincidunt luctus, efficitur vel felis. Duis id mattis lacus. Nullam bibendum justo vitae consequat bibendum.
+            SU PASIÓN…. Los colores fantasía
           </p>
         </div>
       </header>

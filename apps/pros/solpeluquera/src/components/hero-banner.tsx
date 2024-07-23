@@ -21,7 +21,7 @@ export default async function HeroBanner () {
                   <span className="text-primary-400 font-black text-6xl block md:inline">Sol</span> La Peluquera
                 </h1>
                 <Link href="/portfolio" className="mt-6 block md:text-lg md:leading-8 text-gray-900 md:text-gray-900">
-                  Lipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Con más de 20 años de experiencia, se destaca por su expertise en color y especialización en rulos, ofreciendo un estilo vanguardista y libre que transforma cada look en una obra de arte única.
                 </Link>
                 <div className="mt-10 items-center gap-x-6 hidden md:block">
                   <Link

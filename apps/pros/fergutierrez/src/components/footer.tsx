@@ -5,14 +5,6 @@ import { ChevronRightIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicon
 import { getSalon } from 'api'
 import Image from 'next/image'
 
-const navigation = {
-  solutions: [
-    // { name: 'Términos y condiciones', href: '/terminos-y-condiciones' },
-    { name: 'Arrepentimiento', href: '/arrepentimiento' },
-    { name: 'AFIP', href: 'http://qr.afip.gob.ar/?qr=CHPNFTtL7F-sT2as_rPGgg,,', image: '/afip.webp', width: 23, height: 32 }
-  ]
-}
-
 const socialNetworks = {
   facebook: {
     name: 'Facebook',

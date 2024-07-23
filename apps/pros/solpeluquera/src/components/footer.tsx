@@ -1,20 +1,21 @@
 import Link from 'next/link'
-import { InstagramIcon } from 'ui/server'
+import { InstagramIcon, WhatsAppIcon } from 'ui/server'
 import Logo from './logo'
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { ChevronRightIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import type { Salon } from 'api'
 import { getSalon } from 'api'
+import Image from 'next/image'
 
 const socialNetworks = {
-  // {
-  //   name: 'Facebook',
-  //   href: 'https://www.facebook.com/alonsoestilista',
-  //   icon: FacebookIcon
-  // },
   instagram: {
     name: 'Instagram',
     href: '',
     icon: InstagramIcon
+  },
+  whatsapp: {
+    name: 'WhatsApp',
+    href: '',
+    icon: WhatsAppIcon
   }
 }
 
@@ -30,6 +31,7 @@ export default async function Footer () {
   if (!salon) return null
 
   socialNetworks.instagram.href = salon?.social_networks?.instagram ?? ''
+  socialNetworks.whatsapp.href = salon?.social_networks?.whatsapp ?? ''
 
   return (
     <footer className='bg-gray-100'>
@@ -46,17 +48,26 @@ export default async function Footer () {
           <Link href={salon.map_link ?? getGoogleSearchLink(salon)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
             <MapPinIcon className='w-5 h-5' /> {salon.address} - {salon.city}, {salon.state}
           </Link>
+          <Link href="/arrepentimiento" className='flex items-center text-sm'>
+            <ChevronRightIcon className='w-4 h-4' />Arrepentimiento
+          </Link>
         </div>
       </div>
       <hr className='max-w-7xl mx-auto border-gray-300' />
       <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8 ">
         <div className="flex justify-center space-x-6 md:order-2">
-          {Object.values(socialNetworks).map((item) => (
-            <Link key={item.name} href={item.href} className="text-gray-700 hover:text-gray-400">
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </Link>
-          ))}
+          <Link href="http://qr.afip.gob.ar/?qr=IUsHD3VMWpJNosIMv6Dg0w,," target='_blank' rel="noreferrer nofollow" className="mr-4">
+            <span className="sr-only">AFIP</span>
+            <Image src='/afip.webp' alt='AFIP' width={23} height={32} />
+          </Link>
+          {Object.values(socialNetworks)
+            .filter(item => item.name !== 'WhatsApp')
+            .map((item) => (
+              <Link key={item.name} href={item.href} className="text-gray-700 hover:text-gray-400">
+                <span className="sr-only">{item.name}</span>
+                <item.icon className="h-6 w-6" aria-hidden="true" />
+              </Link>
+            ))}
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-xs leading-5 text-gray-700">
@@ -64,6 +75,17 @@ export default async function Footer () {
           </p>
         </div>
       </div>
+
+      {
+        socialNetworks.whatsapp.href !== ''
+          ? (
+            <Link href={socialNetworks.whatsapp.href} target="_blank" rel="noreferrer nofollow">
+              <span className="sr-only">{socialNetworks.whatsapp.name}</span>
+              <socialNetworks.whatsapp.icon className="w-16 fixed bottom-1 right-1 md:bottom-4 md:right-4 md:m-4" aria-hidden="true" />
+            </Link>
+            )
+          : null
+      }
     </footer>
   )
 }
