@@ -9,6 +9,8 @@ export default function TermsAndConditionsPage () {
     }
   ]
 
+  const web = 'www.fernandagutierrez.com.ar'
+
   return (
     <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-12">
       <Breadcrumb pages={brecrumbs} />
@@ -18,12 +20,12 @@ export default function TermsAndConditionsPage () {
       </div>
 
       <div className="pb-24">
-        <p className='pt-4'>Los presentes términos y Condiciones Generales (en adelante, los “Términos y Condiciones”) regularán y serán de aplicación a la navegación de la página web www.exabeauty.com.ar (propiedad de eXa Beauty Solutions) y todos los actos que puedan efectuarse en virtud del uso de la misma.</p>
+        <p className='pt-4'>Los presentes términos y Condiciones Generales (en adelante, los “Términos y Condiciones”) regularán y serán de aplicación a la navegación de la página web {web} (propiedad de eXa Beauty Solutions) y todos los actos que puedan efectuarse en virtud del uso de la misma.</p>
 
         <h2 className="text-xl font-medium py-8">TÉRMINOS GENERALES</h2>
 
         <h3 className='text-lg pb-4'>1 - ACEPTACIÓN DE LOS TÉRMINOS Y CONDICIONES</h3>
-        <p>La navegación y el uso de la página web www.exabeauty.com.ar (en adelante website) implican el conocimiento y la aceptación de los términos y condiciones, en caso de desacuerdo el usuario deberá abstenerse de utilizar el website y/o los servicios por él ofrecidos. Por “Usuario” del website se entiende tanto a los registrados como a los visitantes.</p>
+        <p>La navegación y el uso de la página web {web} (en adelante website) implican el conocimiento y la aceptación de los términos y condiciones, en caso de desacuerdo el usuario deberá abstenerse de utilizar el website y/o los servicios por él ofrecidos. Por “Usuario” del website se entiende tanto a los registrados como a los visitantes.</p>
 
         <h3 className='text-lg py-4'>2 - MODIFICACIÓN</h3>
         <p>Los Términos y Condiciones podrán ser sustituidos o sufrir modificaciones en cualquier momento y a exclusivo criterio de eXa Beauty Solutions, y no se requerirá a los Usuarios su consentimiento. Para las transacciones en curso que hayan comenzado con anterioridad a dichas modificaciones, subsistirán las condiciones vigentes al momento de su concertación, a menos que las nuevas modificaciones introducidas fueran más convenientes para el Usuario.

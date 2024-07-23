@@ -16,7 +16,6 @@ const rubik = Rubik({
   variable: '--font-rubik'
 })
 
-
 export const metadata: Metadata = {
   title: STORE_NAME,
   description: STORE_DESCRIPTION,

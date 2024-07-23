@@ -8,8 +8,14 @@ import { executeSearch } from './actions'
 import type { Product } from 'api'
 import SearchResults from './search-results'
 import debounce from 'just-debounce-it'
+import { twMerge } from 'tailwind-merge'
 
-export const SearchBoxMobile = () => {
+type Props = {
+  iconClassName?: string
+  inputClassName?: string
+}
+
+export const SearchBoxMobile = ({ iconClassName, inputClassName }: Props) => {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -62,16 +68,20 @@ export const SearchBoxMobile = () => {
       </label>
       <div className="relative group">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <MagnifyingGlassIcon className="h-5 w-5 text-neutral-400 group-focus:text-neutral-900" aria-hidden="true" />
+          <MagnifyingGlassIcon className={clsx(twMerge(
+            'h-5 w-5 text-neutral-400 group-focus:text-neutral-900',
+            iconClassName
+          ))} aria-hidden="true" />
         </div>
         <input
           id="search"
           name="search"
-          className={clsx(
+          className={clsx(twMerge(
             'block w-full bg-transparent ring-0 outline-none border-b-neutral-400 border-b-2 py-1.5 pl-10 pr-3 text-neutral-900  placeholder:text-neutral-400',
             'lg:w-1/2 lg:transition-all lg:ease-in-out lg:focus:w-full lg:duration-500  lg:text-sm lg:leading-6',
-            'focus:ring-0 focus:outline-none focus:border-b-neutral-900'
-          )}
+            'focus:ring-0 focus:outline-none focus:border-b-neutral-900',
+            inputClassName
+          ))}
           placeholder="Buscar"
           type="search"
           onChange={handleChange}

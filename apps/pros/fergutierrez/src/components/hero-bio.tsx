@@ -12,12 +12,12 @@ const Text = ({ children }: {children: ReactNode}) => {
 
 export default function HeroBio () {
   return (
-    <section className="w-full py-8">
+    <section className="w-full pb-8 md:pt-8">
       <div className='max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center'>
         <div className='relative h-[500px] overflow-hidden'>
           <Image src={ProfilePic} alt='Fernanda Gutierrez' fill className='object-cover object-[50%_70%]' />
         </div>
-        <article>
+        <article className='px-4 md:px-0'>
           <h1 className='text-4xl'>Soy Fernanda Gutiérrez</h1>
           <Text>
             Maquilladora profesional, con mas de 22 años de experiencia. Maquillo para todo tipo de eventos, dicto cursos de

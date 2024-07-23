@@ -7,6 +7,8 @@ import { Fragment, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import NavLink from './nav-link'
 import { usePathname } from 'next/navigation'
+import { SearchBoxSimple } from 'ui/components/search-box/search-box-simple'
+import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 
 type Props = {
   cart: React.ReactNode
@@ -42,8 +44,16 @@ export default function Header ({ cart }: Props) {
           <Logo />
         </div>
 
-        <div className='flex justify-end'>
-          {cart}
+        <div className='flex justify-end items-center gap-8'>
+          <div className='hidden lg:block'>
+            <SearchBoxSimple
+              iconClassName='text-gray-100'
+              inputClassName='text-gray-500 focus:border-b-gray-500'
+            />
+          </div>
+          <div>
+            {cart}
+          </div>
         </div>
 
       </div>
@@ -83,6 +93,13 @@ export default function Header ({ cart }: Props) {
                     <span className="sr-only">Cerrar menu</span>
                     <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                   </button>
+                </div>
+
+                <div className='flex p-4'>
+                  <SearchBoxMobile
+                    iconClassName='text-gray-200'
+                    inputClassName='text-gray-200 focus:border-b-gray-200'
+                  />
                 </div>
 
                 <div className="mt-6 space-y-2">

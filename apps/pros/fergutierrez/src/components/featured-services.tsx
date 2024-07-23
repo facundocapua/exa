@@ -24,7 +24,7 @@ export default function FeaturedServices () {
             </div>
           ))}
         </div>
-        <div className="text-left md:w-1/2">
+        <div className="px-4 md:px-0 text-left md:w-1/2">
           <h1 className="text-3xl text-black font-extralight mb-8">Servicios</h1>
 
           <Paragraph>Los servicios pueden ser en el estudio o a domicilio. Tienen distintos honorarios.</Paragraph>

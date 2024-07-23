@@ -1,8 +1,17 @@
 import Link from 'next/link'
 import { FacebookIcon, getGoogleSearchLink, InstagramIcon, TikTokIcon, WhatsAppIcon } from 'ui/server'
 import Logo from './logo'
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { ChevronRightIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import { getSalon } from 'api'
+import Image from 'next/image'
+
+const navigation = {
+  solutions: [
+    // { name: 'Términos y condiciones', href: '/terminos-y-condiciones' },
+    { name: 'Arrepentimiento', href: '/arrepentimiento' },
+    { name: 'AFIP', href: 'http://qr.afip.gob.ar/?qr=CHPNFTtL7F-sT2as_rPGgg,,', image: '/afip.webp', width: 23, height: 32 }
+  ]
+}
 
 const socialNetworks = {
   facebook: {
@@ -37,7 +46,6 @@ export default async function Footer () {
   socialNetworks.instagram.href = salon?.social_networks?.instagram ?? ''
   socialNetworks.tiktok.href = salon?.social_networks?.tiktok ?? ''
   socialNetworks.whatsapp.href = salon?.social_networks?.whatsapp ?? ''
-  
 
   return (
     <footer className='bg-slate-600'>
@@ -54,11 +62,18 @@ export default async function Footer () {
           <Link href={salon.map_link ?? getGoogleSearchLink(salon)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
             <MapPinIcon className='w-5 h-5' /> {salon.address} - {salon.city}, {salon.state}
           </Link>
+          <Link href="/arrepentimiento" className='flex items-center text-sm'>
+            <ChevronRightIcon className='w-4 h-4' />Arrepentimiento
+          </Link>
         </div>
       </div>
       <hr className='max-w-7xl mx-auto border-gray-700' />
       <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8 ">
         <div className="flex justify-center space-x-6 md:order-2">
+          <Link href="http://qr.afip.gob.ar/?qr=IUsHD3VMWpJNosIMv6Dg0w,," target='_blank' rel="noreferrer nofollow" className="mr-4">
+            <span className="sr-only">AFIP</span>
+            <Image src='/afip.webp' alt='AFIP' width={23} height={32} />
+          </Link>
           {
             Object.values(socialNetworks)
               .filter(item => item.name !== 'WhatsApp')
@@ -80,10 +95,10 @@ export default async function Footer () {
       {
         socialNetworks.whatsapp.href !== ''
           ? (
-              <Link href={socialNetworks.whatsapp.href} target="_blank" rel="noreferrer nofollow">
-                <span className="sr-only">{socialNetworks.whatsapp.name}</span>
-                <socialNetworks.whatsapp.icon className="w-16 fixed bottom-4 right-4 m-4" aria-hidden="true" />  
-              </Link>
+            <Link href={socialNetworks.whatsapp.href} target="_blank" rel="noreferrer nofollow">
+              <span className="sr-only">{socialNetworks.whatsapp.name}</span>
+              <socialNetworks.whatsapp.icon className="w-16 fixed bottom-1 right-1 md:bottom-4 md:right-4 md:m-4" aria-hidden="true" />
+            </Link>
             )
           : null
       }

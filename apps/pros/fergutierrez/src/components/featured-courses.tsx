@@ -11,9 +11,9 @@ const images = [
 
 export default function FeaturedCourses () {
   return (
-    <section className="py-8">
+    <section className="pb-8 md:pt-8">
       <div className="flex justify-center items-center gap-12 max-w-6xl mx-auto lg:flex-row flex-col">
-        <div className="text-left md:w-1/2 ml-10">
+        <div className="text-left md:w-1/2 px-4 md:px-0 md:ml-10 order-2 md:order-1">
           <h1 className="text-3xl text-gray-700 font-extralight mb-8">Automaquillaje</h1>
 
           <Paragraph>Los cursos y las clases pueden ser presenciales u online.</Paragraph>
@@ -22,7 +22,7 @@ export default function FeaturedCourses () {
 
           <Button link='/automaquillaje'>Más info</Button>
         </div>
-        <div className="w-full sm:w-4/6 md:w-1/2 grid grid-cols-2 gap-4">
+        <div className="w-full sm:w-4/6 md:w-1/2 grid grid-cols-2 gap-4 order-2 md:order-1">
           {images.map((image, index) => (
             <div key={index} className="overflow-hidden">
               <Image className="h-full" alt='Automaquillaje' src={image} />

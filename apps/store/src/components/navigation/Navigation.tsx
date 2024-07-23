@@ -1,7 +1,7 @@
 'use client'
 
 import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Popover, PopoverButton, PopoverGroup, PopoverPanel, Transition } from '@headlessui/react'
 import type { Brand, Category } from 'api'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -27,14 +27,14 @@ export default function Navigation ({ navigation }: Props) {
                 <div className="flex h-16 items-center justify-between">
                   <div className="h-full flex w-full">
                     {/* Flyout menus */}
-                    <Popover.Group className="inset-x-0 bottom-0 w-full">
+                    <PopoverGroup className="inset-x-0 bottom-0 w-full">
                       <div className="flex h-full justify-center space-x-8">
                         {navigation.categories.map((category) => (
                           <Popover key={category.name} className="flex">
                             {({ open, close }) => (
                               <>
                                 <div className="relative flex">
-                                  <Popover.Button
+                                  <PopoverButton
                                     className={clsx(
                                       open
                                         ? 'border-primary-600 text-primary-600 dark:text-primary-500 dark:border-primary-500'
@@ -43,7 +43,7 @@ export default function Navigation ({ navigation }: Props) {
                                     )}
                                   >
                                     {category.name}
-                                  </Popover.Button>
+                                  </PopoverButton>
                                 </div>
 
                                 <Transition
@@ -55,9 +55,9 @@ export default function Navigation ({ navigation }: Props) {
                                   leaveFrom="opacity-100"
                                   leaveTo="opacity-0"
                                 >
-                                  <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
+                                  <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
                                     <CategorySubLevel category={category} onClick={close} />
-                                  </Popover.Panel>
+                                  </PopoverPanel>
                                 </Transition>
                               </>
                             )}
@@ -76,7 +76,7 @@ export default function Navigation ({ navigation }: Props) {
                           </Link>
                         ))}
                       </div>
-                    </Popover.Group>
+                    </PopoverGroup>
                   </div>
                 </div>
               </div>
