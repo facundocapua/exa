@@ -101,7 +101,7 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
                               <span className="text-base-regular">{option.name}</span>
                             </div>
                             <span className="justify-self-end text-ui-fg-base">
-                              {option.amount! > 0 ? formatPrice(option.amount! / 100!) : 'Gratis'}
+                              {option.amount! >= 1 ? formatPrice(option.amount! / 100!) : 'Gratis'}
                             </span>
                           </RadioGroup.Option>
                         )
