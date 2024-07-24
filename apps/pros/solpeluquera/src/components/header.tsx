@@ -7,6 +7,8 @@ import { Fragment, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
+import { SearchBoxSimple } from 'ui/components/search-box/search-box-simple'
+import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 
 type Props = {
   cart: React.ReactNode
@@ -44,8 +46,8 @@ export default function Header ({ cart }: Props) {
           ))}
         </nav>
 
-        <div className='flex justify-end items-center'>
-          <div className="lg:hidden mr-4">
+        <div className='flex justify-end items-center gap-8'>
+          <div className="lg:hidden">
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md text-gray-700"
@@ -55,9 +57,16 @@ export default function Header ({ cart }: Props) {
               <Bars3Icon className="h-8 w-8" aria-hidden="true" />
             </button>
           </div>
-          {cart}
+          <div className='hidden lg:block'>
+            <SearchBoxSimple
+            iconClassName='text-gray-700'
+            inputClassName='text-gray-500 focus:border-b-primary-500'
+          />
+          </div>
+          <div>
+            {cart}
+          </div>
         </div>
-
       </div>
 
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
@@ -89,12 +98,19 @@ export default function Header ({ cart }: Props) {
                   <Logo centered={false} />
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-primary-100"
+                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-primary-400"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <span className="sr-only">Cerrar menu</span>
                     <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                   </button>
+                </div>
+
+                <div className='flex p-4'>
+                  <SearchBoxMobile
+                    iconClassName='text-secondary-600'
+                    inputClassName='text-secondary-600 focus:border-b-primary-400'
+                  />
                 </div>
 
                 <div className="mt-6 space-y-2">

@@ -18,6 +18,20 @@ export const SearchBoxSimple = ({ iconClassName, inputClassName }: Props) => {
     setShow(false)
   }, [pathname])
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShow(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   return (
     <>
       <button className="flex items-center" onClick={() => setShow(true)}>

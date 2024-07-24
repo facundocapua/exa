@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -7,20 +8,24 @@ export default async function HeroBanner () {
       <div className="md:grid md:grid-cols-2 items-center md:flex-row bg-radial-small md:bg-radial-medium 2xl:bg-radial-big">
         <div className="max-w-[700px] max-h-[700px] w-full aspect-square relative overflow-hidden">
           <Image
-            className='object-cover object-center opacity-60 md:opacity-100'
+            className='object-cover object-center'
             src="/home.png"
             alt=""
             fill
           />
         </div>
-        <div className="mx-auto max-w-7xl absolute top-[150px] md:static md:top-0">
+        <div className={clsx(
+          'max-w-7xl md:backdrop-blur-0 text-balance',
+          'absolute bottom-0 backdrop-blur bg-white/30 rounded-lg m-4 p-2',
+          'md:bg-transparent md:rounded-none md:static md:mx-auto'
+        )}>
           <div className="relative z-10 lg:w-full lg:max-w-2xl">
             <div className="relative px-6">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-2xl">
-                <h1 className="text-4xl tracking-tight lg:text-secondary-500 sm:text-4xl text-secondary-500 font-custom font-normal uppercase">
+                <h1 className="hidden md:block text-4xl tracking-tight lg:text-secondary-500 sm:text-4xl text-secondary-500 font-custom font-normal uppercase">
                   <span className="text-primary-400 font-black text-6xl block md:inline">Sol</span> La Peluquera
                 </h1>
-                <Link href="/portfolio" className="mt-6 block md:text-lg md:leading-8 text-gray-900 md:text-gray-900">
+                <Link href="/portfolio" className="md:mt-6 block md:text-lg md:leading-8 text-gray-900 md:text-gray-900">
                   Con más de 20 años de experiencia, se destaca por su expertise en color y especialización en rulos, ofreciendo un estilo vanguardista y libre que transforma cada look en una obra de arte única.
                 </Link>
                 <div className="mt-10 items-center gap-x-6 hidden md:block">

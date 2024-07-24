@@ -7,28 +7,22 @@ export default function AboutMe () {
       <header className='w-full md:w-1/2 px-2 md:px-4 z-10'>
         <h1 className='text-4xl md:text-4xl font-black font-custom uppercase my-4 text-secondary-500 '>Sol <span className='text-primary-400'>Squaglia</span></h1>
         <div className='flex flex-col gap-6 px-2 md:px-0 text-gray-700'>
-          {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>
+          <p className='text-balance'>
             Sol La Peluquera nace por los 2000 bajo el nombre de “Sol peluqueria unisex”. Los años pasaron y todo se transformó, hasta nuestra marca.
           </p>
-          {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>
+          <p className='text-balance'>
             Con más de 20 años de experiencia en el rubro, Sol (más allá de ser peluquera general) es experta en color y especialista en rulos. Se distingue por su estilo “vanguardista” y LIBRE!
           </p>
-          {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>
+          <p className='text-balance'>
             Estudiante incansable de todas las áreas relacionadas a la peluquería y afines. Formada internacionalmente (desde color hasta tricologia capilar). Así mismo, hizo la carrera de Maestra Instructora de 5 años de duración. Para luego convertirse en educadora independiente.
           </p>
-          {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>
+          <p className='text-balance'>
             Nunca deja de formarse, para brindar lo mejor en el salón y a sus estudiantes.
           </p>
-          {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>
+          <p className='text-balance'>
             Hoy día, Sol La Peluquera está ubicado en Olavarria, Provincia de Buenos Aires. Pero viaja por  distintos lugares, compartiendo sus saberes y brindando todo tipo de formaciones.
           </p>
-          {/* @ts-ignore */}
-          <p style={{ textWrap: 'balance' }}>
+          <p className='text-balance'>
             SU PASIÓN…. Los colores fantasía
           </p>
         </div>
