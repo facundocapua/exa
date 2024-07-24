@@ -9,7 +9,7 @@ export default async function HeroBanner () {
         <div className="max-w-[700px] max-h-[700px] w-full aspect-square relative overflow-hidden">
           <Image
             className='object-cover object-[-500%_50%] md:object-center'
-            src="/home.png"
+            src="/home.webp"
             alt=""
             priority={true}
             fill={true}
