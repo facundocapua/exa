@@ -54,7 +54,7 @@ const config: Pick<Config, 'presets'> = {
           backgroundImage: {
             'radial-big': 'radial-gradient(circle at 30% 60%, rgba(145,55,149,1) 20%, rgba(241,247,206,1) 33%)',
             'radial-medium': 'radial-gradient(circle at 30% 60%, rgba(145,55,149,1) 20%, rgba(241,247,206,1) 40%)',
-            'radial-small': 'radial-gradient(circle at 60% 50%, rgba(145,55,149,1) 20%, rgba(241,247,206,1) 60%)'
+            'radial-small': 'radial-gradient(circle at 75% 55%, rgba(145,55,149,1) 20%, rgba(241,247,206,1) 60%)'
           }
         }
       }

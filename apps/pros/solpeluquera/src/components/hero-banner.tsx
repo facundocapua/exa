@@ -8,7 +8,7 @@ export default async function HeroBanner () {
       <div className="md:grid md:grid-cols-2 items-center md:flex-row bg-radial-small md:bg-radial-medium 2xl:bg-radial-big">
         <div className="max-w-[700px] max-h-[700px] w-full aspect-square relative overflow-hidden">
           <Image
-            className='object-cover object-center'
+            className='object-cover object-[-500%_50%] md:object-center'
             src="/home.png"
             alt=""
             fill
@@ -16,8 +16,8 @@ export default async function HeroBanner () {
         </div>
         <div className={clsx(
           'max-w-7xl md:backdrop-blur-0 text-balance',
-          'absolute bottom-0 backdrop-blur bg-white/30 rounded-lg m-4 p-2',
-          'md:bg-transparent md:rounded-none md:static md:mx-auto'
+          'absolute top-[10px] w-[250px]',
+          'md:bg-transparent md:rounded-none md:static md:mx-auto md:top-0 md:w-auto'
         )}>
           <div className="relative z-10 lg:w-full lg:max-w-2xl">
             <div className="relative px-6">

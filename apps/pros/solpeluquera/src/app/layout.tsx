@@ -1,4 +1,4 @@
-import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
+import { STORE_DESCRIPTION, STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
@@ -13,18 +13,10 @@ const inter = Inter({
 
 const fashionFetish = localFont({
   src: [
-    // {
-    //   path: './fonts/fashion-fetish-light.ttf',
-    //   weight: '300'
-    // },
     {
       path: './fonts/fashion-fetish-regular.ttf',
       weight: '400'
     },
-    // {
-    //   path: './fonts/fashion-fetish-bold.ttf',
-    //   weight: '700'
-    // },
     {
       path: './fonts/fashion-fetish-heavy.ttf',
       weight: '900'
@@ -36,10 +28,10 @@ const fashionFetish = localFont({
 
 export const metadata: Metadata = {
   title: STORE_NAME,
-  description: 'Sol La Peluquera - Una pelu diferente',
+  description: STORE_DESCRIPTION,
   openGraph: {
     title: STORE_NAME,
-    description: 'Sol La Peluquera - Una pelu diferente',
+    description: STORE_DESCRIPTION,
     type: 'website',
     locale: 'es_AR',
     siteName: 'eXa Pro',
@@ -56,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary',
     creator: '@eXaBeautyOk',
     title: STORE_NAME,
-    description: 'Sol La Peluquera - Una pelu diferente',
+    description: STORE_DESCRIPTION,
     site: '@eXaBeautyOk'
   }
 }
