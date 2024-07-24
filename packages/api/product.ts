@@ -175,6 +175,12 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
   const restrictedData = await getProducts(params)
 
   const filteredData = applyFilters(restrictedData, filters)
+  filteredData.sort((a, b) => {
+    const aInStock = Number(a?.variants?.[0]?.inventory_quantity ?? 0) > 0 ? 1 : 0
+    const bInStock = Number(b?.variants?.[0]?.inventory_quantity ?? 0) > 0 ? 1 : 0
+
+    return bInStock - aInStock
+  })
 
   return new Promise((resolve) => {
     resolve({
