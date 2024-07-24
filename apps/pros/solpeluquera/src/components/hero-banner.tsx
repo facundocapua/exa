@@ -11,7 +11,8 @@ export default async function HeroBanner () {
             className='object-cover object-[-500%_50%] md:object-center'
             src="/home.png"
             alt=""
-            fill
+            priority={true}
+            fill={true}
           />
         </div>
         <div className={clsx(
