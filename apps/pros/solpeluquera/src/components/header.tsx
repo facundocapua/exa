@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Logo from './logo'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -17,6 +17,10 @@ type Props = {
 export default function Header ({ cart }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
 
   return (
     <header className={clsx(

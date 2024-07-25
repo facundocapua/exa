@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Logo from './logo'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import NavLink from './nav-link'
 import { usePathname } from 'next/navigation'
@@ -19,6 +19,10 @@ export default function Header ({ cart }: Props) {
   const navLeft = navigation.slice(0, 2)
   const navRight = navigation.slice(2, navigation.length)
   const pathname = usePathname()
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
 
   return (
     <header className="pt-4 pb-8 bg-slate-600">

@@ -11,13 +11,13 @@ type Props = {
 export default function ProductInfo ({ product }: Props) {
   return (
     <>
-      <Link href={`/brand/${product.brand.handle}`} className='block uppercase text-sm text-primary-700 mb-4'>{product.brand.name}</Link>
+      <Link href={`/brand/${product.brand.handle}`} className='block uppercase text-sm text-primary-700 dark:text-primary-400 mb-4'>{product.brand.name}</Link>
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{product.title}</h1>
       <div className="mt-3">
         <h2 className="sr-only">Información de producto</h2>
         <div className="flex gap-2 mt-6 items-center">
-          { product.salePrice > 0 && <Price amount={product.salePrice} className='text-xl text-neutral-600' /> }
-          { product.salePrice < product.price && <Price amount={product.price} className='line-through text-neutral-400 text-md' /> }
+          { product.salePrice > 0 && <Price amount={product.salePrice} className='text-xl text-neutral-600 dark:text-neutral-300' /> }
+          { product.salePrice < product.price && <Price amount={product.price} className='line-through text-neutral-400 dark:text-neutral-500 text-md' /> }
         </div>
       </div>
 

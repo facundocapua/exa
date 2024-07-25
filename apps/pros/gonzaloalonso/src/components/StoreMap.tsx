@@ -49,46 +49,26 @@ export default async function StoreMap () {
     })
 
   return (
-    <>
-      <section className="max-w-7xl mx-auto flex gap-4 flex-col md:flex-row my-8">
-        <div className="flex-grow">
-          <h2 className="text-4xl">Gonzalo Alonso Studio</h2>
-          <Link href="https://maps.google.com/maps/dir//Gonzalo+Alonso+Studio+Mitre+820+B7000+Tandil+Provincia+de+Buenos+Aires/@-37.3226979,-59.1349067,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x95911fc724fd3d1b:0x73872f573ef403dd" target='_blank' rel='' className="flex justify-start py-4 gap-2"><MapPinIcon className="w-6 h-6" />{store.address} - {store.city}, {store.state}</Link>
-          <div className='flex gap-8 py-10'>
-            {socialNetworks.map((item) => (
-              <Link key={item.name} href={item.href} target="_blank" rel="noreferrer nofollow" className="opacity-90 hover:opacity-70">
-                <span className="sr-only">{item.name}</span>
-                <item.icon className="h-9 w-9" aria-hidden="true" />
-              </Link>
-            ))}
-          </div>
-          <div className='relative w-[400px] h-[200px] rounded-lg self-start'>
-            <Link href='/studio'>
-              <Image src='/studio/1.jpg' alt='Studio' className='rounded-lg object-cover grayscale hover:grayscale-0' fill />
+    <section className="max-w-7xl mx-auto flex gap-4 flex-col md:flex-row my-8 px-4 md:px-0">
+      <div className="flex-grow">
+        <h2 className="text-3xl md:text-4xl">Gonzalo Alonso Studio</h2>
+        <Link href="https://maps.google.com/maps/dir//Gonzalo+Alonso+Studio+Mitre+820+B7000+Tandil+Provincia+de+Buenos+Aires/@-37.3226979,-59.1349067,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x95911fc724fd3d1b:0x73872f573ef403dd" target='_blank' rel='' className="flex justify-start py-4 gap-2"><MapPinIcon className="w-6 h-6" />{store.address} - {store.city}, {store.state}</Link>
+        <div className='flex gap-8 py-4 md:py-10'>
+          {socialNetworks.map((item) => (
+            <Link key={item.name} href={item.href} target="_blank" rel="noreferrer nofollow" className="opacity-90 hover:opacity-70">
+              <span className="sr-only">{item.name}</span>
+              <item.icon className="h-9 w-9" aria-hidden="true" />
             </Link>
-          </div>
-
+          ))}
         </div>
-        <div className="flex-grow" dangerouslySetInnerHTML={{ __html: store.map }} />
+        <div className='hidden md:block relative max-w-full w-[400px] h-[200px] rounded-lg self-start'>
+          <Link href='/studio'>
+            <Image src='/studio/1.jpg' alt='Studio' className='rounded-lg object-cover grayscale hover:grayscale-0' fill />
+          </Link>
+        </div>
 
-      </section>
-      {
-        store.social_networks?.whatsapp
-          ? (<Link href={store.social_networks.whatsapp} target="_blank" rel="noreferrer nofollow">
-            {
-            socialNetworksMeta.whatsapp
-              ? (
-                <>
-                  <span className="sr-only">{socialNetworksMeta.whatsapp.name}</span>
-                  <socialNetworksMeta.whatsapp.iconAlternative className="w-16 fixed bottom-4 right-4 m-4" aria-hidden="true" />
-                </>
-                )
-              : null}
-
-          </Link>)
-          : null
-      }
-
-    </>
+      </div>
+      <div className="flex-grow" dangerouslySetInnerHTML={{ __html: store.map }} />
+    </section>
   )
 }
