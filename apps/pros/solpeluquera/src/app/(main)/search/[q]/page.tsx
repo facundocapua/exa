@@ -1,4 +1,4 @@
-import { getFilteredSearchProducts } from 'api'
+import { getFilteredSearchProducts, getSalon } from 'api'
 import { redirect } from 'next/navigation'
 import { ProductListPage } from 'ui/server'
 
@@ -22,9 +22,12 @@ export default async function SearchPage ({ params, searchParams }: Props) {
     current: true
   })
 
+  const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
+  const salon = await getSalon(salonId)
   const { filters, products, total } = await getFilteredSearchProducts({
     q,
     filters: searchParams,
+    salesChannelId: salon?.sales_channel_id,
     exclude: []
   })
 
