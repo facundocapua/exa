@@ -21,7 +21,7 @@ export const SERVICES = [
   // },
   {
     image: service4,
-    title: 'Perfilado Cejas',
+    title: 'Diseño Cejas',
     link: '/servicios/cejas'
   }
 ]
