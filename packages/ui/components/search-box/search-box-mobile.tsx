@@ -63,9 +63,7 @@ export const SearchBoxMobile = ({ iconClassName, inputClassName }: Props) => {
 
   return (
     <form className="w-full sm:max-w-xs" onSubmit={handleSubmit}>
-      <label htmlFor="search" className="sr-only">
-        Buscar
-      </label>
+      <label htmlFor="search" className="sr-only">Buscar</label>
       <div className="relative group">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <MagnifyingGlassIcon className={clsx(twMerge(

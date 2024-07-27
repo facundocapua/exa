@@ -11,7 +11,7 @@ export default function Logo ({ centered = true }: { centered?: boolean}) {
       }
     )}>
       <span className="sr-only">Sol La Peluquera</span>
-      <Image className='focus:outline-none' src="/logo.webp" width={150} height={96} alt="Sol La Peluquera" />
+      <Image className='focus:outline-none' src="/logo.webp" width={150} height={96} alt="logo" />
     </Link>
   )
 }

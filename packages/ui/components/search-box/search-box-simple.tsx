@@ -34,7 +34,7 @@ export const SearchBoxSimple = ({ iconClassName, inputClassName }: Props) => {
 
   return (
     <>
-      <button className="flex items-center" onClick={() => setShow(true)}>
+      <button className="flex items-center" onClick={() => setShow(true)} aria-label='Buscar'>
         <MagnifyingGlassIcon className={clsx(twMerge(
           'h-6 w-6 text-neutral-400 group-focus:text-neutral-900',
           iconClassName

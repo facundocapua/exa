@@ -58,7 +58,7 @@ export default async function Footer () {
         <div className="flex justify-center space-x-6 md:order-2">
           <Link href="http://qr.afip.gob.ar/?qr=IUsHD3VMWpJNosIMv6Dg0w,," target='_blank' rel="noreferrer nofollow" className="mr-4">
             <span className="sr-only">AFIP</span>
-            <Image src='/afip.webp' alt='AFIP' width={23} height={32} />
+            <Image src='/afip.webp' alt='logo afip' width={23} height={32} />
           </Link>
           {Object.values(socialNetworks)
             .filter(item => item.name !== 'WhatsApp')
