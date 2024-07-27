@@ -22,7 +22,7 @@ export default function FeaturedCourses () {
 
           <Button link='/automaquillaje'>Más info</Button>
         </div>
-        <div className="w-full sm:w-4/6 md:w-1/2 grid grid-cols-2 gap-4 order-2 md:order-1">
+        <div className="w-full sm:w-4/6 md:w-1/2 grid grid-cols-2 gap-4 order-1 md:order-2">
           {images.map((image, index) => (
             <div key={index} className="overflow-hidden">
               <Image className="h-full" alt='Automaquillaje' src={image} />

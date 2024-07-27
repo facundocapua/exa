@@ -15,7 +15,7 @@ const images = [
 
 export default function FeaturedServices () {
   return (
-    <section className="py-8">
+    <section className="pb-8 pt-0 md:pt-8">
       <div className="flex justify-center items-center gap-12 max-w-6xl mx-auto lg:flex-row flex-col">
         <div className="w-full sm:w-4/6 md:w-1/2 grid grid-cols-2 gap-4">
           {images.map((image, index) => (
