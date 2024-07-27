@@ -11,7 +11,9 @@ export default function robots (): MetadataRoute.Robots {
         '/account/',
         '/search/',
         '/mercadopago/',
-        '/order/'
+        '/order/',
+        '/arrepentimiento/',
+        '/terminos-y-condiciones/'
       ]
     },
     sitemap: `${STORE_URL}/sitemap.xml`

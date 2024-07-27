@@ -1,4 +1,5 @@
 import { STORE_URL } from '@/utils/const'
+import { getProducts } from 'api'
 import { MetadataRoute } from 'next'
 
 const getUrls = async (): Promise<MetadataRoute.Sitemap> => {
@@ -7,13 +8,18 @@ const getUrls = async (): Promise<MetadataRoute.Sitemap> => {
     { route: '/', priority: 1, changeFrequency: 'weekly' },
     { route: '/sobre-mi', priority: 1, changeFrequency: 'monthly' },
     { route: '/portfolio', priority: 0.8, changeFrequency: 'monthly' },
-    { route: '/studio', priority: 0.8, changeFrequency: 'monthly' },
+    { route: '/colecciones', priority: 0.8, changeFrequency: 'monthly' },
     { route: '/servicios', priority: 0.8, changeFrequency: 'monthly' },
+    { route: '/htbar', priority: 0.8, changeFrequency: 'monthly' },
 
     { route: '/tienda', priority: 0.5, changeFrequency: 'weekly' }
   ]
 
-  const allRoutes = [...genericRoutes]
+  const productRoutes = (await getProducts()).map(({ handle }) => {
+    return { route: `/product/${handle}`, priority: 0.5, changeFrequency: 'weekly' }
+  })
+
+  const allRoutes = [...genericRoutes, ...productRoutes]
 
   return allRoutes.map(({ route, priority, changeFrequency }) => {
     return {
