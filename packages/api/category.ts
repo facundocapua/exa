@@ -9,8 +9,9 @@ export const getCategories = async (): Promise<Array<Category>> => {
     `${getMedusaUrl()}/store/product-categories?${params.toString()}`,
     {
       next: {
-        tags: ['categories']
-      }
+        tags: ['categories'],
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())
@@ -44,8 +45,9 @@ export const getTopLevelCategories = async (): Promise<Array<Category>> => {
     `${getMedusaUrl()}/store/product-categories?${params.toString()}`,
     {
       next: {
-        tags: ['categories']
-      }
+        tags: ['categories', 'top-level-categories'],
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())
@@ -66,8 +68,9 @@ export const getCategory = async (handle: string): Promise<Category | null> => {
     `${getMedusaUrl()}/store/product-categories?${params.toString()}`,
     {
       next: {
-        tags: ['categories', `category-${handle}`]
-      }
+        tags: ['categories', `category-${handle}`],
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())
