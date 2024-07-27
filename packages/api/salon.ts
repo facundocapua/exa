@@ -2,7 +2,15 @@ import type { Salon } from './types'
 import { getMedusaUrl } from './utils/medusa'
 
 export async function getSalons (): Promise<Array<Salon>> {
-  const salons = fetch(`${getMedusaUrl()}/store/salons`)
+  const salons = fetch(
+    `${getMedusaUrl()}/store/salons`,
+    {
+      next: {
+        tags: ['salon']
+      },
+      cache: 'force-cache'
+    }
+  )
     .then((res) => res.json())
     .then(data => {
       return data.salons
@@ -20,7 +28,8 @@ export async function getSalon (salonId: Salon['id']): Promise<Salon | null> {
     {
       next: {
         tags: ['salon', `salon-${salonId}`]
-      }
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())

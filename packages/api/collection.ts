@@ -9,7 +9,8 @@ export const getCollections = async (): Promise<Array<Collection>> => {
     {
       next: {
         tags: ['collections', 'products']
-      }
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())

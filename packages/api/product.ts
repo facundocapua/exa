@@ -17,7 +17,8 @@ export const getProductVariants = async (variantIds: string[]): Promise<Array<Pr
     {
       next: {
         tags: ['variants']
-      }
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())
@@ -85,7 +86,8 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
     {
       next: {
         tags: ['products']
-      }
+      },
+      cache: 'force-cache'
     }
   )
     .then((res) => res.json())

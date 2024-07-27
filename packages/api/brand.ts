@@ -22,7 +22,8 @@ export const getBrands = async ({ handle, isFeatured }: BrandsFilter = {}): Prom
     {
       next: {
         tags: ['brands']
-      }
+      },
+      cache: 'force-cache'
     })
     .then((res) => res.json())
     .then(data => {
