@@ -32,8 +32,8 @@ export const SOCIAL_MAKEUP_SERVICES = [
     subtitle: 'Para las que no suelen maquillarse',
     description: [
       'Preparación de la piel.',
-      'Base, corrector, tonalizador, rubor, labial, sombras suaves y máscaras de pestañas.',
-      'Ideal para las más naturales.'
+      'Base, corrector, contorno, bronzer, rubor, labial, sombras suaves y máscaras de pestañas.',
+      'Larga duración.'
     ],
     price: '25.000',
     duration: 30,
@@ -44,10 +44,9 @@ export const SOCIAL_MAKEUP_SERVICES = [
     name: 'Makeup Básico',
     subtitle: 'Ideal para realzar tus facciones',
     description: [
-      'Diseñamos un maquillaje especial para tu evento.',
-      'Variedad de sombras, pigmentos y delineados.',
-      'Larga duración y resistencia al agua.',
-      'Ideal XV años, egresadas e invitadas a fiestas.'
+      'Preparación de la piel.',
+      'Delineados clásicos.',
+      'Larga duración.'
     ],
     price: '29.000',
     duration: 45,
@@ -58,11 +57,11 @@ export const SOCIAL_MAKEUP_SERVICES = [
     name: 'Makeup Full',
     subtitle: 'Para darlo todo en tu evento',
     description: [
-      'Maquillaje a medida para tu gran evento.',
-      'Distintas técnicas de ojos.',
-      'Pestañas postizas.',
-      'Larga duración.',
-      'Ideal para novias y madrinas.'
+      'Ideal para las que les gusta el maquillaje más cargado.',
+      'Preparación de la piel.',
+      'Distintas técnicas ojos.',
+      'Aplicación de piedras.',
+      'Larga duración.'
     ],
     price: '32.000',
     duration: 60,
