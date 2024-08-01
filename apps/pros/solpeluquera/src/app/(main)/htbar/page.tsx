@@ -7,6 +7,14 @@ import sixthImg from '@public/htbar/6.webp'
 import { Breadcrumb } from 'ui/server'
 import Title from '@/components/title'
 import Image from 'next/image'
+import { Metadata } from 'next'
+import { STORE_URL } from '@/utils/const'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/htbar`
+  }
+}
 
 export default function ServicesPage () {
   const breadcrumbs = [

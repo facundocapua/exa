@@ -13,9 +13,9 @@ export default async function FeaturedBrands ({ title }: Props) {
 
   return (
     <section className='py-8'>
-      <h1 className='mx-auto text-center text-2xl md:text-3xl font-normal font-custom uppercase mb-8 text-primary-600'>
+      <h2 className='mx-auto text-center text-2xl md:text-3xl font-normal font-custom uppercase mb-8 text-primary-600'>
         {title ?? 'Marcas que utilizamos'}
-      </h1>
+      </h2>
       {
         brands.length > 4
           ? <BrandFeaturedList brands={brands} />

@@ -6,6 +6,14 @@ import StoreMap from '@/components/store-map'
 import { Suspense } from 'react'
 import { ProductSliderSkeleton } from 'ui/components/product-slider/product-slider-skeleton'
 import { BrandFeaturedSkeleton } from 'ui/components/brand-featured-list/brand-featured-skeleton'
+import { Metadata } from 'next'
+import { STORE_URL } from '@/utils/const'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: STORE_URL
+  }
+}
 
 export default function Home () {
   return (

@@ -18,9 +18,9 @@ export const BrandFeaturedSkeleton = ({ title, containerClassname }: Props) => {
       { 'bg-neutral-100': !containerClassname },
       containerClassname
     )}>
-      <h1 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>
+      <h2 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>
         { title ?? 'Marcas Líderes de Belleza' }
-      </h1>
+      </h2>
       <div className='embla relative'>
         <div className="embla__viewport overflow-hidden md:mx-12 mx-8">
           <div className='embla__container flex gap-8 md:mx-4 mx-0'>

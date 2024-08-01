@@ -1,4 +1,4 @@
-import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
+import { STORE_NAME, STORE_OG_IMAGE, STORE_URL } from '@/utils/const'
 import { getFilteredProducts, getSalon } from 'api'
 import { Metadata } from 'next'
 import { ProductListPage } from 'ui/server'
@@ -32,6 +32,9 @@ export async function generateMetadata (): Promise<Metadata> {
       title: `Tienda | ${STORE_NAME}`,
       description: 'Tienda de productos de belleza de marcas premium.',
       site: '@eXaBeautyOk'
+    },
+    alternates: {
+      canonical: `${STORE_URL}/tienda`
     }
   }
 }

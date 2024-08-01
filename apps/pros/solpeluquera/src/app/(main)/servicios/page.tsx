@@ -6,6 +6,14 @@ import treatmentImg from '@public/services/treatment.webp'
 import styleImg from '@public/services/hairstyle.webp'
 import { Breadcrumb } from 'ui/server'
 import Title from '@/components/title'
+import { Metadata } from 'next'
+import { STORE_URL } from '@/utils/const'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/servicios`
+  }
+}
 
 export default function ServicesPage () {
   const breadcrumbs = [

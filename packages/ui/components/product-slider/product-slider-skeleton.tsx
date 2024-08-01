@@ -14,7 +14,7 @@ export const ProductSliderSkeleton = ({ title }: Props) => {
 
   return (
     <div className='py-4 bg-neutral-200'>
-      <h1 className='mx-auto text-center text-3xl font-semibold mb-6'>{title}</h1>
+      <h2 className='mx-auto text-center text-3xl font-semibold mb-6'>{title}</h2>
       <section className='embla relative'>
         <div className="embla__viewport overflow-hidden md:mx-12" ref={emblaRef}>
           <div className='embla__container flex'>
