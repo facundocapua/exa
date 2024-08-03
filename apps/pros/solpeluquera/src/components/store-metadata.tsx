@@ -20,12 +20,12 @@ export default function StoreMetadata ({ salon }: Props) {
     '@context': 'https://schema.org',
     '@type': 'Store',
     image: [
-      `${STORE_URL}/porfolio/portfolio-1.webp`,
-      `${STORE_URL}/porfolio/portfolio-2.webp`,
-      `${STORE_URL}/porfolio/portfolio-3.webp`,
-      `${STORE_URL}/porfolio/portfolio-4.webp`,
-      `${STORE_URL}/porfolio/portfolio-5.webp`,
-      `${STORE_URL}/porfolio/portfolio-6.webp`
+      `${STORE_URL}/portfolio/portfolio-1.webp`,
+      `${STORE_URL}/portfolio/portfolio-2.webp`,
+      `${STORE_URL}/portfolio/portfolio-3.webp`,
+      `${STORE_URL}/portfolio/portfolio-4.webp`,
+      `${STORE_URL}/portfolio/portfolio-5.webp`,
+      `${STORE_URL}/portfolio/portfolio-6.webp`
     ],
     name: salon.name,
     address: {
