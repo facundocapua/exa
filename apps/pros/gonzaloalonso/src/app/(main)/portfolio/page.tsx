@@ -2,6 +2,8 @@ import { Suspense } from 'react'
 import { Breadcrumb } from 'ui/server'
 import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
+import { STORE_URL } from '@/utils/const'
+import { Metadata } from 'next'
 
 const images = [
   '/portfolio/portfolio-1.webp',
@@ -20,6 +22,12 @@ const imagesClasses = [
   'w-full block h-[350px] md:h-full rounded-xl relative',
   'w-full block h-[350px] md:h-full rounded-xl relative'
 ]
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/portfolio`
+  }
+}
 
 export default function Page () {
   const breadcrumbs = [

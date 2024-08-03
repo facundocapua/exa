@@ -2,6 +2,8 @@ import { Suspense } from 'react'
 import { Breadcrumb } from 'ui/server'
 import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
+import { Metadata } from 'next'
+import { STORE_URL } from '@/utils/const'
 
 const images = [
   '/studio/1.webp',
@@ -11,6 +13,12 @@ const images = [
   '/studio/5.jpg',
   '/studio/6.webp'
 ]
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/studio`
+  }
+}
 
 export default function StudioPage () {
   const breadcrumbs = [

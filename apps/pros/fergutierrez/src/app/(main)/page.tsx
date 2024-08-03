@@ -4,6 +4,14 @@ import FeaturedServices from '@/components/featured-services'
 import HeroBio from '@/components/hero-bio'
 import OurBrands from '@/components/our-brands'
 import Testimonials from '@/components/testimonials'
+import { STORE_URL } from '@/utils/const'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: STORE_URL
+  }
+}
 
 export default function Home () {
   return (

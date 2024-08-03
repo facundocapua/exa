@@ -6,6 +6,14 @@ import colorImg from '@public/services/color.jpg'
 import cutImg from '@public/services/cut.jpg'
 import therapyImg from '@public/services/therapy.png'
 import { Breadcrumb } from 'ui/server'
+import { Metadata } from 'next'
+import { STORE_URL } from '@/utils/const'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/servicios`
+  }
+}
 
 export default function ServicesPage () {
   const breadcrumbs = [

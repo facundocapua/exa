@@ -1,6 +1,14 @@
 import SectionTitle from '@/components/section-title'
 import SocialMakeup from '@/components/service/social-makeup'
+import { STORE_URL } from '@/utils/const'
+import { Metadata } from 'next'
 import { Breadcrumb } from 'ui/server'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/servicios/social`
+  }
+}
 
 export default function ServicesSocial () {
   const pages = [

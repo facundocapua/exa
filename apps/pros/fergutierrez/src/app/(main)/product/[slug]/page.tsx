@@ -1,5 +1,7 @@
 // import RelatedProducts from '@/components/product/RelatedProducts'
+import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
 import { getProduct, getProducts } from 'api'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import { ProductImageGallery } from 'ui'
@@ -17,6 +19,42 @@ export async function generateStaticParams () {
   return products.map((product) => ({
     slug: product.handle
   }))
+}
+
+export async function generateMetadata ({ params }: Props): Promise<Metadata> {
+  const { slug } = params
+  const product = await getProduct(slug)
+  if (!product) return {}
+
+  return {
+    title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
+    description: product.description ?? `${product.brand.name} ${product.title}`,
+    openGraph: {
+      title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
+      description: product.description ?? `${product.brand.name} ${product.title}`,
+      type: 'website',
+      locale: 'es_AR',
+      siteName: 'eXa Pro',
+      images: [
+        {
+          url: product.thumbnail ?? STORE_OG_IMAGE,
+          width: product.thumbnail ? 630 : 1200,
+          height: 630,
+          alt: product.title
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary',
+      creator: '@eXaBeautyOk',
+      title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
+      description: product.description ?? `${product.brand.name} ${product.title}`,
+      site: '@eXaBeautyOk'
+    },
+    alternates: {
+      canonical: `https://exabeauty.com.ar/product/${slug}`
+    }
+  }
 }
 
 export default async function Product ({ params }: Props) {

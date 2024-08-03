@@ -1,6 +1,14 @@
 import SectionTitle from '@/components/section-title'
 import BrideMakeup from '@/components/service/bride-makeup'
+import { STORE_URL } from '@/utils/const'
+import { Metadata } from 'next'
 import { Breadcrumb } from 'ui/server'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/servicios/novias`
+  }
+}
 
 export default function ServicesBrideMakeup () {
   const pages = [

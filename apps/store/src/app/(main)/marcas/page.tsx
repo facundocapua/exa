@@ -1,6 +1,14 @@
+import { STORE_URL } from '@/utils/const'
 import { getBrands } from 'api'
+import { Metadata } from 'next'
 import { BrandsList } from 'ui'
 import { Breadcrumb } from 'ui/server'
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${STORE_URL}/marcas`
+  }
+}
 
 export default async function Brand () {
   const brands = await getBrands()

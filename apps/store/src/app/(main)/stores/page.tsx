@@ -1,4 +1,5 @@
 import StoreLocator from '@/components/stores/StoreLocator'
+import { STORE_URL } from '@/utils/const'
 import { getSalons } from 'api'
 import { Metadata } from 'next'
 import { Breadcrumb } from 'ui/server'
@@ -28,6 +29,9 @@ export const metadata: Metadata = {
     title: 'Buscador eXa Pro | eXa Beauty Store',
     description: 'Explora los profesionales asociados y encuentra el que mejor se adapte a tus necesidades. Distribuidor oficial de Framesi, Framar, Kerastase y LOreal Professionnel.',
     site: '@eXaBeautyOk'
+  },
+  alternates: {
+    canonical: `${STORE_URL}/stores`
   }
 }
 
