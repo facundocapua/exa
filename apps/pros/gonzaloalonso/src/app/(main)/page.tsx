@@ -9,13 +9,22 @@ import { BrandFeaturedSkeleton } from 'ui/components/brand-featured-list/brand-f
 import { STORE_URL } from '@/utils/const'
 import { Metadata } from 'next'
 
+import StoreMetadata from '@/components/store-metadata'
+import { getSalon } from 'api'
+
 export const metadata: Metadata = {
   alternates: {
     canonical: STORE_URL
   }
 }
 
-export default function Home () {
+export default async function Home () {
+  const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
+  if (!salonId) return null
+
+  const salon = await getSalon(salonId)
+  if (!salon) return null
+
   return (
     <main>
       <HeroBanner />
@@ -27,6 +36,7 @@ export default function Home () {
         <FeaturedProducts />
       </Suspense>
       <StoreMap />
+      <StoreMetadata salon={salon} />
     </main>
   )
 }

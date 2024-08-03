@@ -8,6 +8,8 @@ import { ProductSliderSkeleton } from 'ui/components/product-slider/product-slid
 import { BrandFeaturedSkeleton } from 'ui/components/brand-featured-list/brand-featured-skeleton'
 import { Metadata } from 'next'
 import { STORE_URL } from '@/utils/const'
+import { getSalon } from 'api'
+import StoreMetadata from '@/components/store-metadata'
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,7 +17,13 @@ export const metadata: Metadata = {
   }
 }
 
-export default function Home () {
+export default async function Home () {
+  const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
+  if (!salonId) return null
+
+  const salon = await getSalon(salonId)
+  if (!salon) return null
+
   return (
     <main>
       <HeroBanner />
@@ -27,6 +35,7 @@ export default function Home () {
         <FeaturedProducts />
       </Suspense>
       <StoreMap />
+      <StoreMetadata salon={salon} />
     </main>
   )
 }

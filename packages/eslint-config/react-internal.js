@@ -62,6 +62,12 @@ module.exports = {
         prefer: 'type-imports',
         disallowTypeAnnotations: true
       }
+    ],
+    "react/no-unknown-property": [
+      'error', 
+      { 
+        ignore: ['vocab', 'typeof', 'property'] 
+      }
     ]
   }
 }

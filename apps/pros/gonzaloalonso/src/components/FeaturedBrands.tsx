@@ -8,7 +8,7 @@ export default async function FeaturedBrands () {
 
   return (
     <section className='py-8'>
-      <h1 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>Marcas que utilizamos</h1>
+      <h2 className='mx-auto text-center text-2xl md:text-3xl font-semibold mb-8'>Marcas que utilizamos</h2>
       <BrandFeaturedList brands={brands} />
     </section>
   )
