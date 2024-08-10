@@ -1,7 +1,6 @@
 import service1 from '@public/services/2.jpg'
 import service2 from '@public/services/1.jpg'
-// import service3 from '@public/services/3.jpg'
-import service4 from '@public/services/4.jpg'
+import service3 from '@public/services/3.jpg'
 
 export const SERVICES = [
   {
@@ -14,13 +13,8 @@ export const SERVICES = [
     title: 'Maquillaje Novias',
     link: '/servicios/novias'
   },
-  // {
-  //   image: service3,
-  //   title: 'Clases Automaquillaje',
-  //   link: '/servicios/automaquillaje'
-  // },
   {
-    image: service4,
+    image: service3,
     title: 'Diseño Cejas',
     link: '/servicios/cejas'
   }
@@ -72,68 +66,44 @@ export const SOCIAL_MAKEUP_SERVICES = [
 
 export const SELF_MAKEUP_CLASSES = [
   {
-    name: 'Maquillaje de día',
+    name: 'Automaquillaje individual',
     description: [
-      'Aprenderás a armar tu set de maquillaje, preparar tu piel y realizar un maquillaje natural de día.',
-      'También vas a recibir tips de cuidados de la piel para mantenerla saludable y radiante a largo plazo.'
+      'Vas a aprender todos los pasos para lograr un maquillaje según tu estilo y la morfología de tu rostro.'
+      // 'También vas a recibir tips de cuidados de la piel para mantenerla saludable y radiante a largo plazo.'
+    ],
+    topics: [
+      'Preparación de la piel',
+      'Maquillaje básico de día',
+      'Maquillaje básico de noche',
+      'Asesoramiento para armar tu kit'
     ],
     price: '8.500',
-    duration: 90,
+    classes: 2,
+    duration: 60,
     image: '/services/selfmakeup/1.jpg',
-    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Maquillaje de día*.'
+    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Automaquillaje individual*.'
   },
   {
-    name: 'Maquillaje de noche',
+    name: 'Perfeccionamientos',
     description: [
-      'Aprenderás a realizar un maquillaje sofisticado y glamoroso para cualquier ocasión nocturna, desde una cena elegante hasta una fiesta de gala.',
-      'Descubrirás técnicas de aplicación de sombras, delineadores y labiales para lograr un look espectacular.'
+      'Clases personalizadas, podes elegir el tema que quieras profundizar.',
+      'Trabajaremos para que puedas afianzar tus técnicas y así lograr mayor confianza.'
     ],
     price: '8.500',
+    classes: 1,
     duration: 90,
     image: '/services/selfmakeup/2.jpg',
-    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Maquillaje de noche*.'
+    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Perfeccionamiento*.'
   },
   {
-    name: 'Especial esfumados',
+    name: 'Automaquillaje grupal',
     description: [
-      'Aprenderás a dominar la técnica de difuminar las sombras para lograr un efecto suave y elegante en tus ojos.',
-      'Te enseñaré trucos y herramientas para que puedas crear distintos looks, desde un look natural hasta un smokey eye intenso.'
+      'Para venir con amigas y disfrutar la experiencia aprendiendo juntas.'
     ],
     price: '8.500',
-    duration: 90,
+    classes: 1,
+    duration: 120,
     image: '/services/selfmakeup/3.jpg',
-    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Especial esfumados*.'
-  },
-  {
-    name: 'Especial delineados',
-    description: [
-      'Aprenderás a realizar distintos tipos de delineados, desde los clásicos hasta los más atrevidos y modernos.',
-      'Te enseñaré técnicas y herramientas para lograr un delineado perfecto, que se adapte a tu forma de ojos y estilo personal.'
-    ],
-    price: '8.500',
-    duration: 90,
-    image: '/services/selfmakeup/2.jpg',
-    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Especial esfumados*.'
-  },
-  {
-    name: 'Vení con una amiga',
-    description: [
-      '¿Querés compartir una experiencia única con tu amiga?',
-      'Vení a tomar cualquiera de nuestros cursos de automaquillaje y aprendan juntas a resaltar su belleza natural.',
-      'No se pierdan la oportunidad de divertirse mientras aprenden nuevas técnicas de maquillaje.'
-    ],
-    price: '12.500',
-    duration: 90,
-    image: '/services/selfmakeup/2.jpg',
-    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la promo *Vení con una amiga*.'
-  },
-  {
-    name: 'Grupal a domicilio',
-    description: [
-      '¡Organiza una clase grupal de automaquillaje a domicilio con un mínimo de 4 personas y aprende a sacar el máximo partido a tu belleza natural desde la comodidad de tu hogar!',
-      'Disfruta de una experiencia divertida y enriquecedora, con un enfoque personalizado en las necesidades de cada una.'
-    ],
-    image: '/services/selfmakeup/2.jpg',
-    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la promo *Vení con una amiga*.'
+    message: '¡Hola! ¿Cómo estás? Quisiera saber más sobre la clase de *Automaquillaje grupal*.'
   }
 ]

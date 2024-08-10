@@ -12,7 +12,7 @@ export default function ServicesBrideMakeup () {
       <div className='max-w-7xl mx-auto mb-4'>
         <Breadcrumb pages={pages} />
       </div>
-      <SectionTitle>Clases Automaquillaje</SectionTitle>
+      <SectionTitle>Clases</SectionTitle>
       <SelfMakeup />
     </main>
   )

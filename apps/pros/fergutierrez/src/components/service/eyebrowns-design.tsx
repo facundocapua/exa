@@ -2,7 +2,7 @@ import { generateWhatsAppLink } from 'utils'
 import { getSalon } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
-import eyebrowns from '@public/services/4.jpg'
+import eyebrowns from '@public/services/3.jpg'
 
 export default async function EyebrownsDesign () {
   const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
