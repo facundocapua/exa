@@ -23,14 +23,12 @@ export default function Breadcrumb ({ pages }: Props) {
         </li>
         {pages.map((page, index) => (
           <li key={page.name} property="itemListElement" typeof="ListItem">
+            <meta property="position" content={String(index + 1)}></meta>
             <div className="flex items-center">
               <ChevronRightIcon className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-300" aria-hidden="true" />
               {page.current
                 ? (
-                  <>
-                    <span className="ml-4 text-sm font-medium text-gray-500 dark:text-gray-200" property='name'>{page.name}</span>
-                    <meta property="position" content={String(index + 1)}></meta>
-                  </>
+                  <span className="ml-4 text-sm font-medium text-gray-500 dark:text-gray-200" property='name'>{page.name}</span>
                   )
                 : (
                   <Link
