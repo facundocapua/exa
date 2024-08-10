@@ -55,7 +55,7 @@ export default async function CourseCard ({ name, description, duration, whatsap
         <div className='border-b border-b-gray-400 py-3 flex justify-around'>
           <div className="flex items-center justify-center gap-2">
             <BookOpenIcon className="w-6 h-6" />
-            <span className="font-light text-lg"><span className="font-semibold">{classes}</span> <small>clases</small></span>
+            <span className="font-light text-lg"><span className="font-semibold">{classes}</span> <small>{classes === 1 ? 'clase' : 'clases'}</small></span>
           </div>
           <div className="flex items-center justify-center gap-2">
             <ClockIcon className="w-6 h-6" />
