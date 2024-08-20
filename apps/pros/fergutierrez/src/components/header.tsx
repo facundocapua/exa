@@ -25,7 +25,7 @@ export default function Header ({ cart }: Props) {
   }, [pathname])
 
   return (
-    <header className="pt-4 pb-8 bg-slate-600">
+    <header className="pt-4 pb-8 bg-neutral-600">
       <div className="grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto] w-full items-center px-4">
         <div className="flex lg:hidden">
           <button
@@ -73,7 +73,7 @@ export default function Header ({ cart }: Props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
            >
-            <div className="fixed inset-0 bg-slate-600 bg-opacity-25" />
+            <div className="fixed inset-0 bg-neutral-600 bg-opacity-25" />
           </TransitionChild>
 
           <div className="fixed inset-0 z-40 flex">
@@ -86,7 +86,7 @@ export default function Header ({ cart }: Props) {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-              <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-slate-600 pb-12 shadow-xl">
+              <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-neutral-600 pb-12 shadow-xl">
                 <div className="flex justify-between px-4 pb-2 pt-5">
                   <Logo />
                   <button

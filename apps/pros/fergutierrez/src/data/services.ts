@@ -98,7 +98,10 @@ export const SELF_MAKEUP_CLASSES = [
   {
     name: 'Automaquillaje grupal',
     description: [
-      'Para venir con amigas y disfrutar la experiencia aprendiendo juntas.'
+      'Aprendé a maquillarte y compartí la experiencia con amigas.',
+      'Preparación de la piel, maquillaje básico de día y agregamos algunos toques para hacerlo más noche en pocos pasos.',
+      'Consejos para que armen el kit básico y muchos tips.',
+      'Hasta 3 personas.'
     ],
     price: '8.500',
     classes: 1,

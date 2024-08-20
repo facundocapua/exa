@@ -14,7 +14,7 @@ export default async function SelfMakeup () {
   return (
     <>
       <section className="mb-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 max-w-lg lg:max-w-none mx-auto lg:grid-cols-3 gap-8">
             {SELF_MAKEUP_CLASSES.map((item) => (
               <CourseCard

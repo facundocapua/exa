@@ -40,7 +40,7 @@ export default async function Footer () {
   socialNetworks.whatsapp.href = salon?.social_networks?.whatsapp ?? ''
 
   return (
-    <footer className='bg-slate-600'>
+    <footer className='bg-neutral-600'>
       <div className='mx-auto max-w-7xl px-6 py-12 lg:px-8 flex flex-col md:flex-row items-center gap-8 w-full justify-between'>
         <Logo />
         <div className="flex flex-col text-gray-300 gap-4">

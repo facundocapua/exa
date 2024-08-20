@@ -22,7 +22,7 @@ export default async function BrideMakeup () {
         <Image
           alt="Maquillaje de novias"
           src={bride1}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-[50%_10%]"
           fill={true}
         />
       </div>
@@ -46,10 +46,10 @@ export default async function BrideMakeup () {
             Me gustaría ser parte de tu día especial y que juntas creemos el maquillaje perfecto para vos.
           </p>
           <p className='my-4'>
-            Comenzamos con una entrevista para conocernos y saber qué es lo que estás buscando. Luego, realizamos una prueba de maquillaje para que puedas ver cómo te verías.
+            Comenzamos con una entrevista para conocernos personalmente y ver que estilo de maquillaje te gusta. Luego, realizamos una prueba de maquillaje, tomando en cuenta tus ideas, mis consejos y lo que charlamos en la cita.
           </p>
           <p className='my-4'>
-            El día de la boda puedo maquillarte en el lugar que prefieras, ya sea en tu casa o en mi salón. Lo importante es que estés tranquila y relajada.
+            El día de la boda podes elegir maquillarte en mi estudio o en el lugar que vos elijas (si es domicilio se cobra adicional).
           </p>
           <div>
             <Link href={generateWhatsAppLink(whatsapp!, message)} className='uppercase bg-black text-white text-xl py-2 px-8 rounded-md inline-block mt-6 hover:scale-110 transition-all duration-300'>
