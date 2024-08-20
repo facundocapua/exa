@@ -1,6 +1,7 @@
+import SectionTitle from '@/components/section-title'
 import { getFilteredSearchProducts } from 'api'
 import { redirect } from 'next/navigation'
-import { ProductListPage } from 'ui/server'
+import { Breadcrumb, ProductListPage } from 'ui/server'
 
 type Props = {
   params: {
@@ -29,14 +30,18 @@ export default async function SearchPage ({ params, searchParams }: Props) {
   })
 
   return (
-    <ProductListPage
-      breadcrumbs={breadcrumbs}
-      searchParams={searchParams}
-      filters={filters}
-      products={products}
-      total={total}
-      title={`Resultados para "${q}"`}
-      url={`/search/${q}`}
-    />
+    <main className="mx-auto max-w-2xl px-4 md:px-0 lg:max-w-7xl my-4">
+      <Breadcrumb pages={breadcrumbs} />
+
+      <SectionTitle>{`Resultados para "${q}"`}</SectionTitle>
+
+      <ProductListPage
+        searchParams={searchParams}
+        filters={filters}
+        products={products}
+        total={total}
+        url={`/search/${q}`}
+      />
+    </main>
   )
 }
