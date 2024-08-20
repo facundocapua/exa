@@ -5,10 +5,10 @@ import fourthImg from '@public/htbar/4.webp'
 import fifthImg from '@public/htbar/5.webp'
 import sixthImg from '@public/htbar/6.webp'
 import { Breadcrumb } from 'ui/server'
-import Title from '@/components/title'
 import Image from 'next/image'
 import { Metadata } from 'next'
 import { STORE_URL } from '@/utils/const'
+import SectionTitle from '@/components/section-title'
 
 export const metadata: Metadata = {
   alternates: {
@@ -47,10 +47,10 @@ export default function ServicesPage () {
   ]
 
   return (
-    <section className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
+    <section className="mx-auto max-w-2xl lg:max-w-7xl">
       <Breadcrumb pages={breadcrumbs} />
 
-      <Title>Hair Tatoo Bar</Title>
+      <SectionTitle>Hair Tatoo Bar</SectionTitle>
 
       <p className='text-primary-700 pt-2 text-lg'>
         ¡Bienvenidos al innovador “Hair Tattoo Bar”! Después de meses de búsqueda y estudio incansable, hemos materializado una idea única que no encontrarás en ningún otro lugar. Inspirado por una visión amorfa y caótica que finalmente tomó forma clara y ordenada, “HT Bar” es el primer bar de Hair Tattoo para tus eventos. Ofrecemos un nuevo concepto para tus fiestas, donde pintamos tu cabello con diseños únicos y temporales que se van con el agua.

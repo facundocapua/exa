@@ -1,4 +1,5 @@
-import { ComponentProps, createElement } from 'react'
+import type { ComponentProps } from 'react'
+import { createElement } from 'react'
 import BrandFilter from './AppliedFilters/BrandFilter'
 import PriceFilter from './AppliedFilters/PriceFilter'
 import GenericFilter from './AppliedFilters/GenericFilter'
@@ -17,7 +18,7 @@ type Props = {
   searchParams: Record<string, string>
 }
 
-export default function AppliedFilters ({ url, searchParams }: Props) {
+export const AppliedFilters = ({ url, searchParams }: Props) => {
   if (!searchParams || Object.keys(searchParams).length === 0) return null
 
   const filters = Object.entries(searchParams)
@@ -45,3 +46,5 @@ export default function AppliedFilters ({ url, searchParams }: Props) {
     </section>
   )
 }
+
+export default AppliedFilters

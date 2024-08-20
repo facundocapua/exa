@@ -3,7 +3,9 @@ import { getBrand, getBrands, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Filters } from 'ui'
-import { AppliedFilters, Breadcrumb, ProductCard } from 'ui/server'
+import AppliedFilters from 'ui/components/category/applied-filters'
+import FiltersMobile from 'ui/components/category/filters-mobile'
+import { Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
   params: {
@@ -87,13 +89,20 @@ export default async function Brand ({ params, searchParams }: Props) {
         <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{brand.name}</h1>
       </div>
 
-      <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
+      <div className="pb-24 lg:pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
         {total > 0 && (
         <aside>
-          <h2 className='text-xl mb-4'>Filtros</h2>
           <div className="hidden lg:block">
+            <h2 className='text-xl mb-4'>Filtros</h2>
             <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
             <Filters filters={filters} />
+          </div>
+
+          <div className='block lg:hidden'>
+            <FiltersMobile count={products.length} filters={filters} />
+            <div className='pt-2'>
+              <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
+            </div>
           </div>
         </aside>
         )}

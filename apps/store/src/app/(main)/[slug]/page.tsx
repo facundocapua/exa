@@ -1,7 +1,8 @@
+import SectionTitle from '@/components/section-title'
 import { getCategories, getCategory, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ProductListPage } from 'ui/server'
+import { Breadcrumb, ProductListPage } from 'ui/server'
 
 type Props = {
   params: {
@@ -89,14 +90,18 @@ export default async function Category ({ params, searchParams }: Props) {
   })
 
   return (
-    <ProductListPage
-      breadcrumbs={breadcrumbs}
-      searchParams={searchParams}
-      filters={filters}
-      products={products}
-      total={total}
-      title={category.name}
-      url={`/${category.handle}`}
-    />
+    <main className="mx-auto max-w-2xl px-4 md:px-0 lg:max-w-7xl my-4">
+      <Breadcrumb pages={breadcrumbs} />
+
+      <SectionTitle>{category.name}</SectionTitle>
+
+      <ProductListPage
+        searchParams={searchParams}
+        filters={filters}
+        products={products}
+        total={total}
+        url={`/${category.handle}`}
+      />
+    </main>
   )
 }

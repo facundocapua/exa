@@ -2,9 +2,9 @@ import { Suspense } from 'react'
 import { Breadcrumb } from 'ui/server'
 import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
-import Title from '@/components/title'
 import { Metadata } from 'next'
 import { STORE_URL } from '@/utils/const'
+import SectionTitle from '@/components/section-title'
 
 const images = [
   '/portfolio/portfolio-1.webp',
@@ -40,10 +40,10 @@ export default function Page () {
   ]
 
   return (
-    <section className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
+    <section className="mx-auto max-w-7xl px-4 md:px-0">
       <Breadcrumb pages={breadcrumbs} />
 
-      <Title>Portfolio</Title>
+      <SectionTitle>Portfolio</SectionTitle>
 
       <Suspense fallback={<CmsGallerySkeleton />}>
         <CmsGallery images={images} imagesClasses={imagesClasses} />

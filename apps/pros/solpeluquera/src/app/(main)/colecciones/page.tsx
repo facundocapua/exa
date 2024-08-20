@@ -2,9 +2,9 @@ import { Suspense } from 'react'
 import { Breadcrumb } from 'ui/server'
 import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
-import Title from '@/components/title'
 import { Metadata } from 'next'
 import { STORE_URL } from '@/utils/const'
+import SectionTitle from '@/components/section-title'
 
 const imagesWinter = [
   '/collections/fenix/winter/1.webp',
@@ -58,10 +58,10 @@ export default function StudioPage () {
   ]
 
   return (
-    <section className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
+    <section className="mx-auto max-w-7xl px-4 md:px-0">
       <Breadcrumb pages={breadcrumbs} />
 
-      <Title>Colecciones</Title>
+      <SectionTitle>Colecciones</SectionTitle>
 
       <h2 className='text-2xl text-secondary-600 my-2'>Fenix Otoño/Invierno</h2>
       <Suspense fallback={<CmsGallerySkeleton />}>

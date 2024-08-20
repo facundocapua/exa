@@ -1,9 +1,12 @@
+import SectionTitle from '@/components/section-title'
 import { STORE_NAME } from '@/utils/const'
 import { getBrand, getBrands, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Filters } from 'ui'
-import { AppliedFilters, Breadcrumb, ProductCard } from 'ui/server'
+import AppliedFilters from 'ui/components/category/applied-filters'
+import FiltersMobile from 'ui/components/category/filters-mobile'
+import { Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
   params: {
@@ -64,9 +67,9 @@ export default async function Brand ({ params, searchParams }: Props) {
     notFound()
   }
 
-  const brecrumbs = []
+  const breadcrumbs = []
   if (brand) {
-    brecrumbs.push({
+    breadcrumbs.push({
       name: brand.name,
       url: `/${brand.handle}`,
       current: true
@@ -80,20 +83,26 @@ export default async function Brand ({ params, searchParams }: Props) {
   })
 
   return (
-    <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
-      <Breadcrumb pages={brecrumbs} />
-
-      <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
-        <h1 className="text-4xl font-bold tracking-tight text-neuborder-neutral-900">{brand.name}</h1>
+    <main className="w-full px-4 mb-4 mt-4">
+      <div className='max-w-7xl mx-auto mb-4'>
+        <Breadcrumb pages={breadcrumbs} />
       </div>
 
-      <div className="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
+      <SectionTitle>Tienda</SectionTitle>
+
+      <div className="pb-24 lg:pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4 max-w-7xl mx-auto">
         {total > 0 && (
         <aside>
-          <h2 className='text-xl mb-4'>Filtros</h2>
           <div className="hidden lg:block">
+            <h2 className='text-xl mb-4'>Filtros</h2>
             <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
             <Filters filters={filters} />
+          </div>
+          <div className='block lg:hidden'>
+            <FiltersMobile count={products.length} filters={filters} />
+            <div className='pt-2'>
+              <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
+            </div>
           </div>
         </aside>
         )}
@@ -108,6 +117,6 @@ export default async function Brand ({ params, searchParams }: Props) {
           </div>
         </section>
       </div>
-    </div>
+    </main>
   )
 }

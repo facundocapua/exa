@@ -1,7 +1,8 @@
+import SectionTitle from '@/components/section-title'
 import { STORE_NAME, STORE_OG_IMAGE, STORE_URL } from '@/utils/const'
 import { getFilteredProducts, getSalon } from 'api'
 import { Metadata } from 'next'
-import { ProductListPage } from 'ui/server'
+import { Breadcrumb, ProductListPage } from 'ui/server'
 
 type Props = {
   searchParams: Record<string, string>
@@ -56,14 +57,18 @@ export default async function StorePage ({ searchParams }: Props) {
   ]
 
   return (
-    <ProductListPage
-      breadcrumbs={breadcrumbs}
-      searchParams={searchParams}
-      filters={filters}
-      products={products}
-      total={total}
-      title="Tienda"
-      url="/tienda"
-    />
+    <main className="mx-auto max-w-7xl px-4 md:px-0">
+      <Breadcrumb pages={breadcrumbs} />
+
+      <SectionTitle>Tienda</SectionTitle>
+
+      <ProductListPage
+          searchParams={searchParams}
+          filters={filters}
+          products={products}
+          total={total}
+          url="/tienda"
+        />
+    </main>
   )
 }

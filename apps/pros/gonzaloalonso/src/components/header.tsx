@@ -22,7 +22,7 @@ export default function Header ({ cart }: Props) {
   }, [pathname])
 
   return (
-    <header className="pt-4 pb-8 max-w-7xl mx-auto">
+    <header className="pt-4 pb-4   max-w-7xl mx-auto">
       <div className="grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 w-full items-center px-4">
         <div className="flex lg:hidden">
           <button

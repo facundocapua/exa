@@ -4,6 +4,7 @@ import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
 import { Metadata } from 'next'
 import { STORE_URL } from '@/utils/const'
+import SectionTitle from '@/components/section-title'
 
 const images = [
   '/studio/1.webp',
@@ -30,16 +31,18 @@ export default function StudioPage () {
   ]
 
   return (
-    <section className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
-      <Breadcrumb pages={breadcrumbs} />
-
-      <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
-        <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Studio</h1>
+    <main className="w-full px-4 mb-4 mt-4">
+      <div className='max-w-7xl mx-auto mb-4'>
+        <Breadcrumb pages={breadcrumbs} />
       </div>
 
-      <Suspense fallback={<CmsGallerySkeleton />}>
-        <CmsGallery images={images} />
-      </Suspense>
-    </section>
+      <SectionTitle>Studio</SectionTitle>
+
+      <section className='max-w-7xl mx-auto'>
+        <Suspense fallback={<CmsGallerySkeleton />}>
+          <CmsGallery images={images} />
+        </Suspense>
+      </section>
+    </main>
   )
 }

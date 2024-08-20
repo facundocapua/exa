@@ -4,6 +4,7 @@ import { CmsGallery } from 'ui/components/cms/gallery/cms-gallery'
 import { CmsGallerySkeleton } from 'ui/components/cms/gallery/cms-gallery-skeleton'
 import { STORE_URL } from '@/utils/const'
 import { Metadata } from 'next'
+import SectionTitle from '@/components/section-title'
 
 const images = [
   '/portfolio/portfolio-1.webp',
@@ -42,9 +43,7 @@ export default function Page () {
     <section className="mx-auto max-w-2xl px-4 lg:max-w-7xl my-4">
       <Breadcrumb pages={breadcrumbs} />
 
-      <div className="pt-12 pb-6 mb-6 border-b border-neutral-300 dark:border-neutral-500">
-        <h1 className="text-4xl font-bold tracking-tight border-neutral-900">Portfolio</h1>
-      </div>
+      <SectionTitle>Portfolio</SectionTitle>
 
       <Suspense fallback={<CmsGallerySkeleton />}>
         <CmsGallery images={images} imagesClasses={imagesClasses} />
