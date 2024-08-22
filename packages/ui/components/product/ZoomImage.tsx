@@ -26,12 +26,12 @@ export default function ZoomImage ({ image, alt }: {image: string, alt: string})
         onMouseLeave={() => setDisplayZoom(false)}
         onMouseMove={handleMouseOver}
       >
-        <Image src={image} alt={alt} width={500} height={500} />
+        <Image src={image} alt={alt} width={500} height={500} className='bg-white' />
         {displayZoom && (<div className='w-[1000px] absolute' style={{
           top: -mousePosition.y,
           left: -mousePosition.x
         }}>
-          <Image src={image} alt={alt} width={1000} height={1000} className='bg-white dark:bg-black' />
+          <Image src={image} alt={alt} width={1000} height={1000} className='bg-white ' />
         </div>)}
       </div>
 

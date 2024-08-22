@@ -1,6 +1,6 @@
 'use client'
 
-import { Tab, TabList, TabPanel } from '@headlessui/react'
+import { Tab, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import type { Product, ProductVariant } from 'api'
 import ZoomImage from './ZoomImage'
 import ProductImageGalleryThumb from './ProductImageGalleryThumb'
@@ -24,7 +24,7 @@ export default function ProductImageGallery ({ product }: Props) {
           {product.images.map((image) => (
             <Tab
               key={image.id}
-              className="relative flex cursor-pointer items-center justify-center rounded-md bg-white dark:bg-black text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+              className="relative flex cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
             >
               {({ selected }) => (
                 <ProductImageGalleryThumb label={product.title} image={image.url} selected={selected} />
@@ -44,7 +44,7 @@ export default function ProductImageGallery ({ product }: Props) {
         </TabList>
       </div>
 
-      <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
+      <TabPanels className="aspect-h-1 aspect-w-1 w-full">
         {product.images.map((image) => (
           <TabPanel key={image.id}>
             <ZoomImage image={image.url} alt={product.title} />
@@ -55,7 +55,7 @@ export default function ProductImageGallery ({ product }: Props) {
             <ZoomImage image={image.url} alt={product.title} />
           </TabPanel>
         ))}
-      </Tab.Panels>
+      </TabPanels>
     </Tab.Group>
   )
 }
