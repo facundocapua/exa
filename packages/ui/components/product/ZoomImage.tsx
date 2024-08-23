@@ -36,7 +36,7 @@ export default function ZoomImage ({ image, alt }: {image: string, alt: string})
       </div>
 
       <div className='relative overflow-hidden cursor-zoom-in w-full block md:hidden'>
-        <Image src={image} alt={alt} width={1000} height={1000} />
+        <Image src={image} alt={alt} width={1000} height={1000} className='bg-white' />
       </div>
     </>
   )
