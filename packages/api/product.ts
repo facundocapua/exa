@@ -1,16 +1,20 @@
 import { Image } from '@medusajs/medusa'
 import { getSalonBrands } from './brand'
-import type { Collection, Filter, Product, ProductVariant } from './types'
+import type { Filter, Product, ProductVariant } from './types'
 import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 import { getMedusaUrl } from './utils/medusa'
 import { getSalon } from './salon'
+import {calculateStock} from './utils/products'
+
+const DEFAULT_PRODUCT_LIMIT = 5000
 
 export const getProductVariants = async (variantIds: string[]): Promise<Array<ProductVariant>> => {
   const params = new URLSearchParams({
     expand: 'prices',
     ids: variantIds.join(','),
-    currency_code: 'ars'
+    currency_code: 'ars',
+    limit: String(DEFAULT_PRODUCT_LIMIT)
   })
   const products = fetch(
     `${getMedusaUrl()}/store/variants?${params.toString()}`,
@@ -44,7 +48,8 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
   
   const params = new URLSearchParams({
     expand: 'categories,images,variants,brand,options',
-    currency_code: 'ars'
+    currency_code: 'ars',
+    limit: String(DEFAULT_PRODUCT_LIMIT)
   })
 
   if (category_id) {
@@ -177,12 +182,15 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
   const restrictedData = await getProducts(params)
 
   const filteredData = applyFilters(restrictedData, filters)
-  filteredData.sort((a, b) => {
-    const aInStock = Number(a?.variants?.[0]?.inventory_quantity ?? 0) > 0 ? 1 : 0
-    const bInStock = Number(b?.variants?.[0]?.inventory_quantity ?? 0) > 0 ? 1 : 0
+  
+  filteredData.sort((a, b) => { 
+    const aInStock = calculateStock(a) > 0 ? 1 : 0
+    const bInStock = calculateStock(b) > 0 ? 1 : 0
 
     return bInStock - aInStock
   })
+
+  console.log('filteredData', JSON.stringify(filteredData, null, 2))
 
   return new Promise((resolve) => {
     resolve({
