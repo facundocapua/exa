@@ -1,13 +1,15 @@
 import type { Product } from 'api'
 import ProductImageGallery from './ProductImageGallery'
 import ProductInfo from './ProductInfo'
+import RelatedProducts from './RelatedProducts'
 
 type Props = {
-  product: Product
-}
+  product: Product;
+};
+
 export const ProductPage = ({ product }: Props) => {
   return (
-    <div className='pb-8'>
+    <div className="pb-8">
       <section className="mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8 mb-4">
         <div className="mx-auto max-w-2xl lg:max-w-none">
           {/* Product */}
@@ -20,7 +22,7 @@ export const ProductPage = ({ product }: Props) => {
           </div>
         </div>
       </section>
-      {/* <RelatedProducts sku={product.id} /> */}
+      <RelatedProducts product={product} />
     </div>
   )
 }

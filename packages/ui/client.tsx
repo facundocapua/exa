@@ -4,7 +4,7 @@ export { default as MobileOrderSummary } from './components/checkout/MobileOrder
 export { default as Price } from './components/generic/Price'
 export { default as ProductAddToCart } from './components/product/ProductAddToCart'
 export { default as ProductImageGallery } from './components/product/ProductImageGallery'
-export { default as ProductSlider } from './components/product-slider/ProductSlider'
+export { default as ProductSlider } from './components/product-slider/product-slider'
 export { default as BrandsList } from './components/brand/BrandsList'
 export { default as ScrollTop } from './components/generic/ScrollTop'
 export { default as Filters } from './components/category/Filters'

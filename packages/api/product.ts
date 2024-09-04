@@ -39,15 +39,16 @@ type ProductParams = {
   category_id?: string[]
   collection_id?: string[]
   brand_id?: string[]
-  handle?: string,
-  ids?: string[],
+  handle?: string
+  ids?: string[]
   sales_channel_id?: string[]
+  tags?: string[]
 }
 
-export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids, sales_channel_id }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
-  
+export const getProducts = async ({ category_id, collection_id, brand_id, handle, ids, sales_channel_id, tags }: Partial<ProductParams> = {}): Promise<Array<Product>> => {
+
   const params = new URLSearchParams({
-    expand: 'categories,images,variants,brand,options',
+    expand: 'categories,images,variants,brand,options,tags',
     currency_code: 'ars',
     limit: String(DEFAULT_PRODUCT_LIMIT)
   })
@@ -77,6 +78,12 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
   if (ids) {
     for (const id of ids) {
       params.append('id[]', id)
+    }
+  }
+
+  if (tags) {
+    for (const tagId of tags) {
+      params.append('tags[]', tagId)
     }
   }
 
@@ -154,7 +161,7 @@ export const getFiltersFromProducts = (products: Array<Product>, exclude: Array<
     if (min !== max) {
       filters.push(priceFilter)
     }
-    
+
   }
 
   return filters
@@ -182,8 +189,8 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
   const restrictedData = await getProducts(params)
 
   const filteredData = applyFilters(restrictedData, filters)
-  
-  filteredData.sort((a, b) => { 
+
+  filteredData.sort((a, b) => {
     const aInStock = calculateStock(a) > 0 ? 1 : 0
     const bInStock = calculateStock(b) > 0 ? 1 : 0
 
@@ -220,8 +227,30 @@ export const getProductVariant = async (id: ProductVariant['id']): Promise<Produ
   return variant
 }
 
-export const getRelatedProducts = async (id: Product['id']): Promise<Array<Product>> => {
-  const products = getProducts()
+type ScoredProduct = { score?: number } & Product
 
-  return products.then((data) => data.splice(0, 4))
+export const getRelatedProducts = async (product: Product): Promise<Product[]> => {
+  const { tags } = product
+  if(!tags || tags.length <=0) return []
+
+  const relatedProducts = await Promise.all(tags.map(async (tag) => {
+    return {
+      tag,
+      products: await getProducts({ tags: [tag.id] })
+    }
+  }))
+
+  const scoredProducts:Record<Product['id'], ScoredProduct> = {}
+  relatedProducts.forEach(({products}) => {
+    products.forEach((product) => {
+      if(!scoredProducts[product.id]) {
+        scoredProducts[product.id] = product
+      }
+      scoredProducts[product.id]!.score = (scoredProducts[product.id]!.score ?? 0) + 1
+    })
+  })
+
+  const products = Object.values(scoredProducts).sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+
+  return products.slice(0, 6)
 }

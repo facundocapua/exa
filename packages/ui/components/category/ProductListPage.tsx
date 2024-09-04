@@ -1,4 +1,5 @@
 import { ProductCard } from '../product-card'
+import { ProductCardV2 } from '../product-card/product-cart-v2'
 import AppliedFilters from './applied-filters'
 import Filters from './Filters'
 import FiltersMobile from './filters-mobile'
@@ -9,9 +10,23 @@ type Props = {
   products: any[]
   total: number
   url: string
+  theme?: string
 }
 
-export default function ProductListPage ({ searchParams, filters, products, total, url }: Props) {
+type ProductItemProps = {
+  product: any
+  loading: 'lazy' | 'eager'
+  theme?: string
+}
+
+const ProductItem = ({ product, loading, theme }: ProductItemProps) => {
+  if (theme === 'v2') {
+    return (<ProductCardV2 key={product.id} product={product} loading={loading} />)
+  }
+  return (<ProductCard key={product.id} product={product} loading={loading} />)
+}
+
+export default function ProductListPage ({ searchParams, filters, products, total, url, theme }: Props) {
   return (
     <div className="pb-24 lg:pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
       {total > 0 && (
@@ -40,7 +55,7 @@ export default function ProductListPage ({ searchParams, filters, products, tota
 
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
           {products.map((product, index) => (
-            <ProductCard key={product.id} product={product} loading={index <= 2 ? 'eager' : 'lazy'} />
+            <ProductItem key={product.id} product={product} loading={index <= 2 ? 'eager' : 'lazy'} theme={theme} />
           ))}
         </div>
       </section>

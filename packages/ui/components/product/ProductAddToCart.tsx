@@ -8,14 +8,16 @@ import { addItem } from '../cart/actions'
 import type {} from 'react/experimental'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   product: Product
   isProductPage?: boolean
   className?: string
+  buttonClassName?: string
 }
 
-export default function ProductAddToCart ({ product, isProductPage, className }: Props) {
+export default function ProductAddToCart ({ product, isProductPage, className, buttonClassName }: Props) {
   const [isPending, startTransition] = useTransition()
   const searchParams = useSearchParams()
   const currentVariant = searchParams.get('v')
@@ -48,9 +50,10 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
           aria-disabled
           disabled
           type="button"
-          className={clsx(
-            'flex items-center justify-center md:rounded-md bg-neutral-400 w-full py-4 text-base font-medium text-white focus:outline-none'
-          )}
+          className={clsx(twMerge(
+            'flex items-center justify-center md:rounded-md bg-neutral-400 w-full py-4 text-base font-medium text-white focus:outline-none',
+            buttonClassName
+          ))}
         >
           Producto agotado
         </button>
@@ -64,10 +67,10 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
         <span className='text-xs'>&nbsp;</span>
         <Link
           href={`/product/${product.handle}`}
-          className={clsx(
+          className={clsx(twMerge(
             'flex items-center justify-center md:rounded-md bg-primary-700 w-full py-4 text-base font-medium text-white hover:bg-primary-600 focus:outline-none',
             className
-          )}>
+          ))}>
           Comprar
         </Link>
       </>
@@ -83,10 +86,11 @@ export default function ProductAddToCart ({ product, isProductPage, className }:
         aria-label="Agregar al carrito"
         disabled={isPending || (isProductPage && !currentVariant)}
         type="button"
-        className={clsx(
+        className={clsx(twMerge(
           'flex items-center justify-center md:rounded-md bg-primary-700 w-full py-4 text-base font-medium text-white hover:bg-primary-600 focus:outline-none',
-          'disabled:opacity-50 disabled:cursor-not-allowed'
-        )}
+          'disabled:opacity-50 disabled:cursor-not-allowed',
+          buttonClassName
+        ))}
         onClick={handleAddToCart}
       >
         Comprar

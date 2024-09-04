@@ -7,11 +7,32 @@ import { useCallback } from 'react'
 import BackButton from './BackButton'
 import ForwardButton from './ForwardButton'
 
+import { ProductCardV2 } from '../product-card/product-cart-v2'
+
 type Props = {
   products: Array<Product>
+  theme?: string
 }
 
-export default function ProductSlider ({ products }: Props) {
+type ProductItemProps = {
+  theme?: string
+  product: Product
+  key: string
+}
+
+const ProductItem = ({ theme, product }: ProductItemProps) => {
+  if (theme === 'v2') {
+    return (
+      <ProductCardV2 product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 mx-2 md:mx-0 md:basis-1/5 md:mr-4' />
+    )
+  }
+
+  return (
+    <ProductCard product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+  )
+}
+
+export const ProductSlider = ({ theme, products }: Props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     // loop: true,
     slidesToScroll: 'auto'
@@ -32,7 +53,7 @@ export default function ProductSlider ({ products }: Props) {
       <div className="embla__viewport overflow-hidden md:mx-12" ref={emblaRef}>
         <div className='embla__container flex'>
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+            <ProductItem key={product.id} product={product} theme={theme} />
           ))}
         </div>
       </div>
@@ -42,3 +63,5 @@ export default function ProductSlider ({ products }: Props) {
     </section>
   )
 }
+
+export default ProductSlider

@@ -101,6 +101,7 @@ export default async function Category ({ params, searchParams }: Props) {
         products={products}
         total={total}
         url={`/${category.handle}`}
+        theme='v2'
       />
     </main>
   )
