@@ -229,7 +229,7 @@ export const getProductVariant = async (id: ProductVariant['id']): Promise<Produ
 
 type ScoredProduct = { score?: number } & Product
 
-export const getRelatedProducts = async (product: Product): Promise<Product[]> => {
+export const getRelatedProducts = async (product: Product, limit: number): Promise<Product[]> => {
   const { tags } = product
   if(!tags || tags.length <=0) return []
 
@@ -250,7 +250,9 @@ export const getRelatedProducts = async (product: Product): Promise<Product[]> =
     })
   })
 
-  const products = Object.values(scoredProducts).sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+  const products = Object.values(scoredProducts)
+    .filter((item) => product.id !== item.id)
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
 
-  return products.slice(0, 6)
+  return products.slice(0, limit)
 }

@@ -6,7 +6,7 @@ type Props = {
 }
 
 export default async function RelatedProducts ({ product }: Props) {
-  const products = await getRelatedProducts(product)
+  const products = await getRelatedProducts(product, 8)
 
   if (!products || products.length === 0) return null
 

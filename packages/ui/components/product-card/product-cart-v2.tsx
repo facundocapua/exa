@@ -20,7 +20,7 @@ export const ProductCardV2 = ({ product, containerClassName, loading = 'lazy' }:
     )}>
       <div className="relative basis-full flex flex-col p-2 md:p-0">
         <DiscountBadge price={product.price} salePrice={product.salePrice} />
-        <Link href={`/product/${product.handle}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-xl lg:aspect-none">
+        <Link href={`/product/${product.handle}`} className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-xl lg:aspect-none">
           <Image
             src={product.thumbnail ?? '/product-img-placeholder.svg'}
             alt={product.title}
