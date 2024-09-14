@@ -197,8 +197,6 @@ export const getFilteredProducts = async ({ filters, restrinctions, exclude = []
     return bInStock - aInStock
   })
 
-  console.log('filteredData', JSON.stringify(filteredData, null, 2))
-
   return new Promise((resolve) => {
     resolve({
       products: filteredData,
@@ -251,7 +249,9 @@ export const getRelatedProducts = async (product: Product, limit: number): Promi
   })
 
   const products = Object.values(scoredProducts)
-    .filter((item) => product.id !== item.id)
+    .filter((item) => {
+      return product.id !== item.id && calculateStock(item) > 0
+    })
     .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
 
   return products.slice(0, limit)
