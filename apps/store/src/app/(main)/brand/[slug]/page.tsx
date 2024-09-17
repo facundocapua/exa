@@ -7,6 +7,7 @@ import { Filters } from 'ui'
 import AppliedFilters from 'ui/components/category/applied-filters'
 import FiltersMobile from 'ui/components/category/filters-mobile'
 import { Breadcrumb, ProductCard } from 'ui/server'
+import { cleanFilters } from 'utils'
 
 type Props = {
   params: {
@@ -63,6 +64,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 export default async function Brand ({ params, searchParams }: Props) {
   const { slug } = params
   const brand = await getBrand(slug)
+  const cleanedSearchParams = cleanFilters(searchParams)
 
   if (!brand) {
     notFound()
@@ -79,7 +81,7 @@ export default async function Brand ({ params, searchParams }: Props) {
 
   const { filters, products, total } = await getFilteredProducts({
     restrinctions: { brand: slug },
-    filters: searchParams,
+    filters: cleanedSearchParams,
     exclude: ['brand']
   })
 
@@ -94,13 +96,13 @@ export default async function Brand ({ params, searchParams }: Props) {
         <aside>
           <div className="hidden lg:block">
             <h2 className='text-xl mb-4'>Filtros</h2>
-            <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
+            <AppliedFilters url={`/brand/${slug}`} searchParams={cleanedSearchParams} />
             <Filters filters={filters} />
           </div>
           <div className='block lg:hidden'>
             <FiltersMobile count={products.length} filters={filters} />
             <div className='pt-2'>
-              <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
+              <AppliedFilters url={`/brand/${slug}`} searchParams={cleanedSearchParams} />
             </div>
           </div>
         </aside>

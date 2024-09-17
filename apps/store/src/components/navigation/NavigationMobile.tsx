@@ -66,9 +66,9 @@ export default function NavigationMobile ({ navigation }: Props) {
                   </button>
                 </div>
 
-                <div className='flex p-4'>
-                  <SearchBoxMobile />
-                </div>
+                {/* <div className='flex p-4'> */}
+                {/*  <SearchBoxMobile /> */ }
+                {/* </div> */}
 
                 {/* Links */}
                 <div className='px-4'>

@@ -3,6 +3,7 @@ import { getCategories, getCategory, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Breadcrumb, ProductListPage } from 'ui/server'
+import { cleanFilters } from 'utils'
 
 type Props = {
   params: {
@@ -59,6 +60,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 export default async function Category ({ params, searchParams }: Props) {
   const { slug } = params
   const category = await getCategory(slug)
+  const cleanedSearchParams = cleanFilters(searchParams)
 
   if (!category) {
     notFound()
@@ -85,7 +87,7 @@ export default async function Category ({ params, searchParams }: Props) {
 
   const { filters, products, total } = await getFilteredProducts({
     restrinctions: { category: slug },
-    filters: searchParams,
+    filters: cleanedSearchParams,
     exclude: ['category']
   })
 
@@ -96,7 +98,7 @@ export default async function Category ({ params, searchParams }: Props) {
       <SectionTitle>{category.name}</SectionTitle>
 
       <ProductListPage
-        searchParams={searchParams}
+        searchParams={cleanedSearchParams}
         filters={filters}
         products={products}
         total={total}
