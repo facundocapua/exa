@@ -23,7 +23,8 @@
     "react-dom": "18.3.1",
     "tailwind-config": "workspace:*",
     "tailwindcss": "3.4.6",
-    "ui": "workspace:*"
+    "ui": "workspace:*",
+    "utils": "workspace:*"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

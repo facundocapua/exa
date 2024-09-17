@@ -89,7 +89,7 @@ export default async function Product ({ params }: Props) {
         </div>
       </section>
       <Suspense fallback={<div>Loading...</div>}>
-        <RelatedProducts sku={product.id} />
+        <RelatedProducts product={product} />
       </Suspense>
     </main>
   )

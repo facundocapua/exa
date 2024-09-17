@@ -3,6 +3,7 @@ import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
 import { getFilteredProducts, getSalon } from 'api'
 import { Metadata } from 'next'
 import { Breadcrumb, ProductListPage } from 'ui/server'
+import { cleanFilters } from 'utils'
 
 type Props = {
   searchParams: Record<string, string>
@@ -40,8 +41,9 @@ export async function generateMetadata (): Promise<Metadata> {
 export default async function StorePage ({ searchParams }: Props) {
   const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   const salon = await getSalon(salonId)
+  const cleanedSearchParams = cleanFilters(searchParams)
   const { filters, products, total } = await getFilteredProducts({
-    filters: searchParams,
+    filters: cleanedSearchParams,
     salesChannelId: salon?.sales_channel_id
   })
 
@@ -63,7 +65,7 @@ export default async function StorePage ({ searchParams }: Props) {
 
       <div className='max-w-7xl mx-auto'>
         <ProductListPage
-          searchParams={searchParams}
+          searchParams={cleanedSearchParams}
           filters={filters}
           products={products}
           total={total}
