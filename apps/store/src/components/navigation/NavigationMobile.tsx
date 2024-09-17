@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { Fragment, useEffect, useState } from 'react'
 import CategorySubLevel from './mobile/CategorySubLevel'
 import { Logo } from '../layout/logo'
-import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
+// import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 import { usePathname } from 'next/navigation'
 import { Dialog, Disclosure, DisclosureButton, DisclosurePanel, Transition, TransitionChild } from '@headlessui/react'
 
