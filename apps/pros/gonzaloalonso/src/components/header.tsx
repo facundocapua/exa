@@ -39,7 +39,15 @@ export default function Header ({ cart }: Props) {
           {navigation.map((item) => (<Link key={item.id} href={item.href} className='whitespace-nowrap'>{item.name}</Link>))}
         </nav>
 
-        <Logo />
+        <div className='flex justify-center items-center gap-x-2'>
+          <Logo />
+          <div className='block md:hidden text-gray-700 pr-4'>
+            <SearchBoxMobile
+              iconClassName='text-gray-200'
+              inputClassName='text-gray-200 focus:border-b-gray-200'
+            />
+          </div>
+        </div>
 
         <div className='flex justify-end items-center gap-8'>
           <div className='hidden lg:block text-gray-700'>
