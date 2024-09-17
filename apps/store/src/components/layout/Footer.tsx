@@ -1,5 +1,5 @@
 import { FacebookIcon, InstagramIcon, TwitterIcon } from 'ui/server'
-import Logo from './Logo'
+import { Logo } from './logo'
 import { createElement } from 'react'
 import Image from 'next/image'
 
