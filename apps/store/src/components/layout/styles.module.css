@@ -6,7 +6,7 @@
   }
 }
 
-@supports (animation-range: 0 30vh) {
+@supports not (animation-range: 0 30vh) {
   .banner {
     height: 40px;
   }
