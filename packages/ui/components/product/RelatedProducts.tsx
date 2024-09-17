@@ -5,8 +5,10 @@ type Props = {
   product: Product
 }
 
+const MAX_RELATED_PRODUCTS = 10
+
 export default async function RelatedProducts ({ product }: Props) {
-  const products = await getRelatedProducts(product, 8)
+  const products = await getRelatedProducts(product, MAX_RELATED_PRODUCTS)
 
   if (!products || products.length === 0) return null
 
