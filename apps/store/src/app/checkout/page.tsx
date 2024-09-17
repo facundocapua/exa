@@ -1,4 +1,4 @@
-import Logo from '@/components/layout/Logo'
+import { Logo } from '@/components/layout/logo'
 import { Cart, CartWithCheckoutStep, createPaymentSession, setPaymentSession } from 'api'
 import { revalidateTag } from 'next/cache'
 import { cookies } from 'next/headers'
