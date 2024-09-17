@@ -7,7 +7,7 @@ type Props = {
 export default function AddressInfo ({ cart }: Props) {
   const sameAsBilling = cart?.shipping_address && cart?.billing_address ? compareAddresses(cart?.shipping_address, cart?.billing_address) : true
   return (
-    <div className='grid grid-cols-3 gap-4 text-sm'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-4 text-sm'>
       <div>
         <h4 className='font-medium'>Dirección de envío</h4>
         <div className='opacity-70'>

@@ -19,7 +19,7 @@ export default function PaymentDetails ({ order }: Props) {
       <h2 className="flex flex-row text-3xl mb-4">
         Pago
       </h2>
-      <div className='grid grid-cols-3 gap-4 text-sm'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-4 text-sm'>
         <div>
           <h4 className='font-medium'>Dirección de facturación</h4>
           <div className='opacity-70'>

@@ -1,4 +1,5 @@
 import { Html, Tailwind, Container, Img, Section, Row, Column, Hr, Text, Link, Button } from '@react-email/components'
+import { BankTransferInfo } from './components/bank-transfer-info'
 
 export default function NewOrderEmail () {
   return (
@@ -12,8 +13,12 @@ export default function NewOrderEmail () {
             </Section>
             <Section>
               <p className='text-xl my-8'>Hola {'{{ shipping_address.first_name }}'},</p>
+              {'{{#if is_banktransfer}}'}
+              <BankTransferInfo />
+              {'{{else}}'}
               <p>Tu orden ha sido recibida y está siendo procesada.</p>
               <p>Recibirás un correo electrónico con la información del envío.</p>
+              {'{{/if}}'}
             </Section>
             <Section>
               <h2 className='text-sky-600'>Número de pedido: {'{{ display_id }}'}</h2>

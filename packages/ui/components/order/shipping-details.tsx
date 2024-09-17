@@ -7,12 +7,13 @@ type Props = {
 }
 
 export default function ShippingDetails ({ order }: Props) {
+  const shippingPrice = (order?.shipping_methods[0]?.price ?? 0) / 100
   return (
     <section className='mt-8'>
       <h2 className="flex flex-row text-3xl mb-4">
         Envío
       </h2>
-      <div className='grid grid-cols-3 gap-4 text-sm'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-4 text-sm'>
         <div>
           <h4 className='font-medium'>Dirección de envío</h4>
           <div className='opacity-70'>
@@ -36,9 +37,11 @@ export default function ShippingDetails ({ order }: Props) {
               ? (
                 <>
                   {order.shipping_methods[0].shipping_option.name} (
-                  {formatPrice(order.shipping_methods[0].price / 100)
-                    .replace(/,/g, '')
-                    .replace(/\./g, ',')}
+                  {shippingPrice >= 1
+                    ? formatPrice(shippingPrice)
+                      .replace(/,/g, '')
+                      .replace(/\./g, ',')
+                    : 'Gratis'}
                   )
                 </>
                 )

@@ -3,8 +3,9 @@ import Button from '../../generic/button'
 import { useState } from 'react'
 import { placeOrder } from '../actions'
 
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import ErrorMessage from '../../generic/error-message'
+import MercadoPagoPaymentButton from './payment-buttons/mercadopago-payment-button'
+import { BanktransferPaymentButton } from './payment-buttons/banktransfer-payment-button'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -24,6 +25,8 @@ export default function PaymentButton ({ cart }: Props) {
       return <MercadoPagoPaymentButton session={paymentSession} />
     case 'manual':
       return <ManualTestPaymentButton notReady={notReady} />
+    case 'banktransfer':
+      return <BanktransferPaymentButton notReady={notReady} />
     default:
       return <Button disabled>Selecciona un método de pago</Button>
   }
@@ -56,32 +59,6 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
         Finalizar pedido
       </Button>
       <p className='text-balance mt-4 text-sm'>Una vez realizado el pedido nos pondremos en contacto para coordinar el pago y realizar el énvio.</p>
-      <ErrorMessage error={errorMessage} />
-    </>
-  )
-}
-
-initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY ?? '')
-
-const MercadoPagoPaymentButton = ({ session }: {session: PaymentSession}) => {
-  const { data } = session
-  const { preferenceId } = data as { preferenceId: string}
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-  const handlePayment = async () => {
-    await placeOrder()
-      .catch((err) => { setErrorMessage(err.toString()) })
-
-    return preferenceId
-  }
-
-  return (
-    <>
-      <Wallet
-        // initialization={{ preferenceId }}
-        customization={{ texts: { valueProp: 'smart_option' } }}
-        onSubmit={handlePayment}
-      />
       <ErrorMessage error={errorMessage} />
     </>
   )

@@ -5,7 +5,7 @@ import type { FiltersType } from './utils/filters'
 import { applyFilters, applyRestrinctions, extractBrandFilter, extractCategoryFilter, extractPriceFilter } from './utils/filters'
 import { getMedusaUrl } from './utils/medusa'
 import { getSalon } from './salon'
-import {calculateStock} from './utils/products'
+import { calculateStock } from './utils/products'
 
 const DEFAULT_PRODUCT_LIMIT = 5000
 

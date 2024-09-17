@@ -60,8 +60,13 @@ export default function OrderSummary ({ cart }: Props) {
           </div>
           {cart.discount_total
             ? (<div className="flex justify-between">
-              <dt className="flex">
-                Descuento
+              <dt className="flex items-center">
+                Descuento ({cart.discounts.map((discount, index) => (
+                  <span key={discount.id} className="text-xs text-gray-500 dark:text-gray-300">
+                    {index > 0 ? ', ' : ''}
+                    {discount.rule.description}
+                  </span>
+              ))})
               </dt>
               <dd className="text-gray-900 dark:text-gray-100">
                 <Price amount={-Number(cart.discount_total)} />

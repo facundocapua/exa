@@ -188,6 +188,44 @@ export async function completeCart (cartId: string): Promise<StoreCompleteCartRe
   return cart
 }
 
+
+export async function addDiscountCode (cartId: string, couponCode: string): Promise<StoreCompleteCartRes> {
+  const data = {
+    discounts: [
+      {
+        code: couponCode
+      }
+    ]
+  }
+
+  const cart = fetch(`${getMedusaUrl()}/store/carts/${cartId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+    next: {
+      tags: ['cart']
+    }
+  }).then((res) => res.json())
+
+  return cart
+}
+
+export async function removeDiscountCode (cartId: string, couponCode: string): Promise<StoreCompleteCartRes> {
+  const cart = fetch(`${getMedusaUrl()}/store/carts/${cartId}/discounts/${couponCode}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    next: {
+      tags: ['cart']
+    }
+  }).then((res) => res.json())
+
+  return cart
+}
+
 export async function enrichLineItems (
   lineItems: CartItem[],
   regionId: string

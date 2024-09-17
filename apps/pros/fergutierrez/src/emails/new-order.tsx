@@ -1,3 +1,4 @@
+import { BankTransferInfo } from './components/bank-transfer-info'
 import { Footer } from './components/footer'
 import { Header } from './components/header'
 import { Html, Tailwind, Container, Img, Section, Row, Column, Hr, Text, Button } from '@react-email/components'
@@ -11,8 +12,12 @@ export default function NewOrderEmail () {
             <Header title='¡Gracias por tu compra!' />
             <Section>
               <p className='text-xl my-8'>Hola {'{{ shipping_address.first_name }}'},</p>
-              <p>Tu orden ha sido recibida y está siendo procesada.</p>
-              <p>Recibirás un correo electrónico con la información del envío.</p>
+              {'{{#if is_banktransfer}}'}
+                <BankTransferInfo />
+              {'{{else}}'}
+                <p>Tu orden ha sido recibida y está siendo procesada.</p>
+                <p>Recibirás un correo electrónico con la información del envío.</p>
+              {'{{/if}}'}
             </Section>
             <Section>
               <h2 className='text-neutral-200'>Número de pedido: {'{{ display_id }}'}</h2>

@@ -1,9 +1,10 @@
-import { RadioGroup } from '@headlessui/react'
+import { Radio as RadioGroup } from '@headlessui/react'
 
 import PaymentTest from './payment-test'
 import type { PaymentSession } from 'api'
 import clsx from 'clsx'
 import Radio from '../../form/radio'
+import { BankTransferExtra } from './bank-transfer-extra'
 
 type Props = {
   paymentSession: PaymentSession
@@ -22,7 +23,7 @@ export default function PaymentContainer ({
 
   return (
     <>
-      <RadioGroup.Option
+      <RadioGroup
         key={paymentSession.id}
         value={paymentSession.provider_id}
         disabled={disabled}
@@ -35,7 +36,7 @@ export default function PaymentContainer ({
         )}
       >
         <div className="flex items-center justify-between ">
-          <div className="flex items-center gap-x-4">
+          <div className="flex flex-wrap items-center gap-x-4">
             <Radio
               checked={selectedPaymentOptionId === paymentSession.provider_id}
             />
@@ -46,6 +47,9 @@ export default function PaymentContainer ({
             {paymentSession.provider_id === 'manual' && isDevelopment && (
               <PaymentTest className="hidden small:block" />
             )}
+            {paymentSession.provider_id === 'banktransfer' && (
+              <BankTransferExtra />
+            )}
           </div>
           <span className="justify-self-end text-gray-700 dark:text-gray-300">
             {paymentInfoMap[paymentSession.provider_id]?.icon}
@@ -54,7 +58,7 @@ export default function PaymentContainer ({
         {paymentSession.provider_id === 'manual' && isDevelopment && (
           <PaymentTest className="small:hidden text-[10px]" />
         )}
-      </RadioGroup.Option>
+      </RadioGroup>
     </>
   )
 }

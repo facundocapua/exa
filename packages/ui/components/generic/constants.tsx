@@ -1,4 +1,4 @@
-import { CreditCardIcon } from '@heroicons/react/24/outline'
+import { BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/outline'
 import { MercadoPagoIcon } from '../icons'
 
 export const paymentInfoMap: Record<
@@ -12,6 +12,10 @@ string,
   manual: {
     title: 'Test payment',
     icon: <CreditCardIcon className='w-6 h-6' />
+  },
+  banktransfer: {
+    title: 'Transferencia bancaria',
+    icon: <BanknotesIcon className='w-6 h-6' />
   }
 // Add more payment providers here
 }

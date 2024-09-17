@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers'
 import type { Cart, PlaceOrderResponse, StorePostCartsCartReq } from 'api'
-import { addShippingMethod, completeCart, setPaymentSession, updateCart } from 'api'
+import { addDiscountCode, addShippingMethod, completeCart, removeDiscountCode, setPaymentSession, updateCart } from 'api'
 import { revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -78,6 +78,13 @@ export async function setPaymentMethod (providerId: string): Promise<Cart> {
   if (!cartId) throw new Error('No cartId cookie found')
 
   const cart = await setPaymentSession(cartId, providerId)
+  const couponCode = 'BANKTRANSFER'
+  if (providerId === 'banktransfer') {
+    await addDiscountCode(cartId, couponCode)
+  } else {
+    await removeDiscountCode(cartId, couponCode)
+  }
+
   revalidateTag('cart')
 
   return cart
