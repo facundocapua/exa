@@ -6,6 +6,12 @@
   }
 }
 
+@supports (animation-range: 0 30vh) {
+  .banner {
+    height: 40px;
+  }
+}
+
 @keyframes top-banner {
   0% {
     opacity: 1;
