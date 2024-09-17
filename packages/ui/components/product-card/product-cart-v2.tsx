@@ -15,7 +15,7 @@ type Props = {
 export const ProductCardV2 = ({ product, containerClassName, loading = 'lazy' }: Props) => {
   return (
     <article className={clsx(
-      'bg-white rounded-xl border flex flex-col justify-between group drop-shadow-md md:max-w-[300px]',
+      'bg-white rounded-xl border flex flex-col justify-between group drop-shadow-md md:max-w-[300px] dark:bg-gray-600 dark:border-gray-700',
       containerClassName
     )}>
       <div className="relative basis-full flex flex-col p-2 md:p-0">

@@ -39,7 +39,7 @@ export default function Header ({ cart }: Props) {
           {navigation.map((item) => (<Link key={item.id} href={item.href} className='whitespace-nowrap'>{item.name}</Link>))}
         </nav>
 
-        <div className='flex justify-center items-center gap-x-2'>
+        <div className='w-fit mx-auto flex justify-center items-center gap-x-2'>
           <Logo />
           <div className='block md:hidden text-gray-700 pr-4'>
             <SearchBoxMobile
