@@ -55,7 +55,7 @@ export const SearchBox = () => {
   }
 
   return (
-    <form className="w-full sm:max-w-xs" onSubmit={handleSubmit} onFocus={() => setFocus(true)} onBlur={(e) => e.relatedTarget === null && setFocus(false)}>
+    <form className="w-full sm:max-w-xs" onSubmit={handleSubmit} onFocus={() => setFocus(true)}>
       <label htmlFor="search" className="sr-only">
         Buscar
       </label>

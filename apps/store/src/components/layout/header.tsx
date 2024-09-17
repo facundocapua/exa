@@ -2,6 +2,7 @@ import MainNavigationMobile from '../navigation/MainNavigationMobile'
 import UserNav from '../user/UserNav'
 import { Logo } from './logo'
 import { SearchBox } from 'ui/components/search-box/search-box'
+import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 import styles from './styles.module.css'
 
 type Props = {
@@ -23,7 +24,7 @@ export const Header = ({ cart, user }: Props) => {
       <div className='flex gap-2'>
         <Logo className={styles.logo} />
         <div className='block lg:hidden '>
-          <SearchBox />
+          <SearchBoxMobile />
         </div>
       </div>
       <div className="text-right">
