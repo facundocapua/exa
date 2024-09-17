@@ -1,7 +1,9 @@
-.banner {
-  animation: top-banner linear forwards;
-  animation-timeline: scroll();
-  animation-range: 0 30vh;
+@supports (animation-range: 0 30vh) {
+  .banner {
+    animation: top-banner linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0 30vh;
+  }
 }
 
 @keyframes top-banner {
@@ -15,10 +17,12 @@
   }
 }
 
-.logo {
-  animation: logo linear forwards;
-  animation-timeline: scroll();
-  animation-range: 0 30vh;
+@supports (animation-range: 0 30vh) {
+  .logo {
+    animation: logo linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0 30vh;
+  }
 }
 
 @keyframes logo {
