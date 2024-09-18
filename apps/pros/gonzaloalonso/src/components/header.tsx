@@ -22,49 +22,50 @@ export default function Header ({ cart }: Props) {
   }, [pathname])
 
   return (
-    <header className="pt-4 pb-4   max-w-7xl mx-auto">
-      <div className="grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 w-full items-center px-4">
-        <div className="flex lg:hidden">
-          <button
+    <>
+      <div className='h-[84px] block md:hidden'></div>
+      <header className="fixed top-0 z-20 md:static md:top-auto md:z-auto bg-black pt-4 pb-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 w-full items-center px-4">
+          <div className="flex lg:hidden">
+            <button
               type="button"
               className="inline-flex items-center justify-center rounded-md text-gray-100"
               onClick={() => setMobileMenuOpen(true)}
             >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
+              <span className="sr-only">Open main menu</span>
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
 
-        <nav className="hidden lg:flex gap-8">
-          {navigation.map((item) => (<Link key={item.id} href={item.href} className='whitespace-nowrap'>{item.name}</Link>))}
-        </nav>
+          <nav className="hidden lg:flex gap-8">
+            {navigation.map((item) => (<Link key={item.id} href={item.href} className='whitespace-nowrap'>{item.name}</Link>))}
+          </nav>
 
-        <div className='w-fit mx-auto flex justify-center items-center gap-x-2'>
-          <Logo />
-          <div className='block md:hidden text-gray-700 pr-4'>
-            <SearchBoxMobile
+          <div className='w-fit mx-auto flex justify-center items-center gap-x-2'>
+            <Logo />
+            <div className='block md:hidden text-gray-700 pr-4'>
+              <SearchBoxMobile
               iconClassName='text-gray-200'
               inputClassName='text-gray-200 focus:border-b-gray-200'
             />
+            </div>
           </div>
-        </div>
 
-        <div className='flex justify-end items-center gap-8'>
-          <div className='hidden lg:block text-gray-700'>
-            <SearchBoxSimple
+          <div className='flex justify-end items-center gap-8'>
+            <div className='hidden lg:block text-gray-700'>
+              <SearchBoxSimple
               iconClassName='text-gray-100'
               inputClassName='text-gray-500 focus:border-b-gray-500'
             />
-          </div>
-          <div>
-            {cart}
+            </div>
+            <div>
+              {cart}
+            </div>
           </div>
         </div>
-      </div>
-
-      <Transition show={mobileMenuOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileMenuOpen}>
-          <Transition.Child
+        <Transition show={mobileMenuOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileMenuOpen}>
+            <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -73,11 +74,11 @@ export default function Header ({ cart }: Props) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
            >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
 
-          <div className="fixed inset-0 z-40 flex">
-            <TransitionChild
+            <div className="fixed inset-0 z-40 flex">
+              <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="-translate-x-full"
@@ -86,43 +87,44 @@ export default function Header ({ cart }: Props) {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-              <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-black pb-12 shadow-xl">
-                <div className="flex justify-between px-4 pb-2 pt-5">
-                  <Logo centered={false} />
-                  <button
+                <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-black pb-12 shadow-xl">
+                  <div className="flex justify-between px-4 pb-2 pt-5">
+                    <Logo centered={false} />
+                    <button
                     type="button"
                     className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-neutral-100"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span className="sr-only">Cerrar menu</span>
-                    <XMarkIcon className="h-8 w-8" aria-hidden="true" />
-                  </button>
-                </div>
+                      <span className="sr-only">Cerrar menu</span>
+                      <XMarkIcon className="h-8 w-8" aria-hidden="true" />
+                    </button>
+                  </div>
 
-                <div className='flex p-4 text-gray-700'>
-                  <SearchBoxMobile
+                  <div className='flex p-4 text-gray-700'>
+                    <SearchBoxMobile
                     iconClassName='text-gray-200'
                     inputClassName='text-gray-200 focus:border-b-gray-200'
                   />
-                </div>
+                  </div>
 
-                <div className="mt-6 space-y-2">
-                  {navigation.map((item) => (
-                    <Link
+                  <div className="mt-6 space-y-2">
+                    {navigation.map((item) => (
+                      <Link
                       key={item.name}
                       href={item.href}
                       className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </DialogPanel>
-            </TransitionChild>
-          </div>
-        </Dialog>
-      </Transition>
-    </header>
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </DialogPanel>
+              </TransitionChild>
+            </div>
+          </Dialog>
+        </Transition>
+      </header>
+    </>
   )
 }
