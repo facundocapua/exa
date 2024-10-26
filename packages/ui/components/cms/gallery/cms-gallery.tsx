@@ -4,14 +4,17 @@ import Image from 'next/image'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { Fragment, useCallback, useEffect } from 'react'
 import { imagesClasses as defaultImagesClasses } from './consts'
+import { twMerge } from 'tailwind-merge'
+import { clsx } from 'clsx'
 
 type Props = {
   images: Array<string>
   imagesClasses?: Array<string>
   param?: string
+  containerClassName?: string
 }
 
-export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses, param = 'image' }: Props) => {
+export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses, param = 'image', containerClassName }: Props) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const { replace } = useRouter()
@@ -50,7 +53,12 @@ export const CmsGallery = ({ images, imagesClasses = defaultImagesClasses, param
 
   return (
     <>
-      <div className="grid md:grid-cols-3 md:grid-rows-[350px_350px_350px] gap-4">
+      <div className={
+        clsx(twMerge(
+          'grid md:grid-cols-3 md:grid-rows-[350px_350px_350px] gap-4',
+          containerClassName
+        ))
+      }>
         {imagesClasses.map((imageClasses, index) => (
           <div key={index} className={imageClasses}>
             {images[index] && <Image src={images[index]!} alt="" className='object-cover rounded-lg cursor-pointer' fill onClick={() => setImage(index)} />}
