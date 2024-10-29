@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Kanit } from 'next/font/google'
 import React from 'react'
-import { STORE_URL } from '@/utils/const'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,6 +57,7 @@ export default function RootLayout ({ children, auth }:Props) {
         {children}
         {auth}
       </body>
+      <GoogleAnalytics gaId="G-ZLKQ9JW32Q" />
     </html>
   )
 }

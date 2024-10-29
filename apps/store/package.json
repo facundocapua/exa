@@ -17,6 +17,7 @@
     "@googlemaps/typescript-guards": "2.0.3",
     "@headlessui/react": "2.1.2",
     "@heroicons/react": "2.1.5",
+    "@next/third-parties": "15.0.1",
     "@react-google-maps/api": "2.19.3",
     "@vis.gl/react-google-maps": "1.1.0",
     "api": "workspace:*",
