@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Rubik } from 'next/font/google'
 import type { ReactNode } from 'react'
 import 'ui/styles/global.css'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,9 +51,11 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${rubik.variable}`}>
+      <GoogleTagManager gtmId="G-CMW8PCCXQ2" />
       <body className='font-custom antialiased'>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-CMW8PCCXQ2" />
     </html>
   )
 }

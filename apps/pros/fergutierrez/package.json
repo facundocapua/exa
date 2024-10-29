@@ -13,8 +13,8 @@
     "@headlessui/react": "2.1.2",
     "@heroicons/react": "2.1.5",
     "@next/eslint-plugin-next": "14.2.5",
+    "@next/third-parties": "15.0.1",
     "api": "workspace:*",
-    "utils": "workspace:*",
     "autoprefixer": "10.4.19",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
@@ -24,17 +24,18 @@
     "react-dom": "18.3.1",
     "tailwind-config": "workspace:*",
     "tailwindcss": "3.4.6",
-    "ui": "workspace:*"
+    "ui": "workspace:*",
+    "utils": "workspace:*"
   },
   "devDependencies": {
+    "@react-email/components": "0.0.21",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "20.14.11",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "eslint": "8.57.0",
-    "typescript": "5.5.3",
     "react-email": "2.1.5",
-    "@react-email/components": "0.0.21"
+    "typescript": "5.5.3"
   }
 }

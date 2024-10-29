@@ -4,6 +4,7 @@ import { Inter, Libre_Baskerville as Baskerville } from 'next/font/google'
 import localFont from 'next/font/local'
 import type { ReactNode } from 'react'
 import 'ui/styles/global.css'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -63,9 +64,11 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${libreBaskerville.variable} ${brittanySignature.variable}`}>
+      <GoogleTagManager gtmId="G-892BZ5ZFQN" />
       <body className='font-custom antialiased'>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-892BZ5ZFQN" />
     </html>
   )
 }
