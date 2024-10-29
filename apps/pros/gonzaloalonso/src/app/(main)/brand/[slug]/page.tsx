@@ -1,5 +1,5 @@
 import SectionTitle from '@/components/section-title'
-import { STORE_NAME } from '@/utils/const'
+import { STORE_NAME, STORE_URL } from '@/utils/const'
 import { getBrand, getBrands, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -54,7 +54,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       site: '@eXaBeautyOk'
     },
     alternates: {
-      canonical: `https://exabeauty.com.ar/brand/${slug}`
+      canonical: `${STORE_URL}/brand/${slug}`
     }
   }
 }

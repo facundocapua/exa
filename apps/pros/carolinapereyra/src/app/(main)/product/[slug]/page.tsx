@@ -1,4 +1,4 @@
-import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
+import { STORE_NAME, STORE_OG_IMAGE, STORE_URL } from '@/utils/const'
 import { getProduct, getProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -49,7 +49,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       site: '@eXaBeautyOk'
     },
     alternates: {
-      canonical: `https://exabeauty.com.ar/product/${slug}`
+      canonical: `${STORE_URL}/product/${slug}`
     }
   }
 }

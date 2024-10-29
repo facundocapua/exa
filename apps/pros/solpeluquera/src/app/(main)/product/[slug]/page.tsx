@@ -47,10 +47,10 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
       title: `${product.brand.name} ${product.title} | ${STORE_NAME}`,
       description: product.description ?? `${product.brand.name} ${product.title}`,
       site: '@eXaBeautyOk'
-    },
-    alternates: {
-      canonical: `https://exabeauty.com.ar/product/${slug}`
     }
+    // alternates: {
+    //   canonical: `https://exabeauty.com.ar/product/${slug}`
+    // }
   }
 }
 
