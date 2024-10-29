@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Kanit } from 'next/font/google'
 import React from 'react'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,6 +53,7 @@ type Props = {
 export default function RootLayout ({ children, auth }:Props) {
   return (
     <html lang="es" className={`${inter.variable} ${kanit.variable}`}>
+      <GoogleTagManager gtmId="G-ZLKQ9JW32Q" />
       <body className="font-sans antialiased bg-white dark:bg-gray-800">
         {children}
         {auth}
