@@ -2,6 +2,7 @@ import type { Product } from 'api'
 import ProductImageGallery from './ProductImageGallery'
 import ProductInfo from './ProductInfo'
 import RelatedProducts from './RelatedProducts'
+import DiscountBadge from '../product-card/DiscountBadge'
 
 type Props = {
   product: Product;
@@ -14,7 +15,14 @@ export const ProductPage = ({ product }: Props) => {
         <div className="mx-auto max-w-2xl lg:max-w-none">
           {/* Product */}
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            <ProductImageGallery product={product} />
+            <div className='relative'>
+              <DiscountBadge
+                price={product.price}
+                salePrice={product.salePrice}
+                className='z-20 text-xl'
+              />
+              <ProductImageGallery product={product} />
+            </div>
             {/* Product info */}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <ProductInfo product={product} />

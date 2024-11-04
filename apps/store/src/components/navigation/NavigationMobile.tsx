@@ -9,7 +9,7 @@ import CategorySubLevel from './mobile/CategorySubLevel'
 import { Logo } from '../layout/logo'
 import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 import { usePathname } from 'next/navigation'
-import { Dialog, Disclosure, DisclosureButton, DisclosurePanel, Transition, TransitionChild } from '@headlessui/react'
+import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Transition, TransitionChild } from '@headlessui/react'
 
 type Props = {
   navigation: {
@@ -29,7 +29,7 @@ export default function NavigationMobile ({ navigation }: Props) {
 
   return (
     <>
-      <Transition.Root show={open} as={Fragment}>
+      <Transition show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
           <TransitionChild
           as={Fragment}
@@ -44,7 +44,7 @@ export default function NavigationMobile ({ navigation }: Props) {
           </TransitionChild>
 
           <div className="fixed inset-0 z-40 flex">
-            <Transition.Child
+            <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="-translate-x-full"
@@ -53,7 +53,7 @@ export default function NavigationMobile ({ navigation }: Props) {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+              <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
                 <div className="flex justify-between px-4 pb-2 pt-5">
                   <Logo center={false} onClick={() => setOpen(false)} />
                   <button
@@ -114,11 +114,11 @@ export default function NavigationMobile ({ navigation }: Props) {
                     </div>
                   ))}
                 </div>
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition>
 
       {/* Mobile menu and search (lg-) */}
       <div className="flex flex-1 items-center lg:hidden">

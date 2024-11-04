@@ -1,12 +1,13 @@
-import { Filter, Product } from "./types"
+import { Filter, Product, ProductVariant } from "./types"
 import { getMedusaUrl } from "./utils/medusa"
-import { getFiltersFromProducts } from "./product"
+import { getFiltersFromProducts, getProductVariants } from "./product"
 import { applyFilters } from "./utils/filters"
 
 export const searchProducts = async (q: string, salesChannelId?: string) => {
   const params = new URLSearchParams({
     q,
-    expand: 'categories,images,variants,brand',
+    expand: 'categories,images,variants,brand,options,tags',
+    currency_code: 'ars'
   })
 
   if (salesChannelId) {
@@ -25,6 +26,25 @@ export const searchProducts = async (q: string, salesChannelId?: string) => {
     .then(data => {
       return data.products
     })
+
+  const variantsIds = products.map((product) => product.variants.map((variant) => variant.id)).flat()
+  const variants = await getProductVariants(variantsIds)
+
+  products.forEach((product) => {
+    product.variants = variants.filter((variant) => product.id === variant.product_id)
+    product.price = product.variants[0]?.original_price ?? 0
+    product.salePrice = product.variants[0]?.calculated_price ?? 0
+
+    product.variants.forEach((variant: ProductVariant) => {
+      if (variant?.metadata?.image) {
+        const imageIndex = product.images.findIndex((image) => image.url === variant?.metadata?.image)
+        if (imageIndex > -1) {
+          variant.images = [product.images[imageIndex] as Image]
+          product.images.splice(imageIndex, 1)
+        }
+      }
+    })
+  })
 
   return products
 }

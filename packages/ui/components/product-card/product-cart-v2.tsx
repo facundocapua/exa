@@ -38,7 +38,7 @@ export const ProductCardV2 = ({ product, containerClassName, loading = 'lazy' }:
               <Link href={`/product/${product.handle}`}>{product.title}</Link>
             </h3>
           </div>
-          <ProductPrice price={product.price} salePrice={product.salePrice} containerClassName='mt-0' priceClassName='text-base' />
+          <ProductPrice price={product.price} salePrice={product.salePrice} containerClassName='mt-0' priceClassName='text-2xl' />
         </div>
       </div>
       <div>

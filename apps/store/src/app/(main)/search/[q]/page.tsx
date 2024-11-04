@@ -41,6 +41,7 @@ export default async function SearchPage ({ params, searchParams }: Props) {
         products={products}
         total={total}
         url={`/search/${q}`}
+        theme='v2'
       />
     </main>
   )

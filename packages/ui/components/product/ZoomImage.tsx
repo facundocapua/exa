@@ -1,5 +1,6 @@
 'use client'
 
+import { clsx } from 'clsx'
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 
@@ -26,7 +27,10 @@ export default function ZoomImage ({ image, alt }: {image: string, alt: string})
         onMouseLeave={() => setDisplayZoom(false)}
         onMouseMove={handleMouseOver}
       >
-        <Image src={image} alt={alt} width={500} height={500} className='bg-white' />
+        <Image src={image} alt={alt} width={500} height={500} className={clsx(
+          'bg-white',
+          { 'opacity-0': displayZoom }
+        )} />
         {displayZoom && (<div className='w-[1000px] absolute' style={{
           top: -mousePosition.y,
           left: -mousePosition.x

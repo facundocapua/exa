@@ -3,6 +3,7 @@ import Price from '../generic/Price'
 import ProductAddToCart from './ProductAddToCart'
 import ProductColorSelector from './ProductColorSelector'
 import Link from 'next/link'
+import { CreditCardIcon } from '@heroicons/react/24/solid'
 
 type Props = {
   product: Product
@@ -16,8 +17,12 @@ export default function ProductInfo ({ product }: Props) {
       <div className="mt-3">
         <h2 className="sr-only">Información de producto</h2>
         <div className="flex gap-2 mt-6 items-center">
-          { product.salePrice > 0 && <Price amount={product.salePrice} className='text-xl text-neutral-600 dark:text-neutral-300' /> }
-          { product.salePrice < product.price && <Price amount={product.price} className='line-through text-neutral-400 dark:text-neutral-500 text-md' /> }
+          { product.salePrice > 0 && <Price amount={product.salePrice} className='text-4xl text-neutral-600 dark:text-neutral-300' /> }
+          { product.salePrice < product.price && <Price amount={product.price} className='line-through text-neutral-500 dark:text-neutral-500 text-md' /> }
+        </div>
+        <div className='flex items-center gap-x-2 text-neutral-600 text-xl mt-2'>
+          <CreditCardIcon className='w-6 h-6 text-neutral-600 dark:text-neutral-300' />
+          3 cuotas de <Price amount={product.salePrice / 3} className='text-primary-700 dark:text-primary-300 text-2xl font-semibold' />
         </div>
       </div>
 
