@@ -2,6 +2,7 @@ import { Filter, Product, ProductVariant } from "./types"
 import { getMedusaUrl } from "./utils/medusa"
 import { getFiltersFromProducts, getProductVariants } from "./product"
 import { applyFilters } from "./utils/filters"
+import { Image } from '@medusajs/medusa'
 
 export const searchProducts = async (q: string, salesChannelId?: string) => {
   const params = new URLSearchParams({
