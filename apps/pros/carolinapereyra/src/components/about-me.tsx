@@ -8,16 +8,16 @@ export default function AboutMe () {
         <h1 className='text-4xl md:text-6xl font-title my-4 text-secondary-500 '>Carolina <span className='text-primary-400'>Pereyra</span></h1>
         <div className='flex flex-col gap-10 leading-8 px-2 md:px-0 text-gray-700'>
           <p className='text-balance'>
-            Se destaca por su habilidad para personalizar cada estilo, adaptándolo a la personalidad y preferencias de sus clientes.
+            Me destaco por mi habilidad para personalizar cada estilo, adaptándolo a la personalidad y preferencias de mis clientes.
           </p>
           <p className='text-balance'>
-            Su conocimiento en técnicas de corte y coloración le permite ofrecer transformaciones que resaltan la belleza natural de cada persona.
+            Mi conocimiento en técnicas de corte y coloración me permite ofrecer transformaciones que resaltan la belleza natural de cada persona.
           </p>
           <p className='text-balance'>
-            Con una constante actualización en las últimas tendencias, Carolina asegura resultados modernos y frescos que encantan a sus clientes.
+            Con una constante actualización en las últimas tendencias, aseguro resultados modernos y frescos que encantan a quienes visitan mi salón.
           </p>
           <p className='text-balance'>
-            Su enfoque cercano y profesional hace que cada visita a su salón sea una experiencia única y placentera.
+            Mi enfoque cercano y profesional hace que cada visita sea una experiencia única y placentera.
           </p>
         </div>
       </header>
@@ -28,7 +28,7 @@ export default function AboutMe () {
             background: 'radial-gradient(circle, rgba(255,255,255,0) 40%, rgba(255,255,255,1) 65%)'
           }}
         ></div>
-        <Image src={portfolioImage} alt='Carolina Pereyra' className='absolute -top-20 left-14 z-0' />
+        <Image src={portfolioImage} alt='Carolina Pereyra' className='absolute md:-top-20 md:left-14 z-0' />
       </footer>
     </section>
   )

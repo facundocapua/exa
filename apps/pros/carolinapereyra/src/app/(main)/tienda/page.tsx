@@ -70,6 +70,7 @@ export default async function StorePage ({ searchParams }: Props) {
           products={products}
           total={total}
           url="/tienda"
+          theme="v2"
         />
     </main>
   )

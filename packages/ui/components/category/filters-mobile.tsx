@@ -4,9 +4,10 @@ import { Dialog, DialogBackdrop, DialogPanel, Disclosure, DisclosureButton, Disc
 import { AdjustmentsHorizontalIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { FILTER_TYPE, type Filter } from 'api'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FilterRadio from './FilterRadio'
 import FilterRange from './FilterRange'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {
   count: number
@@ -15,6 +16,11 @@ type Props = {
 
 export const FiltersMobile = ({ count, filters }: Props) => {
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    setFiltersOpen(false)
+  }, [searchParams])
 
   return (
     <div>
