@@ -7,12 +7,12 @@ import { STORE_URL } from '@/utils/const'
 import SectionTitle from '@/components/section-title'
 
 const imagesSummer = [
-  '/portfolio/portfolio-1.jpg',
-  '/portfolio/portfolio-2.jpg',
-  '/portfolio/portfolio-3.jpg',
-  '/portfolio/portfolio-4.jpg',
-  '/portfolio/portfolio-5.jpg',
-  '/portfolio/portfolio-6.jpg'
+  '/collections/1.webp',
+  '/collections/2.webp',
+  '/collections/3.webp',
+  '/collections/4.webp',
+  '/collections/5.webp',
+  '/collections/6.webp'
 ]
 
 const imagesSummerClasses = [

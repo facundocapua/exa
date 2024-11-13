@@ -7,18 +7,18 @@ import { STORE_URL } from '@/utils/const'
 import SectionTitle from '@/components/section-title'
 
 const images = [
-  '/portfolio/portfolio-1.jpg',
-  '/portfolio/portfolio-2.jpg',
-  '/portfolio/portfolio-3.jpg',
-  '/portfolio/portfolio-4.jpg',
-  '/portfolio/portfolio-5.jpg',
-  '/portfolio/portfolio-6.jpg'
+  '/portfolio/portfolio-1.webp',
+  '/portfolio/portfolio-2.webp',
+  '/portfolio/portfolio-3.webp',
+  '/portfolio/portfolio-4.webp',
+  '/portfolio/portfolio-5.webp',
+  '/portfolio/portfolio-6.webp'
 ]
 
 const imagesClasses = [
   'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
   'w-full block h-[350px] md:h-full rounded-xl md:col-span-2 relative [&>*]:object-[50%_25%]',
-  'w-full block h-[350px] md:h-full rounded-xl relative',
+  'w-full block h-[350px] md:h-full rounded-xl relative [&>*]:object-[50%_25%]',
   'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative',
   'w-full block h-[350px] md:h-full rounded-xl relative',
   'w-full block h-[350px] md:h-full rounded-xl relative'

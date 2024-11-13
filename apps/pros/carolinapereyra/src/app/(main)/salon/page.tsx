@@ -7,10 +7,10 @@ import { STORE_URL } from '@/utils/const'
 import SectionTitle from '@/components/section-title'
 
 const images = [
-  '/salon/1.jpg',
-  '/salon/2.jpg',
-  '/salon/3.jpg',
-  '/salon/4.jpg'
+  '/salon/1.webp',
+  '/salon/2.webp',
+  '/salon/3.webp',
+  '/salon/4.webp'
   // '/salon/5.jpg',
   // '/salon/6.jpg'
 ]
