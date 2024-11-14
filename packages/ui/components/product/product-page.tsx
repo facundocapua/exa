@@ -3,6 +3,7 @@ import ProductImageGallery from './ProductImageGallery'
 import ProductInfo from './ProductInfo'
 import RelatedProducts from './RelatedProducts'
 import DiscountBadge from '../product-card/DiscountBadge'
+import TrackProductView from '../ga/track-product-view'
 
 type Props = {
   product: Product;
@@ -31,6 +32,7 @@ export const ProductPage = ({ product }: Props) => {
         </div>
       </section>
       <RelatedProducts product={product} />
+      <TrackProductView product={product} />
     </div>
   )
 }

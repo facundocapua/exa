@@ -2,6 +2,7 @@ import { STORE_URL } from '@/utils/const'
 import { getCollection, getCollectionProducts, Product } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import TrackProductList from 'ui/components/ga/track-product-list'
 import { Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
@@ -99,6 +100,8 @@ export default async function CollectionPage ({ params, searchParams }: Props) {
           </div>
         </section>
       </div>
+
+      <TrackProductList products={products} listId={`category-${collection.handle}`} />
     </div>
   )
 }

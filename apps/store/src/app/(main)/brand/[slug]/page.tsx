@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { Filters } from 'ui'
 import AppliedFilters from 'ui/components/category/applied-filters'
 import FiltersMobile from 'ui/components/category/filters-mobile'
+import TrackProductList from 'ui/components/ga/track-product-list'
 import { Breadcrumb, ProductCard } from 'ui/server'
 import { cleanFilters } from 'utils'
 
@@ -122,6 +123,8 @@ export default async function Brand ({ params, searchParams }: Props) {
           </div>
         </section>
       </div>
+
+      <TrackProductList products={products} listId={`brand-${brand.handle}`} />
     </main>
   )
 }

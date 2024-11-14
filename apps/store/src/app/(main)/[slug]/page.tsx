@@ -2,6 +2,7 @@ import SectionTitle from '@/components/section-title'
 import { getCategories, getCategory, getFilteredProducts } from 'api'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import TrackProductList from 'ui/components/ga/track-product-list'
 import { Breadcrumb, ProductListPage } from 'ui/server'
 import { cleanFilters } from 'utils'
 
@@ -105,6 +106,8 @@ export default async function Category ({ params, searchParams }: Props) {
         url={`/${category.handle}`}
         theme='v2'
       />
+
+      <TrackProductList products={products} listId={`category-${category.handle}`} />
     </main>
   )
 }
