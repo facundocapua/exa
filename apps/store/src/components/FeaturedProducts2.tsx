@@ -1,5 +1,6 @@
 import { getCollectionProducts } from 'api'
 import { ProductSlider } from 'ui'
+import TrackProductList from 'ui/components/ga/track-product-list'
 
 const collectionHandle = 'new'
 
@@ -12,6 +13,7 @@ export default async function FeaturedProducts2 () {
     <div className='py-8 bg-neutral-200'>
       <h2 className='mx-auto text-center text-3xl font-semibold mb-6'>Descubrí lo Nuevo</h2>
       <ProductSlider products={products} theme='v2' />
+      <TrackProductList products={products} listId={'new-products'} />
     </div>
   )
 }

@@ -12,6 +12,7 @@ import type { FormEvent } from 'react'
 import { useEffect, useState } from 'react'
 import ContinueButton from './continue-button'
 import ShippingInfo from '../form/shipping-info'
+import { trackAddShippingInfo } from '../../ga/track-checkout'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -41,6 +42,7 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
   const handleChange = async (value: string) => {
     setLoading(true)
     const message = await setShippingMethod(value)
+    trackAddShippingInfo(cart)
     setMessage(message)
     setLoading(false)
   }

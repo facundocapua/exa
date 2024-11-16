@@ -9,6 +9,8 @@ import type {} from 'react/experimental'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
+import { sendGAEvent } from '@next/third-parties/google'
+import { extractProductInfo } from '../ga/utils'
 
 type Props = {
   product: Product
@@ -30,6 +32,14 @@ export default function ProductAddToCart ({ product, isProductPage, className, b
 
     startTransition(async () => {
       const error = await addItem(currentVariant.id ?? '')
+
+      sendGAEvent('event', 'add_to_cart', {
+        currency: 'ARS',
+        value: product.salePrice,
+        items: [
+          extractProductInfo(product)
+        ]
+      })
 
       if (error) {
         console.error(error)

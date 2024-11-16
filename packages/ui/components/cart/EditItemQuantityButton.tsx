@@ -7,6 +7,8 @@ import clsx from 'clsx'
 import { removeItem, updateItemQuantity } from './actions'
 import LoadingDots from '../LoadingDots'
 import type { CartItem } from 'api'
+import { sendGAEvent } from '@next/third-parties/google'
+import { extractCartItem } from '../ga/utils'
 
 export default function EditItemQuantityButton ({
   item,
@@ -23,13 +25,22 @@ export default function EditItemQuantityButton ({
       aria-label={type === 'plus' ? 'Increase item quantity' : 'Reduce item quantity'}
       onClick={() => {
         startTransition(async () => {
-          const error =
-            type === 'minus' && item.quantity - 1 === 0
-              ? await removeItem(item.id)
-              : await updateItemQuantity({
-                itemId: item.id,
-                quantity: type === 'plus' ? item.quantity + 1 : item.quantity - 1
-              })
+          const newQty = type === 'plus' ? item.quantity + 1 : item.quantity - 1
+          let error = null
+          if (newQty === 0) {
+            error = await removeItem(item.id)
+
+            sendGAEvent('event', 'remove_from_cart', {
+              currency: 'ARS',
+              value: item.subtotal,
+              items: [extractCartItem(item)]
+            })
+          } else {
+            error = await updateItemQuantity({
+              itemId: item.id,
+              quantity: newQty
+            })
+          }
 
           if (error) {
             // Trigger the error boundary in the root error.js

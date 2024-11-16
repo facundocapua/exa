@@ -9,6 +9,7 @@ import OpenCart from './OpenCart'
 import Price from '../generic/Price'
 import type { Cart } from 'api'
 import CartItem from './CartItem'
+import TrackCartView from '../ga/track-cart-view'
 
 const getTotalQuantity = (cart: Cart | undefined) => {
   if (!cart) return 0
@@ -135,6 +136,7 @@ export default function CartModal ({ cart, cartIconClassName }: Props) {
           </TransitionChild>
         </Dialog>
       </Transition>
+      {cart && <TrackCartView cart={cart} />}
     </>
   )
 }

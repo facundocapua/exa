@@ -6,6 +6,7 @@ import { placeOrder } from '../actions'
 import ErrorMessage from '../../generic/error-message'
 import MercadoPagoPaymentButton from './payment-buttons/mercadopago-payment-button'
 import { BanktransferPaymentButton } from './payment-buttons/banktransfer-payment-button'
+import { trackPurchase } from '../../ga/track-checkout'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -22,21 +23,22 @@ export default function PaymentButton ({ cart }: Props) {
 
   switch (paymentSession.provider_id) {
     case 'mercadopago':
-      return <MercadoPagoPaymentButton session={paymentSession} />
+      return <MercadoPagoPaymentButton cart={cart} session={paymentSession} />
     case 'manual':
-      return <ManualTestPaymentButton notReady={notReady} />
+      return <ManualTestPaymentButton cart={cart} notReady={notReady} />
     case 'banktransfer':
-      return <BanktransferPaymentButton notReady={notReady} />
+      return <BanktransferPaymentButton cart={cart} notReady={notReady} />
     default:
       return <Button disabled>Selecciona un método de pago</Button>
   }
 }
 
-const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
+const ManualTestPaymentButton = ({ notReady, cart }: { notReady: boolean, cart: CartWithCheckoutStep }) => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onPaymentCompleted = async () => {
+    trackPurchase(cart)
     await placeOrder().catch((err) => {
       setErrorMessage(err.toString())
       setSubmitting(false)

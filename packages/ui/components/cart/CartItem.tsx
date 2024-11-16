@@ -1,4 +1,4 @@
-import { CartItem as CartItemType } from 'api'
+import type { CartItem as CartItemType } from 'api'
 import DeleteItemButton from './DeleteItemButton'
 import Image from 'next/image'
 import { Price } from '../generic'
@@ -41,7 +41,7 @@ export default function CartItem ({ item }: Props) {
       <div className="flex flex-1 flex-col text-base">
         <span className="leading-tight text-sm">
           {item.variant.product.title}
-          {item.variant.title && ` - ${item.variant.title}`}
+          {item.variant.title && item.variant.title.toLowerCase() !== 'unico' && ` - ${item.variant.title}`}
         </span>
       </div>
 

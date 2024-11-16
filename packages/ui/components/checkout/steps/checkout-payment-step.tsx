@@ -11,6 +11,7 @@ import type { FormEvent } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { setPaymentMethod } from '../actions'
 import { paymentInfoMap } from '../../generic/constants'
+import { trackAddPaymentInfo } from '../../ga/track-checkout'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -54,6 +55,7 @@ export default function CheckoutPaymentStep ({ cart }: Props) {
 
   const handleChange = (providerId: string) => {
     setMessage(null)
+    trackAddPaymentInfo(cart)
     set(providerId)
   }
 
