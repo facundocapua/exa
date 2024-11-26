@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import Image from 'next/image'
 import { RatingStars } from 'ui/components/generic/rating-stars'
 
@@ -19,6 +18,7 @@ const getReviews = async (): Promise<Review[]> => {
   return fetch(url)
     .then((response) => response.json())
     .then((data) => data.result.reviews)
+    .then((reviews) => reviews.slice(0, 4))
 }
 
 export default async function Testimonials () {
