@@ -45,11 +45,11 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="es" className={`${inter.variable}`}>
-      <GoogleTagManager gtmId="G-EZ2QY3J4W9" />
+      <GoogleTagManager gtmId="G-M3G66XMTXR" />
       <body className='font-sans antialiased bg-black text-white dark'>
         {children}
       </body>
-      <GoogleAnalytics gaId="G-EZ2QY3J4W9" />
+      <GoogleAnalytics gaId="G-M3G66XMTXR" />
     </html>
   )
 }

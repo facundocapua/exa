@@ -61,11 +61,11 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${fashionFetish.variable}`}>
-      <GoogleTagManager gtmId="G-JQTBKDFVK7" />
+      <GoogleTagManager gtmId="G-KJT39HQHWY" />
       <body className='font-sans antialiased'>
         {children}
       </body>
-      <GoogleAnalytics gaId="G-JQTBKDFVK7" />
+      <GoogleAnalytics gaId="G-KJT39HQHWY" />
     </html>
   )
 }

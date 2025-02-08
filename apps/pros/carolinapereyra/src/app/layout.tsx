@@ -64,11 +64,11 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${libreBaskerville.variable} ${brittanySignature.variable}`}>
-      <GoogleTagManager gtmId="G-892BZ5ZFQN" />
+      <GoogleTagManager gtmId="G-63DPPC1S2B" />
       <body className='font-custom antialiased'>
         {children}
       </body>
-      <GoogleAnalytics gaId="G-892BZ5ZFQN" />
+      <GoogleAnalytics gaId="G-63DPPC1S2B" />
     </html>
   )
 }
