@@ -79,7 +79,7 @@ export default function ProductAddToCart ({ product, isProductPage, className, b
           href={`/product/${product.handle}`}
           className={clsx(twMerge(
             'flex items-center justify-center md:rounded-md bg-primary-700 w-full py-4 text-base font-medium text-white hover:bg-primary-600 focus:outline-none',
-            className
+            buttonClassName
           ))}>
           Comprar
         </Link>

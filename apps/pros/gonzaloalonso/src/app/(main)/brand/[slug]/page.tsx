@@ -67,7 +67,14 @@ export default async function Brand ({ params, searchParams }: Props) {
     notFound()
   }
 
-  const breadcrumbs = []
+  const breadcrumbs = [
+    {
+      name: 'Tienda',
+      url: '/tienda',
+      current: false
+    }
+  ]
+
   if (brand) {
     breadcrumbs.push({
       name: brand.name,

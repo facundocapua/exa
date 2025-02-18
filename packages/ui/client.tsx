@@ -1,5 +1,5 @@
-export { default as BrandFeaturedList } from './components/brand-featured-list/BrandFeaturedList'
-export { default as HeroSlider } from './components/hero-slider/HeroSlider'
+export { default as BrandFeaturedList } from './components/brand-featured-list/brand-featured-carousel'
+export { default as HeroSlider } from './components/hero-slider/hero-slider'
 export { default as MobileOrderSummary } from './components/checkout/MobileOrderSummary'
 export { default as Price } from './components/generic/Price'
 export { default as ProductAddToCart } from './components/product/ProductAddToCart'

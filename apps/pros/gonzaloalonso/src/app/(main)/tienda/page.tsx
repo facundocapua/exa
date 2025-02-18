@@ -1,13 +1,16 @@
-import SectionTitle from '@/components/section-title'
 import { STORE_NAME, STORE_OG_IMAGE } from '@/utils/const'
-import { getFilteredProducts, getSalon } from 'api'
 import { Metadata } from 'next'
-import { Breadcrumb, ProductListPage } from 'ui/server'
-import { cleanFilters } from 'utils'
-
-type Props = {
-  searchParams: Record<string, string>
-}
+import { Suspense } from 'react'
+import { HeroSliderSkeleton } from 'ui/components/hero-slider/hero-slider-skeleton'
+import { ProductSliderSkeleton } from 'ui/components/product-slider/product-slider-skeleton'
+import { BrandFeaturedSkeleton } from 'ui/components/brand-featured-list/brand-featured-skeleton'
+import { BrandFeaturedBlock } from 'ui/components/brand-featured-block/brand-featured-block'
+import { BrandFeaturedBlockSkeleton } from 'ui/components/brand-featured-block/brand-featured-block-skeleton'
+import { StoreMainSlider } from 'ui/components/pros/store-main-slider'
+import FeaturedProducts from '@/components/FeaturedProducts'
+import FeaturedBrands from '@/components/FeaturedBrands'
+import { StoreNavigation } from 'ui/components/pros/store-navigation'
+import { getSalon } from 'api'
 
 export async function generateMetadata (): Promise<Metadata> {
   return {
@@ -38,39 +41,40 @@ export async function generateMetadata (): Promise<Metadata> {
   }
 }
 
-export default async function StorePage ({ searchParams }: Props) {
+export default async function StorePage () {
   const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   const salon = await getSalon(salonId)
-  const cleanedSearchParams = cleanFilters(searchParams)
-  const { filters, products, total } = await getFilteredProducts({
-    filters: cleanedSearchParams,
-    salesChannelId: salon?.sales_channel_id
-  })
+  if (!salon) return null
 
-  const breadcrumbs = [
-    {
-      name: 'Tienda',
-      url: '/tienda',
-      current: true
-    }
+  const allowedCategories = [
+    'coloracion',
+    'cuidado',
+    'styling',
+    'herramientas',
+    'brochas'
   ]
 
   return (
     <main className="w-full px-4 mb-4 mt-4">
-      <div className='max-w-7xl mx-auto mb-4'>
-        <Breadcrumb pages={breadcrumbs} />
-      </div>
-
-      <SectionTitle>Tienda</SectionTitle>
-
-      <div className='max-w-7xl mx-auto'>
-        <ProductListPage
-          searchParams={cleanedSearchParams}
-          filters={filters}
-          products={products}
-          total={total}
-          url="/tienda"
-        />
+      <div className='mx-auto'>
+        <StoreNavigation allowedCategories={allowedCategories} />
+        <Suspense fallback={<HeroSliderSkeleton />}>
+          <StoreMainSlider salonId={salonId} />
+        </Suspense>
+        { salon.featured_brand && (
+          <Suspense fallback={<BrandFeaturedBlockSkeleton />}>
+            <BrandFeaturedBlock handle={salon.featured_brand.handle} />
+          </Suspense>
+        )}
+        {/* <Suspense fallback={<FeaturedBannersBigSkeleton />}>
+          <FeaturedBannersBig />
+        </Suspense> */}
+        <Suspense fallback={<ProductSliderSkeleton title='Destacados del mes' />}>
+          <FeaturedProducts />
+        </Suspense>
+        <Suspense fallback={<BrandFeaturedSkeleton />}>
+          <FeaturedBrands />
+        </Suspense>
       </div>
     </main>
   )

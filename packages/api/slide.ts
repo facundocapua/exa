@@ -1,12 +1,12 @@
-import { Slide } from './types'
+import { Slide, Salon } from './types'
 import { getMedusaUrl } from './utils/medusa'
 
-export const getFeaturedSlides = async (): Promise<Slide[]> => {
+export const getFeaturedSlides = async (salonId?: Salon['id']): Promise<Slide[]> => {
   const slides = fetch(
-    `${getMedusaUrl()}/store/slides`,
+    `${getMedusaUrl()}/store/slides${salonId ? `?salon_id=${salonId}` : ''}`,
     {
       next: {
-        tags: ['slide']
+        tags: ['slide', `salon-${salonId ?? 'global'}`]
       },
       cache: 'force-cache'
     }

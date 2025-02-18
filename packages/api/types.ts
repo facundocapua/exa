@@ -29,6 +29,7 @@ export type Brand = {
   name: string
   handle: string
   logo: string
+  featured_banner: string
   is_featured: boolean
   is_active: boolean
 }
@@ -110,6 +111,8 @@ export interface Salon {
   brands?: Array<Brand>
   social_networks?: Record<string, string>
   sales_channel_id?: string
+  featured_brand?: Brand
+  featured_brand_id?: string
 }
 
 export type Order = MedusaOrder

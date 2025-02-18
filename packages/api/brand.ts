@@ -45,7 +45,7 @@ export const getFeaturedBrands = async (): Promise<Array<Brand>> => {
   return data
 }
 
-export const getBrand = async (handle: string): Promise<Brand | null> => {
+export const getBrand = async (handle: Brand['handle']): Promise<Brand | null> => {
   const brands = await getBrands({ handle })
 
   return brands[0] || null

@@ -5,8 +5,9 @@ import useSwipe from './useSwipe'
 import BackButton from './BackButton'
 import ForwardButton from './ForwardButton'
 import Link from 'next/link'
-import { Slide } from 'api'
+import type { Slide } from 'api'
 import clsx from 'clsx'
+import HeroSlide from './hero-slide'
 
 type Props = {
   slides: Array<Slide>
@@ -76,36 +77,11 @@ export default function HeroSlider ({ slides }: Props) {
         onTouchEnd={handleTouchEnd}
       >
         {slides.map((slide, index) => (
-          <Link key={index} href={slide.link}>
-            <Image
-              src={slide.image_mobile}
-              width={780}
-              height={546}
-              sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto'
-              }}
-              className="inline-block w-full h-auto md:hidden"
-              alt={slide.title}
-              draggable={false}
-              priority={index === 0}
-            />
-            <Image
-              src={slide.image}
-              width={2500}
-              height={520}
-              sizes="100vw"
-              style={{
-                width: '100%',
-                height: 'auto'
-              }}
-              className="hidden w-full h-auto md:inline-block"
-              alt={slide.title}
-              draggable={false}
-              priority={index === 0}
-            />
-          </Link>
+          <HeroSlide
+            key={index}
+            slide={slide}
+            priority={index === 0}
+          />
         ))}
       </div>
 
@@ -126,8 +102,8 @@ export default function HeroSlider ({ slides }: Props) {
             >
               <span className={clsx(
                 'w-3 h-3 block rounded-full shadow border-none transition-all duration-100 ease-in-out hover:scale-110',
-                {'bg-gray-200': activeSlide === index},
-                {'bg-gray-400': activeSlide !== index}
+                { 'bg-gray-200': activeSlide === index },
+                { 'bg-gray-400': activeSlide !== index }
               )}></span>
             </button>
           )

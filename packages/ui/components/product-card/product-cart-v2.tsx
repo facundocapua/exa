@@ -42,7 +42,10 @@ export const ProductCardV2 = ({ product, containerClassName, loading = 'lazy' }:
         </div>
       </div>
       <div>
-        <ProductAddToCart product={product} buttonClassName='md:rounded-t-none rounded-b-[11px] m-0 group-hover:opacity-75 transition-opacity duration-500' />
+        <ProductAddToCart
+          product={product}
+          buttonClassName='md:rounded-t-none rounded-b-[11px] m-0 group-hover:opacity-75 transition-opacity duration-500'
+        />
       </div>
     </article>
   )
