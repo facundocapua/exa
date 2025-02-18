@@ -47,7 +47,7 @@ export default async function StorePage () {
   if (!salon) return null
 
   const allowedCategories = [
-    'coloracion',
+    // 'coloracion',
     'cuidado',
     'styling',
     'herramientas',
