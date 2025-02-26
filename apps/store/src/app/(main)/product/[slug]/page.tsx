@@ -5,9 +5,9 @@ import { notFound } from 'next/navigation'
 import { ProductPage } from 'ui/components/product/product-page'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export default async function Product ({ params }: Props) {

@@ -4,15 +4,15 @@ import { redirect } from 'next/navigation'
 import { Breadcrumb, ProductListPage } from 'ui/server'
 
 type Props = {
-  params: {
+  params: Promise<{
     q: string
-  }
-  searchParams: Record<string, string>
+  }>
+  searchParams: Promise<Record<string, string>>
 }
 
 export default async function SearchPage ({ params, searchParams }: Props) {
   const breadcrumbs = []
-  const { q } = params
+  const { q } = await params
   if (!q) {
     redirect('/')
   }

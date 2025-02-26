@@ -11,10 +11,10 @@ import { Breadcrumb, ProductCard } from 'ui/server'
 import { cleanFilters } from 'utils'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
-  searchParams: Record<string, string>
+  }>
+  searchParams: Promise<Record<string, string>>
 }
 
 export async function generateStaticParams () {

@@ -8,10 +8,10 @@ import FiltersMobile from 'ui/components/category/filters-mobile'
 import { Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
-  searchParams: Record<string, string>
+  }>
+  searchParams: Promise<Record<string, string>>
 }
 
 export async function generateStaticParams () {
@@ -23,7 +23,7 @@ export async function generateStaticParams () {
 }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
   const brand = await getBrand(slug)
   if (!brand) return {}
 

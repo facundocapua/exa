@@ -6,10 +6,10 @@ import TrackProductList from 'ui/components/ga/track-product-list'
 import { Breadcrumb, ProductCard } from 'ui/server'
 
 type Props = {
-  params: {
+  params: Promise<{
     handle: string
-  }
-  searchParams: Record<string, string>
+  }>
+  searchParams: Promise<Record<string, string>>
 }
 
 // export async function generateStaticParams () {

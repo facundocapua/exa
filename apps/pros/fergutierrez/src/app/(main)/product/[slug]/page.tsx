@@ -8,9 +8,9 @@ import { ProductImageGallery } from 'ui'
 import { ProductInfo, RelatedProducts } from 'ui/server'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams () {
