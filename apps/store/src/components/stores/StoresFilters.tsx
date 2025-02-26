@@ -24,7 +24,7 @@ export default function StoresFilters ({ stores }: Props) {
   const storesBrands = getBrands(stores)
   const searchParams = useSearchParams()
   const selected = searchParams.get('b')?.split(',') ?? []
-  const [brands, setBrands] = useStoresStore(state => [state.brands, state.setBrands])
+  const {brands, setBrands} = useStoresStore.getState()
   const [showFilters, setShowFilters] = useState<boolean>(() => selected.length > 0)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

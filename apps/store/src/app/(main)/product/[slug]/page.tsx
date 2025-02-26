@@ -11,7 +11,7 @@ type Props = {
 }
 
 export default async function Product ({ params }: Props) {
-  const { slug } = params
+  const { slug } = await params
   const product = await getProduct(slug)
 
   if (!product) {
@@ -53,7 +53,7 @@ export async function generateStaticParams () {
 }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
   const product = await getProduct(slug)
   if (!product) return {}
 

@@ -12,7 +12,7 @@ type Props = {
 
 export default async function SearchPage ({ params, searchParams }: Props) {
   const breadcrumbs = []
-  const { q } = params
+  const { q } = await params
   if (!q) {
     redirect('/')
   }
@@ -23,9 +23,10 @@ export default async function SearchPage ({ params, searchParams }: Props) {
     current: true
   })
 
+  const sp = await searchParams
   const { filters, products, total } = await getFilteredSearchProducts({
     q,
-    filters: searchParams,
+    filters: sp,
     exclude: []
   })
 
@@ -36,7 +37,7 @@ export default async function SearchPage ({ params, searchParams }: Props) {
       <SectionTitle>{`Resultados para "${q}"`}</SectionTitle>
 
       <ProductListPage
-        searchParams={searchParams}
+        searchParams={sp}
         filters={filters}
         products={products}
         total={total}

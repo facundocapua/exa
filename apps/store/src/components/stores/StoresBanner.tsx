@@ -9,7 +9,7 @@ export default function StoresBanner () {
           <Image
             src="/stores/bg-studios.jpg"
             alt="Studios"
-            layout="fill"
+            fill
             className="h-full w-full object-cover object-center"
             loading='lazy'
           />

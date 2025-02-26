@@ -44,7 +44,7 @@ export async function generateMetadata (): Promise<Metadata> {
 export default async function StorePage ({ searchParams }: Props) {
   const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   const salon = await getSalon(salonId)
-  const cleanedSearchParams = cleanFilters(searchParams)
+  const cleanedSearchParams = cleanFilters(await searchParams)
 
   const { filters, products, total } = await getFilteredProducts({
     filters: cleanedSearchParams,

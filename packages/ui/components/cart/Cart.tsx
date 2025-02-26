@@ -7,7 +7,8 @@ type Props = {
 }
 
 export default async function Cart ({ cartIconClassName }: Props) {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
   let cart
 
   if (cartId) {

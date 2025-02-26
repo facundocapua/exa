@@ -24,7 +24,7 @@ export async function generateStaticParams () {
 }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
   const brand = await getBrand(slug)
   if (!brand) return {}
 
@@ -60,7 +60,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Brand ({ params, searchParams }: Props) {
-  const { slug } = params
+  const { slug } = await params
   const brand = await getBrand(slug)
 
   if (!brand) {
@@ -83,9 +83,10 @@ export default async function Brand ({ params, searchParams }: Props) {
     })
   }
 
+  const sp = await searchParams
   const { filters, products, total } = await getFilteredProducts({
     restrinctions: { brand: slug },
-    filters: searchParams,
+    filters: sp,
     exclude: ['brand']
   })
 
@@ -102,13 +103,13 @@ export default async function Brand ({ params, searchParams }: Props) {
         <aside>
           <div className="hidden lg:block">
             <h2 className='text-xl mb-4'>Filtros</h2>
-            <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
+            <AppliedFilters url={`/brand/${slug}`} searchParams={sp} />
             <Filters filters={filters} />
           </div>
           <div className='block lg:hidden'>
             <FiltersMobile count={products.length} filters={filters} />
             <div className='pt-2'>
-              <AppliedFilters url={`/brand/${slug}`} searchParams={searchParams} />
+              <AppliedFilters url={`/brand/${slug}`} searchParams={sp} />
             </div>
           </div>
         </aside>

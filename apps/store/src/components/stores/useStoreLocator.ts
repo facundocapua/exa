@@ -12,7 +12,7 @@ export default function useStoreLocator ({ stores }: Props) {
   const [currentStore, setCurrentStore] = useState<Salon | null>()
   const [filteredStores, setFilteredStores] = useState<Salon[]>(stores)
   const [searchText, setSearchText] = useState<string>('')
-  const [brands] = useStoresStore(state => [state.brands, state.setBrands])
+  const {brands} = useStoresStore.getState()
 
   useEffect(() => {
     if (!map) return

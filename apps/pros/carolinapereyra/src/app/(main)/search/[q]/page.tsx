@@ -25,9 +25,10 @@ export default async function SearchPage ({ params, searchParams }: Props) {
 
   const salonId = process.env.NEXT_PUBLIC_STORE_ID ?? ''
   const salon = await getSalon(salonId)
+  const sp = await searchParams
   const { filters, products, total } = await getFilteredSearchProducts({
     q,
-    filters: searchParams,
+    filters: sp,
     salesChannelId: salon?.sales_channel_id,
     exclude: []
   })
@@ -39,7 +40,7 @@ export default async function SearchPage ({ params, searchParams }: Props) {
       <SectionTitle>{`Resultados para "${q}"`}</SectionTitle>
 
       <ProductListPage
-        searchParams={searchParams}
+        searchParams={sp}
         filters={filters}
         products={products}
         total={total}

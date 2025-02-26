@@ -4,11 +4,12 @@ import { addCartItem, createCart, getCart, removeCartItem, updateCartItem } from
 import { cookies } from 'next/headers'
 
 export const addItem = async (variantId: string): Promise<String | undefined> => {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
   let cart
   if (!cartId) {
     cart = await createCart()
-    cookies().set('cart', cart.id)
+    c.set('cart', cart.id)
   } else {
     cart = await getCart(cartId)
   }
@@ -22,7 +23,8 @@ export const addItem = async (variantId: string): Promise<String | undefined> =>
 }
 
 export const removeItem = async (itemId: string): Promise<String | undefined> => {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
   if (!cartId) return 'Error removing item from cart'
 
   try {
@@ -39,7 +41,8 @@ export const updateItemQuantity = async ({
   itemId: string;
   quantity: number;
 }): Promise<String | undefined> => {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
   if (!cartId) return 'Error updating item from cart'
 
   try {

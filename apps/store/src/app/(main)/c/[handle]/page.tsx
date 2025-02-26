@@ -23,7 +23,7 @@ type Props = {
 // }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const { handle } = params
+  const { handle } = await params
   const collection = await getCollection(handle)
   if (!collection) return {}
 
@@ -60,7 +60,7 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CollectionPage ({ params, searchParams }: Props) {
-  const { handle } = params
+  const { handle } = await params
   const collection = await getCollection(handle)
   if (!collection) {
     notFound()

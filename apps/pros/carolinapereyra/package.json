@@ -10,32 +10,32 @@
     "dev:mails": "email dev --dir=./src/emails --port 3014"
   },
   "dependencies": {
-    "@headlessui/react": "2.1.2",
-    "@heroicons/react": "2.1.5",
-    "@next/eslint-plugin-next": "14.2.5",
-    "@next/third-parties": "15.0.1",
+    "@headlessui/react": "2.2.0",
+    "@heroicons/react": "2.2.0",
+    "@next/eslint-plugin-next": "15.1.7",
+    "@next/third-parties": "15.1.7",
     "api": "workspace:*",
     "autoprefixer": "10.4.19",
-    "class-variance-authority": "0.7.0",
+    "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "next": "14.2.21",
+    "next": "15.1.7",
     "postcss": "8.4.39",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "tailwind-config": "workspace:*",
     "tailwindcss": "3.4.6",
     "ui": "workspace:*",
     "utils": "workspace:*"
   },
   "devDependencies": {
-    "@react-email/components": "0.0.21",
+    "@react-email/components": "0.0.33",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/node": "20.14.11",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
+    "@types/node": "22.13.5",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "eslint": "8.57.0",
-    "react-email": "2.1.5",
-    "typescript": "5.5.3"
+    "react-email": "3.0.7",
+    "typescript": "5.7.3"
   }
 }

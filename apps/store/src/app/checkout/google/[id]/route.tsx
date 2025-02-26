@@ -5,11 +5,12 @@ import { redirect } from 'next/navigation'
 export const GET = async (request: Request, { params }: {params: {id: string}}) => {
   const { id } = params
 
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
   let cart
   if (!cartId) {
     cart = await createCart()
-    cookies().set('cart', cart.id)
+    c.set('cart', cart.id)
   } else {
     cart = await getCart(cartId)
   }

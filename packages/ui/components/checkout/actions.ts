@@ -9,8 +9,8 @@ import { redirect } from 'next/navigation'
 export async function setAddresses (currentState: unknown, formData: FormData) {
   // await new Promise(r => setTimeout(r, 2000))
   if (!formData) return 'No form data received'
-
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
 
   if (!cartId) return { message: 'No cartId cookie found' }
 
@@ -60,7 +60,8 @@ export async function setAddresses (currentState: unknown, formData: FormData) {
 }
 
 export async function setShippingMethod (shippingMethodId: string) {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
 
   if (!cartId) return { message: 'No cartId cookie found' }
 
@@ -73,7 +74,8 @@ export async function setShippingMethod (shippingMethodId: string) {
 }
 
 export async function setPaymentMethod (providerId: string): Promise<Cart> {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
 
   if (!cartId) throw new Error('No cartId cookie found')
 
@@ -91,14 +93,15 @@ export async function setPaymentMethod (providerId: string): Promise<Cart> {
 }
 
 export async function placeOrder (): Promise<PlaceOrderResponse> {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
 
   if (!cartId) throw new Error('No cartId cookie found')
 
   const cart = await completeCart(cartId)
   revalidateTag('cart')
 
-  cookies().set('cart', '', { maxAge: -1 })
+  c.set('cart', '', { maxAge: -1 })
   if (cart?.type === 'order') {
     redirect(`/order/confirmed/${cart?.data.id}`)
   }

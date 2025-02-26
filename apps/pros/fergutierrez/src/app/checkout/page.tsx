@@ -19,7 +19,8 @@ const getCheckoutStep = (
 }
 
 export default async function CheckoutPage () {
-  const cartId = cookies().get('cart')?.value
+  const c = await cookies()
+  const cartId = c.get('cart')?.value
   if (!cartId) return redirect('/')
 
   const cart = (await createPaymentSession(cartId).then(cart => cart)) as CartWithCheckoutStep

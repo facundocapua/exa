@@ -2,7 +2,8 @@ import { cookies } from 'next/headers'
 import { getCustomerOrders } from 'api'
 
 export const RecentOrders = async () => {
-  const token = cookies().get('auth_jwt')?.value
+  const c = await cookies()
+  const token = c.get('auth_jwt')?.value
   if (!token) return null
 
   const orders = await getCustomerOrders(token)

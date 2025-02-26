@@ -23,7 +23,7 @@ export async function generateStaticParams () {
 }
 
 export async function generateMetadata ({ params }: Props): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
   const category = await getCategory(slug)
   if (!category) return {}
 
@@ -57,9 +57,9 @@ export async function generateMetadata ({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Category ({ params, searchParams }: Props) {
-  const { slug } = params
+  const { slug } = await params
   const category = await getCategory(slug)
-  const cleanedSearchParams = cleanFilters(searchParams)
+  const cleanedSearchParams = cleanFilters(await searchParams)
 
   if (!category) {
     notFound()

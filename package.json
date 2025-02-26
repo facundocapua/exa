@@ -10,11 +10,11 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
-    "@turbo/gen": "2.0.7",
+    "@turbo/gen": "2.4.2",
     "eslint": "8.57.0",
-    "prettier": "3.3.3",
-    "turbo": "2.0.7"
+    "prettier": "3.5.2",
+    "turbo": "2.4.2"
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@10.4.1",
   "name": "exa"
 }

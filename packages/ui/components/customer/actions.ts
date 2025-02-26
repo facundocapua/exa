@@ -25,7 +25,8 @@ export const logCustomerIn = async (
 
   if (success) {
     revalidateTag('customer')
-    cookies().set('auth_jwt', token, {
+    const c = await cookies()
+    c.set('auth_jwt', token, {
       maxAge: 60 * 60 * 24 * 7, // 1 week
       httpOnly: true,
       sameSite: 'strict',
@@ -38,7 +39,8 @@ export const logCustomerIn = async (
 }
 
 export const logCustomerOut = async () => {
-  cookies().set('auth_jwt', '', {
+  const c = await cookies()
+  c.set('auth_jwt', '', {
     maxAge: -1
   })
   revalidateTag('auth')
