@@ -5,7 +5,7 @@ import { OrderCompleted } from 'ui/server'
 import { MercadoPagoRedirectPage } from 'ui/components/order/mercadopago/redirect-page'
 
 type Props = {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 async function getOrder (id: string) {
@@ -35,7 +35,8 @@ export const metadata: Metadata = {
 }
 
 export default async function MercadoPagoConfirmationPage ({ params }: Props) {
-  const { order, cart } = await getOrder(params.id)
+  const { id } = await params
+  const { order, cart } = await getOrder(id)
 
   if (!order && !cart) {
     return notFound()
