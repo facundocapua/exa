@@ -10,7 +10,7 @@ type Props = {
   paymentSession: PaymentSession
   selectedPaymentOptionId: string | null
   disabled?: boolean
-  paymentInfoMap: Record<string, { title: string; icon: JSX.Element }>
+  paymentInfoMap: Record<string, { title: string; icon: React.JSX.Element }>
 }
 
 export default function PaymentContainer ({
