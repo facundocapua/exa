@@ -2,8 +2,12 @@ import { addCartItem, createCart, getCart } from 'api'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export const GET = async (request: Request, { params }: {params: {id: string}}) => {
-  const { id } = params
+type Props = {
+  params: Promise<{id: string}>
+}
+
+export const GET = async (request: Request, { params }: Props) => {
+  const { id } = await params
   const c = await cookies()
   const cartId = c.get('cart')?.value
   let cart
