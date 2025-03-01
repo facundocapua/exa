@@ -4,7 +4,7 @@ import { formatPriceWithDecimals } from '../../utils/price'
 import { formatDateSmall } from '../../utils/date'
 
 type PaymentInfoMapType = Record<string, {
-  icon: JSX.Element
+  icon: React.JSX.Element
   title?: string
 }>
 
