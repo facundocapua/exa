@@ -4,6 +4,7 @@ import { useState } from 'react'
 import ErrorMessage from '../../../generic/error-message'
 import { placeOrder } from '../../actions'
 import { trackPurchase } from '../../../ga/track-checkout'
+import { IWalletBrickDefaultCustomization } from '@mercadopago/sdk-react/esm/bricks/wallet/types'
 
 initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY ?? '')
 
@@ -20,11 +21,14 @@ export const MercadoPagoPaymentButton = ({ session, cart }: {session: PaymentSes
     return preferenceId
   }
 
+  const customization: IWalletBrickDefaultCustomization = {
+    valueProp: 'convenience_all'
+  }
+
   return (
     <>
       <Wallet
-        // initialization={{ preferenceId }}
-        customization={{ texts: { valueProp: 'smart_option' } }}
+        customization={customization}
         onSubmit={handlePayment}
       />
       <ErrorMessage error={errorMessage} />

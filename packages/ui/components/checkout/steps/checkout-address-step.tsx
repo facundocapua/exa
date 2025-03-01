@@ -4,13 +4,13 @@ import type { CartWithCheckoutStep } from 'api'
 import ShippingInformation from '../form/shipping-information'
 import { setAddresses } from '../actions'
 import ContinueButton from './continue-button'
-import { useState } from 'react'
+import { useActionState, useState } from 'react'
 import BillingInformation from '../form/billing-information'
 import { compareAddresses } from '../../../utils/address'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import AddressInfo from '../form/address-info'
-import { useFormState } from 'react-dom'
+// import { useActionState } from 'react-dom'
 
 type Props = {
   cart: CartWithCheckoutStep
@@ -28,7 +28,7 @@ export default function CheckoutAddressStep ({ cart }: Props) {
     router.push(pathname + '?step=address')
   }
 
-  const [state, formAction] = useFormState(setAddresses, null)
+  const [state, formAction] = useActionState(setAddresses, null)
   const [sameAsBilling, setSameAsBilling] = useState(
     cart?.shipping_address && cart?.billing_address
       ? compareAddresses(cart?.shipping_address, cart?.billing_address)
