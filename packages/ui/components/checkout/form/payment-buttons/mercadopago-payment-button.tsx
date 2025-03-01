@@ -16,7 +16,10 @@ export const MercadoPagoPaymentButton = ({ session, cart }: {session: PaymentSes
   const handlePayment = async () => {
     trackPurchase(cart)
     await placeOrder()
-      .catch((err) => { setErrorMessage(err.toString()) })
+      .catch((err) => { 
+        setErrorMessage(err.toString()) 
+        console.error(err)
+      })
 
     return preferenceId
   }

@@ -5,9 +5,8 @@ import { setShippingMethod } from '../actions'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
-import { RadioGroup } from '@headlessui/react'
+import { RadioGroup, Radio, Field, Label } from '@headlessui/react'
 import { formatPrice } from '../../../utils/price'
-import Radio from '../../form/radio'
 import type { FormEvent } from 'react'
 import { useEffect, useState } from 'react'
 import ContinueButton from './continue-button'
@@ -74,38 +73,37 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
           <form onSubmit={handleSubmit}>
             <div>
               <RadioGroup
-              value={cart.shipping_methods[0]?.shipping_option_id}
+              value={cart.shipping_methods[0]?.shipping_option_id || ''}
               onChange={(value: string) => handleChange(value)}
             >
                 {availableShippingMethods
                   ? (
                       availableShippingMethods.map((option) => {
                         return (
-                          <RadioGroup.Option
-                          key={option.id}
-                          value={option.id}
-                          className={clsx(
-                            'flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-lg px-8 mb-2 hover:shadow-interactive dark:bg-gray-800',
-                            {
-                              'border-primary-600 dark:border-primary-400':
-                                option.id ===
-                                cart.shipping_methods[0]?.shipping_option_id
-                            }
-                          )}
-                        >
-                            <div className="flex items-center gap-x-4">
-                              <Radio
-                              checked={
-                                option.id ===
-                                cart.shipping_methods[0]?.shipping_option_id
+                          <Field
+                            key={option.id}
+                            className={clsx(
+                              'flex items-center justify-between text-small-regular cursor-pointer py-4 border rounded-lg px-8 mb-2 hover:shadow-interactive dark:bg-gray-800',
+                              {
+                                'border-primary-600 dark:border-primary-400':
+                                  option.id ===
+                                  cart.shipping_methods[0]?.shipping_option_id
                               }
-                            />
-                              <span className="text-base-regular">{option.name}</span>
+                            )}
+                          >
+                            <div className="flex items-center gap-x-4 flex-grow w-full">
+                              <Radio
+                                value={option.id}
+                                className="group flex size-5 items-center justify-center rounded-full border bg-white data-[checked]:bg-primary-600"
+                              >
+                                <span className="invisible size-2 rounded-full bg-white group-data-[checked]:visible" />
+                              </Radio>
+                              <Label className="text-base-regular w-full cursor-pointer">{option.name}</Label>
                             </div>
                             <span className="justify-self-end text-ui-fg-base">
                               {Math.floor(option.amount! / 100) > 0 ? formatPrice(option.amount! / 100) : 'Gratis'}
                             </span>
-                          </RadioGroup.Option>
+                          </Field>
                         )
                       })
                     )
