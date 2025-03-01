@@ -3,7 +3,7 @@ import ProductCardSkeleton from '../product-card/product-cart-skeleton'
 
 const BannerSkeleton = () => {
   return (
-    <div className="w-full md:w-auto aspect-square bg-neutral-300 animate-pulse flex-grow"></div>
+    <div className="w-full md:w-auto aspect-square bg-neutral-300 animate-pulse grow"></div>
   )
 }
 

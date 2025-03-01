@@ -36,7 +36,7 @@ export const ProductCardSkeleton = ({ containerClassName }: Props) => {
         <span className='text-xs'>&nbsp;</span>
         <div
           className={clsx(
-            'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none',
+            'flex items-center justify-center md:rounded-md bg-primary-600 w-full py-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-hidden',
             'opacity-50 cursor-not-allowed h-[56px]'
           )}
         >

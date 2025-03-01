@@ -39,7 +39,7 @@ export default function Navigation ({ navigation }: Props) {
                                       open
                                         ? 'border-primary-600 text-primary-600 dark:text-primary-500 dark:border-primary-500'
                                         : 'border-transparent text-neutral-700 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300',
-                                      'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-none focus:outline-none'
+                                      'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-hidden focus:outline-hidden'
                                     )}
                                   >
                                     {category.name}

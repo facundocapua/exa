@@ -18,11 +18,11 @@ export const ProductSliderSkeleton = ({ title }: Props) => {
       <section className='embla relative'>
         <div className="embla__viewport overflow-hidden md:mx-12" ref={emblaRef}>
           <div className='embla__container flex'>
-            <ProductCardSkeleton containerClassName='flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
-            <ProductCardSkeleton containerClassName='flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
-            <ProductCardSkeleton containerClassName='flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
-            <ProductCardSkeleton containerClassName='flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
-            <ProductCardSkeleton containerClassName='flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+            <ProductCardSkeleton containerClassName='shrink-0 grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+            <ProductCardSkeleton containerClassName='shrink-0 grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+            <ProductCardSkeleton containerClassName='shrink-0 grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+            <ProductCardSkeleton containerClassName='shrink-0 grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+            <ProductCardSkeleton containerClassName='shrink-0 grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
           </div>
         </div>
 

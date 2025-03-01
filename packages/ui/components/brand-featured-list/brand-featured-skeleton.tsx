@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 const BrandItemSkeleton = () => {
   return (
-    <div className="w-full md:w-auto aspect-square bg-neutral-300 animate-pulse flex-shrink-0 flex-grow-0 basis-1/3 md:basis-1/6"></div>
+    <div className="w-full md:w-auto aspect-square bg-neutral-300 animate-pulse shrink-0 grow-0 basis-1/3 md:basis-1/6"></div>
   )
 }
 

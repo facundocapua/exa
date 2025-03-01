@@ -38,7 +38,7 @@ export const BrandFeaturedCarousel = ({ brands }: Props) => {
               href={`/brand/${brand.handle}`}
               aria-label={brand.name}
               title={brand.name}
-              className='embla__slide flex-shrink-0 flex-grow-0 basis-1/3 md:basis-1/6 hover:opacity-75 transition-all duration-150 ease-in-out'
+              className='embla__slide shrink-0 grow-0 basis-1/3 md:basis-1/6 hover:opacity-75 transition-all duration-150 ease-in-out'
             >
               <Image
                 src={brand.logo || '/images/placeholder.png'}

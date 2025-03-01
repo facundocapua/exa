@@ -12,7 +12,7 @@ export default function ContinueButton ({ children, loading }: Props) {
 
   return (
     <button className={clsx(
-      'w-full md:w-60 rounded-md bg-primary-600 py-2 px-4 my-8 text-base text-white hover:bg-primary-700 focus:outline-none',
+      'w-full md:w-60 rounded-md bg-primary-600 py-2 px-4 my-8 text-base text-white hover:bg-primary-700 focus:outline-hidden',
       'disabled:opacity-50 disabled:cursor-not-allowed'
     )}
       type="submit" disabled={pending || loading} aria-disabled={pending || loading}>

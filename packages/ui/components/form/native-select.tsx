@@ -43,7 +43,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
           onFocus={() => innerRef.current?.focus()}
           onBlur={() => innerRef.current?.blur()}
           className={clsx(
-            'relative flex items-center rounded-md text-sm shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-primary-600 px-4 w-full h-11',
+            'relative flex items-center rounded-md text-sm shadow-xs ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-primary-600 px-4 w-full h-11',
             'bg-neutral-50 transition-all duration-200 ease-in-out hover:bg-neutral-100 focus-within:bg-neutral-100',
             'dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:focus-within:bg-neutral-900 dark:ring-gray-600 dark:focus-within:ring-primary-400',
             className,
@@ -56,7 +56,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             ref={innerRef}
             defaultValue={defaultValue}
             {...props}
-            className="appearance-none flex-1 bg-transparent border-none px-4 py-2.5 transition-colors duration-150 outline-none "
+            className="appearance-none flex-1 bg-transparent border-none px-4 py-2.5 transition-colors duration-150 outline-hidden "
           >
             <option disabled value="">
               {placeholder}

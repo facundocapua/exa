@@ -62,7 +62,7 @@ export const FloatingSearchBox = ({ inputClassName, onClose }: Props) => {
 
   return (
     <>
-      <div className='absolute left-0 right-0 bottom-0 top-0 backdrop-blur z-10'></div>
+      <div className='absolute left-0 right-0 bottom-0 top-0 backdrop-blur-sm z-10'></div>
       <div className='absolute z-20 rounded-xl bg-white p-8 top-4 left-1/2 -translate-x-1/2 w-1/3 drop-shadow-md max-h-[600px]'>
         <button className="flex items-center absolute top-2 right-2" onClick={() => onClose()}>
           <XMarkIcon className='w-6 h-6' />
@@ -83,8 +83,8 @@ export const FloatingSearchBox = ({ inputClassName, onClose }: Props) => {
               name="search"
               autoFocus={true}
               className={clsx(twMerge(
-                'block w-full bg-transparent ring-0 outline-none border-b-neutral-400 border-b-2 py-1.5 pl-10 pr-3 text-neutral-900  placeholder:text-neutral-400',
-                'focus:ring-0 focus:outline-none focus:border-b-neutral-900',
+                'block w-full bg-transparent ring-0 outline-hidden border-b-neutral-400 border-b-2 py-1.5 pl-10 pr-3 text-neutral-900  placeholder:text-neutral-400',
+                'focus:ring-0 focus:outline-hidden focus:border-b-neutral-900',
                 inputClassName
               ))}
               placeholder="Buscar"

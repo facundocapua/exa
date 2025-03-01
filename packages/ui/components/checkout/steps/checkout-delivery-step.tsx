@@ -91,12 +91,12 @@ export default function CheckoutDevliveryStep ({ cart, availableShippingMethods 
                               }
                             )}
                           >
-                            <div className="flex items-center gap-x-4 flex-grow w-full">
+                            <div className="flex items-center gap-x-4 grow w-full">
                               <Radio
                                 value={option.id}
-                                className="group flex size-5 items-center justify-center rounded-full border bg-white data-[checked]:bg-primary-600"
+                                className="group flex size-5 items-center justify-center rounded-full border bg-white data-checked:bg-primary-600"
                               >
-                                <span className="invisible size-2 rounded-full bg-white group-data-[checked]:visible" />
+                                <span className="invisible size-2 rounded-full bg-white group-data-checked:visible" />
                               </Radio>
                               <Label className="text-base-regular w-full cursor-pointer">{option.name}</Label>
                             </div>

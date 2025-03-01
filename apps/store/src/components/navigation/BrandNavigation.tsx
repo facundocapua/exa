@@ -20,7 +20,7 @@ export default function BrandNavigation ({ brands }: Props) {
                   open
                     ? 'border-primary-600 text-primary-600'
                     : 'border-transparent text-neutral-700 hover:text-neutral-800',
-                  'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-none focus:outline-none'
+                  'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out outline-hidden focus:outline-hidden'
                 )}
               >
               Marcas
@@ -38,7 +38,7 @@ export default function BrandNavigation ({ brands }: Props) {
             >
             <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-20">
               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-              <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+              <div className="absolute inset-0 top-1/2 bg-white shadow-sm" aria-hidden="true" />
 
               <div className="relative bg-white">
                 <div className="mx-auto max-w-7xl px-8">

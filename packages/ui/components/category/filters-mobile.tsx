@@ -38,19 +38,19 @@ export const FiltersMobile = ({ count, filters }: Props) => {
       <Dialog open={filtersOpen} onClose={setFiltersOpen} className="relative z-40 sm:hidden">
         <DialogBackdrop
         transition
-        className="fixed inset-0 bg-black dark:bg-white dark:bg-opacity-25 bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
+        className="fixed inset-0 bg-black dark:bg-white dark:bg-opacity-25 bg-opacity-25 transition-opacity duration-300 ease-linear data-closed:opacity-0"
       />
         <div className="fixed inset-0 z-40 flex">
           <DialogPanel
               transition
-              className="relative ml-auto flex h-full w-full max-w-xs transform flex-col overflow-y-auto bg-white dark:bg-black py-4 pb-6 shadow-xl transition duration-300 ease-in-out data-[closed]:translate-x-full"
+              className="relative ml-auto flex h-full w-full max-w-xs transform flex-col overflow-y-auto bg-white dark:bg-black py-4 pb-6 shadow-xl transition duration-300 ease-in-out data-closed:translate-x-full"
             >
             <div className="flex items-center justify-between px-4">
               <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Filtros</h2>
               <button
                   type="button"
                   onClick={() => setFiltersOpen(false)}
-                  className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white dark:bg-black p-2 text-gray-400 dark:text-gray-200  focus:outline-none"
+                  className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white dark:bg-black p-2 text-gray-400 dark:text-gray-200  focus:outline-hidden"
                 >
                 <span className="sr-only">Cerrar filtros</span>
                 <XMarkIcon aria-hidden="true" className="h-6 w-6" />
@@ -83,7 +83,7 @@ const RenderFilter = ({ filter }: {filter: Filter}) => {
           <span className="ml-6 flex items-center">
             <ChevronDownIcon
                 aria-hidden="true"
-                className="h-5 w-5 rotate-0 transform group-data-[open]:-rotate-180"
+                className="h-5 w-5 rotate-0 transform group-data-open:-rotate-180"
               />
           </span>
         </DisclosureButton>

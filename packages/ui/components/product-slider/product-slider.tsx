@@ -23,12 +23,12 @@ type ProductItemProps = {
 const ProductItem = ({ theme, product }: ProductItemProps) => {
   if (theme === 'v2') {
     return (
-      <ProductCardV2 product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 mx-2 md:mx-0 md:basis-1/5 md:mr-4' />
+      <ProductCardV2 product={product} containerClassName='embla__slide shrink-0 grow-0 basis-1/2 mx-2 md:mx-0 md:basis-1/5 md:mr-4' />
     )
   }
 
   return (
-    <ProductCard product={product} containerClassName='embla__slide flex-shrink-0 flex-grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
+    <ProductCard product={product} containerClassName='embla__slide shrink-0 grow-0 basis-1/2 md:basis-1/5 md:mr-4' />
   )
 }
 

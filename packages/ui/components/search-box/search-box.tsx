@@ -67,9 +67,9 @@ export const SearchBox = () => {
           id="search"
           name="search"
           className={clsx(
-            'block w-full bg-transparent ring-0 outline-none border-b-neutral-400 border-b-2 py-1.5 pl-10 pr-3 text-neutral-900  placeholder:text-neutral-400',
+            'block w-full bg-transparent ring-0 outline-hidden border-b-neutral-400 border-b-2 py-1.5 pl-10 pr-3 text-neutral-900  placeholder:text-neutral-400',
             'lg:w-1/2 lg:transition-all lg:ease-in-out lg:focus:w-full lg:duration-500  lg:text-sm lg:leading-6',
-            'focus:ring-0 focus:outline-none focus:border-b-neutral-900'
+            'focus:ring-0 focus:outline-hidden focus:border-b-neutral-900'
           )}
           placeholder="Buscar"
           type="search"

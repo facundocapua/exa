@@ -14,7 +14,7 @@ export default function EmailAddress () {
           type="email"
           id="email-address"
           autoComplete="email"
-          className="block w-full rounded-md border border-neutral-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
+          className="block w-full rounded-md border border-neutral-300 shadow-xs focus:border-primary-500 focus:ring-primary-500 p-2 sm:text-sm"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />

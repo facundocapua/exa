@@ -18,7 +18,7 @@ export const Logo = ({ responsive = true, center = true, onClick, className }: P
 
   return (
     <Link href="/" onClick={handleClick} className={clsx(
-      'relative block aspect-[128/75]',
+      'relative block aspect-128/75',
       responsive ? 'w-[70px] lg:w-[100px]' : 'w-[100px]',
       center ? 'mx-auto' : '',
       className

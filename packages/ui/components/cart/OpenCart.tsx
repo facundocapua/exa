@@ -19,7 +19,7 @@ export default function OpenCart ({ className, onClick, quantity }: Props) {
       />
       {quantity
         ? (
-          <div className="absolute right-0 top-0 -mr-1 -mt-1 h-4 w-4 rounded bg-primary-600 text-[11px] font-medium text-white">
+          <div className="absolute right-0 top-0 -mr-1 -mt-1 h-4 w-4 rounded-sm bg-primary-600 text-[11px] font-medium text-white">
             {quantity}
           </div>
           )

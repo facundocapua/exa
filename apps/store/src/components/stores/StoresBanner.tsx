@@ -15,7 +15,7 @@ export default function StoresBanner () {
           />
         </div>
         <div className="absolute inset-0 bg-white bg-opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
+        <div className="absolute inset-0 bg-linear-to-t from-white via-white" />
       </div>
 
       <section

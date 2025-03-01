@@ -34,7 +34,7 @@ export default function FilterRadio ({ filter }: Props) {
             name={`${filter.attribute}[]`}
             value={option.value}
             type="checkbox"
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded-sm border-gray-300 text-indigo-600 focus:ring-indigo-500"
             onChange={handleChange}
             checked={value.includes(option.value?.toString())}
           />

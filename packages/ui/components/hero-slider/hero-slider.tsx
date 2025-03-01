@@ -101,7 +101,7 @@ export default function HeroSlider ({ slides }: Props) {
               }}
             >
               <span className={clsx(
-                'w-3 h-3 block rounded-full shadow border-none transition-all duration-100 ease-in-out hover:scale-110',
+                'w-3 h-3 block rounded-full shadow-sm border-none transition-all duration-100 ease-in-out hover:scale-110',
                 { 'bg-gray-200': activeSlide === index },
                 { 'bg-gray-400': activeSlide !== index }
               )}></span>
