@@ -29,7 +29,7 @@ export default async function CheckoutPage () {
   if (cart?.payment_sessions?.length === 1 && cart?.payment_sessions[0]) {
     const providerId = cart?.payment_sessions[0].provider_id
     await setPaymentSession(cartId, providerId)
-    revalidateTag('cart')
+    // revalidateTag('cart')
   }
 
   cart.checkout_step = getCheckoutStep(cart)
