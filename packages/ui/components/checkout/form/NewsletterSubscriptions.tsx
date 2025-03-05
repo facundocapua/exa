@@ -11,7 +11,7 @@ export default function NewsletterSubscription () {
         type="checkbox"
         id="subscribe"
         name="subscribe"
-        className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded-sm"
+        className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded-xs"
         checked={subscribe}
         onChange={() => setSubscribe(!subscribe)}
        />

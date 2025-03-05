@@ -24,11 +24,11 @@ const Slider = React.forwardRef<
       <SliderPrimitive.Track className="relative h-1 w-full grow overflow-hidden rounded-full bg-neutral-200 dark:bg-primary-900/50">
         <SliderPrimitive.Range className="absolute h-full bg-primary-700 dark:bg-primary-700" />
       </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary-700 dark:border-primary-500 bg-primary-700 dark:bg-primary-500 shadow-sm transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring cursor-pointer group">
-        <Price amount={Number(currentValue[0])} className="absolute -top-8 text-primary-100 text-xs -left-5 rounded-sm bg-primary-700 px-2 py-1.5 hidden group-hover:block" />
+      <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary-700 dark:border-primary-500 bg-primary-700 dark:bg-primary-500 shadow-2xs transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring cursor-pointer group">
+        <Price amount={Number(currentValue[0])} className="absolute -top-8 text-primary-100 text-xs -left-5 rounded-xs bg-primary-700 px-2 py-1.5 hidden group-hover:block" />
       </SliderPrimitive.Thumb>
-      <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary-700 dark:border-primary-500 bg-primary-700 dark:bg-primary-500 shadow-sm transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring cursor-pointer group">
-        <Price amount={Number(currentValue[1])} className="absolute -top-8 text-primary-100 text-xs -left-5 rounded-sm bg-primary-700 px-2 py-1.5 hidden group-hover:block" />
+      <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border border-primary-700 dark:border-primary-500 bg-primary-700 dark:bg-primary-500 shadow-2xs transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring cursor-pointer group">
+        <Price amount={Number(currentValue[1])} className="absolute -top-8 text-primary-100 text-xs -left-5 rounded-xs bg-primary-700 px-2 py-1.5 hidden group-hover:block" />
       </SliderPrimitive.Thumb>
     </SliderPrimitive.Root>
   )

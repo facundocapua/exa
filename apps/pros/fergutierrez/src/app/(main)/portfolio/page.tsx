@@ -16,10 +16,10 @@ const images = [
 ]
 
 const imagesClasses = [
-  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative [&>*]:object-[50%_40%]',
-  'w-full block h-[350px] md:h-full rounded-xl md:row-span-3 relative [&>*]:object-[60%_45%]',
-  'w-full block h-[350px] md:h-full rounded-xl relative [&>*]:object-[50%_30%]',
-  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative [&>*]:object-[50%_10%]',
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative *:object-[50%_40%]',
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-3 relative *:object-[60%_45%]',
+  'w-full block h-[350px] md:h-full rounded-xl relative *:object-[50%_30%]',
+  'w-full block h-[350px] md:h-full rounded-xl md:row-span-2 relative *:object-[50%_10%]',
   'w-full block h-[350px] md:h-full rounded-xl relative'
   // 'w-full block h-[350px] md:h-full rounded-xl relative'
 ]

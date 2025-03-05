@@ -2,7 +2,7 @@ import { STORE_NAME, STORE_DESCRIPTION, STORE_OG_IMAGE } from '@/utils/const'
 import type { Metadata } from 'next'
 import { Inter, Rubik } from 'next/font/google'
 import type { ReactNode } from 'react'
-import 'ui/styles/global.css'
+import './globals.css'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({

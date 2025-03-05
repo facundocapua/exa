@@ -11,7 +11,7 @@ export default async function StoreMap () {
 
   return (
     <section className="max-w-7xl mx-auto flex gap-4 flex-col md:flex-row my-8">
-      <div className="flex-grow" dangerouslySetInnerHTML={{ __html: store.map }} />
+      <div className="grow" dangerouslySetInnerHTML={{ __html: store.map }} />
     </section>
   )
 }

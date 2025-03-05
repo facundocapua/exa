@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Libre_Baskerville as Baskerville } from 'next/font/google'
 import localFont from 'next/font/local'
 import type { ReactNode } from 'react'
-import 'ui/styles/global.css'
+import './globals.css'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({

@@ -25,7 +25,7 @@ const Textarea = forwardRef<TextareaProps, TextareaProps>(
       )}>
         <textarea
           className={clsx(
-            'peer h-24 rounded-md shadow-xs ring-1 ring-gray-300 focus-within:ring-2 focus-within:ring-primary-600 px-4 border-t-[20px] border-transparent w-full text-sm',
+            'peer h-24 rounded-md shadow-2xs ring-1 ring-gray-300 focus-within:ring-2 focus-within:ring-primary-600 px-4 border-t-[20px] border-transparent w-full text-sm',
             'bg-neutral-50 transition-colors duration-200 ease-in-out hover:bg-neutral-100 focus-within:bg-neutral-100'
           )}
           placeholder=' '

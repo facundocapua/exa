@@ -50,7 +50,7 @@ export default async function StoreMap () {
 
   return (
     <section className="max-w-7xl mx-auto flex gap-4 flex-col md:flex-row my-8 px-4 md:px-0">
-      <div className="flex-grow">
+      <div className="grow">
         <h2 className="text-3xl md:text-4xl">Gonzalo Alonso Studio</h2>
         <Link href="https://maps.google.com/maps/dir//Gonzalo+Alonso+Studio+Mitre+820+B7000+Tandil+Provincia+de+Buenos+Aires/@-37.3226979,-59.1349067,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x95911fc724fd3d1b:0x73872f573ef403dd" target='_blank' rel='' className="flex justify-start py-4 gap-2"><MapPinIcon className="w-6 h-6" />{store.address} - {store.city}, {store.state}</Link>
         <div className='flex gap-8 py-4 md:py-10'>
@@ -68,7 +68,7 @@ export default async function StoreMap () {
         </div>
 
       </div>
-      <div className="flex-grow" dangerouslySetInnerHTML={{ __html: store.map }} />
+      <div className="grow" dangerouslySetInnerHTML={{ __html: store.map }} />
     </section>
   )
 }

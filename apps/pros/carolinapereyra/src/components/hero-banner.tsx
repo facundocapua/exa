@@ -7,7 +7,7 @@ export default async function HeroBanner () {
     <section className='w-full mb-4 bg-secondary-100 md:px-24 relative md:py-12'>
       <div className="md:grid md:grid-cols-[60%_40%] items-center md:flex-row">
         <div className={clsx(
-          'max-w-7xl md:backdrop-blur-0 backdrop-blur bg-black/30 text-balance z-10',
+          'max-w-7xl md:backdrop-blur-0 backdrop-blur-sm bg-black/30 text-balance z-10',
           'absolute bottom-0 md:top-[10px]',
           'md:bg-transparent md:rounded-none md:static md:mx-auto md:top-0 md:w-auto'
         )}>
@@ -23,7 +23,7 @@ export default async function HeroBanner () {
                 <div className="mt-10 items-center gap-x-6 hidden md:block">
                   <Link
                     href="/portfolio"
-                    className="rounded-md bg-primary-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+                    className="rounded-md bg-primary-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-xs hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
                   >
                     Ver Portfolio
                   </Link>
@@ -33,7 +33,7 @@ export default async function HeroBanner () {
           </div>
         </div>
 
-        <div className="max-w-[700px] aspect-[9/12] md:max-h-[400px] w-full md:aspect-square relative overflow-hidden md:rounded-2xl">
+        <div className="max-w-[700px] aspect-9/12 md:max-h-[400px] w-full md:aspect-square relative overflow-hidden md:rounded-2xl">
           <Image
               className='object-cover object-[0_100%] md:object-[0_30%]'
               src="/home.webp"

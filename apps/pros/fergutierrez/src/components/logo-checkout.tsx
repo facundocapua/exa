@@ -3,7 +3,7 @@ import LogoImg from './logo-img-alt'
 
 export default function LogoCheckout () {
   return (
-    <Link href="/" className="focus:outline-none">
+    <Link href="/" className="focus:outline-hidden">
       <span className="sr-only">Fernanda Gutierrez</span>
       <LogoImg className='w-[250px]' />
     </Link>
