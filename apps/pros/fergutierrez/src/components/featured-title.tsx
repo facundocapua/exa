@@ -1,5 +1,5 @@
 type Props = {
-  children: JSX.Element | string
+  children: React.JSX.Element | string
 }
 
 export default function FeaturedTitle ({ children }: Props) {
