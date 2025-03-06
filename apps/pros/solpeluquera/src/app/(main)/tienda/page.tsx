@@ -6,7 +6,7 @@ import { Breadcrumb, ProductListPage } from 'ui/server'
 import { cleanFilters } from 'utils'
 
 type Props = {
-  searchParams: Record<string, string>
+  searchParams: Promise<Record<string, string>>
 }
 
 export async function generateMetadata (): Promise<Metadata> {
