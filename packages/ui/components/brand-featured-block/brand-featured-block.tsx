@@ -6,9 +6,10 @@ import ProductCardV2 from '../product-card/product-cart-v2'
 
 type Props = {
   handle: Brand['handle']
+  hideBannerMobile?: boolean
 }
 
-export const BrandFeaturedBlock = async ({ handle }: Props) => {
+export const BrandFeaturedBlock = async ({ handle, hideBannerMobile }: Props) => {
   const brand = await getBrand(handle)
   if (!brand) return null
 
@@ -21,10 +22,17 @@ export const BrandFeaturedBlock = async ({ handle }: Props) => {
 
   return (
     <div className={clsx(
-      'grid grid-cols-1 py-8 bg-neutral-100 dark:bg-transparent gap-y-4 md:gap-y-0',
-      { 'md:grid-cols-[auto_auto]': brand.featured_banner }
+      'grid grid-cols-1 py-8  bg-neutral-100 dark:bg-transparent gap-y-4 md:gap-y-0',
+      { 'md:grid-cols-[auto_1fr]': brand.featured_banner},
     )}>
-      {brand.featured_banner && (<Link href={`/brand/${brand.handle}`} className='relative aspect-10/7 max-w-[800px]'><Image src={brand.featured_banner} alt={brand.name} fill /></Link>)}
+      {brand.featured_banner && (
+        <Link href={`/brand/${brand.handle}`} className={clsx(
+          'relative aspect-10/7 max-w-[800px]',
+          { 'hidden md:block': hideBannerMobile }
+          )}>
+          <Image src={brand.featured_banner} alt={brand.name} fill />
+        </Link>
+      )}
       <div className='flex justify-evenly gap-2 [&>*:nth-child(n+3)]:hidden 2xl:[&>*:nth-child(n+3)]:flex'>
         {products.map((product) => (
           <ProductCardV2 key={product.id} product={product} containerClassName={clsx(

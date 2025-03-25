@@ -1,0 +1,41 @@
+@supports (animation-range: 0 30vh) {
+  .banner {
+    animation: top-banner linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0 30vh;
+  }
+}
+
+@supports not (animation-range: 0 30vh) {
+  .banner {
+    height: 40px;
+  }
+}
+
+@keyframes top-banner {
+  0% {
+    opacity: 1;
+    height: 40px;
+  }
+  100% {
+    opacity: 0;
+    height: 1px;
+  }
+}
+
+@supports (animation-range: 0 30vh) {
+  .logo {
+    animation: logo linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0 30vh;
+  }
+}
+
+@keyframes logo {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}

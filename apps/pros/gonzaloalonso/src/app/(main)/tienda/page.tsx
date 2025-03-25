@@ -51,7 +51,7 @@ export default async function StorePage () {
     'cuidado',
     'styling',
     'herramientas',
-    'brochas'
+    // 'brochas'
   ]
 
   return (
