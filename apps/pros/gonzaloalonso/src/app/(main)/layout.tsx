@@ -4,13 +4,12 @@ import Footer from '@/components/footer'
 
 type Props = {
   children: ReactNode
-  cart: ReactNode
 }
 
-export default function MainLayout ({ children, cart }: Props) {
+export default function MainLayout ({ children }: Props) {
   return (
     <>
-      <Header cart={cart} />
+      <Header />
       {children}
       <Footer />
     </>

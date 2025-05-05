@@ -7,11 +7,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import { usePathname } from 'next/navigation'
 
-type Props = {
-  cart: React.ReactNode
-}
-
-export default function Header ({ cart }: Props) {
+export default function Header () {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
