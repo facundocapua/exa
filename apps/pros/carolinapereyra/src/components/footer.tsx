@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { InstagramIcon, WhatsAppIcon } from 'ui/server'
 import Logo from './logo'
-import { ChevronRightIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import type { Salon } from 'api'
 import { getSalon } from 'api'
 import Image from 'next/image'
