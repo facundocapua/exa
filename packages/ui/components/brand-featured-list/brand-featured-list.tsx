@@ -3,20 +3,22 @@
 import type { Brand } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Fragment } from 'react/jsx-runtime'
 
 type Props = {
   brands: Array<Brand>
+  link?: boolean
 }
 
-export const BrandFeaturedList = ({ brands }: Props) => {
+export const BrandFeaturedList = ({ brands, link = true }: Props) => {
   if (!brands) return null
 
   return (
 
     <div className='grid grid-cols-2 md:flex justify-center gap-8 mx-4 md:mx-0'>
       {brands.map((brand) => (
-        <Link
-          key={brand.id}
+        <Fragment key={brand.id}>
+          {link ? (<Link
           href={`/brand/${brand.handle}`}
           aria-label={brand.name}
           title={brand.name}
@@ -29,7 +31,16 @@ export const BrandFeaturedList = ({ brands }: Props) => {
             width={180}
             height={180}
           />
-        </Link>
+        </Link>) : (
+          <Image
+            src={brand.logo || '/images/placeholder.png'}
+            alt={brand.name}
+            className="dark:invert"
+            width={180}
+            height={180}
+          />
+        )}
+        </Fragment>
       ))}
     </div>
   )

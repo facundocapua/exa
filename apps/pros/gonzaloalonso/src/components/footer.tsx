@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from 'ui/server'
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from 'ui/server'
 import Logo from './Logo'
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import type { Salon } from 'api'

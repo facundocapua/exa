@@ -5,8 +5,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { Fragment, useEffect, useState } from 'react'
 import { navigation } from '@/utils/navigation'
-import { SearchBoxSimple } from 'ui/components/search-box/search-box-simple'
-import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 import { usePathname } from 'next/navigation'
 
 type Props = {
@@ -43,24 +41,6 @@ export default function Header ({ cart }: Props) {
 
           <div className='w-fit mx-auto flex justify-center items-center gap-x-2'>
             <Logo />
-            <div className='block md:hidden text-gray-700 pr-4'>
-              <SearchBoxMobile
-              iconClassName='text-gray-200'
-              inputClassName='text-gray-200 focus:border-b-gray-200'
-            />
-            </div>
-          </div>
-
-          <div className='flex justify-end items-center gap-8'>
-            <div className='hidden lg:block text-gray-700'>
-              <SearchBoxSimple
-              iconClassName='text-gray-100'
-              inputClassName='text-gray-500 focus:border-b-gray-500'
-            />
-            </div>
-            <div>
-              {cart}
-            </div>
           </div>
         </div>
         <Transition show={mobileMenuOpen} as={Fragment}>
@@ -98,13 +78,6 @@ export default function Header ({ cart }: Props) {
                       <span className="sr-only">Cerrar menu</span>
                       <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                     </button>
-                  </div>
-
-                  <div className='flex p-4 text-gray-700'>
-                    <SearchBoxMobile
-                    iconClassName='text-gray-200'
-                    inputClassName='text-gray-200 focus:border-b-gray-200'
-                  />
                   </div>
 
                   <div className="mt-6 space-y-2">
