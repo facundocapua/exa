@@ -10,7 +10,7 @@ type Props = {
 export default function MainLayout ({ children, cart }: Props) {
   return (
     <>
-      <Header cart={cart} />
+      <Header />
       {children}
       <Footer />
     </>

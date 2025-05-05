@@ -7,14 +7,8 @@ import { Fragment, useEffect, useState } from 'react'
 import { navigation } from '@/utils/navigation'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
-import { SearchBoxSimple } from 'ui/components/search-box/search-box-simple'
-import { SearchBoxMobile } from 'ui/components/search-box/search-box-mobile'
 
-type Props = {
-  cart: React.ReactNode
-}
-
-export default function Header ({ cart }: Props) {
+export default function Header () {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
@@ -61,15 +55,6 @@ export default function Header ({ cart }: Props) {
               <Bars3Icon className="h-8 w-8" aria-hidden="true" />
             </button>
           </div>
-          <div className='hidden lg:block'>
-            <SearchBoxSimple
-              iconClassName='text-gray-700'
-              inputClassName='text-gray-500 focus:border-b-primary-500'
-            />
-          </div>
-          <div>
-            {cart}
-          </div>
         </div>
       </div>
 
@@ -108,13 +93,6 @@ export default function Header ({ cart }: Props) {
                     <span className="sr-only">Cerrar menu</span>
                     <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                   </button>
-                </div>
-
-                <div className='flex p-4'>
-                  <SearchBoxMobile
-                    iconClassName='text-secondary-600'
-                    inputClassName='text-secondary-600 focus:border-b-primary-400'
-                  />
                 </div>
 
                 <div className="mt-6 space-y-2">

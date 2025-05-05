@@ -48,9 +48,6 @@ export default async function Footer () {
           <Link href={salon.map_link ?? getGoogleSearchLink(salon)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
             <MapPinIcon className='w-5 h-5' /> {salon.address} - {salon.city}, {salon.state}
           </Link>
-          <Link href="/arrepentimiento" className='flex items-center text-sm'>
-            <ChevronRightIcon className='w-4 h-4' />Arrepentimiento
-          </Link>
         </div>
       </div>
       <hr className='max-w-7xl mx-auto border-gray-300' />

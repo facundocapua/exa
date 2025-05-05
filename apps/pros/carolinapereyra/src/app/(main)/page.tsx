@@ -32,9 +32,6 @@ export default async function Home () {
         <FeaturedBrands title='Nuestras Marcas' />
       </Suspense>
       <OpeningHours />
-      <Suspense fallback={<ProductSliderSkeleton title='Destacados del mes' />}>
-        <FeaturedProducts />
-      </Suspense>
       <Testimonials />
       <StoreMap />
       <StoreMetadata salon={salon} />
