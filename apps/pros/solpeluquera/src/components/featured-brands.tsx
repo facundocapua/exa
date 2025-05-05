@@ -18,8 +18,8 @@ export default async function FeaturedBrands ({ title }: Props) {
       </h2>
       {
         brands.length > 4
-          ? <BrandFeaturedList brands={brands} />
-          : <SimpleBrandList brands={brands} />
+          ? <BrandFeaturedList brands={brands} link={false} />
+          : <SimpleBrandList brands={brands} link={false} />
       }
     </section>
   )

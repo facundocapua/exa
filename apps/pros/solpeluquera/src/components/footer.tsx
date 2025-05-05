@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { InstagramIcon, WhatsAppIcon } from 'ui/server'
 import Logo from './logo'
-import { ChevronRightIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import type { Salon } from 'api'
 import { getSalon } from 'api'
 import Image from 'next/image'
@@ -47,9 +47,6 @@ export default async function Footer () {
           </Link>
           <Link href={salon.map_link ?? getGoogleSearchLink(salon)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
             <MapPinIcon className='w-5 h-5' /> {salon.address} - {salon.city}, {salon.state}
-          </Link>
-          <Link href="/arrepentimiento" className='flex items-center text-sm'>
-            <ChevronRightIcon className='w-4 h-4' />Arrepentimiento
           </Link>
         </div>
       </div>
