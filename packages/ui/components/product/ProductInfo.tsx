@@ -17,7 +17,7 @@ export default function ProductInfo ({ product }: Props) {
       <div className="mt-3">
         <h2 className="sr-only">Información de producto</h2>
         <div className="flex gap-2 mt-6 items-center">
-          { product.salePrice > 0 && <Price amount={product.salePrice} className='text-4xl text-neutral-600 dark:text-neutral-300' /> }
+          { product.salePrice > 0 && <Price amount={product.salePrice} showPriceWithoutTaxes={true} className='text-4xl text-neutral-600 dark:text-neutral-300' /> }
           { product.salePrice < product.price && <Price amount={product.price} className='line-through text-neutral-500 dark:text-neutral-500 text-md' /> }
         </div>
         <div className='flex items-center gap-x-2 text-neutral-600 text-xl mt-2'>
