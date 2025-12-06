@@ -1,4 +1,4 @@
 packages:
-  - "apps/*"
-  - "apps/pros/*"
+  # - "apps/*"
+  - "apps/pros/fergutierrez"
   - "packages/*"
