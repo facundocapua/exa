@@ -16,20 +16,23 @@ export const BrandFeaturedBlock = async ({ handle, hideBannerMobile }: Props) =>
   const maxProducts = brand.featured_banner ? 3 : 6
   const products = await getProducts({ brand_id: [brand.id] })
     .then((products) => {
-      const randomProducts = products.sort(() => Math.random() - 0.5).slice(0, maxProducts)
+      const randomProducts = products
+        .filter(product => product.stock > 0)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, maxProducts)
       return randomProducts
     })
 
   return (
     <div className={clsx(
       'grid grid-cols-1 py-8  bg-neutral-100 dark:bg-transparent gap-y-4 md:gap-y-0',
-      { 'md:grid-cols-[auto_1fr]': brand.featured_banner},
+      { 'md:grid-cols-[auto_1fr]': brand.featured_banner },
     )}>
       {brand.featured_banner && (
         <Link href={`/brand/${brand.handle}`} className={clsx(
           'relative aspect-10/7 max-w-[800px]',
           { 'hidden md:block': hideBannerMobile }
-          )}>
+        )}>
           <Image src={brand.featured_banner} alt={brand.name} fill />
         </Link>
       )}

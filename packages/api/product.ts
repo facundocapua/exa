@@ -16,8 +16,10 @@ export const getProductVariants = async (variantIds: string[]): Promise<Array<Pr
     currency_code: 'ars',
     limit: String(DEFAULT_PRODUCT_LIMIT)
   })
+  const url = `${getMedusaUrl()}/store/variants?${params.toString()}`
+  console.log(url)
   const products = fetch(
-    `${getMedusaUrl()}/store/variants?${params.toString()}`,
+    url,
     {
       next: {
         tags: ['variants']
@@ -93,8 +95,10 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
     }
   }
 
+  const url = `${getMedusaUrl()}/store/products?${params.toString()}`
+  console.log(url)
   const products: Array<Product> = await fetch(
-    `${getMedusaUrl()}/store/products?${params.toString()}`,
+    url,
     {
       next: {
         tags: ['products']
@@ -114,6 +118,7 @@ export const getProducts = async ({ category_id, collection_id, brand_id, handle
     product.variants = variants.filter((variant) => product.id === variant.product_id)
     product.price = product.variants[0]?.original_price ?? 0
     product.salePrice = product.variants[0]?.calculated_price ?? 0
+    product.stock = calculateStock(product)
 
     product.variants.forEach((variant: ProductVariant) => {
       if (variant?.metadata?.image) {

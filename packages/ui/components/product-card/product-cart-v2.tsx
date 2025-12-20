@@ -26,7 +26,7 @@ export const ProductCardV2 = ({ product, containerClassName, loading = 'lazy' }:
             alt={product.title}
             width={250}
             height={250}
-            className="w-full h-full object-contain object-center bg-white  group-hover:scale-125 transition-transform duration-500"
+            className="w-full h-full object-contain object-center bg-white group-hover:scale-125 transition-transform duration-500"
             loading={loading}
             priority={loading === 'eager'}
           />

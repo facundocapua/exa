@@ -52,6 +52,7 @@ export type Product = MedusaProduct & {
   price: number
   salePrice: number
   variants: Array<ProductVariant>
+  stock: number
 }
 
 export type FilterOption = {
