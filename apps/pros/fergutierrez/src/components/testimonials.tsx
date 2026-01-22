@@ -16,7 +16,12 @@ const getReviews = async (): Promise<Review[]> => {
   const apiKey = process.env.GOOGLE_API_KEY
   const url = `https://maps.googleapis.com/maps/api/place/details/json?reference=${referenceId}&key=${apiKey}&reviews_no_translations=true`
 
-  return fetch(url)
+  return fetch(url,
+    {
+      cache: 'force-cache',
+      next: { revalidate: 86400 } // 24 hours
+    }
+  )
     .then((response) => response.json())
     .then((data) => data.result.reviews)
 }
