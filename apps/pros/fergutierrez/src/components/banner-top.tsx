@@ -18,7 +18,7 @@ export const BannerTop = ({ className }: Props) => {
       </div>
       <div className='flex items-center'>
         <TruckIcon className="w-6 h-6 mr-2" />
-        <p className='text-balance'>Envío gratis a Tandil o compras superiores a $44.999</p>
+        <p className='text-balance'>Envío gratis a Tandil o compras superiores a $99.999</p>
       </div>
     </div>
   )
