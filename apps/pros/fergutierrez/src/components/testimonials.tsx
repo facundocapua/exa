@@ -23,11 +23,12 @@ const getReviews = async (): Promise<Review[]> => {
     }
   )
     .then((response) => response.json())
-    .then((data) => data.result.reviews)
+    .then((data) => data?.result?.reviews || null)
 }
 
 export default async function Testimonials () {
   const reviews = await getReviews()
+  if (!reviews || reviews.length === 0) return null
 
   const featuredTestimonial = reviews[0]
   const testimonials = [

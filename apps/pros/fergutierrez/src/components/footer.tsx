@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { FacebookIcon, getGoogleSearchLink, InstagramIcon, TikTokIcon, WhatsAppIcon } from 'ui/server'
+import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from 'ui/server'
 import Logo from './logo'
-import { ChevronRightIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
 import { getSalon } from 'api'
 import Image from 'next/image'
 
@@ -51,12 +51,12 @@ export default async function Footer () {
           <Link href={`sms:${salon.phone}`} className='flex items-center gap-2'>
             <PhoneIcon className='w-5 h-5' /> {salon.phone}
           </Link>
-          <Link href={salon.map_link ?? getGoogleSearchLink(salon)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
+          {/* <Link href={salon.map_link ?? getGoogleSearchLink(salon)} target="_blank" rel="noreferrer nofollow" className='flex items-center gap-2'>
             <MapPinIcon className='w-5 h-5' /> {salon.address} - {salon.city}, {salon.state}
-          </Link>
-          <Link href="/arrepentimiento" className='flex items-center text-sm'>
+          </Link> */}
+          {/* <Link href="/arrepentimiento" className='flex items-center text-sm'>
             <ChevronRightIcon className='w-4 h-4' />Arrepentimiento
-          </Link>
+          </Link> */}
         </div>
       </div>
       <hr className='max-w-7xl mx-auto border-gray-700' />
@@ -78,9 +78,9 @@ export default async function Footer () {
           }
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-center text-xs leading-5 text-gray-300">
+          {/* <p className="text-center text-xs leading-5 text-gray-300">
             Tienda creada por <Link href="https://exabeauty.com.ar" className='text-lg'>eXa</Link>
-          </p>
+          </p> */}
         </div>
       </div>
 

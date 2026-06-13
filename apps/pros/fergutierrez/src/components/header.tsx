@@ -48,7 +48,7 @@ export default function Header ({ cart }: Props) {
           <Logo />
         </div>
 
-        <div className='flex justify-end items-center gap-8'>
+        {/* <div className='flex justify-end items-center gap-8'>
           <div className='hidden lg:block'>
             <SearchBoxSimple
               iconClassName='text-gray-100'
@@ -58,7 +58,7 @@ export default function Header ({ cart }: Props) {
           <div>
             {cart}
           </div>
-        </div>
+        </div> */}
 
       </div>
 
